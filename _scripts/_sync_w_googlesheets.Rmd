@@ -1,0 +1,69 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(here)
+library(googlesheets4)
+gs4_deauth()
+
+```
+
+# Store in files
+## Grab and store the list of files
+```{r}
+documents_to_sync <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
+           sheet = "texts",
+           col_types = "c")
+
+# save it out
+documents_to_sync %>% 
+  write_csv(here("static", "manuscripts", "manuscript_list.csv"))
+```
+
+## Create function to iterate over them
+```{r}
+grab_and_store <- function(id, gsheet_link) {
+  # create a folder for it
+  dir.create(here("static", "manuscripts", id))
+  
+  # grab and store meta data
+  data_meta <- read_sheet(gsheet_link,
+           sheet = "meta",
+           col_types = "c") %>% 
+    select(-`note/explanation`) %>% 
+    pivot_wider(names_from = meta, values_from = value)
+  
+  data_meta %>% 
+    write_csv(here("static", "manuscripts", id, str_c("meta_", id, ".csv")))
+  
+  # grab and store text
+  data_text <- read_sheet(gsheet_link,
+           sheet = "text",
+           col_types = "c")
+  
+  data_text %>% 
+    write_csv(here("static", "manuscripts", id, str_c("text_", id, ".csv")))
+}
+
+```
+
+## Do it
+```{r}
+walk2(documents_to_sync$catalogue_id, documents_to_sync$googlesheet_link, grab_and_store)
+```
+
+## Store the metadata separately
+```{r}
+# list all the meta data files
+meta_data_files <- list.files(here("static", "manuscripts"), pattern = "^meta_", recursive = TRUE)
+
+# this is their paths
+paths <- paste0(here("static", "manuscripts"), "/", meta_data_files)
+
+# store them in a single csv file
+map_dfr(paths, read_csv) %>% 
+  write_csv(here("static", "manuscripts", "manuscript_meta.csv"))
+```
+
