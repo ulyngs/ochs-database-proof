@@ -1,0 +1,87 @@
+---
+title: Home
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(knitr)
+library(here)
+library(glue)
+
+# library(googlesheets4)
+# gs4_deauth()
+# website_content <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
+#            sheet = "front_page")
+
+```
+
+<!-- personal -->
+<div class="row">
+```{block type="col-lg-3 col-md-6 col-sm-12", echo=TRUE}
+<img alt="Sakta traditions" src="/images/sakta_traditions.jpg" class="img-fluid featured-work-graphic"/>
+```
+
+```{block type="col-lg-6 col-md-6 col-sm-6", echo=TRUE}
+This is a proof of concept for an **exciting database website** for the [Oxford Centre for Hindu Studies](https://ochs.org.uk).
+
+Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses. 
+
+```
+
+```{block type="col-lg-3 col-md-12 col-sm-6", echo=TRUE}
+<div class='embed-responsive embed-responsive-16by9'>
+<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/LjWivZIiS78' allowfullscreen></iframe>
+</div>
+```
+
+</div>
+
+## How to use
+### Viewing in a web browser
+
+<div class="row">
+```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+- One way to use this website is simply as a browsable library, where the user can see texts side-by-side with the original images of the manuscripts
+- They can also download the texts and images on the page they're browsing
+- And they will be able to comment on the texts or suggest corrections via a comment-only link to a google sheet with the transliteration and translations
+
+```
+
+```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
+<div class='embed-responsive embed-responsive-16by9'>
+<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe>
+</div>
+
+
+```
+
+</div>
+
+### Downloading text or images
+
+<div class="row">
+```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+- An important feature that makes this project different to the alternatives out there, such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org) is that we also will provide a public API to the database of the texts and images
+- This means that rather than just browsing and downloading individual manuscripts, data science-savvy researcher will be able to programmatically download e.g. all texts or images for manuscripts that meet specific criteria
+
+
+```
+
+```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
+<div class='embed-responsive embed-responsive-16by9'>
+<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/gKULywqF-1w' allowfullscreen></iframe>
+</div>
+```
+
+</div>
+
+
+## How it works
+<div class="row">
+```{block type="col-sm-12", echo=TRUE}
+<img alt="Sakta traditions" src="/images/how_it_works.png" class="img-fluid featured-work-graphic"/>
+```
+
+</div>

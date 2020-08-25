@@ -1,0 +1,43 @@
+{{ partial "header.html" . }}
+
+<div class="main-container container blog-post">
+  <main>
+    <div class="row">
+      <div class="col-sm-3"> 
+        <a href="/sakta/"><i class="fa fa-backward fa-5x"></i></a>
+      </div>
+  
+      <div class="col-sm-3">
+        <h1 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h1>
+        <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
+        <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
+        <p>English title: {{ .Params.englishTitle }}</p>
+        <p>Approximate dating: {{ .Params.approximateDating }}</p>
+        <!--<p>Word count: {{ .Params.wordCount }}</p>-->
+      </div>
+      
+      <div class="col-sm-3">
+        <h2>Elements to view</h2>
+      </div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-primary btn-lg">Download text</button>
+        <button type="button" class="btn btn-primary btn-lg">Download images</button>
+        <a href={{ .Params.googlesheet }}><button type="button" class="btn btn-primary btn-lg">Comment on text</button></a>
+      </div>
+        
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="post-content">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+    
+  </main>
+</div>
+
+
+
+{{ partial "footer.html" . }}

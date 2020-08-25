@@ -1,0 +1,38 @@
+---
+title: Bengali
+menu: main
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(knitr)
+library(here)
+library(lubridate)
+library(DT)
+
+```
+
+
+<div class="row">
+# Bengali manuscripts
+```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+- This will be the front page to the section of the site where manuscripts associated with the Bengali news archive project can be browsed
+
+```
+
+```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
+<div class='embed-responsive embed-responsive-16by9'>
+<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/LjWivZIiS78' allowfullscreen></iframe>
+</div>
+```
+
+</div>
+
+# Select a text
+## Note this section is not functional - here is a random dataset as a placeholder for links to manuscripts
+```{r}
+mtcars %>% 
+  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10))
+```
+
