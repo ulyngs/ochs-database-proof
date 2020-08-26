@@ -111,6 +111,10 @@ a.email:hover,
 
 
 /* front page */
+h2 {
+  margin-top: 1.5em;
+}
+
 .contact-info {
   padding-left: 1em;
 }
@@ -384,9 +388,13 @@ table.dataTable.no-footer {
 }
 
 
-/* ---- BLOG ---- */
-.blog-post .post-meta {
-  max-width: 900px;
+/* ---- MANUSCRIPT PAGES ---- */
+.manuscript-page .back-to-list a {
+  border: none;
+}
+
+.manuscript-page h2 {
+  margin-top: 0;
 }
 .blog-post .blog-content {
   max-width: 680px;
