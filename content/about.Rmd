@@ -20,9 +20,14 @@ library(glue)
 ```{block type="col-lg-6 col-md-6 col-sm-6", echo=TRUE}
 This is a proof of concept for an exciting database website for the Oxford Centre for Hindu Studies.
 
-Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses. Furthermore, tantric goddesses have played a significant role in the formation of tantric Buddhism, or what is sometimes referred to as ‘Śākta Buddhism’. Nevertheless, these highly influential forms of South Asian religion have only recently begun to draw scholarly attention. Taken together, they form ‘Śāktism’, which is considered one of the major branches of Hinduism next to Śaivism, Vaiṣṇavism and Smārtism. Śāktism is, however, less clearly defined than the other major branches and sometimes surprisingly difficult to discern from Śaivism in its tantric forms.
+Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. 
+The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses. 
+Furthermore, tantric goddesses have played a significant role in the formation of tantric Buddhism, or what is sometimes referred to as ‘Śākta Buddhism’. 
 
-These sometimes very complex and challenging forms of religion provide a test case for our understanding of Hinduism and raise important theoretical and methodological questions with regard to the study of religious traditions in South Asia as well as to the more general and comparative study of religion.
+Nevertheless, these highly influential forms of South Asian religion have only recently begun to draw scholarly attention. 
+Taken together, they form ‘Śāktism’, which is considered one of the major branches of Hinduism next to Śaivism, Vaiṣṇavism and Smārtism. 
+Śāktism is, however, less clearly defined than the other major branches and sometimes surprisingly difficult to discern from Śaivism in its tantric forms.
+
 
 ```
 
