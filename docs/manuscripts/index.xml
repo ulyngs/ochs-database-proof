@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manuscripts on OCHS Database Project</title>
+    <link>/manuscripts/</link>
+    <description>Recent content in Manuscripts on OCHS Database Project</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/manuscripts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>test_text_1</title>
+      <link>/manuscripts/test_text_1/</link>
+      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/manuscripts/test_text_1/</guid>
+      <description>{&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;prathamopadeśaḥ&#34;,&#34;śrīādināthāya namo&#39;stu tasmai yenopadiṣṭā haṭhayogavidyā |\nvibhrājate pronnatarājayogam āroḍhum icchor adhirohiṇīva || 1.1 ||&#34;,&#34;haṭhavidyāṃ hi matsyendragorakṣādyā vijānate |\nsvātmārāmo&#39;thavā yogī jānīte tatprasādataḥ || 1.4 ||&#34;,&#34;śrīādināthamatsyendraśāvarānandabhairavāḥ | \ncauraṅgīmīnagorakṣavirūpākṣabileśayāḥ || 1.5 ||\nmanthāno bhairavo yogī siddhir buddhaś ca kanthaḍiḥ |\nkoraṇṭakaḥ surānandaḥ siddhapādaś ca carpaṭiḥ || 1.6 ||\nkānerī pūjyapādaś ca nityanātho nirañjanaḥ |\nkapālī bindunāthaś ca kākacaṇḍīśvarāhvayaḥ || 1.7 ||\nallāmaḥ prabhudevaś ca ghoḍā colī ca ṭiṇṭiṇiḥ |\nbhānukī nāradevaś ca khaṇḍaḥ kāpālikas tathā || 1.</description>
+    </item>
+    
+    <item>
+      <title>test_text_2</title>
+      <link>/manuscripts/test_text_2/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/manuscripts/test_text_2/</guid>
+      <description>{&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;हठविद्यां हि मत्स्येन्द्रगोरक्षाद्या विजानते ।\nस्वात्मारामोऽथवा योगी जानीते तत्प्रसादतः ॥४॥&#34;,&#34;श्रीआदिनाथमत्स्येन्द्रशावरानन्दभैरवाः ।\nचौरगीमीनगोरक्षविरूपाक्षबिलेशयाः ॥५॥\nमन्थानो भैरवो योगी सिद्धिर्बुद्धश्च कन्थडिः।\nकोरण्टकःसुरानन्दः सिद्धपादश्च चर्पटिः ॥६॥\nकानेरी पूज्यपादश्च नित्यनाथो निरञ्जनः ।\nकपाली बिन्दुनाथश्च काकचण्डीश्वराह्वयः ॥७॥\nअल्लामः प्रभुदेवश्च घोडा चोली च टिण्टिणिः ।\nभानुकी नारदेवश्च खण्डः कापालिकस्तथा ॥८॥\nइत्यादयो महासिद्धा हठयोगप्रभावतः ।\nखण्डयित्वा कालदण्डं ब्रह्माण्डे विचरन्ति ते ॥९॥&#34;],[&#34;haṭhavidyāṃ hi matsyendragorakṣādyā vijānate |\nsvātmārāmo&#39;thavā yogī jānīte tatprasādataḥ || 1.4 ||&#34;,&#34;śrīādināthamatsyendraśāvarānandabhairavāḥ | \ncauraṅgīmīnagorakṣavirūpākṣabileśayāḥ || 1.5 ||\nmanthāno bhairavo yogī siddhir buddhaś ca kanthaḍiḥ |\nkoraṇṭakaḥ surānandaḥ siddhapādaś ca carpaṭiḥ || 1.</description>
+    </item>
+    
+  </channel>
+</rss>
