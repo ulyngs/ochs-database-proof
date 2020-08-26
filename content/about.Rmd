@@ -1,5 +1,5 @@
 ---
-title: "About / FAQ"
+#title: "About / FAQ"
 menu: main
 ---
 
