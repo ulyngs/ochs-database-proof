@@ -20,6 +20,12 @@ documents_to_sync <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATu
 # save it out
 documents_to_sync %>% 
   write_csv(here("static", "manuscripts", "manuscript_list.csv"))
+
+photo_info <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
+           sheet = "photos",
+           col_types = "c")
+photo_info %>% 
+  write_csv(here("static", "manuscripts", "photo_list.csv"))
 ```
 
 ## Create function to iterate over them
