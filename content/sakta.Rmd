@@ -36,8 +36,9 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 ```{r}
 manuscript_meta %>% 
-  select(dating, everything()) %>% 
-  mutate(dating = str_c("<a href='/manuscripts/", catalogue_id, "/'>", dating, "</a>")) %>% 
+  relocate(catalogue_id, .after = last_col()) %>% 
+  mutate_all(~str_c("<a href='/manuscripts/", catalogue_id, "/'>", ., "</a>")) %>% 
+  relocate(dating) %>% 
   datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10))
 ```
 <br>
