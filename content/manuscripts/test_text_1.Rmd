@@ -46,6 +46,7 @@ cat('<div class="col-sm-6">')
 data_text %>% 
   filter(photo_id == first_photo) %>% 
   select(-section_note, -photo_id, -line_number) %>% 
+   select(-sanskrit) %>% 
   datatable(rownames = FALSE, escape = FALSE, class = "row-border", options = list(pageLength = 10))
 cat("</div>")
 
@@ -77,6 +78,7 @@ cat('<div class="col-sm-6">')
 data_text %>% 
   filter(photo_id == first_photo) %>% 
   select(-section_note, -photo_id, -line_number) %>% 
+  select(-sanskrit) %>% 
   datatable(rownames = FALSE, escape = FALSE, class = "row-border", options = list(pageLength = 10))
 cat("</div>")
 
