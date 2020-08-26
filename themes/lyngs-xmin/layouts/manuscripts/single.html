@@ -1,28 +1,45 @@
 {{ partial "header.html" . }}
 
-<div class="main-container container blog-post">
+<script>
+
+</script>
+
+<div class="main-container container manuscript-page">
   <main>
     <div class="row">
-      <div class="col-sm-3"> 
-        <a href="/sakta/"><i class="fa fa-backward fa-5x"></i></a>
+      <div class="col-sm-3 back-to-list"> 
+        <a href="/sakta/"><i class="fa fa-backward fa-3x"></i></a>
       </div>
   
       <div class="col-sm-3">
-        <h1 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h1>
+        <h2 data-toc-skip><span class="title">{{ .Params.englishTitle }}</span></h2>
         <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
         <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
-        <p>English title: {{ .Params.englishTitle }}</p>
         <p>Approximate dating: {{ .Params.approximateDating }}</p>
+        <p>Catalogue id: {{ .Title | markdownify }}</p>
         <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
-      <div class="col-sm-3">
+      <div class="col-sm-3 elements-to-view">
         <h2>Elements to view</h2>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="inlineCheckbox1" value="option1"> Sanskrit
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" checked="checked" id="inlineCheckbox2" value="option2"> Transliteration
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" checked="checked" id="inlineCheckbox3" value="option3"> English translation
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" checked="checked" id="inlineCheckbox3" value="option3"> English translation notes
+        </label>
       </div>
+      
       <div class="col-sm-3">
-        <button type="button" class="btn btn-primary btn-lg">Download text</button>
-        <button type="button" class="btn btn-primary btn-lg">Download images</button>
-        <a href={{ .Params.googlesheet }}><button type="button" class="btn btn-primary btn-lg">Comment on text</button></a>
+        <button type="button" class="btn btn-light btn-md">Download text</button>
+        <button type="button" class="btn btn-light btn-md">Download images</button>
+        <a href={{ .Params.googlesheet }}><button type="button" class="btn btn-light btn-md">Comment on text</button></a>
       </div>
         
     </div>
