@@ -37,9 +37,14 @@ first_file_path <- photo_info %>%
 ```
 
 ```{r, results='asis'}
-cat("<div class='row'>")
+cat("<div class='row manuscript-photo-and-text'>")
 cat('<div class="col-sm-6">')
-cat(paste0('<img src="/', first_file_path, '" class="img-fluid featured-work-graphic">'))
+
+cat('<div class="img-zoom-container">')
+cat('<img id="myimage" src="/manuscripts/images/test_text_1/test_photo_1.jpg" width="450" height="300">')
+cat('<div id="myresult" class="img-zoom-result"></div>')
+cat('</div>')
+
 cat("</div>")
 
 cat('<div class="col-sm-6">')
@@ -69,9 +74,14 @@ first_file_path <- photo_info %>%
 ```
 
 ```{r, results='asis'}
-cat("<div class='row'>")
+cat("<div class='row manuscript-photo-and-text'>")
 cat('<div class="col-sm-6">')
-cat(paste0('<img src="/', first_file_path, '" class="img-fluid featured-work-graphic">'))
+
+cat('<div class="img-zoom-container">')
+cat('<img id="test-photo-2" src="/manuscripts/images/test_text_1/test_photo_2.jpg" width="450" height="300">')
+cat('<div id="result-test-photo-2" class="img-zoom-result"></div>')
+cat('</div>')
+
 cat("</div>")
 
 cat('<div class="col-sm-6">')
@@ -84,3 +94,9 @@ cat("</div>")
 
 cat("</div>")
 ```
+
+<script>
+// Initiate zoom effect:
+imageZoom("myimage", "myresult");
+imageZoom("test-photo-2", "result-test-photo-2");
+</script>

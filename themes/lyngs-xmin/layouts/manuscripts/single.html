@@ -1,17 +1,71 @@
 {{ partial "header.html" . }}
 
 <script>
-
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
 </script>
 
 <div class="main-container container manuscript-page">
   <main>
-    <div class="row">
-      <div class="col-sm-3 back-to-list"> 
+    <div class="row manuscript-info">
+      <div class="col-sm-1 back-to-list"> 
         <a href="/sakta/"><i class="fa fa-backward fa-3x"></i></a>
       </div>
   
-      <div class="col-sm-3">
+      <div class="col-sm-5">
         <h2 data-toc-skip><span class="title">{{ .Params.englishTitle }}</span></h2>
         <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
         <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
@@ -20,7 +74,7 @@
         <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
-      <div class="col-sm-3 elements-to-view">
+      <div class="col-sm-4 elements-to-view">
         <h2>Elements to view</h2>
         <label class="checkbox-inline">
           <input type="checkbox" id="inlineCheckbox1" value="option1"> Sanskrit
@@ -36,7 +90,7 @@
         </label>
       </div>
       
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <button type="button" class="btn btn-light btn-md">Download text</button>
         <button type="button" class="btn btn-light btn-md">Download images</button>
         <a href={{ .Params.googlesheet }}><button type="button" class="btn btn-light btn-md">Comment on text</button></a>
@@ -44,7 +98,7 @@
         
     </div>
     
-    <div class="row">
+    <div class="row manuscript-content">
       <div class="col-sm-12">
         <div class="post-content">
           {{ .Content }}
@@ -54,7 +108,5 @@
     
   </main>
 </div>
-
-
 
 {{ partial "footer.html" . }}
