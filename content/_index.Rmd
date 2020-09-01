@@ -18,7 +18,7 @@ library(glue)
 ```
 
 <!-- personal -->
-<div class="row">
+<div class="row front-page-top">
 ```{block type="col-lg-3 col-md-6 col-sm-12", echo=TRUE}
 <img alt="Sakta traditions" src="/images/sakta_traditions.jpg" class="img-fluid featured-work-graphic"/>
 ```
@@ -38,15 +38,17 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 
 </div>
 
+<div class="front-page-how-to-use">
 ## How to use
 ### Viewing in a web browser
 
 <div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+<div class="p-3">
 - One way to use this website is simply as a browsable library, where the user can see texts side-by-side with the original images of the manuscripts
 - They can also download the texts and images on the page they're browsing
 - And they will be able to comment on the texts or suggest corrections via a comment-only link to a google sheet with the transliteration and translations
-
+</div>
 ```
 
 ```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
@@ -56,17 +58,17 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 
 
 ```
-
+</div>
 </div>
 
 ### Downloading text or images
 
 <div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+<div class="p-3">
 - An important feature that makes this project different to the alternatives out there, such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org) is that we also will provide a public API to the database of the texts and images
 - This means that rather than just browsing and downloading individual manuscripts, data science-savvy researcher will be able to programmatically download e.g. all texts or images for manuscripts that meet specific criteria
-
-
+</div>
 ```
 
 ```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
@@ -77,11 +79,15 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 
 </div>
 
-
+<div class="front-page-how-it-works">
 ## How it works
+
 <div class="row">
-```{block type="col-sm-12", echo=TRUE}
-<img alt="Sakta traditions" src="/images/how_it_works.png" class="img-fluid featured-work-graphic"/>
+<div class="col-sm-12">
+```{r, out.width='90%'}
+knitr::include_graphics("/images/how_it_works.png", error = FALSE)
 ```
+</div>
+</div>
 
 </div>
