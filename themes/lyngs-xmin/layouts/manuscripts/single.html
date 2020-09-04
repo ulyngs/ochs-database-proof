@@ -66,11 +66,11 @@ function imageZoom(imgID, resultID) {
       </div>
   
       <div class="col-sm-5">
-        <h2 data-toc-skip><span class="title">{{ .Params.englishTitle }}</span></h2>
+        <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
         <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
         <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
+        <p>English title: {{ .Params.englishTitle }}</p>
         <p>Approximate dating: {{ .Params.approximateDating }}</p>
-        <p>Catalogue id: {{ .Title | markdownify }}</p>
         <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
