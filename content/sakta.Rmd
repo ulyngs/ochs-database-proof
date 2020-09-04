@@ -8,8 +8,15 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(here)
 library(DT)
+library(googlesheets4)
+gs4_deauth()
+ 
+#### publications #####
+manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
+           sheet = "texts",
+           col_types = "c")
 
-manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
+#manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 ```
 
 
@@ -37,8 +44,11 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 ```{r}
 manuscript_meta %>% 
   relocate(catalogue_id, .after = last_col()) %>% 
+  select(-googlesheet_link, -people_with_write_access) %>% 
+  filter(!(catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
   mutate_all(~str_c("<a href='/manuscripts/", catalogue_id, "/'>", ., "</a>")) %>% 
-  relocate(dating) %>% 
+  relocate(dating, catalogue_id) %>% 
+  arrange(catalogue_id) %>% 
   datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10))
 ```
 <br>
