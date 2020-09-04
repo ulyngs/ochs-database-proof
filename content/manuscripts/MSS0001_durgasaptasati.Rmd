@@ -1,8 +1,8 @@
 ---
 title: MSS0001 Durgāsaptaśatī (Caṇḍīpāṭha)
-sanskritTitle: हठप्द
+sanskritTitle: TBD
 transliteratedTitle: Durgāsaptaśatī (Caṇḍīpāṭha)
-englishTitle: Durgāsaptaśatī (Caṇḍīpāṭha)
+englishTitle: TBD
 approximateDating: 19th-20th cent.
 date: 2020-09-04 
 googlesheet: https://docs.google.com/spreadsheets/d/1QkxjpAeDDFHOlZV1glykLz928umXdVdV5y8Re_-H1U0/edit?usp=sharing
