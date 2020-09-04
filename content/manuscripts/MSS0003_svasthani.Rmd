@@ -1,0 +1,71 @@
+---
+title: MSS0003_svasthani
+sanskritTitle: TBD
+transliteratedTitle: Svasthānī
+englishTitle: TBD
+approximateDating: 19th-20th cent.
+date: 2020-09-04 
+googlesheet: https://docs.google.com/spreadsheets/d/1QkxjpAeDDFHOlZV1glykLz928umXdVdV5y8Re_-H1U0/edit?usp=sharing
+categories:
+  - sanskrit
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+
+photos_folder <- here("static", "manuscripts", "images", "MSS0003_svasthani")
+
+photo_info <- tibble(
+   photoid = list.files(photos_folder),
+   zoomid = str_c("result", photoid),
+   photo_path = str_c("/manuscripts/images/MSS0003_svasthani/", list.files(photos_folder))
+)
+
+data_text <- NA
+
+```
+
+
+```{r, include=FALSE}
+create_content <- function(photoid, zoomid, photo_path) {
+   # create row
+   cat("<div class='row manuscript-photo-and-text'>")
+   
+   # create left column
+   cat('<div class="col-sm-6">')
+   
+   cat('<div class="img-zoom-container">')
+   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="450" height="300">'))
+   cat(str_c('<div id="', zoomid, '" class="img-zoom-result"></div>'))
+   cat('</div>') # close zoom container
+   
+   cat("</div>") # close column
+   
+   cat('<div class="col-sm-6">')
+   cat('<h2>No transliteration or translation available at the moment.</h2>')
+   cat("</div>") # close column
+
+   cat("</div>") # close row
+}
+
+initiate_zoom_effect <- function(photo_info_tibble) {
+   # create row
+   cat('<script>\n')
+   
+   map2(photo_info_tibble$photoid, photo_info_tibble$zoomid, 
+        ~cat(str_c('imageZoom("', .x, '", "', .y, '");\n')))
+   
+   cat('</script>')
+}
+
+```
+
+
+```{r, results='asis'}
+pwalk(photo_info, create_content)
+cat('\n')
+initiate_zoom_effect(photo_info)
+```
