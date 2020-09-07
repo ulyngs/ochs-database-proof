@@ -170,6 +170,10 @@ footer {
   margin-top: 5em;
 }
 
+.manuscript-info p {
+  margin-bottom: 0.1rem;
+}
+
 .manuscript-photo-and-text {
   margin-top: 6em;
 }
