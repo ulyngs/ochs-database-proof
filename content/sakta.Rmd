@@ -43,13 +43,13 @@ manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDK
 
 ```{r}
 manuscript_meta %>% 
-  relocate(catalogue_id, .after = last_col()) %>% 
+  relocate(Catalogue_id, .after = last_col()) %>% 
   select(-googlesheet_link, -people_with_write_access) %>% 
-  filter(!(catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
-  mutate_all(~str_c("<a href='/manuscripts/", catalogue_id, "/'>", ., "</a>")) %>% 
-  relocate(dating, catalogue_id) %>% 
-  arrange(catalogue_id) %>% 
-  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10))
+  filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
+  arrange(desc(Date_added)) %>% 
+  mutate_all(~str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>")) %>% 
+  relocate(Dating, Catalogue_id) %>% 
+  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10)) 
 ```
 <br>
 
