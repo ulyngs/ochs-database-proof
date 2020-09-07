@@ -23,7 +23,7 @@ manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDK
 <div class="row">
 # Śākta manuscripts
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
-- This will be the front page to the section of the site where manuscripts associated with the Śākta Buddhism project can be browsed
+- This will be the front page to the section of the site where Hindu and Buddhist manuscripts associated with the Śākta Traditions research programme can be browsed
 
 ```
 
