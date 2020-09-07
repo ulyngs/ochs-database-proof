@@ -70,7 +70,16 @@ function imageZoom(imgID, resultID) {
         <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
         <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
         <p>English title: {{ .Params.englishTitle }}</p>
+        {{ if .Params.subject }} <p>Subject: {{ .Params.subject }}</p> {{ end }}
         <p>Approximate dating: {{ .Params.approximateDating }}</p>
+        {{ if .Params.physicalLocation }} <p>Physical location: {{ .Params.physicalLocation }}</p> {{ end }}
+        {{ if .Params.originPlace }} <p>Place of origin: {{ .Params.originPlace }}</p> {{ end }}
+        {{ if .Params.provenance }} <p>Provenance: {{ .Params.provenance }}</p> {{ end }}
+        {{ if .Params.manuscriptLanguage }} <p>Manuscript language: {{ .Params.manuscriptLanguage }}</p> {{ end }}
+        {{ if .Params.script }} <p>Script: {{ .Params.script }}</p> {{ end }}
+        {{ if .Params.material }} <p>Material: {{ .Params.material }}</p> {{ end }}
+        {{ if .Params.condition }} <p>Condition: {{ .Params.condition }}</p> {{ end }}
+        {{ if .Params.folios }} <p>Folios: {{ .Params.folios }}</p> {{ end }}
         <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
