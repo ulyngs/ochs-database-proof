@@ -36,9 +36,9 @@ create_content <- function(photoid, zoomid, photo_path) {
    
    # create left column
    cat('<div class="col-sm-6">')
-   
+
    cat('<div class="img-zoom-container">')
-   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="450" height="300">'))
+   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="600" height="400">'))
    cat(str_c('<div id="', zoomid, '" class="img-zoom-result"></div>'))
    cat('</div>') # close zoom container
    
