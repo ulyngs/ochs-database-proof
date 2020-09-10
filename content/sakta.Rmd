@@ -49,7 +49,9 @@ manuscript_meta %>%
   arrange(desc(Date_added)) %>% 
   mutate_all(~str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>")) %>% 
   relocate(Dating, Catalogue_id) %>% 
-  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10)) 
+  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', 
+            extensions = 'FixedColumns', 
+            options = list(pageLength = 10, dom = 't', scrollX = TRUE, scrollCollapse = TRUE)) 
 ```
 <br>
 
