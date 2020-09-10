@@ -121,6 +121,17 @@ h2 {
   margin-top: 1.5em;
 }
 
+.donate {
+  text-align: center;
+  vertical-align: middle;
+}
+.btn-donate
+{
+  width: 50%;
+  margin-top: 15%;
+  font-size: 1.5em;
+}
+
 .contact-info {
   padding-left: 1em;
 }
