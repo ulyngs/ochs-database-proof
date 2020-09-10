@@ -12,16 +12,21 @@ library(googlesheets4)
 gs4_deauth()
  
 #### publications #####
-manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
-           sheet = "texts",
-           col_types = "c")
+# manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
+#            sheet = "texts",
+#            col_types = "c")
 
-#manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
+manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 ```
 
 
-<div class="row">
+<div class="row sakta-heading">
+<div class="col-sm-12">
 # Śākta manuscripts
+</div>
+</div>
+
+<div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
 - This will be the front page to the section of the site where Hindu and Buddhist manuscripts associated with the Śākta Traditions research programme can be browsed
 

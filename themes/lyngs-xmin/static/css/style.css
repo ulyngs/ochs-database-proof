@@ -116,7 +116,12 @@ a.email:hover,
 }
 
 
-/* front page */
+/***** FRONT PAGE ******/
+.front-page-how-to-use,
+.front-page-how-it-works {
+  margin-top: 4.5em;
+}
+
 h2 {
   margin-top: 1.5em;
 }
@@ -167,10 +172,9 @@ footer {
 }
 
 
-/***** FRONT PAGE ******/
-.front-page-how-to-use,
-.front-page-how-it-works {
-  margin-top: 4.5em;
+/* SAKTA PAGE */
+.sakta-heading {
+  margin-bottom: 1em;
 }
 
 
