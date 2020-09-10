@@ -13,9 +13,13 @@ library(DT)
 
 ```
 
+<div class="row manuscript-list-page-header">
+<div class="col-sm-12">
+# Bengali manuscripts
+</div>
+</div>
 
 <div class="row">
-# Bengali manuscripts
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
 - This will be the front page to the section of the site where manuscripts associated with the Bengali news archive project can be browsed
 

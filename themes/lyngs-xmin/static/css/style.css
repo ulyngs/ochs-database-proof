@@ -1,6 +1,6 @@
 @media (min-width: 1200px) {
     .container{
-        max-width: 1370px;
+        max-width: 1470px;
     }
 }
 
@@ -173,7 +173,7 @@ footer {
 
 
 /* SAKTA PAGE */
-.sakta-heading {
+.manuscript-list-page-header {
   margin-bottom: 1em;
 }
 

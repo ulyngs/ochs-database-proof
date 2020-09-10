@@ -20,7 +20,7 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 ```
 
 
-<div class="row sakta-heading">
+<div class="row manuscript-list-page-header">
 <div class="col-sm-12">
 # Śākta manuscripts
 </div>
