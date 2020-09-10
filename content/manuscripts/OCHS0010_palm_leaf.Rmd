@@ -16,12 +16,12 @@ library(tidyverse)
 library(DT)
 library(here)
 
-photos_folder <- here("static", "manuscripts", "images", "MSS0010JPG")
+photos_folder <- here("static", "manuscripts", "images", "OCHS0010JPG")
 
 photo_info <- tibble(
    photoid = list.files(photos_folder),
    zoomid = str_c("result", photoid),
-   photo_path = str_c("/manuscripts/images/MSS0010JPG/", list.files(photos_folder))
+   photo_path = str_c("/manuscripts/images/OCHS0010JPG/", list.files(photos_folder))
 )
 
 data_text <- NA
@@ -38,7 +38,7 @@ create_content <- function(photoid, zoomid, photo_path) {
    cat('<div class="col-sm-6">')
    
    cat('<div class="img-zoom-container">')
-   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="450" height="300">'))
+   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="600" height="400">'))
    cat(str_c('<div id="', zoomid, '" class="img-zoom-result"></div>'))
    cat('</div>') # close zoom container
    
