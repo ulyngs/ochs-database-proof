@@ -20,22 +20,25 @@ library(glue)
 <!-- personal -->
 <div class="row front-page-top">
 ```{block type="col-lg-3 col-md-6 col-sm-12", echo=TRUE}
-<img alt="Sakta traditions" src="/images/sakta_traditions.jpg" class="img-fluid featured-work-graphic"/>
+<img alt="Sakta traditions" src="/images/FIG002.jpg" class="img-fluid featured-work-graphic"/>
 ```
 
-```{block type="col-lg-6 col-md-6 col-sm-6", echo=TRUE}
+<div class="col-lg-9 col-md-6">
+<div class="row">
+```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
 This is a proof of concept for an **exciting database website** for the [Oxford Centre for Hindu Studies](https://ochs.org.uk).
 
 Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses. 
 
 ```
 
-```{block type="col-lg-3 col-md-12 col-sm-6", echo=TRUE}
+```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
 <div class="donate">
 <button type="button" class="btn btn-primary btn-donate">Donate</button>
 </div>
 ```
 
+<!-- end row -->
 </div>
 
 <div class="front-page-how-to-use">
@@ -58,8 +61,9 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 
 
 ```
+<!-- end row -->
 </div>
-</div>
+
 
 ### Downloading text or images
 
@@ -91,3 +95,11 @@ knitr::include_graphics("/images/how_it_works.png", error = FALSE)
 </div>
 
 </div>
+
+
+
+</div>
+
+
+</div>
+
