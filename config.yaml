@@ -1,6 +1,6 @@
 baseurl: "https://thirsty-mirzakhani-15dc39.netlify.app"
 languageCode: "en-us"
-title: "OCHS Database Project"
+title: "OCHS Manuscript Database Project"
 theme: "lyngs-xmin"
 googleAnalytics: "UA-84972342-1"
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
