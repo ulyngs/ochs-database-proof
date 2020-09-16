@@ -11,10 +11,11 @@ library(DT)
 library(googlesheets4)
 gs4_deauth()
  
-#### publications #####
+### publications #####
 # manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
 #            sheet = "texts",
 #            col_types = "c")
+# manuscript_meta %>% write_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 
 manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 ```
@@ -49,15 +50,23 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 ```{r}
 manuscript_meta %>% 
-  relocate(Catalogue_id, .after = last_col()) %>% 
-  select(-googlesheet_link, -people_with_write_access) %>% 
-  filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
-  arrange(desc(Date_added)) %>% 
-  mutate_all(~str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>")) %>% 
-  relocate(Dating, Catalogue_id) %>% 
-  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', 
+  select(-googlesheet_link, 
+         -googlesheet_id, 
+         -Notes,
+         -people_with_write_access, 
+         -id) %>% 
+  #filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
+  arrange(desc(has_content), desc(Date_added)) %>% 
+  mutate(Date_added = as.character(Date_added)) %>% 
+  mutate(across(-has_content, ~ifelse(has_content == "yes", 
+                                                   str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>"),
+                                                   .))) %>% 
+  select(-has_content, -Date_added, -Catalogue_id) %>% 
+  datatable(rownames = FALSE,
+            escape = FALSE,
+            class = 'row-border',
             extensions = 'FixedColumns', 
-            options = list(pageLength = 10, dom = 't', scrollX = TRUE, scrollCollapse = TRUE)) 
+            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE)) 
 ```
 <br>
 
