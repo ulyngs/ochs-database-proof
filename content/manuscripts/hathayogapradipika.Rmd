@@ -1,0 +1,40 @@
+---
+title: "Haṭha[yoga]pradīpikā (HP, HYP)"
+sanskritTitle: "हथप्रदिपिक"
+transliteratedTitle: "Haṭhapradīpikā"
+englishTitle: "Light of Haṭhayoga"
+approximateDating: "1450 CE"
+manuscriptLanguage: "Sanskrit"
+script: "Devanāgarī"
+material: "Printed edition"
+condition: "Good"
+folios: "NA"
+subject: "Tantric Yoga, Haṭhayoga, Kuṇḍalinīyoga, Layayoga, Nādanusandhāna"
+physicalLocation: "Private collection (BWO)"
+originPlace: "India"
+author: "Svātmārāma"
+provenance: "NA"
+bibliographyNote: "Svāmī Digambarjī and Pītāmbara Jhā’s edition of Svātmārāma’s Haṭhapradīpikā (Lonāvlā: Kaivalyadhāma Śrīmanmādhava Yogamandira Samiti, 1980)"
+codices: "NA"
+transliterators: "Bjarne Wernicke-Olesen, Silje Lyngar Einarsen"
+translators: "Dorte Effersøe, Elizabeth Rosendahl, Erik Grammagnat, Gitte Poulsen, Jesper Moeslund, Lena Molin, Lisa Bukhave, Lisette Hededal, Sander Rosenkilde, Tanja Louise Jakobsen, Therese Udklit"
+googlesheet: "https://docs.google.com/spreadsheets/d/1Y0bWmkZ-l1HDbLegS0QgLst0hVeo6P2C0v3DUFJVt3k/edit?usp=sharing"
+categories:
+  - sanskrit
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+source(here("_scripts", "manuscript_layout_text_only.R"))
+
+data_text <- read_csv(here("static", "manuscripts", "hathayogapradipika.csv"))
+
+```
+
+```{r add-text, results="asis"}
+create_content()
+cat("\n")
+```

@@ -1,11 +1,24 @@
 ---
-title: MSS0003_svasthani
-sanskritTitle: TBD
-transliteratedTitle: Svasthānī
-englishTitle: TBD
-approximateDating: 19th-20th cent.
-date: 2020-09-04 
-googlesheet: https://docs.google.com/spreadsheets/d/1QkxjpAeDDFHOlZV1glykLz928umXdVdV5y8Re_-H1U0/edit?usp=sharing
+title: "MSS0003 Svasthānī"
+sanskritTitle: "स्वस्थानि"
+transliteratedTitle: "Svasthānī"
+englishTitle: "NA"
+approximateDating: "19th-20th cent."
+manuscriptLanguage: "Sanskrit"
+script: "Devanāgarī"
+material: "NA"
+condition: "NA"
+folios: "NA"
+subject: "NA"
+physicalLocation: "NA"
+originPlace: "NA"
+author: "NA"
+provenance: "NA"
+bibliographyNote: "NA"
+codices: "NA"
+transliterators: "NA"
+translators: "NA"
+googlesheet: "NA"
 categories:
   - sanskrit
 ---
@@ -15,57 +28,23 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(DT)
 library(here)
+source(here("_scripts", "manuscript_layout_photos_only.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "MSS0003_svasthani")
+photos_folder <- here("static", "manuscripts", "images", "mss0003_svasthani", "for_manuscript_page")
+
+folder_name <- "mss0003_svasthani/for_manuscript_page/"
 
 photo_info <- tibble(
    photoid = list.files(photos_folder),
    zoomid = str_c("result", photoid),
-   photo_path = str_c("/manuscripts/images/MSS0003_svasthani/", list.files(photos_folder))
-)
+   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder)))
 
 data_text <- NA
 
 ```
 
-
-```{r, include=FALSE}
-create_content <- function(photoid, zoomid, photo_path) {
-   # create row
-   cat("<div class='row manuscript-photo-and-text'>")
-   
-   # create left column
-   cat('<div class="col-sm-6">')
-   
-   cat('<div class="img-zoom-container">')
-   cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="600" height="400">'))
-   cat(str_c('<div id="', zoomid, '" class="img-zoom-result"></div>'))
-   cat('</div>') # close zoom container
-   
-   cat("</div>") # close column
-   
-   cat('<div class="col-sm-6">')
-   cat('<h2>No transliteration or translation available at the moment.</h2>')
-   cat("</div>") # close column
-
-   cat("</div>") # close row
-}
-
-initiate_zoom_effect <- function(photo_info_tibble) {
-   # create row
-   cat('<script>\n')
-   
-   map2(photo_info_tibble$photoid, photo_info_tibble$zoomid, 
-        ~cat(str_c('imageZoom("', .x, '", "', .y, '");\n')))
-   
-   cat('</script>')
-}
-
-```
-
-
-```{r, results='asis'}
+```{r add-text, results="asis"}
 pwalk(photo_info, create_content)
-cat('\n')
+cat("\n")
 initiate_zoom_effect(photo_info)
 ```

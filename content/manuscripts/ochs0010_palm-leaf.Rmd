@@ -1,11 +1,11 @@
 ---
-title: "MSS0001 Durgāsaptaśatī"
-sanskritTitle: "दुर्गासप्तशती"
-transliteratedTitle: "Durgāsaptaśatī (Caṇḍīpāṭha, Devīmāhātmya))"
-englishTitle: "700 Stanzas of Durgā"
-approximateDating: "19th-20th cent."
-manuscriptLanguage: "Sanskrit"
-script: "Devanāgarī"
+title: "OCHS0010 Palm Leaf"
+sanskritTitle: "NA"
+transliteratedTitle: "NA"
+englishTitle: "NA"
+approximateDating: "NA"
+manuscriptLanguage: "NA"
+script: "NA"
 material: "NA"
 condition: "NA"
 folios: "NA"
@@ -30,9 +30,9 @@ library(DT)
 library(here)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "mss0001_durgasaptasati", "for_manuscript_page")
+photos_folder <- here("static", "manuscripts", "images", "ochs0010_palm-leaf", "for_manuscript_page")
 
-folder_name <- "mss0001_durgasaptasati/for_manuscript_page/"
+folder_name <- "ochs0010_palm-leaf/for_manuscript_page/"
 
 photo_info <- tibble(
    photoid = list.files(photos_folder),
