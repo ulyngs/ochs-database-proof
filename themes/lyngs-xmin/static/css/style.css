@@ -219,3 +219,9 @@ footer {
   width: 600px;
   height: 400px;
 }
+.img-zoom-result-large {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 900px;
+  height: 600px;
+}
