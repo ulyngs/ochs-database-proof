@@ -1,6 +1,0 @@
-photo_id,file_path,manuscripts_catalogue_id,project,photographer,date_taken,location_taken,notes
-test_photo_1,manuscripts/images/test_text_1/test_photo_1.jpg,test_text_1,sakta,Great Photographer,2020-05-30,"Kathmandu, Nepal",This was a really difficult photo to take
-test_photo_2,manuscripts/images/test_text_1/test_photo_2.jpg,test_text_1,sakta,Great Photographer,2020-05-30,"Kathmandu, Nepal",This was quite alright
-test_photo_3,manuscripts/images/test_text_2/test_photo_3.jpg,test_text_2,sakta,Great Photographer,2020-05-30,"Kathmandu, Nepal",This was a really difficult photo to take
-test_photo_4,manuscripts/images/test_text_2/test_photo_4.jpg,test_text_2,sakta,Great Photographer,2020-05-30,"Kathmandu, Nepal",This was quite alright
-test_photo_5,NA,NA,bengali,Peter Photoman,2020-04-12,"Kuala Lumpur, Malaysia","Ulrik Lyngs, 2020-07-26: It's a bit low resolution"
