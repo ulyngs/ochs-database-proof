@@ -37,13 +37,14 @@ provenance: "{Provenance}"
 bibliographyNote: "{Bibliography}"
 codices: "{Codices}"
 transliterators: "{Transliterated_by}"
-translators: "{Translators}"
+translationEnglish: "{Translation_english_by}"
+translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
 categories:
   - sanskrit
 ---
 
-')
+', .na = "")
   
   write_lines(yaml_header, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
