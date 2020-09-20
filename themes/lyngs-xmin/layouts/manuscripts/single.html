@@ -74,12 +74,18 @@ function imageZoom(imgID, resultID) {
         <p>Approximate dating: {{ .Params.approximateDating }}</p>
         {{ if .Params.physicalLocation }} <p>Physical location: {{ .Params.physicalLocation }}</p> {{ end }}
         {{ if .Params.originPlace }} <p>Place of origin: {{ .Params.originPlace }}</p> {{ end }}
+        {{ if .Params.author }} <p>Author: {{ .Params.author }}</p> {{ end }}
         {{ if .Params.provenance }} <p>Provenance: {{ .Params.provenance }}</p> {{ end }}
         {{ if .Params.manuscriptLanguage }} <p>Manuscript language: {{ .Params.manuscriptLanguage }}</p> {{ end }}
         {{ if .Params.script }} <p>Script: {{ .Params.script }}</p> {{ end }}
         {{ if .Params.material }} <p>Material: {{ .Params.material }}</p> {{ end }}
         {{ if .Params.condition }} <p>Condition: {{ .Params.condition }}</p> {{ end }}
         {{ if .Params.folios }} <p>Folios: {{ .Params.folios }}</p> {{ end }}
+        {{ if .Params.codices }} <p>Codices: {{ .Params.codices }}</p> {{ end }}
+        {{ if .Params.bibliographyNote }} <p>Bibliography: {{ .Params.bibliographyNote }}</p> {{ end }}
+        {{ if .Params.transliterators }} <p>Transliterated by: {{ .Params.transliterators }}</p> {{ end }}
+        {{ if .Params.translationEnglish }} <p>English translation by: {{ .Params.translationEnglish }}</p> {{ end }}
+        {{ if .Params.translationDanish }} <p>Danish translation by: {{ .Params.translationDanish }}</p> {{ end }}
         <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
