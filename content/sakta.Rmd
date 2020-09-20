@@ -8,8 +8,8 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(here)
 library(DT)
-library(googlesheets4)
-gs4_deauth()
+# library(googlesheets4)
+# gs4_deauth()
  
 ### publications #####
 # manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
@@ -50,10 +50,9 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 ```{r}
 manuscript_meta %>% 
-  select(-googlesheet_link, 
+  select(-googlesheet_with_text, 
          -googlesheet_id, 
          -Notes,
-         -people_with_write_access, 
          -id) %>% 
   #filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
   arrange(desc(has_content), desc(Date_added)) %>% 
