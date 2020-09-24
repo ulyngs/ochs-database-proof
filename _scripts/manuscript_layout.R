@@ -16,7 +16,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   current_table <- data_text %>% 
     filter(photo == photoid) %>% 
-    select(-photo, -verse, -notes_parallels, -notes_collation, -notes_translation)
+    select(-photo, -verse)
   
   print( htmltools::tagList(datatable(current_table,
                                       rownames = FALSE, 
