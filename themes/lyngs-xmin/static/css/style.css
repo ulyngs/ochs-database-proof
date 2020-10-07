@@ -1,6 +1,17 @@
+:root {
+  --main-page-padding: 0 5em 0 5em;
+}
+
+
+.main-page-restrict-width {
+  max-width: 1670px;
+  margin: auto;
+}
+
+
 @media (min-width: 1200px) {
     .container{
-        max-width: 1470px;
+        max-width: 1670px;
     }
 }
 
@@ -171,14 +182,35 @@ footer {
   margin-bottom: 3em;
 }
 
+footer hr {
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
 
 /* SAKTA PAGE */
 .manuscript-list-page-header {
   margin-bottom: 1em;
 }
 
+.manuscript-list {
+  padding: var(--main-page-padding);
+}
+
+.manuscript-list td {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.manuscript-list tr:hover td {
+  white-space: pre-wrap;
+}
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-page {
+  padding: var(--main-page-padding);
+}
+
 .manuscript-page .back-to-list a {
   border: none;
 }

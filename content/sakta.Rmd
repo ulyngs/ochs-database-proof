@@ -8,19 +8,11 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(here)
 library(DT)
-# library(googlesheets4)
-# gs4_deauth()
- 
-### publications #####
-# manuscript_meta <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
-#            sheet = "texts",
-#            col_types = "c")
-# manuscript_meta %>% write_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 
 manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv"))
 ```
 
-
+<main class="main-page-restrict-width">
 <div class="row manuscript-list-page-header">
 <div class="col-sm-12">
 # Śākta manuscripts
@@ -37,11 +29,11 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 <div class='embed-responsive embed-responsive-16by9'>
 <iframe class='embed-responsive-item featured-work-graphic' src='https://player.vimeo.com/video/376577532' allow="fullscreen" allowfullscreen></iframe>
 </div>
-
 ```
-
 </div>
+</main>
 
+<main class="manuscript-list">
 <div class="row">
 <div class="col-sm-12">
 <br>
@@ -49,7 +41,7 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 # Select a text
 
 ```{r}
-manuscript_meta %>% 
+df <- manuscript_meta %>% 
   select(-googlesheet_with_text, 
          -googlesheet_id, 
          -Notes,
@@ -60,14 +52,17 @@ manuscript_meta %>%
   mutate(across(-has_content, ~ifelse(has_content == "yes", 
                                                    str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>"),
                                                    .))) %>% 
-  select(-has_content, -Date_added, -Catalogue_id) %>% 
+  select(-has_content, -Date_added, -Catalogue_id, -website_photo_extension)
+
+df %>% 
   datatable(rownames = FALSE,
             escape = FALSE,
             class = 'row-border',
             extensions = 'FixedColumns', 
-            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE)) 
+            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE))
 ```
 <br>
 
 </div>
 </div>
+</main>

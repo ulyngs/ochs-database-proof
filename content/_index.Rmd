@@ -3,27 +3,13 @@ title: Home
 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
-library(knitr)
-library(here)
-library(glue)
-
-# library(googlesheets4)
-# gs4_deauth()
-# website_content <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATuDKQDj7_X67Bc_EDO5Wm6wgVvCG8N7fIiC2Y4/edit?usp=sharing",
-#            sheet = "front_page")
-
-```
-
-<!-- personal -->
 <div class="row front-page-top">
-```{block type="col-lg-3 col-md-6 col-sm-12", echo=TRUE}
-<img alt="Sakta traditions" src="/images/FIG002.jpg" class="img-fluid featured-work-graphic"/>
-```
 
-<div class="col-lg-9 col-md-6">
+<div class="col-lg-2 col-md-3">
+<img alt="Sakta traditions" src="/images/FIG002.jpg" class="img-fluid featured-work-graphic"/>
+</div>
+
+<div class="col-lg-10 col-md-9">
 <div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
 This is a proof of concept for an **exciting database website** for the [Oxford Centre for Hindu Studies](https://ochs.org.uk).
@@ -88,7 +74,7 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 
 <div class="row">
 <div class="col-sm-12">
-```{r, out.width='90%'}
+```{r, out.width='80%', echo=FALSE}
 knitr::include_graphics("/images/how_it_works.png", error = FALSE)
 ```
 </div>
