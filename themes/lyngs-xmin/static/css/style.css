@@ -1,5 +1,5 @@
 :root {
-  --main-page-padding: 0 5em 0 5em;
+  --main-page-padding: 0 3em 0 3em;
 }
 
 
@@ -204,9 +204,15 @@ footer hr {
 
 .manuscript-list tr:hover td {
   white-space: pre-wrap;
+  vertical-align: text-top !important;
 }
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-photo {
+  overflow: hidden;
+}
+
+
 .manuscript-page {
   padding: var(--main-page-padding);
 }

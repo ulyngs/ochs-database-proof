@@ -69,8 +69,9 @@ folder_name <- "{{Catalogue_id}}/for_manuscript_page/"
 
 photo_info <- tibble(
    photoid = list.files(photos_folder),
-   zoomid = str_c("result", photoid),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder)))
+   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>% 
+   mutate(zoomid = str_c("zoomable", row_number()))
+
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}"))
 \`\`\`
@@ -98,8 +99,8 @@ folder_name <- "{{Catalogue_id}}/for_manuscript_page/"
 
 photo_info <- tibble(
    photoid = list.files(photos_folder),
-   zoomid = str_c("result", photoid),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder)))
+   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>% 
+   mutate(zoomid = str_c("zoomable", row_number()))
 
 data_text <- NA
 

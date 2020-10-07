@@ -3,16 +3,15 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat("<div class='row manuscript-photo-and-text'>")
   
   # create left column
-  cat('<div class="col-sm-10">')
+  cat('<div class="col-sm-9 manuscript-photo">')
   
-  cat('<div class="img-zoom-container">')
-  cat(str_c('<img id="', photoid, '" src="', photo_path, '" width="900" height="600">'))
-  cat(str_c('<div id="', zoomid, '" class="img-zoom-result-large"></div>'))
+  cat(str_c('<div id="', zoomid, '">'))
+  cat(str_c('<img src="', photo_path, '" class="img-fluid">'))
   cat('</div>') # close zoom container
   
   cat("</div>") # close column
   
-  cat('<div class="col-sm-2">')
+  cat('<div class="col-sm-3">')
   cat('<h2>No transliteration or translation available at the moment.</h2>')
   cat("</div>") # close column
   
@@ -20,11 +19,13 @@ create_content <- function(photoid, zoomid, photo_path) {
 }
 
 initiate_zoom_effect <- function(photo_info_tibble) {
-  # create row
-  cat('<script>\n')
+  cat("<script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script>")
   
-  map2(photo_info_tibble$photoid, photo_info_tibble$zoomid, 
-       ~cat(str_c('imageZoom("', .x, '", "', .y, '");\n')))
+  # create row
+  cat('<script>')
+  
+  map(photo_info_tibble$zoomid,
+      ~cat(str_c('panzoom(document.querySelector("#', .x, '"));\n')))
   
   cat('</script>')
 }
