@@ -13,29 +13,32 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 ```
 
 <main class="main-page-restrict-width">
-<div class="row manuscript-list-page-header">
-<div class="col-sm-12">
+::: {.row .manuscript-list-page-header}
+::: {.col-sm-12}
 # Śākta manuscripts
-</div>
-</div>
+:::
+:::
 
-<div class="row">
-```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
+::: {.row}
+::: {.col-lg-9 .col-md-9 .col-sm-6}
 - This will be the front page to the section of the site where Hindu and Buddhist manuscripts associated with the Śākta Traditions research programme can be browsed
+:::
 
-```
-
-```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
-<div class='embed-responsive embed-responsive-16by9'>
+::: {.col-lg-3 .col-md-3 .col-sm-6}
+::: {.embed-responsive .embed-responsive-16by9}
 <iframe class='embed-responsive-item featured-work-graphic' src='https://player.vimeo.com/video/376577532' allow="fullscreen" allowfullscreen></iframe>
-</div>
-```
-</div>
+:::
+<!-- end column -->
+:::
+
+<!-- end row -->
+:::
+
 </main>
 
 <main class="manuscript-list">
-<div class="row">
-<div class="col-sm-12">
+::: {.row}
+::: {.col-sm-12}
 <br>
 
 # Select a text
@@ -49,20 +52,32 @@ df <- manuscript_meta %>%
   #filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
   arrange(desc(has_content), desc(Date_added)) %>% 
   mutate(Date_added = as.character(Date_added)) %>% 
-  mutate(across(-has_content, ~ifelse(has_content == "yes", 
-                                                   str_c("<a href='/manuscripts/", Catalogue_id, "/'>", ., "</a>"),
-                                                   .))) %>% 
+  mutate(Identifier_popular = ifelse(has_content == "yes",
+                                     str_c("<a href='/manuscripts/", Catalogue_id, "/'>", Identifier_popular, "</a>"),
+                                     Identifier_popular)) %>% 
   select(-has_content, -Date_added, -Catalogue_id, -website_photo_extension)
+
+#across(-has_content, ~str_c("som))
 
 df %>% 
   datatable(rownames = FALSE,
+            filter = 'top',
             escape = FALSE,
             class = 'row-border',
             extensions = 'FixedColumns', 
-            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE))
+            elementId = "manuscriptListDT",
+            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE, fixedColumns = list(leftColumns = 2)))
 ```
 <br>
 
-</div>
-</div>
+:::
+:::
+
 </main>
+
+<script>
+$(function() {
+$("#manuscriptListDT tbody td").addClass("click-to-expand");
+});
+
+</script>

@@ -196,16 +196,35 @@ footer hr {
   padding: var(--main-page-padding);
 }
 
+.manuscript-list .dataTables_scrollBody thead tr:nth-child(2) {
+  display: none;
+}
+
 .manuscript-list td {
   max-width: 100px;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.manuscript-list tr:hover td {
-  white-space: pre-wrap;
   vertical-align: text-top !important;
 }
+
+.manuscript-list td:first-child {
+  max-width: 200px;
+  overflow: scroll;
+  font-weight: bold;
+  white-space: nowrap;
+  background-color: lightgray;
+  vertical-align: text-top !important;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+.click-to-expand:hover {
+  white-space: pre-wrap;
+}
+
+
 
 /* ---- MANUSCRIPT PAGES ---- */
 .manuscript-photo {
