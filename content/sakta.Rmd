@@ -43,13 +43,14 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 # Select a text
 
+*Click an entry's __Popular identifier__ to view its content. Scroll horizontally to view all columns.*
+
 ```{r}
 df <- manuscript_meta %>% 
   select(-googlesheet_with_text, 
          -googlesheet_id, 
          -Notes,
-         -id) %>% 
-  #filter(!(Catalogue_id %in% c("test_text_1", "test_text_2"))) %>% 
+         -id) %>%
   arrange(desc(has_content), desc(Date_added)) %>% 
   mutate(Date_added = as.character(Date_added)) %>% 
   mutate(Identifier_popular = ifelse(has_content == "yes",
@@ -61,12 +62,22 @@ df <- manuscript_meta %>%
 
 df %>% 
   datatable(rownames = FALSE,
-            filter = 'top',
             escape = FALSE,
+            colnames = c('Popular identifier' = 'Identifier_popular',
+                         'Title: sanskrit' = 'Title_sanskrit',
+                         'Title: transliteration' = 'Title_transliteration',
+                         'Title: english translation' = 'Title_english',
+                         'Current physical location' = 'Physical_location',
+                         'Place of origin' = 'Origin_place',
+                         'Transliterated by' = 'Transliterated_by',
+                         'English translation by' = 'Translation_english_by',
+                         'Danish translation by' = 'Translation_danish_by',
+                         'Entry contains photos?' = 'has_photos',
+                         'Entry contains text?' = 'has_text'),
+            filter = 'top',
             class = 'row-border',
-            extensions = 'FixedColumns', 
             elementId = "manuscriptListDT",
-            options = list(pageLength = 20, scrollX = TRUE, scrollCollapse = TRUE, fixedColumns = list(leftColumns = 2)))
+            options = list(pageLength = 20, scrollX = TRUE))
 ```
 <br>
 
@@ -74,10 +85,3 @@ df %>%
 :::
 
 </main>
-
-<script>
-$(function() {
-$("#manuscriptListDT tbody td").addClass("click-to-expand");
-});
-
-</script>
