@@ -20,7 +20,8 @@ create_content <- function(photoid, zoomid, photo_path) {
   print( htmltools::tagList(datatable(current_table,
                                       rownames = FALSE, 
                                       escape = FALSE, 
-                                      class = "row-border")) )
+                                      class = "row-border",
+                                      options = list(scrollY = '600px', scrollX = TRUE))) )
   
   cat("</div>") # close column
   
