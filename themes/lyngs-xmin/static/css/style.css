@@ -242,7 +242,6 @@ footer hr {
   overflow: hidden;
 }
 
-
 .manuscript-page {
   padding: var(--main-page-padding);
 }
@@ -267,29 +266,6 @@ footer hr {
   margin-top: 6em;
 }
 
-* {box-sizing: border-box;}
-
-.img-zoom-container {
-  position: relative;
-}
-
-.img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
-  width: 40px;
-  height: 40px;
-}
-
-.img-zoom-result {
-  border: 1px solid #d4d4d4;
-  /*set the size of the result div:*/
-  width: 600px;
-  height: 400px;
-}
-.img-zoom-result-large {
-  border: 1px solid #d4d4d4;
-  /*set the size of the result div:*/
-  width: 900px;
-  height: 600px;
+.manuscript-page .manuscript-text td {
+  vertical-align: top !important;
 }
