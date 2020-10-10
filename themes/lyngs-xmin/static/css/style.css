@@ -219,6 +219,13 @@ footer hr {
   left: 0;
   z-index: 2;
 }
+.manuscript-list thead th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: white;
+}
 
 .manuscript-list td:hover {
   white-space: pre-wrap;
