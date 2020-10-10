@@ -15,13 +15,14 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   current_table <- data_text %>% 
     filter(photo == photoid) %>% 
-    select(-photo, -verse)
+    select(-photo, -verse) %>% 
+    select(chapter, transliteration, contains("translation_"), everything())
   
   print( htmltools::tagList(datatable(current_table,
                                       rownames = FALSE, 
                                       escape = FALSE, 
                                       class = "row-border",
-                                      options = list(scrollY = '600px', scrollX = TRUE))) )
+                                      options = list(scrollY = '600px', scrollX = TRUE, paging = FALSE))) )
   
   cat("</div>") # close column
   
