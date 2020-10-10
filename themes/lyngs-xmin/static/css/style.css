@@ -220,10 +220,14 @@ footer hr {
   z-index: 2;
 }
 
-.click-to-expand:hover {
+.manuscript-list td:hover {
   white-space: pre-wrap;
 }
 
+.manuscript-list td a:hover {
+  color: white;
+  text-shadow: 1px 1px black;
+}
 
 
 /* ---- MANUSCRIPT PAGES ---- */
