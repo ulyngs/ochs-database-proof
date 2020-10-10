@@ -11,7 +11,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   cat("</div>") # close column
   
-  cat('<div class="col-sm-3">')
+  cat('<div class="col-sm-3 manuscript-text">')
   cat('<h2>No transliteration or translation available at the moment.</h2>')
   cat("</div>") # close column
   

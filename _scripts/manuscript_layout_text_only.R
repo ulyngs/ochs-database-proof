@@ -3,11 +3,11 @@ create_content <- function() {
   cat("<div class='row manuscript-photo-and-text'>")
   
   # create left column
-  cat('<div class="col-sm-3">')
+  cat('<div class="col-sm-3 manuscript-photo">')
   cat('<h2>No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
-  cat('<div class="col-sm-9">')
+  cat('<div class="col-sm-9 manuscript-text">')
   
   print( htmltools::tagList(datatable(data_text,
                                       rownames = FALSE, 

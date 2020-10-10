@@ -11,7 +11,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   cat("</div>") # close column
   
-  cat('<div class="col-sm-6">')
+  cat('<div class="col-sm-6 manuscript-text">')
   
   current_table <- data_text %>% 
     filter(photo == photoid) %>% 
