@@ -67,11 +67,11 @@ function imageZoom(imgID, resultID) {
   
       <div class="col-sm-5">
         <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
-        <p>Sanskrit title: {{ .Params.sanskritTitle }}</p>
-        <p>Transliterated title: {{ .Params.transliteratedTitle }}</p>
-        <p>English title: {{ .Params.englishTitle }}</p>
+        {{ if .Params.sanskritTitle }} <p>Sanskrit title: {{ .Params.sanskritTitle }}</p> {{ end }}
+        {{ if .Params.transliteratedTitle }} <p>Transliterated title: {{ .Params.transliteratedTitle }}</p> {{ end }}
+        {{ if .Params.englishTitle }} <p>English title: {{ .Params.englishTitle }}</p> {{ end }}
         {{ if .Params.subject }} <p>Subject: {{ .Params.subject }}</p> {{ end }}
-        <p>Approximate dating: {{ .Params.approximateDating }}</p>
+        {{ if .Params.approximateDating }} <p>Approximate dating: {{ .Params.approximateDating }}</p> {{ end }}
         {{ if .Params.physicalLocation }} <p>Physical location: {{ .Params.physicalLocation }}</p> {{ end }}
         {{ if .Params.originPlace }} <p>Place of origin: {{ .Params.originPlace }}</p> {{ end }}
         {{ if .Params.author }} <p>Author: {{ .Params.author }}</p> {{ end }}
