@@ -8,7 +8,7 @@
         <a href="/sakta/"><i class="fa fa-backward fa-3x"></i></a>
       </div>
   
-      <div class="col-sm-5">
+      <div class="col-sm-8">
         <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
         {{ if .Params.sanskritTitle }} <p>Sanskrit title: {{ .Params.sanskritTitle }}</p> {{ end }}
         {{ if .Params.transliteratedTitle }} <p>Transliterated title: {{ .Params.transliteratedTitle }}</p> {{ end }}
@@ -31,25 +31,9 @@
         {{ if .Params.translationDanish }} <p>Danish translation by: {{ .Params.translationDanish }}</p> {{ end }}
       </div>
       
-      <div class="col-sm-4 elements-to-view">
-        <h2>Elements to view</h2>
-        <label class="checkbox-inline">
-          <input type="checkbox" id="inlineCheckbox1" value="option1"> Sanskrit
-        </label>
-        <label class="checkbox-inline">
-          <input type="checkbox" checked="checked" id="inlineCheckbox2" value="option2"> Transliteration
-        </label>
-        <label class="checkbox-inline">
-          <input type="checkbox" checked="checked" id="inlineCheckbox3" value="option3"> English translation
-        </label>
-        <label class="checkbox-inline">
-          <input type="checkbox" checked="checked" id="inlineCheckbox3" value="option3"> English translation notes
-        </label>
-      </div>
-      
-      <div class="col-sm-2">
-        <button type="button" class="btn btn-light btn-md">Download text</button>
-        <button type="button" class="btn btn-light btn-md">Download images</button>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-light btn-md">Download text</button> <br>
+        <button type="button" class="btn btn-light btn-md">Download images</button> <br>
         <a href={{ .Params.googlesheet }}><button type="button" class="btn btn-light btn-md">Comment on text</button></a>
       </div>
         
