@@ -13,8 +13,18 @@ create_content <- function() {
                                       rownames = FALSE, 
                                       escape = FALSE, 
                                       class = "row-border",
-                                      options = list(pageLength = 15, info = FALSE,
-                                                     lengthMenu = list(c(15, -1), c("15", "All")) ))) )
+                                      extensions = c('Buttons', 'ColReorder'),
+                                      options = list(
+                                        dom = 'Bfrtip',
+                                        buttons = I('colvis'),
+                                        colReorder = TRUE,
+                                        pageLength = 15, 
+                                        info = FALSE,
+                                        lengthMenu = list(c(15, -1), c("15", "All")) 
+                                        )
+                                      )
+                            ) 
+         )
   
   cat("</div>") # close column
   

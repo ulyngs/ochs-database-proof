@@ -19,6 +19,7 @@ text_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")) %>%
 write_yaml_header <- function(line_of_meta_data){
   yaml_header <- line_of_meta_data %>%  glue_data('
 ---
+exclude_jquery: true
 title: "{Identifier_popular}"
 sanskritTitle: "{Title_sanskrit}"
 transliteratedTitle: "{Title_transliteration}"
@@ -74,6 +75,13 @@ photo_info <- tibble(
 
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}"))
+   
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
+    dom = "Bfrtip",
+    buttons = I("colvis"),
+    colReorder = TRUE))
+    
 \`\`\`
 
 \`\`\`{r add-text, results="asis"}
@@ -124,6 +132,12 @@ library(here)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv"))
+
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
+    dom = "Bfrtip",
+    buttons = I("colvis"),
+    colReorder = TRUE))
 
 \`\`\`
 

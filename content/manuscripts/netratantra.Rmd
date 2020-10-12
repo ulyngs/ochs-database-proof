@@ -1,4 +1,5 @@
 ---
+exclude_jquery: true
 title: "Netratantra (NT)"
 sanskritTitle: "अमृतेशतन्त्रम्"
 transliteratedTitle: "Amṛteśatantra, Mṛtyujidamṛtīśavidhāna (Netratantra)"
@@ -42,6 +43,13 @@ photo_info <- tibble(
 
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
    mutate(photo = str_c(photo, ".JPG"))
+   
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
+    dom = "Bfrtip",
+    buttons = I("colvis"),
+    colReorder = TRUE))
+    
 ```
 
 ```{r add-text, results="asis"}

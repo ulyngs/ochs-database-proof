@@ -22,7 +22,14 @@ create_content <- function(photoid, zoomid, photo_path) {
                                       rownames = FALSE, 
                                       escape = FALSE, 
                                       class = "row-border",
-                                      options = list(scrollY = '600px', scrollX = TRUE, paging = FALSE))) )
+                                      extensions = c('Buttons', 'ColReorder'),
+                                      options = list(
+                                        dom = 'Bfrtip',
+                                        buttons = I('colvis'),
+                                        colReorder = TRUE,
+                                        scrollY = '600px',
+                                        scrollX = TRUE,
+                                        paging = FALSE))) )
   
   cat("</div>") # close column
   

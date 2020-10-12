@@ -1,4 +1,5 @@
 ---
+exclude_jquery: true
 title: "Haṭha[yoga]pradīpikā (HP, HYP)"
 sanskritTitle: "हथप्रदिपिक"
 transliteratedTitle: "Haṭhapradīpikā"
@@ -32,6 +33,12 @@ library(here)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 
 data_text <- read_csv(here("static", "manuscripts", "hathayogapradipika.csv"))
+
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
+    dom = "Bfrtip",
+    buttons = I("colvis"),
+    colReorder = TRUE))
 
 ```
 

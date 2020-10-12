@@ -1,4 +1,5 @@
 ---
+exclude_jquery: true
 title: "OCHS0010 Palm Leaf"
 sanskritTitle: ""
 transliteratedTitle: ""

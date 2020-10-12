@@ -1,4 +1,5 @@
 ---
+exclude_jquery: true
 title: "MSS0003 Svasthānī"
 sanskritTitle: "स्वस्थानि"
 transliteratedTitle: "Svasthānī"
