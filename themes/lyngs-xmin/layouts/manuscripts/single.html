@@ -1,5 +1,6 @@
 {{ partial "header.html" . }}
 
+
 <div class="main-container container-fluid">
   <main class="manuscript-page">
     <div class="row manuscript-info">
@@ -28,7 +29,6 @@
         {{ if .Params.transliterators }} <p>Transliterated by: {{ .Params.transliterators }}</p> {{ end }}
         {{ if .Params.translationEnglish }} <p>English translation by: {{ .Params.translationEnglish }}</p> {{ end }}
         {{ if .Params.translationDanish }} <p>Danish translation by: {{ .Params.translationDanish }}</p> {{ end }}
-        <!--<p>Word count: {{ .Params.wordCount }}</p>-->
       </div>
       
       <div class="col-sm-4 elements-to-view">
