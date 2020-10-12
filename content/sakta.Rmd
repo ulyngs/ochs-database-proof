@@ -1,4 +1,5 @@
 ---
+exclude_jquery: true
 title: Śākta
 menu: main
 ---
@@ -78,6 +79,7 @@ df %>%
             class = 'row-border',
             elementId = "manuscriptListDT",
             options = list(pageLength = 20, scrollX = TRUE))
+
 ```
 <br>
 
