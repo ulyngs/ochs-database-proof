@@ -39,7 +39,7 @@ count_cols <- data_text %>%
   slice(1)
 
 cols_include <- count_cols %>% 
-  select(chapter, transliteration, contains("translation_")) %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
   length()
 
 cols_total <- length(count_cols)

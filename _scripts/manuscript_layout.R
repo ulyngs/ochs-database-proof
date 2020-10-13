@@ -16,7 +16,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   current_table <- data_text %>% 
     filter(photo == photoid) %>% 
     select(-photo) %>% 
-    select(chapter, verse, transliteration, contains("translation_"), everything())
+    select(chapter, verse, transliteration, starts_with("translation_"), everything())
   
   print( htmltools::tagList(datatable(current_table,
                                       rownames = FALSE, 

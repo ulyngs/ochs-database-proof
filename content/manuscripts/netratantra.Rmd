@@ -45,7 +45,7 @@ count_cols <- data_text %>%
   select(-photo)
 
 cols_include <- count_cols %>% 
-  select(chapter, transliteration, contains("translation_")) %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
   length()
 
 cols_total <- length(count_cols)

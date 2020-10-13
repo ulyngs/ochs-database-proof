@@ -9,8 +9,9 @@ create_content <- function(cols_hide) {
   
   cat('<div class="col-sm-9 manuscript-text">')
   
-  print( htmltools::tagList(datatable(data_text,
-                                      rownames = FALSE, 
+  print( htmltools::tagList(data_text %>% 
+                              select(chapter, verse, transliteration, starts_with("translation_"), everything()) %>% 
+                            datatable(rownames = FALSE, 
                                       escape = FALSE, 
                                       class = "row-border",
                                       extensions = c('Buttons', 'ColReorder'),
@@ -18,7 +19,7 @@ create_content <- function(cols_hide) {
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,
-                                        scrollX = TRUE,
+                                        #scrollX = TRUE,
                                         pageLength = 15, 
                                         info = FALSE,
                                         lengthMenu = list(c(15, -1), c("15", "All")),
