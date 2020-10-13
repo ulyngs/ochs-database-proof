@@ -1,4 +1,4 @@
-create_content <- function(photoid, zoomid, photo_path) {
+create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
   
@@ -15,21 +15,22 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   current_table <- data_text %>% 
     filter(photo == photoid) %>% 
-    select(-photo, -verse) %>% 
-    select(chapter, transliteration, contains("translation_"), everything())
+    select(-photo) %>% 
+    select(chapter, verse, transliteration, contains("translation_"), everything())
   
   print( htmltools::tagList(datatable(current_table,
                                       rownames = FALSE, 
                                       escape = FALSE, 
                                       class = "row-border",
-                                      extensions = c('Buttons', 'ColReorder'),
+                                      extensions = c('ColReorder', 'Buttons'),
                                       options = list(
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,
                                         scrollY = '600px',
                                         scrollX = TRUE,
-                                        paging = FALSE))) )
+                                        paging = FALSE,
+                                        columnDefs = list(list(visible=FALSE, targets=cols_hide))))) )
   
   cat("</div>") # close column
   

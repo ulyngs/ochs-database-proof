@@ -36,14 +36,27 @@ photos_folder <- here("static", "manuscripts", "images", "netratantra", "for_man
 
 folder_name <- "netratantra/for_manuscript_page/"
 
-photo_info <- tibble(
-   photoid = list.files(photos_folder),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>% 
-   mutate(zoomid = str_c("zoomable", row_number()))
-
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
    mutate(photo = str_c(photo, ".JPG"))
-   
+
+# count columns to include
+count_cols <- data_text %>% 
+  slice(1) %>% 
+  select(-photo)
+
+cols_include <- count_cols %>% 
+  select(chapter, transliteration, contains("translation_")) %>% 
+  length()
+
+cols_total <- length(count_cols)
+
+cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
+
+photo_info <- tibble(
+   photoid = list.files(photos_folder),
+   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>%
+   mutate(zoomid = str_c("zoomable", row_number()))
+
 # ensure the DT libraries are included - they are not automatically when looping through datatables
 datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
     dom = "Bfrtip",
@@ -53,7 +66,7 @@ datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
 ```
 
 ```{r add-text, results="asis"}
-pwalk(photo_info, create_content)
+pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\n")
 initiate_zoom_effect(photo_info)
 ```

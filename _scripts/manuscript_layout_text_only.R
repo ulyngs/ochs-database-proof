@@ -1,4 +1,4 @@
-create_content <- function() {
+create_content <- function(cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
   
@@ -18,9 +18,11 @@ create_content <- function() {
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,
+                                        scrollX = TRUE,
                                         pageLength = 15, 
                                         info = FALSE,
-                                        lengthMenu = list(c(15, -1), c("15", "All")) 
+                                        lengthMenu = list(c(15, -1), c("15", "All")),
+                                        columnDefs = list(list(visible=FALSE, targets=cols_hide))
                                         )
                                       )
                             ) 
