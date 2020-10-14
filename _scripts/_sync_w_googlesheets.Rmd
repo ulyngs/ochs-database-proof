@@ -25,12 +25,13 @@ documents_to_sync %>%
 
 ## Create function to iterate over the google sheets with content, and download and store them
 ```{r}
+library(readxl)
 grab_and_store <- function(catalogue_id, googlesheet_with_text) {
   text <- read_sheet(googlesheet_with_text,
                      col_types = "c")
   
   text %>% 
-    write_csv(here("static", "manuscripts", str_c(catalogue_id, ".csv")))
+    write_excel_csv(here("static", "manuscripts", str_c(catalogue_id, ".csv")))
 }
 
 ```
