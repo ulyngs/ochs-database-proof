@@ -238,6 +238,10 @@ footer hr {
 
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-text-only .dt-buttons {
+  margin-left: 1em;
+}
+
 .manuscript-page .text-buttons a {
   margin-bottom: .5em;
 }
