@@ -30,6 +30,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(DT)
 library(here)
+library(glue)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 
 photos_folder <- here("static", "manuscripts", "images", "ochs0010_palm-leaf", "for_manuscript_page")
