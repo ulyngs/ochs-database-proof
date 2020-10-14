@@ -9,7 +9,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button id="zoomIn', zoomid, '"><i class="fa fa-search-plus"></i></button>'))
   cat(str_c('<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset zoom</button>'))
-  cat(str_c('<button onclick="hideHeader()">Hide header</button>'))
+  #cat(str_c('<button onclick="hideHeader()">Hide header</button>'))
   cat(str_c('<button onclick="resetTransform()">Reset text</button>'))
   cat('</div>')
   
@@ -76,15 +76,21 @@ resetButton{zoomid}.addEventListener("click", panzoom{zoomid}.reset);\n
   photo_info_tibble %>%
     glue_data('
 var element{{zoomid}} = document.querySelector("#{{zoomid}}DT");\n
-var instance = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
+var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
 ', .open = "{{", .close = "}}") %>%
     cat()
   
   # create function to hide text header
-  cat('function hideHeader() {$(".dataTables_scrollHead").toggleClass("hide-on-pan"); $(".dt-buttons").toggleClass("hide-on-pan");$(".dataTables_filter").toggleClass("hide-on-pan");}')
+  cat('function hideHeader() {$(".dataTables_scrollHead").addClass("hide-on-pan"); $(".dt-buttons").addClass("hide-on-pan");$(".dataTables_filter").addClass("hide-on-pan");}')
+  
+  # create function to show text header
+  cat('function showHeader() {$(".dataTables_scrollHead").removeClass("hide-on-pan"); $(".dt-buttons").removeClass("hide-on-pan");$(".dataTables_filter").removeClass("hide-on-pan");}')
   
   # create function to reset text position
-  cat('function resetTransform() { var el = document.querySelectorAll(".html-widget"); for (var i = 0; i < el.length; i++) { el[i].style.transform = "matrix(1, 0, 0, 1, 0, 0)"; } }')
+  cat('function resetTransform() { var el = document.querySelectorAll(".html-widget"); for (var i = 0; i < el.length; i++) { el[i].style.transform = "matrix(1, 0, 0, 1, 0, 0)"; } showHeader()}')
+  
+  # hide header when text is panned
+  cat('instancezoomable1.on("panstart", function(e) { hideHeader() });')
   
   cat('</script>')
 }
