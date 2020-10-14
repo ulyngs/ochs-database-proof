@@ -35,7 +35,8 @@ library(DT)
 library(here)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 
-data_text <- read_csv(here("static", "manuscripts", "hathayogapradipika.csv"))
+data_text <- read_csv(here("static", "manuscripts", "hathayogapradipika.csv")) %>% 
+  mutate(chapter = as.integer(chapter))
 
 # count columns to include
 count_cols <- data_text %>% 
@@ -50,10 +51,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
-    dom = "Bfrtip",
-    buttons = I("colvis"),
-    colReorder = TRUE))
+datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 
 ```
 

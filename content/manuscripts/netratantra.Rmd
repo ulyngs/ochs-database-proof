@@ -62,10 +62,7 @@ photo_info <- tibble(
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("Buttons", "ColReorder"), options = list(
-    dom = "Bfrtip",
-    buttons = I("colvis"),
-    colReorder = TRUE))
+datatable(data_text, extensions = c("ColReorder", "Buttons"))
     
 ```
 
