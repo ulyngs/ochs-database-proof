@@ -25,7 +25,7 @@ create_content <- function(photoid, zoomid, photo_path) {
 }
 
 initiate_zoom_effect <- function(photo_info_tibble) {
-  cat("<script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script>")
+  cat("<script src='/js/panzoom.js'></script>")
   
   # create row
   cat('<script>')
