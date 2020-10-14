@@ -20,6 +20,7 @@ write_yaml_header <- function(line_of_meta_data){
   yaml_header <- line_of_meta_data %>%  glue_data('
 ---
 exclude_jquery: true
+catalogueId: {Catalogue_id}
 title: "{Identifier_popular}"
 sanskritTitle: "{Title_sanskrit}"
 transliteratedTitle: "{Title_transliteration}"
@@ -41,6 +42,8 @@ transliterators: "{Transliterated_by}"
 translationEnglish: "{Translation_english_by}"
 translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
+hasPhotos: {has_photos}
+hasText: {has_text}
 categories:
   - sanskrit
 ---
