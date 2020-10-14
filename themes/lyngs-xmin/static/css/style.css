@@ -264,6 +264,19 @@ footer hr {
   position: relative;
 }
 
+.manuscript-page .datatables {
+  z-index: 3;
+  position: relative;
+}
+
+.hide-on-pan {
+  display: none;
+}
+
+.manuscript-page .dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border-bottom: none !important;
+}
+
 .manuscript-page {
   padding: var(--main-page-padding);
 }

@@ -41,7 +41,8 @@ photos_folder <- here("static", "manuscripts", "images", "netratantra", "for_man
 folder_name <- "netratantra/for_manuscript_page/"
 
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
-   mutate(photo = str_c(photo, ".JPG"))
+   mutate(photo = str_c(photo, ".JPG")) %>% 
+   mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>")))
 
 # count columns to include
 count_cols <- data_text %>% 
