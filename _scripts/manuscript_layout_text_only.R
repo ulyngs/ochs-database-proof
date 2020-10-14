@@ -1,6 +1,6 @@
 create_content <- function(cols_hide) {
   # create row
-  cat("<div class='row manuscript-photo-and-text'>")
+  cat("<div class='row manuscript-text-only'>")
   
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
@@ -11,21 +11,29 @@ create_content <- function(cols_hide) {
   
   print( htmltools::tagList(data_text %>% 
                               select(chapter, verse, transliteration, starts_with("translation_"), everything()) %>% 
-                            datatable(rownames = FALSE, 
-                                      escape = FALSE, 
-                                      class = "row-border",
-                                      extensions = c('Buttons', 'ColReorder'),
-                                      options = list(
-                                        dom = 'Bfrtip',
-                                        buttons = I('colvis'),
-                                        colReorder = TRUE,
-                                        #scrollX = TRUE,
-                                        pageLength = 15, 
-                                        info = FALSE,
+                            datatable(rownames = FALSE,
+                                      extensions = c('ColReorder', 'Buttons'),
+                                      filter = 'top',
+                                      options = list (
+                                        columnDefs = list(list(visible=FALSE, targets=cols_hide)),
                                         lengthMenu = list(c(15, -1), c("15", "All")),
-                                        columnDefs = list(list(visible=FALSE, targets=cols_hide))
-                                        )
-                                      )
+                                        colReorder = TRUE,
+                                        dom = 'lBfrtip',
+                                        buttons = I('colvis')
+                                      ))
+                                      #escape = FALSE, 
+                                      #class = "row-border",
+                                      #extensions = c('ColReorder'),
+                                      #options = list(
+                                      #  dom = 'Bfrtip',
+                                        #buttons = I('colvis'),
+                                      #  colReorder = TRUE,
+                                        #scrollX = TRUE,
+                                      #  pageLength = 15,
+                                      #  lengthMenu = list(c(15, -1), c("15", "All")),
+                                        #paging = FALSE,
+                                       # )
+                                      #)
                             ) 
          )
   
