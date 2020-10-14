@@ -35,6 +35,12 @@
         {{ if .Params.hasText }} <div class="text-buttons"> <a href="/manuscripts/{{ .Params.catalogueId }}.csv" role="button" class="btn btn-light btn-md" download><i class="fa fa-download"></i> Download text</a> <br> <a href={{ .Params.googlesheet }} class="btn btn-light btn-md" role="button"><i class="fa fa-pencil"></i> Comment on text</a> </div> {{ end }}
         {{ if .Params.hasPhotos }}<div class="photo-buttons"><button type="button" class="btn btn-light btn-md"><i class="fa fa-download"></i> Download images</button></div> {{ end }}
         
+        {{ if .Params.hasText }}
+        <div class="alert alert-info text-navigation-info" role="alert">
+          To zoom in on the text or place it on top of the photo, hold down the Option (&#8997;; Mac) or Alt key and scroll or drag on the text. Reset with the <strong>Reset text</strong> button.
+        </div>
+        {{ end }}
+        
       </div>
         
     </div>

@@ -289,10 +289,6 @@ footer hr {
   margin-top: 0;
 }
 
-.manuscript-content {
-  margin-top: 5em;
-}
-
 .manuscript-info p {
   margin-bottom: 0.1rem;
 }
@@ -303,4 +299,9 @@ footer hr {
 
 .manuscript-page .manuscript-text td {
   vertical-align: top !important;
+}
+
+.text-navigation-info {
+  position : absolute !important;
+  bottom   : 0 !important;
 }
