@@ -44,7 +44,9 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 # Select a text
 
-*Click the __Popular identifier__ to go to the content. Hover over a cell to see all its information. Type in the 'All' box to search within a column.*
+*Click the __Popular identifier__ to go to the content. Hover over a cell to see all its information. Search within a column by typing in the 'All' box.*
+
+*You can also download this table:*
 
 ```{r}
 df <- manuscript_meta %>% 
@@ -77,7 +79,12 @@ df %>%
             filter = 'top',
             class = 'row-border',
             elementId = "manuscriptListDT",
-            options = list(paging = FALSE, scrollX = TRUE))
+            extensions = 'Buttons',
+            options = list(paging = FALSE, 
+                           scrollX = TRUE,
+                           dom = 'Bfrtip',
+                           buttons = c('csv', 'excel', 'print')
+                           ))
 
 ```
 <br>
