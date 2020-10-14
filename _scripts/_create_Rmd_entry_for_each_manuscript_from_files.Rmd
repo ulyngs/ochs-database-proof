@@ -62,6 +62,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(DT)
 library(here)
+library(glue)
 source(here("_scripts", "manuscript_layout.R"))
 
 photos_folder <- here("static", "manuscripts", "images", "{{Catalogue_id}}", "for_manuscript_page")
@@ -77,7 +78,7 @@ count_cols <- data_text %>%
   select(-photo)
 
 cols_include <- count_cols %>% 
-  select(chapter, transliteration, contains("translation_")) %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
   length()
 
 cols_total <- length(count_cols)
@@ -112,6 +113,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(DT)
 library(here)
+library(glue)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 
 photos_folder <- here("static", "manuscripts", "images", "{{Catalogue_id}}", "for_manuscript_page")
@@ -151,7 +153,7 @@ count_cols <- data_text %>%
   slice(1)
 
 cols_include <- count_cols %>% 
-  select(chapter, transliteration, contains("translation_")) %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
   length()
 
 cols_total <- length(count_cols)

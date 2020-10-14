@@ -242,6 +242,16 @@ footer hr {
   overflow: hidden;
 }
 
+.manuscript-page .panzoomContainer {
+  z-index: 1;
+  position: relative;
+}
+
+.manuscript-page .zoomButtons {
+  z-index: 2;
+  position: relative;
+}
+
 .manuscript-page {
   padding: var(--main-page-padding);
 }
