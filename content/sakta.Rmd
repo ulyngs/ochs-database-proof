@@ -44,13 +44,12 @@ manuscript_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")
 
 # Select a text
 
-*Click an entry's __Popular identifier__ to view its content. Scroll horizontally to view all columns.*
+*Click the __Popular identifier__ to go to the content. Hover over a cell to see all its information. Type in the 'All' box to search within a column.*
 
 ```{r}
 df <- manuscript_meta %>% 
   select(-googlesheet_with_text, 
          -googlesheet_id, 
-         -Notes,
          -id) %>%
   arrange(desc(has_content), desc(Date_added)) %>% 
   mutate(Date_added = as.character(Date_added)) %>% 
@@ -78,7 +77,7 @@ df %>%
             filter = 'top',
             class = 'row-border',
             elementId = "manuscriptListDT",
-            options = list(pageLength = 20, scrollX = TRUE))
+            options = list(paging = FALSE, scrollX = TRUE))
 
 ```
 <br>
