@@ -238,6 +238,14 @@ footer hr {
 
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-page .text-buttons a {
+  margin-bottom: .5em;
+}
+
+.manuscript-page .text-buttons {
+  margin-bottom: 1.5em;
+}
+
 .manuscript-photo {
   overflow: hidden;
 }
