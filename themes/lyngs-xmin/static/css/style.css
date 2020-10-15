@@ -305,3 +305,15 @@ footer hr {
   position : absolute !important;
   bottom   : 0 !important;
 }
+
+.manuscript-page .manuscript-text tr {
+  background-color: transparent !important;
+}
+
+.add-background {
+  background-color: rgba(0, 0, 30, 0.3);
+}
+
+.white-font {
+  color: whitesmoke;
+}
