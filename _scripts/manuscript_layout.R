@@ -10,6 +10,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset zoom</button>'))
   cat(str_c('<button onclick="resetTransform()">Reset text</button>'))
+  cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
   cat('</div>')
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
@@ -90,6 +91,36 @@ var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, f
   
   # hide header when text is panned
   cat('instancezoomable1.on("panstart", function(e) { hideHeader() });')
+  
+  cat('</script>')
+}
+
+create_overlay_divs <- function(photo_info_tibble){
+  # create the divs
+  photo_info %>% 
+    glue_data('<div id="myNav{{zoomid}}" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
+<div class="overlay-content">
+<img src="{{photo_path}}" class="img-fluid">
+</div>
+</div>\n
+', .open = "{{", .close = "}}") %>%
+    cat()
+}
+
+create_overlay_functions <- function(photo_info_tibble){
+  cat('<script>')
+  
+  photo_info_tibble %>% 
+    glue_data('
+function openNav{{zoomid}}() {
+document.getElementById("myNav{{zoomid}}").style.width = "100%";
+}
+function closeNav{{zoomid}}() {
+document.getElementById("myNav{{zoomid}}").style.width = "0%";
+}
+', .open = "{{", .close = "}}") %>%
+    cat()
   
   cat('</script>')
 }

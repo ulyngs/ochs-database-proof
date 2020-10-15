@@ -100,9 +100,11 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"))
 \`\`\`
 
 \`\`\`{r add-text, results="asis"}
+create_overlay_divs(photo_info)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\\n")
 initiate_zoom_effect(photo_info)
+create_overlay_functions(photo_info)
 \`\`\`
 ', .open = "{{", .close = "}}")
 }
@@ -131,9 +133,11 @@ data_text <- NA
 \`\`\`
 
 \`\`\`{r add-text, results="asis"}
+create_overlay_divs(photo_info)
 pwalk(photo_info, create_content)
 cat("\\n")
 initiate_zoom_effect(photo_info)
+create_overlay_functions(photo_info)
 \`\`\`
 ', .open = "{{", .close = "}}")
 }
