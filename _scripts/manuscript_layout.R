@@ -16,6 +16,8 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
   cat(str_c('<img src="', photo_path, '" class="img-fluid">'))
   cat('</div>') # close zoom container
+  # add photoid
+  cat('<div class="photo-title"><p>', photoid, '</p></div>')
   
   cat("</div>") # close column
   

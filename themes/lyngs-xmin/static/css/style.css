@@ -238,6 +238,12 @@ footer hr {
 
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-page .photo-title {
+  font-style: italic;
+  color: darkgray;
+  margin-top: 0.2em;
+}
+
 .manuscript-text-only {
   margin-top: 5em;
 }
