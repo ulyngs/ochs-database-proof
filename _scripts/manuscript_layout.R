@@ -9,7 +9,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button id="zoomIn', zoomid, '"><i class="fa fa-search-plus"></i></button>'))
   cat(str_c('<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset zoom</button>'))
-  cat(str_c('<button onclick="resetTransform()">Reset text</button>'))
+  cat(str_c('<button onclick="resetTransform', zoomid, '()">Reset text</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
   cat('</div>')
   
@@ -82,17 +82,12 @@ var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, f
 ', .open = "{{", .close = "}}") %>%
     cat()
   
-  # create function to hide text header
-  cat('function hideHeader() {$(".dataTables_scrollBody td div").addClass("add-background"); $(".dataTables_scrollBody td").addClass("white-font"); $(".dataTables_scrollHead").addClass("hide-on-pan"); $(".dt-buttons").addClass("hide-on-pan");$(".dataTables_filter").addClass("hide-on-pan");}')
-  
-  # create function to show text header
-  cat('function showHeader() {$(".dataTables_scrollBody td div").removeClass("add-background"); $(".dataTables_scrollBody td").removeClass("white-font"); $(".dataTables_scrollHead").removeClass("hide-on-pan"); $(".dt-buttons").removeClass("hide-on-pan");$(".dataTables_filter").removeClass("hide-on-pan");}')
-  
-  # create function to reset text position
-  cat('function resetTransform() { var el = document.querySelectorAll(".html-widget"); for (var i = 0; i < el.length; i++) { el[i].style.transform = "matrix(1, 0, 0, 1, 0, 0)"; } showHeader()}')
-  
   # hide header when text is panned
-  cat('instancezoomable1.on("panstart", function(e) { hideHeader() });')
+  photo_info_tibble %>%
+    glue_data('
+instance{{zoomid}}.on("panstart", function(e) { hideHeader{{zoomid}}() });
+', .open = "{{", .close = "}}") %>%
+    cat()
   
   cat('</script>')
 }
@@ -115,6 +110,16 @@ create_overlay_functions <- function(photo_info_tibble){
   
   photo_info_tibble %>% 
     glue_data('
+function hideHeader{{zoomid}}() {$("#{{zoomid}}DT .dataTables_scrollBody td div").addClass("add-background"); $("#{{zoomid}}DT .dataTables_scrollBody td").addClass("white-font"); $("#{{zoomid}}DT .dataTables_scrollHead").addClass("hide-on-pan"); $("#{{zoomid}}DT .dt-buttons").addClass("hide-on-pan");$("#{{zoomid}}DT .dataTables_filter").addClass("hide-on-pan");}
+
+function showHeader{{zoomid}}(){
+{$("#{{zoomid}}DT .dataTables_scrollBody td div").removeClass("add-background"); $("#{{zoomid}}DT .dataTables_scrollBody td").removeClass("white-font"); $("#{{zoomid}}DT .dataTables_scrollHead").removeClass("hide-on-pan"); $("#{{zoomid}}DT .dt-buttons").removeClass("hide-on-pan");$("#{{zoomid}}DT .dataTables_filter").removeClass("hide-on-pan");}
+}
+
+function resetTransform{{zoomid}}(){
+var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
+showHeader{{zoomid}}()
+}
 function openNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "100%";
 }
