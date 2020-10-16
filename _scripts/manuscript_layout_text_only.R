@@ -1,10 +1,10 @@
-create_content <- function(cols_hide) {
+create_content <- function(cols_hide, text_only_version) {
   # create row
   cat("<div class='row manuscript-text-only'>")
   
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
-  cat('<h2>No manuscript images available at the moment.</h2>')
+  if(!text_only_version) cat('<h2>No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
   cat('<div class="col-sm-9 manuscript-text">')

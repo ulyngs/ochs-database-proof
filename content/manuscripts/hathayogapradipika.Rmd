@@ -56,6 +56,6 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 ```
 
 ```{r add-text, results="asis"}
-create_content(cols_hide = cols_hide_nums)
+create_content(cols_hide = cols_hide_nums, FALSE)
 cat("\n")
 ```

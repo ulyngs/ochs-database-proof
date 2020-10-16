@@ -17,7 +17,7 @@ text_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")) %>%
 ## Create the YAML header
 ```{r}
 write_yaml_header <- function(line_of_meta_data){
-  yaml_header <- line_of_meta_data %>%  glue_data('
+  line_of_meta_data %>%  glue_data('
 ---
 exclude_jquery: true
 catalogueId: {Catalogue_id}
@@ -49,9 +49,44 @@ categories:
 ---
 
 ', .na = "")
-  
-  write_lines(yaml_header, str_c(here("content", "manuscripts",
-                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
+
+}
+
+write_yaml_header_text_only_version <- function(line_of_meta_data){
+  line_of_meta_data %>%  glue_data('
+---
+exclude_jquery: true
+catalogueId: {Catalogue_id}
+title: "{Identifier_popular}"
+sanskritTitle: "{Title_sanskrit}"
+transliteratedTitle: "{Title_transliteration}"
+englishTitle: "{Title_english}"
+approximateDating: "{Dating}"
+manuscriptLanguage: "{Language}"
+script: "{Script}"
+material: "{Material}"
+condition: "{Condition}"
+folios: "{Folios}"
+subject: "{Subject}"
+physicalLocation: "{Physical_location}"
+originPlace: "{Origin_place}"
+author: "{Author}"
+provenance: "{Provenance}"
+bibliographyNote: "{Bibliography}"
+codices: "{Codices}"
+transliterators: "{Transliterated_by}"
+translationEnglish: "{Translation_english_by}"
+translationDanish: "{Translation_danish_by}"
+googlesheet: "{googlesheet_with_text}"
+hasPhotos: {has_photos}
+hasText: {has_text}
+textOnlyVersion: yes
+categories:
+  - sanskrit
+---
+
+', .na = "")
+
 }
 
 ```
@@ -142,8 +177,8 @@ create_overlay_functions(photo_info)
 ', .open = "{{", .close = "}}")
 }
 
-write_rmd_text_only <- function(line_of_meta_data){
-  line_of_meta_data %>%  glue_data('
+write_rmd_text_only <- function(line_of_meta_data, text_only_version){
+  glue('
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -151,7 +186,7 @@ library(DT)
 library(here)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 
-data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
+data_text <- read_csv(here("static", "manuscripts", "{{line_of_meta_data$Catalogue_id}}.csv")) %>% 
   mutate(chapter = as.integer(chapter))
 
 # count columns to include
@@ -172,7 +207,7 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 \`\`\`
 
 \`\`\`{r add-text, results="asis"}
-create_content(cols_hide = cols_hide_nums)
+create_content(cols_hide = cols_hide_nums, {{text_only_version}})
 cat("\\n")
 \`\`\`
 ', .open = "{{", .close = "}}")
@@ -182,15 +217,32 @@ write_rmd <- function(line_of_meta_data){
   
   if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "yes") {
     print("photos and text")
-    rmd_to_write <- write_rmd_w_photos_and_text(line_of_meta_data)  
+    #write normal version
+    yaml_to_write <- write_yaml_header(line_of_meta_data)
+    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
+                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
+    rmd_to_write <- write_rmd_w_photos_and_text(line_of_meta_data)
+    
+    # write text-only version
+    yaml_to_write_text_version <- write_yaml_header_text_only_version(line_of_meta_data)
+    write_lines(yaml_to_write_text_version, str_c(here("content", "manuscripts",
+                                      str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))))
+    rmd_to_write_text_version <- write_rmd_text_only(line_of_meta_data, text_only_version = TRUE)  
+    write_lines(rmd_to_write_text_version, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))), append = TRUE)
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
     print("photos only")
+    yaml_to_write <- write_yaml_header(line_of_meta_data)
+    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
+                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
     rmd_to_write <- write_rmd_photos_only(line_of_meta_data)  
   } else if (line_of_meta_data$has_photos == "no" & line_of_meta_data$has_text == "yes") {
     print("text only")
-    rmd_to_write <- write_rmd_text_only(line_of_meta_data)  
+    yaml_to_write <- write_yaml_header(line_of_meta_data)
+    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
+                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
+    rmd_to_write <- write_rmd_text_only(line_of_meta_data, text_only_version = FALSE)  
   }
-
+  # append body rmd to yaml
   write_lines(rmd_to_write, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, ".Rmd"))), append = TRUE)
   
 }
@@ -203,7 +255,6 @@ Ok, let's try it out
 
 ```{r}
 generate_rmd <- function(text_with_meta){
-  write_yaml_header(text_with_meta)
   write_rmd(text_with_meta)
 }
 
