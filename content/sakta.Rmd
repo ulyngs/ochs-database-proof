@@ -82,6 +82,7 @@ df %>%
             extensions = 'Buttons',
             options = list(paging = FALSE, 
                            scrollX = TRUE,
+                           keys = TRUE,
                            dom = 'Bfrtip',
                            buttons = c('csv', 'excel', 'print')
                            ))
