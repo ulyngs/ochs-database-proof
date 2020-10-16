@@ -75,7 +75,7 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 <div class="row">
 <div class="col-sm-12">
 ```{r, out.width='80%', echo=FALSE}
-knitr::include_graphics("/images/how_it_works.png", error = FALSE)
+knitr::include_graphics("/images/how_it_works.jpg", error = FALSE)
 ```
 </div>
 </div>
