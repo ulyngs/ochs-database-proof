@@ -97,6 +97,7 @@ create_overlay_divs <- function(photo_info_tibble){
   photo_info %>% 
     glue_data('<div id="myNav{{zoomid}}" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
+<a href="javascript:void(0)" class="showTextbtn" onclick="showText{{zoomid}}()">Show/hide text</a>
 <div class="overlay-content">
 <img src="{{photo_path}}" class="img-fluid">
 </div>
@@ -120,11 +121,15 @@ function resetTransform{{zoomid}}(){
 var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
 showHeader{{zoomid}}()
 }
+
+function showText{{zoomid}}() {$("#{{zoomid}}DT").toggleClass("bring-to-foreground");}
+
 function openNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "100%";
 }
 function closeNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "0%";
+resetTransform{{zoomid}}()
 }
 ', .open = "{{", .close = "}}") %>%
     cat()
