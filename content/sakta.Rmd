@@ -58,7 +58,7 @@ df <- manuscript_meta %>%
   mutate(Identifier_popular = ifelse(has_content == "yes",
                                      str_c("<a href='/manuscripts/", Catalogue_id, "/'>", Identifier_popular, "</a>"),
                                      Identifier_popular)) %>% 
-  select(-has_content, -Date_added, -Catalogue_id, -website_photo_extension)
+  select(-has_content, -Date_added, -Catalogue_id, -website_photo_extension, -private_notes)
 
 #across(-has_content, ~str_c("som))
 
