@@ -227,7 +227,7 @@ footer hr {
   background-color: white;
 }
 
-.manuscript-list td:hover {
+.manuscript-list .dataTables_scrollBody td:hover {
   white-space: pre-wrap;
 }
 
