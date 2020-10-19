@@ -209,7 +209,7 @@ footer hr {
 
 .manuscript-list td:first-child {
   max-width: 200px;
-  overflow: scroll;
+  overflow: hidden;
   font-weight: bold;
   white-space: nowrap;
   background-color: lightgray;
