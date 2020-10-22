@@ -206,7 +206,9 @@ footer hr {
   white-space: nowrap;
   vertical-align: text-top !important;
 }
-
+.manuscript-list .dataTables_scrollBody td:hover {
+  white-space: pre-wrap;
+}
 .manuscript-list td:first-child {
   max-width: 200px;
   overflow: hidden;
@@ -219,16 +221,23 @@ footer hr {
   left: 0;
   z-index: 2;
 }
+.manuscript-list .pop-identifier {
+  background-color: lightgray;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+.manuscript-list td:first-child:hover {
+  overflow: visible;
+  white-space: nowrap;
+}
+
 .manuscript-list thead th:first-child {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
   z-index: 2;
   background-color: white;
-}
-
-.manuscript-list .dataTables_scrollBody td:hover {
-  white-space: pre-wrap;
 }
 
 .manuscript-list td a:hover {
@@ -318,6 +327,10 @@ footer hr {
 .text-navigation-info {
   position : absolute !important;
   bottom   : 0 !important;
+}
+
+.manuscript-page .manuscript-text .html-widget {
+  height: 600px !important;
 }
 
 .manuscript-page .manuscript-text tr {
