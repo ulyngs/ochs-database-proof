@@ -11,6 +11,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button id="zoomReset', zoomid, '">Reset zoom</button>'))
   cat(str_c('<button onclick="resetTransform', zoomid, '()">Reset text</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
+  cat(str_c('<a href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"><button>Dictionary</button></a>'))
   cat('</div>')
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
@@ -33,7 +34,9 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
                                       rownames = FALSE, 
                                       escape = FALSE,
                                       class = "row-border",
-                                      extensions = c('ColReorder', 'Buttons'),
+                                      extensions = c('ColReorder', 'Buttons', 'Responsive'),
+                                      width = '100%',
+                                      height = '100%',
                                       options = list(
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
