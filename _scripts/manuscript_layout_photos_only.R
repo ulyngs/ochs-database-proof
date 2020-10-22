@@ -10,6 +10,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat(str_c('<button id="zoomOut', zoomid, '">Zoom out</button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
+  cat(str_c('<a href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"><button>Dictionary</button></a>'))
   cat('</div>')
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
@@ -19,7 +20,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat("</div>") # close column
   
   cat('<div class="col-sm-3 manuscript-text">')
-  cat('<h2>No transliteration or translation available at the moment.</h2>')
+  cat('<h2 class="no-text-notice">No transliteration or translation available at the moment.</h2>')
   cat("</div>") # close column
   
   cat("</div>") # close row

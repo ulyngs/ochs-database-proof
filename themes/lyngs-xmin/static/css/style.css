@@ -247,6 +247,7 @@ footer hr {
 
 
 /* ---- MANUSCRIPT PAGES ---- */
+
 .manuscript-page .photo-title {
   font-style: italic;
   color: darkgray;
@@ -259,6 +260,11 @@ footer hr {
 
 .manuscript-text-only .dt-buttons {
   margin-left: 1em;
+}
+
+.manuscript-text-only .no-images-notice,
+.manuscript-page .no-text-notice {
+  padding: 2em;
 }
 
 .manuscript-page .text-buttons a {
@@ -279,6 +285,7 @@ footer hr {
 }
 
 .manuscript-page .zoomButtons {
+  margin-bottom: 0.1em;
   z-index: 2;
   position: relative;
 }

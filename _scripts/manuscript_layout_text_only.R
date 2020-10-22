@@ -4,7 +4,10 @@ create_content <- function(cols_hide, text_only_version) {
   
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
-  if(!text_only_version) cat('<h2>No manuscript images available at the moment.</h2>')
+  cat('<div class="zoomButtons">')
+  cat(str_c('<a href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"><button>Dictionary</button></a>'))
+  cat('</div>')
+  if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
   cat('<div class="col-sm-9 manuscript-text">')
