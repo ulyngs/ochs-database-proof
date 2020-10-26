@@ -296,6 +296,17 @@ footer hr {
   position: relative;
 }
 
+.manuscript-page .zoomButtonsFullScreen {
+  padding: 10px;
+}
+
+.manuscript-page .zoomButtonsFullScreen button {
+  background-color: #606060;
+  border: none;
+  color: white;
+  text-align: center;
+}
+
 .manuscript-page .datatables {
   z-index: 3;
   position: relative;
