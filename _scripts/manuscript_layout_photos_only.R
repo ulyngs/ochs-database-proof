@@ -41,7 +41,15 @@ const zoomOutButton{zoomid} = document.querySelector("#zoomOut{zoomid}");
 const resetButton{zoomid} = document.querySelector("#zoomReset{zoomid}");
 zoomInButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomIn);
 zoomOutButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomOut);
-resetButton{zoomid}.addEventListener("click", panzoom{zoomid}.reset);\n
+resetButton{zoomid}.addEventListener("click", panzoom{zoomid}.reset);
+const elemFull{zoomid} = document.querySelector("#full{zoomid}");
+const panzoomFull{zoomid} = Panzoom(elemFull{zoomid});
+const zoomInButtonFull{zoomid} = document.querySelector("#zoomInFullScreen{zoomid}");
+const zoomOutButtonFull{zoomid} = document.querySelector("#zoomOutFullScreen{zoomid}");
+const resetButtonFull{zoomid} = document.querySelector("#zoomResetFullScreen{zoomid}");
+zoomInButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomIn);
+zoomOutButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomOut);
+resetButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.reset);\n
 ') %>% 
     cat()
   
@@ -53,7 +61,12 @@ create_overlay_divs <- function(photo_info_tibble){
   photo_info %>% 
     glue_data('<div id="myNav{{zoomid}}" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
-<div class="overlay-content">
+<div class="zoomButtonsFullScreen">
+<button id="zoomInFullScreen{{zoomid}}">Zoom in</button>
+<button id="zoomOutFullScreen{{zoomid}}">Zoom out</button>
+<button id="zoomResetFullScreen{{zoomid}}">Reset</button>
+</div>
+<div class="panzoomContainer overlay-content" id="full{{zoomid}}">
 <img src="{{photo_path}}" class="img-fluid">
 </div>
 </div>\n
