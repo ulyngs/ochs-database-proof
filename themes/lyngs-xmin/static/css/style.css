@@ -290,6 +290,12 @@ footer hr {
   position: relative;
 }
 
+.manuscript-page .zoomButtonsFullScreen, .showTextbtn {
+  margin-bottom: 0.1em;
+  z-index: 2;
+  position: relative;
+}
+
 .manuscript-page .datatables {
   z-index: 3;
   position: relative;
@@ -406,6 +412,7 @@ footer hr {
   color: red;
 }
 
+
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
@@ -415,3 +422,4 @@ footer hr {
     right: 35px;
   }
 }
+
