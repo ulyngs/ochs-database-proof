@@ -248,6 +248,25 @@ footer hr {
 
 /* ---- MANUSCRIPT PAGES ---- */
 
+.manuscript-page #sanskrit-dictionary {
+  position: fixed;
+  top: 30px;
+  width: 90%;
+  z-index: 4;
+  visibility: hidden;
+}
+.manuscript-page #sanskrit-dictionary iframe {
+  height: 300px;
+  width: 100%;
+}
+.make-visible {
+  visibility: visible !important;
+}
+.manuscript-page #sanskrit-dictionary p {
+  text-align: right;
+  font-style: italic;
+}
+
 .manuscript-page .photo-title {
   font-style: italic;
   color: darkgray;
