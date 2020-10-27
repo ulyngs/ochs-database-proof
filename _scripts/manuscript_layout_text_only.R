@@ -5,7 +5,7 @@ create_content <- function(cols_hide, text_only_version) {
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
   cat('<div class="zoomButtons">')
-  cat(str_c('<a href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"><button>Dictionary</button></a>'))
+  cat(str_c('<button onclick="toggleDictionary()">Dictionary</button>'))
   cat('</div>')
   if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
@@ -43,4 +43,12 @@ create_content <- function(cols_hide, text_only_version) {
   cat("</div>") # close column
   
   cat("</div>") # close row
+}
+
+create_overlay_functions <- function(){
+  cat('<script>')
+  
+  cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}')
+  
+  cat('</script>')
 }

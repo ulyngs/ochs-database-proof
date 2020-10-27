@@ -89,6 +89,42 @@ categories:
 
 }
 
+write_yaml_header_photos_only <- function(line_of_meta_data){
+  line_of_meta_data %>%  glue_data('
+---
+exclude_jquery: false
+catalogueId: {Catalogue_id}
+title: "{Identifier_popular}"
+sanskritTitle: "{Title_sanskrit}"
+transliteratedTitle: "{Title_transliteration}"
+englishTitle: "{Title_english}"
+approximateDating: "{Dating}"
+manuscriptLanguage: "{Language}"
+script: "{Script}"
+material: "{Material}"
+condition: "{Condition}"
+folios: "{Folios}"
+subject: "{Subject}"
+physicalLocation: "{Physical_location}"
+originPlace: "{Origin_place}"
+author: "{Author}"
+provenance: "{Provenance}"
+bibliographyNote: "{Bibliography}"
+codices: "{Codices}"
+transliterators: "{Transliterated_by}"
+translationEnglish: "{Translation_english_by}"
+translationDanish: "{Translation_danish_by}"
+googlesheet: "{googlesheet_with_text}"
+hasPhotos: {has_photos}
+hasText: {has_text}
+categories:
+  - sanskrit
+---
+
+', .na = "")
+
+}
+
 ```
 
 ## Create the body part
@@ -134,6 +170,11 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"))
     
 \`\`\`
 
+<div id="sanskrit-dictionary">
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+
 \`\`\`{r add-text, results="asis"}
 create_overlay_divs(photo_info)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
@@ -166,6 +207,11 @@ photo_info <- tibble(
 data_text <- NA
 
 \`\`\`
+
+<div id="sanskrit-dictionary">
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
 
 \`\`\`{r add-text, results="asis"}
 create_overlay_divs(photo_info)
@@ -206,8 +252,14 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 
 \`\`\`
 
+<div id="sanskrit-dictionary">
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+
 \`\`\`{r add-text, results="asis"}
 create_content(cols_hide = cols_hide_nums, {{text_only_version}})
+create_overlay_functions()
 cat("\\n")
 \`\`\`
 ', .open = "{{", .close = "}}")
@@ -231,7 +283,7 @@ write_rmd <- function(line_of_meta_data){
     write_lines(rmd_to_write_text_version, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))), append = TRUE)
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
     print("photos only")
-    yaml_to_write <- write_yaml_header(line_of_meta_data)
+    yaml_to_write <- write_yaml_header_photos_only(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
     rmd_to_write <- write_rmd_photos_only(line_of_meta_data)  

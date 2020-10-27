@@ -10,7 +10,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat(str_c('<button id="zoomOut', zoomid, '">Zoom out</button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
-  cat(str_c('<a href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"><button>Dictionary</button></a>'))
+  cat(str_c('<button onclick="toggleDictionary()">Dictionary</button>'))
   cat('</div>')
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
@@ -76,6 +76,8 @@ create_overlay_divs <- function(photo_info_tibble){
 
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
+  
+  cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}\n')
   
   photo_info_tibble %>% 
     glue_data('
