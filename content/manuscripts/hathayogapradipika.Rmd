@@ -55,7 +55,13 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 
 ```
 
+<div id="sanskrit-dictionary">
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+
 ```{r add-text, results="asis"}
 create_content(cols_hide = cols_hide_nums, FALSE)
+create_overlay_functions()
 cat("\n")
 ```
