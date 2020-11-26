@@ -35,6 +35,7 @@ library(DT)
 library(here)
 library(glue)
 source(here("_scripts", "manuscript_layout.R"))
+source(here("_scripts/", "manuscript_joint_functions.R"))
 
 photos_folder <- here("static", "manuscripts", "images", "netratantra", "for_manuscript_page")
 
@@ -67,25 +68,13 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"))
     
 ```
 
-<div id="sanskrit-dictionary">
-<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">&times;</a>
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
-</div>
-<div id="sanskrit-dictionary2">
-<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">&times;</a>
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
-</div>
-<div id="sanskrit-dictionary-url">
-<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">&times;</a>
-<iframe src="" id="frame-dictionary-url"></iframe>
-</div>
 
 ```{r add-text, results="asis"}
+insert_dictionary_iframes()
 create_overlay_divs(photo_info)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\n")
 initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)
+create_overlay_functions(photo_info)  
 ```
+
