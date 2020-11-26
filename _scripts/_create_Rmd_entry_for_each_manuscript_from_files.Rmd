@@ -3,7 +3,7 @@ output: html_document
 ---
 
 # Grab meta data
-```{r}
+```{r, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 library(tidyverse)
 library(here)
@@ -92,7 +92,7 @@ categories:
 write_yaml_header_photos_only <- function(line_of_meta_data){
   line_of_meta_data %>%  glue_data('
 ---
-exclude_jquery: false
+exclude_jquery: true
 catalogueId: {Catalogue_id}
 title: "{Identifier_popular}"
 sanskritTitle: "{Title_sanskrit}"
@@ -171,8 +171,18 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"))
 \`\`\`
 
 <div id="sanskrit-dictionary">
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary2">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary-url">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">&times;</a>
+<iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
 \`\`\`{r add-text, results="asis"}
@@ -187,6 +197,8 @@ create_overlay_functions(photo_info)
 
 write_rmd_photos_only <- function(line_of_meta_data){
   line_of_meta_data %>%  glue_data('
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -209,8 +221,18 @@ data_text <- NA
 \`\`\`
 
 <div id="sanskrit-dictionary">
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary2">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary-url">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">&times;</a>
+<iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
 \`\`\`{r add-text, results="asis"}
@@ -253,8 +275,18 @@ datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
 \`\`\`
 
 <div id="sanskrit-dictionary">
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary2">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary-url">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">&times;</a>
+<iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
 \`\`\`{r add-text, results="asis"}

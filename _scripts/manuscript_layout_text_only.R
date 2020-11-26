@@ -5,7 +5,10 @@ create_content <- function(cols_hide, text_only_version) {
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
   cat('<div class="zoomButtons">')
-  cat(str_c('<button onclick="toggleDictionary()">Dictionary</button>'))
+  cat('<button onclick="toggleDictionary()">Dictionary</button>')
+  cat('<button onclick="toggleDictionary2()">Dictionary2</button>')
+  cat('<input type="text" id="dictionary-url" placeholder="https://" />')
+  cat('<button onclick="toggleDictionaryURL()">Show</button>')
   cat('</div>')
   if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
@@ -24,19 +27,6 @@ create_content <- function(cols_hide, text_only_version) {
                                         dom = 'lBfrtip',
                                         buttons = I('colvis')
                                       ))
-                                      #escape = FALSE, 
-                                      #class = "row-border",
-                                      #extensions = c('ColReorder'),
-                                      #options = list(
-                                      #  dom = 'Bfrtip',
-                                        #buttons = I('colvis'),
-                                      #  colReorder = TRUE,
-                                        #scrollX = TRUE,
-                                      #  pageLength = 15,
-                                      #  lengthMenu = list(c(15, -1), c("15", "All")),
-                                        #paging = FALSE,
-                                       # )
-                                      #)
                             ) 
          )
   
@@ -47,8 +37,9 @@ create_content <- function(cols_hide, text_only_version) {
 
 create_overlay_functions <- function(){
   cat('<script>')
-  
   cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}')
-  
+  cat('function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}')
+  cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}')
+  cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
   cat('</script>')
 }

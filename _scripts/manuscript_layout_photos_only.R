@@ -10,7 +10,10 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat(str_c('<button id="zoomOut', zoomid, '">Zoom out</button>'))
   cat(str_c('<button id="zoomReset', zoomid, '">Reset</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
-  cat(str_c('<button onclick="toggleDictionary()">Dictionary</button>'))
+  cat('<button onclick="toggleDictionary()">Dictionary</button>')
+  cat('<button onclick="toggleDictionary2()">Dictionary2</button>')
+  cat('<input type="text" id="dictionary-url" placeholder="https://" />')
+  cat('<button onclick="toggleDictionaryURL()">Show</button>')
   cat('</div>')
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
@@ -76,8 +79,12 @@ create_overlay_divs <- function(photo_info_tibble){
 
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
-  
   cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}\n')
+  cat('function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}\n')
+  cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n')
+  cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
+  cat('</script>')
+  cat('<script>')
   
   photo_info_tibble %>% 
     glue_data('

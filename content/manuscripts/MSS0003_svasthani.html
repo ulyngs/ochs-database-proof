@@ -1,5 +1,5 @@
 ---
-exclude_jquery: false
+exclude_jquery: true
 catalogueId: mss0003_svasthani
 title: "MSS0003 Svasthānī"
 sanskritTitle: "स्वस्थानि"
@@ -29,14 +29,28 @@ categories:
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div id="sanskrit-dictionary">
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php">
-</iframe>
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">×</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
 <p>
-Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a>
+Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a>
 </p>
+</div>
+<div id="sanskrit-dictionary2">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">×</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
+<p>
+Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a>
+</p>
+</div>
+<div id="sanskrit-dictionary-url">
+<p><a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">×</a>
+<iframe src="" id="frame-dictionary-url"></iframe></p>
 </div>
 <div id="myNavzoomable1" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable1()">×</a>
@@ -600,6 +614,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable1" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05451.jpeg" class="img-fluid">
@@ -629,6 +647,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable2" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05452.jpeg" class="img-fluid">
@@ -658,6 +680,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable3" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05453.jpeg" class="img-fluid">
@@ -687,6 +713,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable4" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05454.jpeg" class="img-fluid">
@@ -716,6 +746,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable5" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05455.jpeg" class="img-fluid">
@@ -745,6 +779,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable6" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05456.jpeg" class="img-fluid">
@@ -774,6 +812,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable7" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05457.jpeg" class="img-fluid">
@@ -803,6 +845,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable8" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05458.jpeg" class="img-fluid">
@@ -832,6 +878,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable9" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05459.jpeg" class="img-fluid">
@@ -861,6 +911,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable10" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05460.jpeg" class="img-fluid">
@@ -890,6 +944,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable11" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05461.jpeg" class="img-fluid">
@@ -919,6 +977,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable12" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05462.jpeg" class="img-fluid">
@@ -948,6 +1010,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable13" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05463.jpeg" class="img-fluid">
@@ -977,6 +1043,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable14" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05464.jpeg" class="img-fluid">
@@ -1006,6 +1076,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable15" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05465.jpeg" class="img-fluid">
@@ -1035,6 +1109,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable16" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05466.jpeg" class="img-fluid">
@@ -1064,6 +1142,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable17" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05467.jpeg" class="img-fluid">
@@ -1093,6 +1175,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable18" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05468.jpeg" class="img-fluid">
@@ -1122,6 +1208,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable19" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05469.jpeg" class="img-fluid">
@@ -1151,6 +1241,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable20" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05470.jpeg" class="img-fluid">
@@ -1180,6 +1274,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable21" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05471.jpeg" class="img-fluid">
@@ -1209,6 +1307,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable22" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05472.jpeg" class="img-fluid">
@@ -1238,6 +1340,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable23" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05473.jpeg" class="img-fluid">
@@ -1267,6 +1373,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable24" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05474.jpeg" class="img-fluid">
@@ -1296,6 +1406,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable25" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05475.jpeg" class="img-fluid">
@@ -1325,6 +1439,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable26" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05476.jpeg" class="img-fluid">
@@ -1354,6 +1472,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable27" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05477.jpeg" class="img-fluid">
@@ -1383,6 +1505,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable28" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05478.jpeg" class="img-fluid">
@@ -1412,6 +1538,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable29" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05479.jpeg" class="img-fluid">
@@ -1441,6 +1571,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable30" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05480.jpeg" class="img-fluid">
@@ -1470,6 +1604,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable31" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05481.jpeg" class="img-fluid">
@@ -1499,6 +1637,10 @@ Full screen
 <button onclick="toggleDictionary()">
 Dictionary
 </button>
+<button onclick="toggleDictionary2()">
+Dictionary2
+</button>
+<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
 </div>
 <div id="zoomable32" class="panzoomContainer">
 <img src="/manuscripts/images/mss0003_svasthani/for_manuscript_page/DSC05482.jpeg" class="img-fluid">
@@ -2025,7 +2167,10 @@ zoomOutButtonFullzoomable32.addEventListener("click", panzoomFullzoomable32.zoom
 resetButtonFullzoomable32.addEventListener("click", panzoomFullzoomable32.reset);
 </script>
 <script>function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}
-function openNavzoomable1() {
+function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}
+function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
+$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});</script>
+<script>function openNavzoomable1() {
 document.getElementById("myNavzoomable1").style.width = "100%";
 }
 function closeNavzoomable1() {

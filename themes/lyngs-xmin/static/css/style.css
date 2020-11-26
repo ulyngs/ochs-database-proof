@@ -248,24 +248,45 @@ footer hr {
 
 /* ---- MANUSCRIPT PAGES ---- */
 
-.manuscript-page #sanskrit-dictionary {
+.manuscript-page #sanskrit-dictionary,
+.manuscript-page #sanskrit-dictionary2,
+.manuscript-page #sanskrit-dictionary-url {
   position: fixed;
   top: 30px;
   width: 90%;
   z-index: 4;
   visibility: hidden;
 }
-.manuscript-page #sanskrit-dictionary iframe {
+
+.manuscript-page #sanskrit-dictionary iframe,
+.manuscript-page #sanskrit-dictionary2 iframe,
+.manuscript-page #sanskrit-dictionary-url iframe {
   height: 300px;
   width: 100%;
 }
 .make-visible {
   visibility: visible !important;
 }
-.manuscript-page #sanskrit-dictionary p {
+.manuscript-page #sanskrit-dictionary p,
+.manuscript-page #sanskrit-dictionary2 p,
+.manuscript-page #sanskrit-dictionary-url p{
   text-align: right;
   font-style: italic;
 }
+
+/* Position the close button (top right corner) */
+.closebtn-dictionary {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  font-size: 50px;
+  z-index: 1040;
+  color: darkred;
+}
+a.closebtn-dictionary {
+  border: none;
+}
+
 
 .manuscript-page .photo-title {
   font-style: italic;

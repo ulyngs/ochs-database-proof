@@ -1,5 +1,5 @@
 ---
-exclude_jquery: false
+exclude_jquery: true
 catalogueId: ochs0010_palm-leaf
 title: "OCHS0010 Palm Leaf"
 sanskritTitle: ""
@@ -28,6 +28,8 @@ categories:
   - sanskrit
 ---
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -50,8 +52,18 @@ data_text <- NA
 ```
 
 <div id="sanskrit-dictionary">
-<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"></iframe>
-<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de">Cologne Digital Sanskrit Dictionaries</a></p>
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary2">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionary2()">&times;</a>
+<iframe src="https://www.sanskrit-lexicon.uni-koeln.de/scans/MDScan/2020/web/webtc2/index.php"></iframe>
+<p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
+</div>
+<div id="sanskrit-dictionary-url">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">&times;</a>
+<iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
 ```{r add-text, results="asis"}
