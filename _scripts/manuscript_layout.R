@@ -1,3 +1,5 @@
+source(here::here("_scripts/manuscript_joint_functions.R"))
+
 create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
@@ -11,11 +13,9 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button id="zoomReset', zoomid, '">Reset zoom</button>'))
   cat(str_c('<button onclick="resetTransform', zoomid, '()">Reset text</button>'))
   cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
-  cat('<button onclick="toggleDictionary()">Dictionary</button>')
-  cat('<button onclick="toggleDictionary2()">Dictionary2</button>')
-  cat('<input type="text" id="dictionary-url" placeholder="https://" />')
-  cat('<button onclick="toggleDictionaryURL()">Show</button>')
+  insert_dictionary_dropdown()
   cat('</div>')
+  
   
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
   cat(str_c('<img src="', photo_path, '" class="img-fluid">'))
@@ -127,10 +127,7 @@ create_overlay_divs <- function(photo_info_tibble){
 
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
-  cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}\n')
-  cat('function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}\n')
-  cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n')
-  cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
+  insert_dictionary_toggle_functions()
   cat('</script>')
   cat('<script>')
   

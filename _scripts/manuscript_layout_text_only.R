@@ -5,10 +5,7 @@ create_content <- function(cols_hide, text_only_version) {
   # create left column
   cat('<div class="col-sm-3 manuscript-photo">')
   cat('<div class="zoomButtons">')
-  cat('<button onclick="toggleDictionary()">Dictionary</button>')
-  cat('<button onclick="toggleDictionary2()">Dictionary2</button>')
-  cat('<input type="text" id="dictionary-url" placeholder="https://" />')
-  cat('<button onclick="toggleDictionaryURL()">Show</button>')
+  insert_dictionary_dropdown()
   cat('</div>')
   if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
@@ -37,9 +34,6 @@ create_content <- function(cols_hide, text_only_version) {
 
 create_overlay_functions <- function(){
   cat('<script>')
-  cat('function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}')
-  cat('function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}')
-  cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}')
-  cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
+  insert_dictionary_toggle_functions()
   cat('</script>')
 }
