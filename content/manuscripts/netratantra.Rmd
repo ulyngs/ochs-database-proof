@@ -27,7 +27,7 @@ hasText: yes
 categories:
   - sanskrit
 ---
- 
+
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -65,7 +65,7 @@ photo_info <- tibble(
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
 datatable(data_text, extensions = c("ColReorder", "Buttons"))
-  
+    
 ```
 
 
@@ -75,6 +75,5 @@ create_overlay_divs(photo_info)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\n")
 initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)  
+create_overlay_functions(photo_info)
 ```
-

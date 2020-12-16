@@ -44,7 +44,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,
-                                        scrollY = '600px',
+                                        scrollY = '550px',
                                         scrollX = TRUE,
                                         paging = FALSE,
                                         info = FALSE,
