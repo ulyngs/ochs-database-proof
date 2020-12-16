@@ -29,8 +29,6 @@ categories:
   - sanskrit
 ---
 
-<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
-
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -55,7 +53,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
+datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
 
 ```
 

@@ -42,6 +42,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
                                       width = '100%',
                                       height = '100%',
                                       options = list(
+                                        searchHighlight = TRUE,
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,

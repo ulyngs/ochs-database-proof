@@ -131,8 +131,6 @@ categories:
 ```{r}
 write_rmd_w_photos_and_text <- function(line_of_meta_data){
   line_of_meta_data %>%  glue_data('
-<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
-
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -169,7 +167,7 @@ photo_info <- tibble(
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("ColReorder", "Buttons"))
+datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE))
     
 \`\`\`
 
@@ -225,8 +223,6 @@ create_overlay_functions(photo_info)
 
 write_rmd_text_only <- function(line_of_meta_data, text_only_version){
   glue('
-<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
-
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -251,7 +247,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("ColReorder", "Buttons"), filter = "top")
+datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
 
 \`\`\`
 
@@ -267,7 +263,7 @@ cat("\\n")
 write_rmd <- function(line_of_meta_data){
   
   if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "yes") {
-    print("photos and text")
+    
     #write normal version
     yaml_to_write <- write_yaml_header(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
@@ -280,19 +276,22 @@ write_rmd <- function(line_of_meta_data){
                                       str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))))
     rmd_to_write_text_version <- write_rmd_text_only(line_of_meta_data, text_only_version = TRUE)  
     write_lines(rmd_to_write_text_version, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))), append = TRUE)
+    
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
-    print("photos only")
+    
     yaml_to_write <- write_yaml_header_photos_only(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
     rmd_to_write <- write_rmd_photos_only(line_of_meta_data)  
+    
   } else if (line_of_meta_data$has_photos == "no" & line_of_meta_data$has_text == "yes") {
-    print("text only")
+    
     yaml_to_write <- write_yaml_header(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
     rmd_to_write <- write_rmd_text_only(line_of_meta_data, text_only_version = FALSE)  
   }
+  
   # append body rmd to yaml
   write_lines(rmd_to_write, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, ".Rmd"))), append = TRUE)
   

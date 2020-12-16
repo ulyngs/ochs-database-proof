@@ -7,7 +7,7 @@ create_content <- function(cols_hide, text_only_version) {
   cat('<div class="zoomButtons">')
   insert_dictionary_dropdown()
   cat('</div>')
-  if(!text_only_version) cat('<h2 class="no-images-notice">ARGH ! No manuscript images available at the moment.</h2>')
+  if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
   cat('<div class="col-sm-9 manuscript-text">')
@@ -20,6 +20,7 @@ create_content <- function(cols_hide, text_only_version) {
                                       extensions = c('ColReorder', 'Buttons'),
                                       filter = 'top',
                                       options = list (
+                                        searchHighlight = TRUE,
                                         columnDefs = list(list(visible=FALSE, targets=cols_hide)),
                                         lengthMenu = list(c(15, -1), c("15", "All")),
                                         colReorder = TRUE,

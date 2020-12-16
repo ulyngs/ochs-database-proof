@@ -28,8 +28,6 @@ categories:
   - sanskrit
 ---
 
-<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
-
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -66,7 +64,7 @@ photo_info <- tibble(
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, extensions = c("ColReorder", "Buttons"))
+datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE))
     
 ```
 

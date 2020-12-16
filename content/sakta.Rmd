@@ -85,6 +85,7 @@ df %>%
             options = list(paging = FALSE, 
                            scrollX = TRUE,
                            keys = TRUE,
+                           searchHighlight = TRUE,
                            dom = 'Bfrtip',
                            buttons = c('csv', 'excel', 'print')
                            ))
