@@ -29,8 +29,6 @@ categories:
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
-<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -110,6 +108,9 @@ Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Colo
 <p>
 Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a>
 </p>
+</div>
+<div id="sanskrit-dictionary-url">
+<a href="javascript:void(0)" class="closebtn-dictionary" onclick="toggleDictionaryURL()">×</a><iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 <div id="myNavzoomable1" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable1()">×</a>
@@ -891,13 +892,17 @@ Reset
 <button onclick="openNavzoomable1()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable1" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05005.jpg" class="img-fluid">
@@ -924,13 +929,17 @@ Reset
 <button onclick="openNavzoomable2()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable2" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05007.jpg" class="img-fluid">
@@ -957,13 +966,17 @@ Reset
 <button onclick="openNavzoomable3()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable3" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05008.jpg" class="img-fluid">
@@ -990,13 +1003,17 @@ Reset
 <button onclick="openNavzoomable4()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable4" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05009.jpg" class="img-fluid">
@@ -1023,13 +1040,17 @@ Reset
 <button onclick="openNavzoomable5()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable5" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05010.jpg" class="img-fluid">
@@ -1056,13 +1077,17 @@ Reset
 <button onclick="openNavzoomable6()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable6" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05011.jpg" class="img-fluid">
@@ -1089,13 +1114,17 @@ Reset
 <button onclick="openNavzoomable7()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable7" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05012.jpg" class="img-fluid">
@@ -1122,13 +1151,17 @@ Reset
 <button onclick="openNavzoomable8()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable8" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05013.jpg" class="img-fluid">
@@ -1155,13 +1188,17 @@ Reset
 <button onclick="openNavzoomable9()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable9" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05014.jpg" class="img-fluid">
@@ -1188,13 +1225,17 @@ Reset
 <button onclick="openNavzoomable10()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable10" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05015.jpg" class="img-fluid">
@@ -1221,13 +1262,17 @@ Reset
 <button onclick="openNavzoomable11()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable11" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05016.jpg" class="img-fluid">
@@ -1254,13 +1299,17 @@ Reset
 <button onclick="openNavzoomable12()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable12" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05017.jpg" class="img-fluid">
@@ -1287,13 +1336,17 @@ Reset
 <button onclick="openNavzoomable13()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable13" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05018.jpg" class="img-fluid">
@@ -1320,13 +1373,17 @@ Reset
 <button onclick="openNavzoomable14()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable14" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05019.jpg" class="img-fluid">
@@ -1353,13 +1410,17 @@ Reset
 <button onclick="openNavzoomable15()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable15" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05020.jpg" class="img-fluid">
@@ -1386,13 +1447,17 @@ Reset
 <button onclick="openNavzoomable16()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable16" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05021.jpg" class="img-fluid">
@@ -1419,13 +1484,17 @@ Reset
 <button onclick="openNavzoomable17()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable17" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05022.jpg" class="img-fluid">
@@ -1452,13 +1521,17 @@ Reset
 <button onclick="openNavzoomable18()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable18" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05023.jpg" class="img-fluid">
@@ -1485,13 +1558,17 @@ Reset
 <button onclick="openNavzoomable19()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable19" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05024.jpg" class="img-fluid">
@@ -1518,13 +1595,17 @@ Reset
 <button onclick="openNavzoomable20()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable20" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05025.jpg" class="img-fluid">
@@ -1551,13 +1632,17 @@ Reset
 <button onclick="openNavzoomable21()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable21" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05026.jpg" class="img-fluid">
@@ -1584,13 +1669,17 @@ Reset
 <button onclick="openNavzoomable22()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable22" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05027.jpg" class="img-fluid">
@@ -1617,13 +1706,17 @@ Reset
 <button onclick="openNavzoomable23()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable23" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05028.jpg" class="img-fluid">
@@ -1650,13 +1743,17 @@ Reset
 <button onclick="openNavzoomable24()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable24" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05029.jpg" class="img-fluid">
@@ -1683,13 +1780,17 @@ Reset
 <button onclick="openNavzoomable25()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable25" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05030.jpg" class="img-fluid">
@@ -1716,13 +1817,17 @@ Reset
 <button onclick="openNavzoomable26()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable26" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05031.jpg" class="img-fluid">
@@ -1749,13 +1854,17 @@ Reset
 <button onclick="openNavzoomable27()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable27" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05032.jpg" class="img-fluid">
@@ -1782,13 +1891,17 @@ Reset
 <button onclick="openNavzoomable28()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable28" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05033.jpg" class="img-fluid">
@@ -1815,13 +1928,17 @@ Reset
 <button onclick="openNavzoomable29()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable29" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05034.jpg" class="img-fluid">
@@ -1848,13 +1965,17 @@ Reset
 <button onclick="openNavzoomable30()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable30" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05035.jpg" class="img-fluid">
@@ -1881,13 +2002,17 @@ Reset
 <button onclick="openNavzoomable31()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable31" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05036.jpg" class="img-fluid">
@@ -1914,13 +2039,17 @@ Reset
 <button onclick="openNavzoomable32()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable32" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05037.jpg" class="img-fluid">
@@ -1947,13 +2076,17 @@ Reset
 <button onclick="openNavzoomable33()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable33" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05038.jpg" class="img-fluid">
@@ -1980,13 +2113,17 @@ Reset
 <button onclick="openNavzoomable34()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable34" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05039.jpg" class="img-fluid">
@@ -2013,13 +2150,17 @@ Reset
 <button onclick="openNavzoomable35()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable35" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05040.jpg" class="img-fluid">
@@ -2046,13 +2187,17 @@ Reset
 <button onclick="openNavzoomable36()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable36" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05041.jpg" class="img-fluid">
@@ -2079,13 +2224,17 @@ Reset
 <button onclick="openNavzoomable37()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable37" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05042.jpg" class="img-fluid">
@@ -2112,13 +2261,17 @@ Reset
 <button onclick="openNavzoomable38()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable38" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05043.jpg" class="img-fluid">
@@ -2145,13 +2298,17 @@ Reset
 <button onclick="openNavzoomable39()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable39" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05044.jpg" class="img-fluid">
@@ -2178,13 +2335,17 @@ Reset
 <button onclick="openNavzoomable40()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable40" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05045.jpg" class="img-fluid">
@@ -2211,13 +2372,17 @@ Reset
 <button onclick="openNavzoomable41()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable41" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05046.jpg" class="img-fluid">
@@ -2244,13 +2409,17 @@ Reset
 <button onclick="openNavzoomable42()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable42" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05047.jpg" class="img-fluid">
@@ -2277,13 +2446,17 @@ Reset
 <button onclick="openNavzoomable43()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable43" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05048.jpg" class="img-fluid">
@@ -2310,13 +2483,17 @@ Reset
 <button onclick="openNavzoomable44()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable44" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05049.jpg" class="img-fluid">
@@ -2343,13 +2520,17 @@ Reset
 <button onclick="openNavzoomable45()">
 Full screen
 </button>
-<button onclick="toggleDictionary()">
-Dictionary
+<div class="dropdown dictionary-dropdown">
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Dictionaries
 </button>
-<button onclick="toggleDictionary2()">
-Dictionary2
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" onclick="toggleDictionary1()">
+Shabda-Sagara
 </button>
-<input type="text" id="dictionary-url" placeholder="https://" /><button onclick="toggleDictionaryURL()">Show</button>
+<button class="dropdown-item" onclick="toggleDictionary2()">Monier-Williams (1899)</button> <button class="dropdown-item" onclick="toggleDictionary3()">Macdonell</button> <button class="dropdown-item" onclick="toggleDictionary4()">Cappeller</button> <button class="dropdown-item" onclick="toggleDictionary5()">Apte Practical</button> <button class="dropdown-item" onclick="toggleDictionary6()">Lanman’s</button> <button class="dropdown-item" onclick="toggleDictionary7()">Monier-Williams (1872)</button> <button class="dropdown-item" onclick="toggleDictionary8()">Benfey</button> <button class="dropdown-item" onclick="toggleDictionary9()">Goldstücker</button> <button class="dropdown-item" onclick="toggleDictionary10()">Yates</button> <button class="dropdown-item" onclick="toggleDictionary11()">Wilson</button><input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" /><button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+</div>
+</div>
 </div>
 <div id="zoomable45" class="panzoomContainer">
 <img src="/manuscripts/images/ochs0010_palm-leaf/for_manuscript_page/DSC05050.jpg" class="img-fluid">
@@ -3083,9 +3264,40 @@ zoomInButtonFullzoomable45.addEventListener("click", panzoomFullzoomable45.zoomI
 zoomOutButtonFullzoomable45.addEventListener("click", panzoomFullzoomable45.zoomOut);
 resetButtonFullzoomable45.addEventListener("click", panzoomFullzoomable45.reset);
 </script>
-<script>function toggleDictionary() { $("#sanskrit-dictionary").toggleClass("make-visible"); $("#sanskrit-dictionary iframe").toggleClass("make-visible");}
-function toggleDictionary2() { $("#sanskrit-dictionary2").toggleClass("make-visible"); $("#sanskrit-dictionary2 iframe").toggleClass("make-visible");}
-function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
+<script>function toggleDictionary1() { 
+$("#sanskrit-dictionary1").toggleClass("make-visible"); 
+$("#sanskrit-dictionary1 iframe").toggleClass("make-visible");
+} function toggleDictionary2() { 
+$("#sanskrit-dictionary2").toggleClass("make-visible"); 
+$("#sanskrit-dictionary2 iframe").toggleClass("make-visible");
+} function toggleDictionary3() { 
+$("#sanskrit-dictionary3").toggleClass("make-visible"); 
+$("#sanskrit-dictionary3 iframe").toggleClass("make-visible");
+} function toggleDictionary4() { 
+$("#sanskrit-dictionary4").toggleClass("make-visible"); 
+$("#sanskrit-dictionary4 iframe").toggleClass("make-visible");
+} function toggleDictionary5() { 
+$("#sanskrit-dictionary5").toggleClass("make-visible"); 
+$("#sanskrit-dictionary5 iframe").toggleClass("make-visible");
+} function toggleDictionary6() { 
+$("#sanskrit-dictionary6").toggleClass("make-visible"); 
+$("#sanskrit-dictionary6 iframe").toggleClass("make-visible");
+} function toggleDictionary7() { 
+$("#sanskrit-dictionary7").toggleClass("make-visible"); 
+$("#sanskrit-dictionary7 iframe").toggleClass("make-visible");
+} function toggleDictionary8() { 
+$("#sanskrit-dictionary8").toggleClass("make-visible"); 
+$("#sanskrit-dictionary8 iframe").toggleClass("make-visible");
+} function toggleDictionary9() { 
+$("#sanskrit-dictionary9").toggleClass("make-visible"); 
+$("#sanskrit-dictionary9 iframe").toggleClass("make-visible");
+} function toggleDictionary10() { 
+$("#sanskrit-dictionary10").toggleClass("make-visible"); 
+$("#sanskrit-dictionary10 iframe").toggleClass("make-visible");
+} function toggleDictionary11() { 
+$("#sanskrit-dictionary11").toggleClass("make-visible"); 
+$("#sanskrit-dictionary11 iframe").toggleClass("make-visible");
+}function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 $('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});</script>
 <script>function openNavzoomable1() {
 document.getElementById("myNavzoomable1").style.width = "100%";

@@ -29,6 +29,8 @@ categories:
   - sanskrit
 ---
 
+<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
+
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)

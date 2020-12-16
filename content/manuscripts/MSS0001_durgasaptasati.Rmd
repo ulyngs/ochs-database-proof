@@ -61,4 +61,3 @@ cat("\n")
 initiate_zoom_effect(photo_info)
 create_overlay_functions(photo_info)
 ```
-

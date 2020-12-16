@@ -28,6 +28,8 @@ categories:
   - sanskrit
 ---
 
+<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
+
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -62,4 +64,3 @@ create_content(cols_hide = cols_hide_nums, FALSE)
 create_overlay_functions()
 cat("\n")
 ```
-
