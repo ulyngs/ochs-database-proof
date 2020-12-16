@@ -64,7 +64,8 @@ df <- manuscript_meta %>%
 #across(-has_content, ~str_c("som))
 
 df %>% 
-  datatable(rownames = FALSE,
+  datatable(plugins = 'accent-neutralise',
+            rownames = FALSE,
             escape = FALSE,
             colnames = c('Popular identifier' = 'Identifier_popular',
                          'Title: sanskrit' = 'Title_sanskrit',
