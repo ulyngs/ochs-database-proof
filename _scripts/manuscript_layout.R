@@ -33,6 +33,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
     select(chapter, verse, transliteration, starts_with("translation_"), everything())
   
   print( htmltools::tagList(datatable(current_table,
+                                      plugins = 'accent-neutralise',
                                       elementId = str_c(zoomid, "DT"),
                                       rownames = FALSE, 
                                       escape = FALSE,

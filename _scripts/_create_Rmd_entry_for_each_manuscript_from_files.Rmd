@@ -131,6 +131,8 @@ categories:
 ```{r}
 write_rmd_w_photos_and_text <- function(line_of_meta_data){
   line_of_meta_data %>%  glue_data('
+<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
+
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -223,6 +225,8 @@ create_overlay_functions(photo_info)
 
 write_rmd_text_only <- function(line_of_meta_data, text_only_version){
   glue('
+<script src="/rmarkdown-libs/dt-plugin-accent-neutralise/source.js"></script>
+
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)

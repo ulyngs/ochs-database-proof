@@ -7,14 +7,16 @@ create_content <- function(cols_hide, text_only_version) {
   cat('<div class="zoomButtons">')
   insert_dictionary_dropdown()
   cat('</div>')
-  if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
+  if(!text_only_version) cat('<h2 class="no-images-notice">ARGH ! No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
   cat('<div class="col-sm-9 manuscript-text">')
   
   print( htmltools::tagList(data_text %>% 
                               select(chapter, verse, transliteration, starts_with("translation_"), everything()) %>% 
-                            datatable(rownames = FALSE,
+                            datatable(plugins = 'accent-neutralise',
+                                      rownames = FALSE,
+                                      escape = FALSE,
                                       extensions = c('ColReorder', 'Buttons'),
                                       filter = 'top',
                                       options = list (
