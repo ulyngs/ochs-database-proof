@@ -44,7 +44,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
                                         dom = 'Bfrtip',
                                         buttons = I('colvis'),
                                         colReorder = TRUE,
-                                        #scrollY = '550px',
+                                        scrollY = '600px',
                                         scrollX = TRUE,
                                         paging = FALSE,
                                         info = FALSE,
@@ -133,10 +133,20 @@ create_overlay_functions <- function(photo_info_tibble){
   
   photo_info_tibble %>% 
     glue_data('
-function hideHeader{{zoomid}}() {$("#{{zoomid}}DT .dataTables_scrollBody td div").addClass("add-background"); $("#{{zoomid}}DT .dataTables_scrollBody td").addClass("white-font"); $("#{{zoomid}}DT .dataTables_scrollHead").addClass("hide-on-pan"); $("#{{zoomid}}DT .dt-buttons").addClass("hide-on-pan");$("#{{zoomid}}DT .dataTables_filter").addClass("hide-on-pan");}
+function hideHeader{{zoomid}}() {$("#{{zoomid}}DT .dataTables_scrollBody td div").addClass("add-background"); 
+$("#{{zoomid}}DT .dataTables_scrollBody td").addClass("white-font"); 
+$("#{{zoomid}}DT .dataTables_scrollBody").addClass("no-scroll"); 
+$("#{{zoomid}}DT .dataTables_scrollHead").addClass("hide-on-pan"); 
+$("#{{zoomid}}DT .dt-buttons").addClass("hide-on-pan");
+$("#{{zoomid}}DT .dataTables_filter").addClass("hide-on-pan");}
 
 function showHeader{{zoomid}}(){
-{$("#{{zoomid}}DT .dataTables_scrollBody td div").removeClass("add-background"); $("#{{zoomid}}DT .dataTables_scrollBody td").removeClass("white-font"); $("#{{zoomid}}DT .dataTables_scrollHead").removeClass("hide-on-pan"); $("#{{zoomid}}DT .dt-buttons").removeClass("hide-on-pan");$("#{{zoomid}}DT .dataTables_filter").removeClass("hide-on-pan");}
+{$("#{{zoomid}}DT .dataTables_scrollBody td div").removeClass("add-background"); 
+$("#{{zoomid}}DT .dataTables_scrollBody td").removeClass("white-font"); 
+$("#{{zoomid}}DT .dataTables_scrollBody").removeClass("no-scroll"); 
+$("#{{zoomid}}DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
+$("#{{zoomid}}DT .dt-buttons").removeClass("hide-on-pan");
+$("#{{zoomid}}DT .dataTables_filter").removeClass("hide-on-pan");}
 }
 
 function resetTransform{{zoomid}}(){

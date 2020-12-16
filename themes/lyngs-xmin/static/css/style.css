@@ -392,9 +392,11 @@ a.closebtn-dictionary {
   bottom   : 0 !important;
 }
 
+/*
 .manuscript-page .manuscript-text .html-widget {
   height: 600px !important;
 }
+*/
 
 .manuscript-page .manuscript-text tr {
   background-color: transparent !important;
@@ -473,3 +475,6 @@ a.closebtn-dictionary {
   }
 }
 
+.no-scroll {
+  overflow: visible !important;
+}
