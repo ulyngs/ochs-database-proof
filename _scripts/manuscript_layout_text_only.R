@@ -3,7 +3,7 @@ create_content <- function(cols_hide, text_only_version) {
   cat("<div class='row manuscript-text-only'>")
   
   # create left column
-  cat('<div class="col-sm-3 manuscript-photo">')
+  cat('<div class="col-sm-3">')
   cat('<div class="zoomButtons">')
   insert_dictionary_dropdown()
   cat('</div>')

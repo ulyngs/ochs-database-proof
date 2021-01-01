@@ -3,7 +3,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat("<div class='row manuscript-photo-and-text'>")
   
   # create left column
-  cat('<div class="col-sm-9 manuscript-photo">')
+  cat('<div class="col-sm-9">')
   
   cat('<div class="zoomButtons">')
   cat(str_c('<button id="zoomIn', zoomid, '">Zoom in</button>'))
@@ -13,9 +13,11 @@ create_content <- function(photoid, zoomid, photo_path) {
   insert_dictionary_dropdown()
   cat('</div>')
   
+  cat('<div class="row manuscript-photo"><div class="col-sm-12">')
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
   cat(str_c('<img src="', photo_path, '" class="img-fluid">'))
   cat('</div>') # close zoom container
+  cat("</div></div>") # close container for photo
   
   cat("</div>") # close column
   
