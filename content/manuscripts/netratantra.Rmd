@@ -37,9 +37,9 @@ library(glue)
 source(here("_scripts", "manuscript_layout.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "netratantra", "for_manuscript_page")
+photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "netratantra/for_manuscript_page/"
+folder_name <- "netratantra/medium_resolution/"
 
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
    mutate(photo = str_c(photo, ".JPG")) %>% 
@@ -58,9 +58,13 @@ cols_total <- length(count_cols)
 
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
+photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "netratantra", high_resolution == FALSE, filepath != "netratantra") %>% 
+  pull(filename)
+
 photo_info <- tibble(
-   photoid = list.files(photos_folder),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>%
+   photoid = photos_medium_resolution,
+   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables

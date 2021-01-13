@@ -39,13 +39,17 @@ library(glue)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "mss0001_durgasaptasati", "for_manuscript_page")
+photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "mss0001_durgasaptasati/for_manuscript_page/"
+folder_name <- "mss0001_durgasaptasati/medium_resolution/"
+
+photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "mss0001_durgasaptasati", high_resolution == FALSE, filepath != "mss0001_durgasaptasati") %>% 
+  pull(filename)
 
 photo_info <- tibble(
-   photoid = list.files(photos_folder),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>% 
+   photoid = photos_medium_resolution,
+   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
 data_text <- NA

@@ -8,6 +8,19 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 library(tidyverse)
 library(here)
 library(glue)
+library(fs)
+library(aws.s3)
+
+# update list of content in AWS
+aws_contents <- get_bucket("shakta-manuscripts") 
+
+tibble(
+  filepath = map_chr(aws_contents, "Key"),
+  manuscript = str_extract(filepath, "^[^/]+"),
+  high_resolution = str_detect(filepath, "high_resolution"),
+  filename = path_file(filepath)
+) %>% 
+  write_csv(here::here("data", "aws_content.csv"))
 
 text_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")) %>% 
   rename(Subject = `Subject(s)`)
@@ -140,9 +153,9 @@ library(glue)
 source(here("_scripts", "manuscript_layout.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "{{Catalogue_id}}", "for_manuscript_page")
+photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "{{Catalogue_id}}/for_manuscript_page/"
+folder_name <- "{{Catalogue_id}}/medium_resolution/"
 
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}")) %>% 
@@ -161,9 +174,13 @@ cols_total <- length(count_cols)
 
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
+photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}") %>% 
+  pull(filename)
+
 photo_info <- tibble(
-   photoid = list.files(photos_folder),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>%
+   photoid = photos_medium_resolution,
+   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
@@ -197,13 +214,17 @@ library(glue)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- here("static", "manuscripts", "images", "{{Catalogue_id}}", "for_manuscript_page")
+photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "{{Catalogue_id}}/for_manuscript_page/"
+folder_name <- "{{Catalogue_id}}/medium_resolution/"
+
+photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}") %>% 
+  pull(filename)
 
 photo_info <- tibble(
-   photoid = list.files(photos_folder),
-   photo_path = str_c("/manuscripts/images/", folder_name, list.files(photos_folder))) %>% 
+   photoid = photos_medium_resolution,
+   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
 data_text <- NA
