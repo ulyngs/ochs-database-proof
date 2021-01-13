@@ -110,25 +110,6 @@ instance{{zoomid}}.on("panstart", function(e) { hideHeader{{zoomid}}() });
   cat('</script>')
 }
 
-create_overlay_divs <- function(photo_info_tibble){
-  # create the divs
-  photo_info %>% 
-    glue_data('<div id="myNav{{zoomid}}" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
-<div class="zoomButtonsFullScreen">
-<button id="zoomInFullScreen{{zoomid}}">Zoom in</button>
-<button id="zoomOutFullScreen{{zoomid}}">Zoom out</button>
-<button id="zoomResetFullScreen{{zoomid}}">Reset</button>
-<button class="showTextbtn" onclick="showText{{zoomid}}()">Show/hide text</button>
-</div>
-<div class="panzoomContainer overlay-content" id="full{{zoomid}}">
-<img src="{{photo_path}}" class="img-fluid">
-</div>
-</div>\n
-', .open = "{{", .close = "}}") %>%
-    cat()
-}
-
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
   insert_dictionary_toggle_functions()
@@ -162,7 +143,10 @@ function showText{{zoomid}}() {$("#{{zoomid}}DT").toggleClass("bring-to-foregrou
 
 function openNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "100%";
+var image = document.querySelector("#myNav{{zoomid}} img");
+image.src = image.getAttribute("data-src");
 }
+
 function closeNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "0%";
 resetTransform{{zoomid}}()

@@ -44,3 +44,23 @@ initialise_lazy_load <- function(){
   cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
   cat('<script>var lazyLoadInstance = new LazyLoad({});</script>')
 }
+
+
+
+create_overlay_divs <- function(photo_info_tibble){
+  # create the divs
+  photo_info %>% 
+    glue_data('<div id="myNav{{zoomid}}" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
+<div class="zoomButtonsFullScreen">
+<button id="zoomInFullScreen{{zoomid}}">Zoom in</button>
+<button id="zoomOutFullScreen{{zoomid}}">Zoom out</button>
+<button id="zoomResetFullScreen{{zoomid}}">Reset</button>
+</div>
+<div class="panzoomContainer overlay-content" id="full{{zoomid}}">
+<img data-src="{{photo_path}}" class="img-fluid">
+</div>
+</div>\n
+', .open = "{{", .close = "}}") %>%
+    cat()
+}
