@@ -38,3 +38,9 @@ $("#sanskrit-dictionary{{iframe_number}} iframe").toggleClass("make-visible");
   cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n')
   cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
 }
+
+
+initialise_lazy_load <- function(){
+  cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
+  cat('<script>var lazyLoadInstance = new LazyLoad({});</script>')
+}

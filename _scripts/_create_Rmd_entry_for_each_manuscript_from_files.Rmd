@@ -179,6 +179,7 @@ pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\\n")
 initiate_zoom_effect(photo_info)
 create_overlay_functions(photo_info)
+initialise_lazy_load()
 \`\`\`
 ', .open = "{{", .close = "}}")
 }
@@ -217,6 +218,7 @@ pwalk(photo_info, create_content)
 cat("\\n")
 initiate_zoom_effect(photo_info)
 create_overlay_functions(photo_info)
+initialise_lazy_load()
 \`\`\`
 ', .open = "{{", .close = "}}")
 }

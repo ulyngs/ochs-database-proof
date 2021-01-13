@@ -15,7 +15,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   
   cat('<div class="row manuscript-photo"><div class="col-sm-12">')
   cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
-  cat(str_c('<img src="', photo_path, '" class="img-fluid">'))
+  cat(str_c('<img data-src="', photo_path, '" class="img-fluid lazy">'))
   cat('</div>') # close zoom container
   cat("</div></div>") # close container for photo
   
