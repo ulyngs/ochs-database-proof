@@ -44,7 +44,7 @@ photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 folder_name <- "mss0003_svasthani/medium_resolution/"
 
 photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "mss0003_svasthani", high_resolution == FALSE, filepath != "mss0003_svasthani") %>% 
+  filter(manuscript == "mss0003_svasthani", high_resolution == FALSE, filepath != "mss0003_svasthani/") %>% 
   pull(filename)
 
 photo_info <- tibble(

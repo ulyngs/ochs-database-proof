@@ -175,7 +175,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}") %>% 
+  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}/") %>% 
   pull(filename)
 
 photo_info <- tibble(
@@ -219,7 +219,7 @@ photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 folder_name <- "{{Catalogue_id}}/medium_resolution/"
 
 photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}") %>% 
+  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}/") %>% 
   pull(filename)
 
 photo_info <- tibble(

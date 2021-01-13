@@ -59,7 +59,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "netratantra", high_resolution == FALSE, filepath != "netratantra") %>% 
+  filter(manuscript == "netratantra", high_resolution == FALSE, filepath != "netratantra/") %>% 
   pull(filename)
 
 photo_info <- tibble(
