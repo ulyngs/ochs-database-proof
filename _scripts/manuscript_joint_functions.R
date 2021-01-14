@@ -22,6 +22,39 @@ insert_manuscript_photo <- function(zoomid, photo_path, photoid){
   ) %>% cat()
 }
 
+## INSERT MANUSCRIPT TEXT ##
+insert_manuscript_text <- function(df, cols_to_hide, 
+                                   setId = NULL, 
+                                   setLengthMenu = NULL, 
+                                   scrollYPix = NULL, 
+                                   hideInfo = FALSE,
+                                   noPaging = FALSE,
+                                   fullWidth = FALSE){
+  print( htmltools::tagList(datatable(df,
+                                      plugins = 'accent-neutralise',
+                                      elementId = if (!is.null(setId)) {paste0(setId, "DT")} else {NULL},
+                                      rownames = FALSE,
+                                      escape = FALSE,
+                                      extensions = c('ColReorder', 'Buttons', 'Responsive'),
+                                      width = if (fullWidth) {'100%'} else {NULL},
+                                      height = '100%',
+                                      filter = 'top',
+                                      options = list (
+                                        searchHighlight = TRUE,
+                                        dom = 'lBfrtip',
+                                        buttons = I('colvis'),
+                                        colReorder = TRUE,
+                                        lengthMenu = if (setLengthMenu) {list(c(15, -1), c("15", "All"))} else {NULL},
+                                        scrollY = if (!is.null(scrollYPix)) {scrollYPix} else {NULL},
+                                        scrollX = TRUE,
+                                        info = if (hideInfo) {FALSE} else {TRUE},
+                                        paging = if (noPaging) {FALSE} else {TRUE},
+                                        columnDefs = list(list(visible=FALSE, targets=cols_to_hide))
+                                      ))
+                            )
+  )
+}
+
 ## DICTIONARIES ##
 dictionaries <- readr::read_csv(here::here("data/dictionaries.csv")) %>% 
   mutate(function_name = stringr::str_c("toggleDictionary", row_number(), "()")) %>% 

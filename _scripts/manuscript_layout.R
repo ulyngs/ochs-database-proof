@@ -24,25 +24,34 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
     select(-photo) %>% 
     select(chapter, verse, transliteration, starts_with("translation_"), everything())
   
-  print( htmltools::tagList(datatable(current_table,
-                                      plugins = 'accent-neutralise',
-                                      elementId = str_c(zoomid, "DT"),
-                                      rownames = FALSE, 
-                                      escape = FALSE,
-                                      class = "row-border",
-                                      extensions = c('ColReorder', 'Buttons', 'Responsive'),
-                                      width = '100%',
-                                      height = '100%',
-                                      options = list(
-                                        searchHighlight = TRUE,
-                                        dom = 'Bfrtip',
-                                        buttons = I('colvis'),
-                                        colReorder = TRUE,
-                                        scrollY = '550px',
-                                        scrollX = TRUE,
-                                        paging = FALSE,
-                                        info = FALSE,
-                                        columnDefs = list(list(visible=FALSE, targets=cols_hide))))) )
+  insert_manuscript_text(current_table, 
+                         cols_hide, 
+                         setId = zoomid, 
+                         setLengthMenu = FALSE, 
+                         scrollYPix = '550px', 
+                         hideInfo = TRUE,
+                         noPaging = TRUE,
+                         fullWidth = TRUE)
+  
+  # print( htmltools::tagList(datatable(current_table,
+  #                                     plugins = 'accent-neutralise',
+  #                                     elementId = str_c(zoomid, "DT"),
+  #                                     rownames = FALSE, 
+  #                                     escape = FALSE,
+  #                                     class = "row-border",
+  #                                     extensions = c('ColReorder', 'Buttons', 'Responsive'),
+  #                                     width = '100%',
+  #                                     height = '100%',
+  #                                     options = list(
+  #                                       searchHighlight = TRUE,
+  #                                       dom = 'Bfrtip',
+  #                                       buttons = I('colvis'),
+  #                                       colReorder = TRUE,
+  #                                       scrollY = '550px',
+  #                                       scrollX = TRUE,
+  #                                       paging = FALSE,
+  #                                       info = FALSE,
+  #                                       columnDefs = list(list(visible=FALSE, targets=cols_hide))))) )
   
   cat("</div>") # close column
   
