@@ -191,7 +191,7 @@ datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder",
 
 \`\`\`{r add-text, results="asis"}
 insert_dictionary_iframes()
-create_overlay_divs(photo_info)
+create_overlay_divs(photo_info, hasText = TRUE)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 cat("\\n")
 initiate_zoom_effect(photo_info)

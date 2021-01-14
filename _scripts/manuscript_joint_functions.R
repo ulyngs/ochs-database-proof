@@ -101,20 +101,29 @@ initialise_lazy_load <- function(){
 
 
 
-create_overlay_divs <- function(photo_info_tibble){
+create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
   # create the divs
-  photo_info %>% 
-    glue_data('<div id="myNav{{zoomid}}" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav{{zoomid}}()">&times;</a>
+  first_part <- photo_info_tibble %>% 
+    glue_data('<div id="myNav{zoomid}" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav{zoomid}()">&times;</a>
 <div class="zoomButtonsFullScreen">
-<button id="zoomInFullScreen{{zoomid}}">Zoom in</button>
-<button id="zoomOutFullScreen{{zoomid}}">Zoom out</button>
-<button id="zoomResetFullScreen{{zoomid}}">Reset</button>
+<button id="zoomInFullScreen{zoomid}">Zoom in</button>
+<button id="zoomOutFullScreen{zoomid}">Zoom out</button>
+<button id="zoomResetFullScreen{zoomid}">Reset</button>')
+  
+  text_button <- photo_info_tibble %>% 
+    glue_data('<button class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>')
+  
+  second_part <- photo_info_tibble %>% 
+    glue_data('</div>
+<div class="panzoomContainer overlay-content" id="full{zoomid}">
+<img data-src="{photo_path}" class="img-fluid">
 </div>
-<div class="panzoomContainer overlay-content" id="full{{zoomid}}">
-<img data-src="{{photo_path}}" class="img-fluid">
-</div>
-</div>\n
-', .open = "{{", .close = "}}") %>%
-    cat()
+</div>\n')
+  
+  if (hasText){
+    paste(first_part, text_button, second_part) %>% cat() 
+  } else {
+    paste(first_part, second_part) %>% cat() 
+  }
 }
