@@ -1,3 +1,5 @@
+source(here::here("_scripts/manuscript_joint_functions.R"))
+
 create_content <- function(photoid, zoomid, photo_path) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
@@ -6,18 +8,11 @@ create_content <- function(photoid, zoomid, photo_path) {
   cat('<div class="col-sm-9">')
   
   cat('<div class="zoomButtons">')
-  cat(str_c('<button id="zoomIn', zoomid, '">Zoom in</button>'))
-  cat(str_c('<button id="zoomOut', zoomid, '">Zoom out</button>'))
-  cat(str_c('<button id="zoomReset', zoomid, '">Reset</button>'))
-  cat(str_c('<button onclick="openNav', zoomid, '()">Full screen</button>'))
+  insert_zoom_buttons(zoomid)
   insert_dictionary_dropdown()
   cat('</div>')
   
-  cat('<div class="row manuscript-photo"><div class="col-sm-12">')
-  cat(str_c('<div class="panzoomContainer" id="', zoomid, '">'))
-  cat(str_c('<img data-src="', photo_path, '" class="img-fluid lazy">'))
-  cat('</div>') # close zoom container
-  cat("</div></div>") # close container for photo
+  insert_manuscript_photo(zoomid, photo_path, photoid)
   
   cat("</div>") # close column
   

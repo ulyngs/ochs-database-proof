@@ -2,6 +2,27 @@ library(magrittr)
 library(dplyr)
 library(glue)
 
+## ZOOM BUTTONS ##
+insert_zoom_buttons <- function(zoomid){
+  glue('<button id="zoomIn', zoomid, '"><i class="fa fa-search-plus"></i></button>',
+       '<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>',
+       '<button id="zoomReset', zoomid, '">Reset zoom</button>',
+       '<button onclick="openNav', zoomid, '()">Full screen</button>'
+  ) %>% cat()
+}
+
+## INSERT MANUSCRIPT PHOTO ##
+insert_manuscript_photo <- function(zoomid, photo_path, photoid){
+  glue('<div class="row manuscript-photo"><div class="col-sm-12">',
+       '<div class="panzoomContainer" id="', zoomid, '">',
+       '<img data-src="', photo_path, '" class="img-fluid lazy">',
+       '</div>',
+       '<div class="photo-title"><p>', photoid, '</p></div>',
+       '</div></div>'
+  ) %>% cat()
+}
+
+## DICTIONARIES ##
 dictionaries <- readr::read_csv(here::here("data/dictionaries.csv")) %>% 
   mutate(function_name = stringr::str_c("toggleDictionary", row_number(), "()")) %>% 
   mutate(iframe_number = row_number())
