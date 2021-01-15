@@ -64,7 +64,7 @@ create_overlay_functions <- function(photo_info_tibble){
 function openNav{{zoomid}}() {
 document.getElementById("myNav{{zoomid}}").style.width = "100%";
 var image = document.querySelector("#myNav{{zoomid}} img");
-image.src = image.getAttribute("data-src");
+image.src = image.getAttribute("data-src-md-res");
 }
 
 function closeNav{{zoomid}}() {

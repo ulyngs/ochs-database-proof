@@ -113,7 +113,8 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
 <div class="zoomButtonsFullScreen">
 <button id="zoomInFullScreen{zoomid}">Zoom in</button>
 <button id="zoomOutFullScreen{zoomid}">Zoom out</button>
-<button id="zoomResetFullScreen{zoomid}">Reset</button>')
+<button id="zoomResetFullScreen{zoomid}">Reset</button>
+<button onclick="highResFull{zoomid}()">Resolution</button>')
   
   text_button <- photo_info_tibble %>% 
     glue_data('<button class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>')
@@ -121,7 +122,9 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
   second_part <- photo_info_tibble %>% 
     glue_data('</div>
 <div class="panzoomContainer overlay-content" id="full{zoomid}">
-<img data-src="{photo_path_medium}" class="img-fluid">
+<p class="medium-image-size-overlay">{photo_size_medium}</p>
+<p class="high-image-size-overlay">{photo_size_high}</p>
+<img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
 </div>
 </div>\n')
   
@@ -147,6 +150,20 @@ if (image.src === image.getAttribute("data-src-md-res")) {
     image.src = image.getAttribute("data-src-md-res");
     document.querySelector("#{{zoomid}} .medium-image-size").style.display = "block";
     document.querySelector("#{{zoomid}} .high-image-size").style.display = "none";
+  }
+}
+
+function highResFull{{zoomid}}() {
+var image = document.querySelector("#myNav{{zoomid}} img");
+
+if (image.src === image.getAttribute("data-src-md-res")) {
+    image.src = image.getAttribute("data-src-high-res");
+    document.querySelector("#myNav{{zoomid}} .medium-image-size-overlay").style.display = "none";
+    document.querySelector("#myNav{{zoomid}} .high-image-size-overlay").style.display = "block";
+  } else {
+    image.src = image.getAttribute("data-src-md-res");
+    document.querySelector("#myNav{{zoomid}} .medium-image-size-overlay").style.display = "block";
+    document.querySelector("#myNav{{zoomid}} .high-image-size-overlay").style.display = "none";
   }
 }
 </script>
