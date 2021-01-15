@@ -11,19 +11,32 @@ library(glue)
 library(fs)
 library(aws.s3)
 
+# function for human-readable filesizes
+format_size <- function(imagesize){
+  case_when(
+    imagesize < 1000 ~ paste(imagesize, "B"),
+    imagesize < 1000000 ~ paste(round(imagesize / 1000, 1), "KB"),
+    imagesize < 1000000000 ~ paste(round(imagesize / 1000000, 1), "MB"),
+    imagesize < 1000000000000 ~ paste(round(imagesize / 1000000000, 1), "GB"),
+  )
+}
+
 # update list of content in AWS
 aws_contents <- get_bucket("shakta-manuscripts") 
 
 tibble(
   filepath = map_chr(aws_contents, "Key"),
+  filesize = map_dbl(aws_contents, "Size"),
+  formatted_filesize = format_size(filesize),
   manuscript = str_extract(filepath, "^[^/]+"),
   high_resolution = str_detect(filepath, "high_resolution"),
-  filename = path_file(filepath)
+  filename = fs::path_file(filepath)
 ) %>% 
   write_csv(here::here("data", "aws_content.csv"))
 
 text_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")) %>% 
   rename(Subject = `Subject(s)`)
+
 ```
 
 # Generate Rmds
