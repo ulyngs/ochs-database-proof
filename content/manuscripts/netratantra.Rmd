@@ -41,7 +41,8 @@ source(here("_scripts/", "manuscript_joint_functions.R"))
 ### text to show ###
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
    mutate(photo = str_c(photo, ".JPG")) %>% 
-   # mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #drop editableness
+   mutate(across(-photo, ~ str_c("<div>", ., "</div>"))) #without editableness
+   #mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
 
 # count columns to include
 count_cols <- data_text %>% 
