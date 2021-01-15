@@ -7,20 +7,24 @@ insert_zoom_buttons <- function(zoomid){
   glue('<button id="zoomIn', zoomid, '"><i class="fa fa-search-plus"></i></button>',
        '<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>',
        '<button id="zoomReset', zoomid, '">Reset zoom</button>',
-       '<button onclick="openNav', zoomid, '()">Full screen</button>'
+       '<button onclick="openNav', zoomid, '()">Full screen</button>',
+       '<button onclick="highRes', zoomid, '()">Resolution</button>'
   ) %>% cat()
 }
 
 ## INSERT MANUSCRIPT PHOTO ##
-insert_manuscript_photo <- function(zoomid, photo_path, photoid){
+insert_manuscript_photo <- function(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
   glue('<div class="row manuscript-photo"><div class="col-sm-12">',
        '<div class="panzoomContainer" id="', zoomid, '">',
-       '<img data-src="', photo_path, '" class="img-fluid lazy">',
+       '<p class="medium-image-size">', photo_size_medium, '</p>',
+       '<p class="high-image-size">', photo_size_high, '</p>',
+       '<img data-src-md-res="', photo_path_medium, '" data-src-high-res="', photo_path_high, '" class="img-fluid lazy">',
        '</div>',
        '<div class="photo-title"><p>', photoid, '</p></div>',
        '</div></div>'
   ) %>% cat()
 }
+
 
 ## INSERT MANUSCRIPT TEXT ##
 insert_manuscript_text <- function(df, cols_to_hide, 
@@ -96,7 +100,7 @@ $("#sanskrit-dictionary{{iframe_number}} iframe").toggleClass("make-visible");
 
 initialise_lazy_load <- function(){
   cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
-  cat('<script>var lazyLoadInstance = new LazyLoad({});</script>')
+  cat('<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>')
 }
 
 
@@ -117,7 +121,7 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
   second_part <- photo_info_tibble %>% 
     glue_data('</div>
 <div class="panzoomContainer overlay-content" id="full{zoomid}">
-<img data-src="{photo_path}" class="img-fluid">
+<img data-src="{photo_path_medium}" class="img-fluid">
 </div>
 </div>\n')
   
@@ -126,4 +130,25 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
   } else {
     paste(first_part, second_part) %>% cat() 
   }
+}
+
+create_high_res_function <- function(photo_info_tibble){
+  photo_info_tibble %>% 
+    glue_data('
+<script>
+function highRes{{zoomid}}() {
+var image = document.querySelector("#{{zoomid}} img");
+
+if (image.src === image.getAttribute("data-src-md-res")) {
+    image.src = image.getAttribute("data-src-high-res");
+    document.querySelector("#{{zoomid}} .medium-image-size").style.display = "none";
+    document.querySelector("#{{zoomid}} .high-image-size").style.display = "block";
+  } else {
+    image.src = image.getAttribute("data-src-md-res");
+    document.querySelector("#{{zoomid}} .medium-image-size").style.display = "block";
+    document.querySelector("#{{zoomid}} .high-image-size").style.display = "none";
+  }
+}
+</script>
+              ', .open = "{{", .close = "}}") %>% cat()
 }

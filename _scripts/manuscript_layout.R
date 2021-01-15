@@ -1,6 +1,6 @@
 source(here::here("_scripts/manuscript_joint_functions.R"))
 
-create_content <- function(photoid, zoomid, photo_path, cols_hide) {
+create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, zoomid, cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
   
@@ -13,7 +13,7 @@ create_content <- function(photoid, zoomid, photo_path, cols_hide) {
   cat(str_c('<button onclick="resetTransform', zoomid, '()">Reset text</button>'))
   cat('</div>')
   
-  insert_manuscript_photo(zoomid, photo_path, photoid)
+  insert_manuscript_photo(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid)
   
   cat("</div>") # close column
   

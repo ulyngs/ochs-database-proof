@@ -1,6 +1,6 @@
 source(here::here("_scripts/manuscript_joint_functions.R"))
 
-create_content <- function(photoid, zoomid, photo_path) {
+create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, zoomid, cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
   
@@ -12,7 +12,7 @@ create_content <- function(photoid, zoomid, photo_path) {
   insert_dictionary_dropdown()
   cat('</div>')
   
-  insert_manuscript_photo(zoomid, photo_path, photoid)
+  insert_manuscript_photo(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid)
   
   cat("</div>") # close column
   

@@ -166,13 +166,11 @@ library(glue)
 source(here("_scripts", "manuscript_layout.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "{{Catalogue_id}}/medium_resolution/"
-
+### text to show ###
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}")) %>% 
-   mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>")))
+   # mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #drop editableness
 
 # count columns to include
 count_cols <- data_text %>% 
@@ -187,13 +185,25 @@ cols_total <- length(count_cols)
 
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
-photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}/") %>% 
-  pull(filename)
+### photos to show ###
+s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
+
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "{{Catalogue_id}}") %>% 
+  mutate(filepath = paste0(s3_address, filepath))
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
 
 photo_info <- tibble(
-   photoid = photos_medium_resolution,
-   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
@@ -210,6 +220,7 @@ cat("\\n")
 initiate_zoom_effect(photo_info)
 create_overlay_functions(photo_info)
 initialise_lazy_load()
+create_high_res_function(photo_info)
 \`\`\`
 ', .open = "{{", .close = "}}")
 }
@@ -227,18 +238,28 @@ library(glue)
 source(here("_scripts", "manuscript_layout_photos_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-photos_folder <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-folder_name <- "{{Catalogue_id}}/medium_resolution/"
+### photos to show ###
+s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
-photos_medium_resolution <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}", high_resolution == FALSE, filepath != "{{Catalogue_id}}/") %>% 
-  pull(filename)
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "{{Catalogue_id}}") %>% 
+  mutate(filepath = paste0(s3_address, filepath))
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
 
 photo_info <- tibble(
-   photoid = photos_medium_resolution,
-   photo_path = str_c(photos_folder, folder_name, photos_medium_resolution)) %>%
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
+
 
 data_text <- NA
 
@@ -253,6 +274,7 @@ cat("\\n")
 initiate_zoom_effect(photo_info)
 create_overlay_functions(photo_info)
 initialise_lazy_load()
+create_high_res_function(photo_info)
 \`\`\`
 ', .open = "{{", .close = "}}")
 }
