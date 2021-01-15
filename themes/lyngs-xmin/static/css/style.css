@@ -247,6 +247,50 @@ footer hr {
 
 
 /* ---- MANUSCRIPT PAGES ---- */
+.manuscript-photo p.medium-image-size,
+.manuscript-photo p.high-image-size {
+  border-bottom: 2px solid black;
+  background-color: black;
+  padding: 0px 3px 0px 4px;
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  border-radius: 2px;
+  font-family: nyt-franklin, arial, sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 10px;
+}
+
+p.medium-image-size-overlay,
+p.high-image-size-overlay {
+  border-bottom: 2px solid black;
+  background-color: black;
+  padding: 0px 3px 0px 4px;
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  border-radius: 2px;
+  font-family: nyt-franklin, arial, sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 10px;
+  z-index: 1040;
+}
+
+.manuscript-photo p.high-image-size,
+p.high-image-size-overlay {
+  display: none;
+}
+
+  
+  
+  
+  
+  
+
 .manuscript-page .sanskrit-dictionary,
 .manuscript-page #sanskrit-dictionary-url {
   position: fixed;
