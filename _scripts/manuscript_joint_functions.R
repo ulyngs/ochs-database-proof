@@ -172,3 +172,20 @@ if (image.src === image.getAttribute("data-src-md-res")) {
 </script>
               ', .open = "{{", .close = "}}") %>% cat()
 }
+
+
+openAndCloseFullScreen <- function(photo_info_tibble){
+  photo_info_tibble %>% 
+    glue_data('
+function openNav{{zoomid}}() {
+document.getElementById("myNav{{zoomid}}").style.width = "100%";
+var image = document.querySelector("#myNav{{zoomid}} img");
+image.src = image.getAttribute("data-src-md-res");
+}
+
+function closeNav{{zoomid}}() {
+document.getElementById("myNav{{zoomid}}").style.width = "0%";
+}
+', .open = "{{", .close = "}}") %>%
+    cat()
+}

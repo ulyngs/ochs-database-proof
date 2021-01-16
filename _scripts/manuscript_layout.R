@@ -119,19 +119,10 @@ showHeader{{zoomid}}()
 }
 
 function showText{{zoomid}}() {$("#{{zoomid}}DT").toggleClass("bring-to-foreground");}
-
-function openNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "100%";
-var image = document.querySelector("#myNav{{zoomid}} img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "0%";
-resetTransform{{zoomid}}()
-}
 ', .open = "{{", .close = "}}") %>%
     cat()
+  
+  openAndCloseFullScreen(photo_info_tibble)
   
   cat('</script>')
 }

@@ -56,22 +56,6 @@ resetButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.reset);\n
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
   insert_dictionary_toggle_functions()
-  cat('</script>')
-  cat('<script>')
-  
-  photo_info_tibble %>% 
-    glue_data('
-function openNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "100%";
-var image = document.querySelector("#myNav{{zoomid}} img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "0%";
-}
-', .open = "{{", .close = "}}") %>%
-    cat()
-  
+  openAndCloseFullScreen(photo_info_tibble)
   cat('</script>')
 }
