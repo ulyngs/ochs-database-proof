@@ -189,3 +189,33 @@ document.getElementById("myNav{{zoomid}}").style.width = "0%";
 ', .open = "{{", .close = "}}") %>%
     cat()
 }
+
+
+prepare_zoom_effect(photo_info_tibble){
+  cat("<script src='/js/panzoom.js'></script>")
+  
+  cat('<script>')
+  photo_info_tibble %>% 
+    glue_data('
+const elem{zoomid} = document.querySelector("#{zoomid}");
+const panzoom{zoomid} = Panzoom(elem{zoomid});
+const zoomInButton{zoomid} = document.querySelector("#zoomIn{zoomid}");
+const zoomOutButton{zoomid} = document.querySelector("#zoomOut{zoomid}");
+const resetButton{zoomid} = document.querySelector("#zoomReset{zoomid}");
+zoomInButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomIn);
+zoomOutButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomOut);
+resetButton{zoomid}.addEventListener("click", panzoom{zoomid}.reset);
+const elemFull{zoomid} = document.querySelector("#full{zoomid}");
+const panzoomFull{zoomid} = Panzoom(elemFull{zoomid});
+const zoomInButtonFull{zoomid} = document.querySelector("#zoomInFullScreen{zoomid}");
+const zoomOutButtonFull{zoomid} = document.querySelector("#zoomOutFullScreen{zoomid}");
+const resetButtonFull{zoomid} = document.querySelector("#zoomResetFullScreen{zoomid}");
+zoomInButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomIn);
+zoomOutButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomOut);
+resetButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.reset);\n
+') %>% 
+    cat()
+  cat('</script>')
+}
+
+
