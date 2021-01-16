@@ -66,7 +66,10 @@ dictionaries <- readr::read_csv(here::here("data/dictionaries.csv")) %>%
 
 insert_dictionary_dropdown <- function(){
   cat('<div class="dropdown dictionary-dropdown"><button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">')
+  
+  # iterates over the dictionaries and insert a button for each
   glue_data(dictionaries, '<button class="dropdown-item" onclick="{function_name}">{name}</button>') %>% cat()
+  
   cat('<input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" />')
   cat('<button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>')
   cat('</div></div>')
