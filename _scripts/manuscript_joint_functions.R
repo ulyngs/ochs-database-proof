@@ -4,11 +4,11 @@ library(glue)
 
 ## ZOOM BUTTONS ##
 insert_zoom_buttons <- function(zoomid){
-  glue('<button id="zoomIn', zoomid, '"><i class="fa fa-search-plus"></i></button>',
-       '<button id="zoomOut', zoomid, '"><i class="fa fa-search-minus"></i></button>',
-       '<button id="zoomReset', zoomid, '">Reset zoom</button>',
-       '<button onclick="openNav', zoomid, '()">Full screen</button>',
-       '<button onclick="highRes', zoomid, '()">Resolution</button>'
+  glue('<button id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>',
+       '<button id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>',
+       '<button id="zoomReset{zoomid}">Reset zoom</button>',
+       '<button onclick="openNav{zoomid}()">Full screen</button>',
+       '<button onclick="highRes{zoomid}()">Resolution</button>'
   ) %>% cat()
 }
 
