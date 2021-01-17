@@ -42,7 +42,10 @@ text_meta <- read_csv(here("static", "manuscripts", "manuscript_meta.csv")) %>%
 # Generate Rmds
 ## Create the YAML header
 ```{r}
-write_yaml_header <- function(line_of_meta_data){
+write_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE){
+  text_only_line <- ""
+  if (is_text_only_version) text_only_line <- "\ntextOnlyVersion: yes"
+  
   line_of_meta_data %>%  glue_data('
 ---
 exclude_jquery: true
@@ -69,80 +72,7 @@ translationEnglish: "{Translation_english_by}"
 translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
 hasPhotos: {has_photos}
-hasText: {has_text}
-categories:
-  - sanskrit
----
-
-', .na = "")
-
-}
-
-write_yaml_header_text_only_version <- function(line_of_meta_data){
-  line_of_meta_data %>%  glue_data('
----
-exclude_jquery: true
-catalogueId: {Catalogue_id}
-title: "{Identifier_popular}"
-sanskritTitle: "{Title_sanskrit}"
-transliteratedTitle: "{Title_transliteration}"
-englishTitle: "{Title_english}"
-approximateDating: "{Dating}"
-manuscriptLanguage: "{Language}"
-script: "{Script}"
-material: "{Material}"
-condition: "{Condition}"
-folios: "{Folios}"
-subject: "{Subject}"
-physicalLocation: "{Physical_location}"
-originPlace: "{Origin_place}"
-author: "{Author}"
-provenance: "{Provenance}"
-bibliographyNote: "{Bibliography}"
-codices: "{Codices}"
-transliterators: "{Transliterated_by}"
-translationEnglish: "{Translation_english_by}"
-translationDanish: "{Translation_danish_by}"
-googlesheet: "{googlesheet_with_text}"
-hasPhotos: {has_photos}
-hasText: {has_text}
-textOnlyVersion: yes
-categories:
-  - sanskrit
----
-
-', .na = "")
-
-}
-
-write_yaml_header_photos_only <- function(line_of_meta_data){
-  line_of_meta_data %>%  glue_data('
----
-exclude_jquery: true
-catalogueId: {Catalogue_id}
-title: "{Identifier_popular}"
-sanskritTitle: "{Title_sanskrit}"
-transliteratedTitle: "{Title_transliteration}"
-englishTitle: "{Title_english}"
-approximateDating: "{Dating}"
-manuscriptLanguage: "{Language}"
-script: "{Script}"
-material: "{Material}"
-condition: "{Condition}"
-folios: "{Folios}"
-subject: "{Subject}"
-physicalLocation: "{Physical_location}"
-originPlace: "{Origin_place}"
-author: "{Author}"
-provenance: "{Provenance}"
-bibliographyNote: "{Bibliography}"
-codices: "{Codices}"
-transliterators: "{Transliterated_by}"
-translationEnglish: "{Translation_english_by}"
-translationDanish: "{Translation_danish_by}"
-googlesheet: "{googlesheet_with_text}"
-hasPhotos: {has_photos}
-hasText: {has_text}
+hasText: {has_text}{text_only_line}
 categories:
   - sanskrit
 ---
@@ -155,18 +85,15 @@ categories:
 
 ## Create the body part
 ```{r}
-write_rmd_w_photos_and_text <- function(line_of_meta_data){
-  line_of_meta_data %>%  glue_data('
-\`\`\`{r setup, include=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
-library(DT)
-library(here)
-library(glue)
-source(here("_scripts", "manuscript_layout.R"))
-source(here("_scripts/", "manuscript_joint_functions.R"))
-
-
+write_rmd_body <- function(line_of_meta_data, has_text, has_photos, text_only_version = FALSE){
+  source_script <- case_when(
+    has_text & has_photos ~ 'source(here("_scripts", "manuscript_layout.R"))',
+    has_photos ~ 'source(here("_scripts", "manuscript_layout_photos_only.R"))',
+    has_text ~ 'source(here("_scripts", "manuscript_layout_text_only.R"))'
+  )
+  
+  if (has_text){
+    lines_for_including_text <- line_of_meta_data %>% glue_data('
 ### text to show ###
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}")) %>% 
@@ -185,7 +112,19 @@ cols_include <- count_cols %>%
 cols_total <- length(count_cols)
 
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
-
+', .open = "{{", .close = "}}")
+    
+    lines_for_including_dt_libraries <- glue('
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
+                                             ')
+  } else {
+    lines_for_including_text <- "data_text <- NA"
+    lines_for_including_dt_libraries <- ""
+  }
+  
+  if (has_photos){
+    lines_for_including_photos <- line_of_meta_data %>% glue_data('
 ### photos to show ###
 s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
@@ -206,29 +145,46 @@ photo_info <- tibble(
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
-
-# ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE))
-    
-\`\`\`
-
-
-\`\`\`{r add-text, results="asis"}
-insert_dictionary_iframes()
-create_overlay_divs(photo_info, hasText = TRUE)
-pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
-cat("\\n")
-initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)
-initialise_lazy_load()
-create_high_res_function(photo_info)
-\`\`\`
 ', .open = "{{", .close = "}}")
-}
+  } else {
+    lines_for_including_photos <- ""
+  }
 
-write_rmd_photos_only <- function(line_of_meta_data){
-  line_of_meta_data %>%  glue_data('
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  ### lines for JS functions ###
+  explicit_jquery <- case_when(
+    has_photos & !(has_text) ~ '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>',
+    TRUE ~ ''
+  )
+  
+  overlay_divs <- case_when(
+    has_text & has_photos ~ 'create_overlay_divs(photo_info, hasText = TRUE)',
+    has_photos ~ 'create_overlay_divs(photo_info)',
+    has_text ~ ''
+  )
+  
+  create_content <- case_when(
+    has_text & has_photos ~ 'pwalk(photo_info, create_content, cols_hide = cols_hide_nums)',
+    has_photos ~ 'pwalk(photo_info, create_content)',
+    has_text ~ paste0("create_content(cols_hide = cols_hide_nums, text_only_version = ", text_only_version, ")")
+  )
+  
+  initiate_zoom_effect <- case_when(
+    has_text & has_photos | has_photos ~ 'initiate_zoom_effect(photo_info)',
+    has_text ~ 'create_overlay_functions()'
+  )
+  
+  create_overlay_functions <- case_when(
+    has_text & has_photos | has_photos ~ 'create_overlay_functions(photo_info)',
+    has_text ~ ''
+  )
+  create_high_res_function <- case_when(
+    has_text & has_photos | has_photos ~ 'create_high_res_function(photo_info)',
+    has_text ~ ''
+  )
+  
+  glue('
+{{explicit_jquery}}
 
 \`\`\`{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -236,88 +192,30 @@ library(tidyverse)
 library(DT)
 library(here)
 library(glue)
-source(here("_scripts", "manuscript_layout_photos_only.R"))
+{{source_script}}
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-
-### photos to show ###
-s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
-
-aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}") %>% 
-  mutate(filepath = paste0(s3_address, filepath))
-
-photo_medium_info <- aws_content %>% 
-  filter(str_detect(filepath, "medium_resolution"))
-
-photo_high_info <- aws_content %>% 
-  filter(str_detect(filepath, "high_resolution"))
-
-photo_info <- tibble(
-   photoid = photo_medium_info$filename,
-   photo_path_medium = photo_medium_info$filepath,
-   photo_size_medium = photo_medium_info$formatted_filesize,
-   photo_path_high = photo_high_info$filepath,
-   photo_size_high = photo_high_info$formatted_filesize) %>%
-   mutate(zoomid = str_c("zoomable", row_number()))
-
-
-data_text <- NA
+{{lines_for_including_text}}
+{{lines_for_including_photos}}
+{{lines_for_including_dt_libraries}}
 
 \`\`\`
 
 
 \`\`\`{r add-text, results="asis"}
 insert_dictionary_iframes()
-create_overlay_divs(photo_info)
-pwalk(photo_info, create_content)
+{{overlay_divs}}
+{{create_content}}
 cat("\\n")
-initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)
+{{initiate_zoom_effect}}
+{{create_overlay_functions}}
 initialise_lazy_load()
-create_high_res_function(photo_info)
+{{create_high_res_function}}
 \`\`\`
 ', .open = "{{", .close = "}}")
+  
 }
 
-write_rmd_text_only <- function(line_of_meta_data, text_only_version){
-  glue('
-\`\`\`{r setup, include=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
-library(DT)
-library(here)
-source(here("_scripts", "manuscript_layout_text_only.R"))
-source(here("_scripts/", "manuscript_joint_functions.R"))
-
-data_text <- read_csv(here("static", "manuscripts", "{{line_of_meta_data$Catalogue_id}}.csv")) %>% 
-  mutate(chapter = as.integer(chapter))
-
-# count columns to include
-count_cols <- data_text %>% 
-  slice(1)
-
-cols_include <- count_cols %>% 
-  select(chapter, transliteration, starts_with("translation_")) %>% 
-  length()
-
-cols_total <- length(count_cols)
-
-cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
-
-# ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
-
-\`\`\`
-
-\`\`\`{r add-text, results="asis"}
-insert_dictionary_iframes()
-create_content(cols_hide = cols_hide_nums, {{text_only_version}})
-create_overlay_functions()
-cat("\\n")
-\`\`\`
-', .open = "{{", .close = "}}")
-}
 
 write_rmd <- function(line_of_meta_data){
   
@@ -327,28 +225,28 @@ write_rmd <- function(line_of_meta_data){
     yaml_to_write <- write_yaml_header(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_w_photos_and_text(line_of_meta_data)
+    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE)
     
     # write text-only version
-    yaml_to_write_text_version <- write_yaml_header_text_only_version(line_of_meta_data)
+    yaml_to_write_text_version <- write_yaml_header(line_of_meta_data, is_text_only_version = TRUE)
     write_lines(yaml_to_write_text_version, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))))
-    rmd_to_write_text_version <- write_rmd_text_only(line_of_meta_data, text_only_version = TRUE)  
+    rmd_to_write_text_version <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE, text_only_version = TRUE)
     write_lines(rmd_to_write_text_version, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))), append = TRUE)
     
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
     
-    yaml_to_write <- write_yaml_header_photos_only(line_of_meta_data)
+    yaml_to_write <- write_yaml_header(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_photos_only(line_of_meta_data)  
+    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = FALSE, has_photos = TRUE)
     
   } else if (line_of_meta_data$has_photos == "no" & line_of_meta_data$has_text == "yes") {
     
     yaml_to_write <- write_yaml_header(line_of_meta_data)
     write_lines(yaml_to_write, str_c(here("content", "manuscripts",
                                       str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_text_only(line_of_meta_data, text_only_version = FALSE)  
+    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE)
   }
   
   # append body rmd to yaml
@@ -359,8 +257,7 @@ write_rmd <- function(line_of_meta_data){
 ```
 
 
-
-Ok, let's try it out
+## Do it!
 
 ```{r}
 generate_rmd <- function(text_with_meta){
