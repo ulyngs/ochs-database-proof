@@ -191,7 +191,7 @@ document.getElementById("myNav{{zoomid}}").style.width = "0%";
 }
 
 
-prepare_zoom_effect(photo_info_tibble){
+prepare_zoom_effect <- function(photo_info_tibble){
   cat("<script src='/js/panzoom.js'></script>")
   
   cat('<script>')
