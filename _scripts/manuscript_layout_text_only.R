@@ -5,11 +5,14 @@ create_content <- function(cols_hide, text_only_version) {
   cat("<div class='row manuscript-text-only'>")
   
   # create left column
-  cat('<div class="col-sm-3">')
+  cat('<div class="col-sm-2">')
+  
   cat('<div class="zoomButtons">')
+  cat('<button onclick="fullWidthTable()">Change table width</button>')
   insert_dictionary_dropdown()
   cat('</div>')
-  if(!text_only_version) cat('<h2 class="no-images-notice">No manuscript images available at the moment.</h2>')
+  
+  if(!text_only_version) cat('<h4 class="no-images-notice">No manuscript images available at the moment.</h2>')
   cat("</div>") # close column
   
   cat('<div class="col-sm-9 manuscript-text">')
@@ -17,7 +20,7 @@ create_content <- function(cols_hide, text_only_version) {
   text_to_print <- data_text %>% 
     select(chapter, verse, transliteration, starts_with("translation_"), everything())
   
-  insert_manuscript_text(text_to_print, cols_hide, setLengthMenu = TRUE)
+  insert_manuscript_text(text_to_print, cols_hide, fullWidth = FALSE, setLengthMenu = TRUE)
   
   cat("</div>") # close column
   
@@ -28,4 +31,24 @@ create_overlay_functions <- function(){
   cat('<script>')
   insert_dictionary_toggle_functions()
   cat('</script>')
+}
+
+create_full_width_function <- function(){
+  cat('<script>
+function fullWidthTable() {
+var tableWidget = document.querySelector(".manuscript-text .datatables");
+var table = document.querySelector(".manuscript-text table.display.dataTable.no-footer");
+var scrollHead = (".manuscript-text .dataTables_scrollHeadInner");
+
+var currentWidth = tableWidget.style.width;
+
+if (currentWidth !== "100%") {
+    tableWidget.style.width = "100%";
+    table.style.display = "100%";
+    scrollHead.style.display = "100%";
+  } else {
+    tableWidget.style.width = "960px";
+  }
+}
+</script>')
 }
