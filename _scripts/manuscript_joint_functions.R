@@ -79,7 +79,7 @@ insert_dictionary_iframes <- function(){
   glue_data(dictionaries, '
 <div class="sanskrit-dictionary" id="sanskrit-dictionary{iframe_number}">
   <a href="javascript:void(0)" class="closebtn-dictionary" onclick="{function_name}">&times;</a>
-  <iframe src="{url}"></iframe>
+  <iframe data-src="{url}"></iframe>
   <p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
 </div>
 ') %>% 
@@ -91,6 +91,10 @@ insert_dictionary_toggle_functions <- function(){
   glue_data(dictionaries, '
 function {{function_name}} { 
   $("#sanskrit-dictionary{{iframe_number}}").toggleClass("make-visible"); 
+  
+  var targetIframe = document.querySelector("#sanskrit-dictionary{{iframe_number}} iframe");
+  targetIframe.src = targetIframe.getAttribute("data-src");
+  
   $("#sanskrit-dictionary{{iframe_number}} iframe").toggleClass("make-visible");
 }
 ', .open = "{{", .close = "}}") %>% 
