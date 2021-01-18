@@ -40,6 +40,7 @@ source(here("_scripts", "manuscript_layout_photos_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
 
+data_text <- NA
 ### photos to show ###
 s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
 
@@ -61,8 +62,6 @@ photo_info <- tibble(
    photo_size_high = photo_high_info$formatted_filesize) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 
-
-data_text <- NA
 
 ```
 

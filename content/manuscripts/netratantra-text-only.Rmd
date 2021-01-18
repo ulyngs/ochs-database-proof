@@ -29,16 +29,19 @@ categories:
   - sanskrit
 ---
 
+
+
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(DT)
 library(here)
+library(glue)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
 data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
-  mutate(chapter = as.integer(chapter))
+   mutate_all(~str_c("<div>", ., "</div>")) #without editableness
 
 # count columns to include
 count_cols <- data_text %>% 
@@ -57,9 +60,14 @@ datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder",
 
 ```
 
+
 ```{r add-text, results="asis"}
 insert_dictionary_iframes()
-create_content(cols_hide = cols_hide_nums, TRUE)
-create_overlay_functions()
+
+create_content(cols_hide = cols_hide_nums, text_only_version = TRUE)
 cat("\n")
+create_overlay_functions()
+
+initialise_lazy_load()
+
 ```
