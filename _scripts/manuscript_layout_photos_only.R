@@ -17,7 +17,7 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   cat("</div>") # close column
   
   cat('<div class="col-sm-3 manuscript-text">')
-  cat('<h2 class="no-text-notice">No transliteration or translation available at the moment.</h2>')
+  cat('<h4 class="no-text-notice">No transliteration or translation available at the moment.</h2>')
   cat("</div>") # close column
   
   cat("</div>") # close row
