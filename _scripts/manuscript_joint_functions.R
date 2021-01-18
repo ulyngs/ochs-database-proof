@@ -87,8 +87,12 @@ insert_dictionary_iframes <- function(){
 }
 
 insert_dictionary_toggle_functions <- function(){
+  cat('function closeDictionaries() { $(".sanskrit-dictionary").removeClass("make-visible"); $(".sanskrit-dictionary iframe").removeClass("make-visible");}')
+  
   dictionaries %>% glue::glue_data('
 function openDictionary{{iframe_number}}() { 
+  closeDictionaries()
+
   $("#sanskrit-dictionary{{iframe_number}}").addClass("make-visible"); 
   $("#sanskrit-dictionary{{iframe_number}} iframe").addClass("make-visible");
   
@@ -96,8 +100,6 @@ function openDictionary{{iframe_number}}() {
   targetIframe.src = targetIframe.getAttribute("data-src");
 }
 ', .open = "{{", .close = "}}") %>% cat()
-  
-  cat('function closeDictionaries() { $(".sanskrit-dictionary").removeClass("make-visible"); $(".sanskrit-dictionary iframe").removeClass("make-visible");}')
   
   cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n')
   cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
