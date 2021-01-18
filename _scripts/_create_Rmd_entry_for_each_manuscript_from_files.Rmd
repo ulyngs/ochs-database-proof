@@ -92,19 +92,32 @@ write_rmd_body <- function(line_of_meta_data, has_text, has_photos, text_only_ve
     has_text ~ 'source(here("_scripts", "manuscript_layout_text_only.R"))'
   )
   
-  if (has_text){
-    lines_for_including_text <- line_of_meta_data %>% glue_data('
-### text to show ###
+  if(has_text & !has_photos){
+    read_in_data_text <- line_of_meta_data %>% glue_data('
+data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
+   mutate_all(~str_c("<div>", ., "</div>")) #without editableness
+
+# count columns to include
+count_cols <- data_text %>% 
+  slice(1)
+
+', .open = "{{", .close = "}}")
+  } else if (has_text) {
+    read_in_data_text <- line_of_meta_data %>% glue_data('
 data_text <- read_csv(here("static", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}")) %>% 
-   mutate(across(-photo, ~ str_c("<div>", ., "</div>"))) #without editableness
-   #mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
+   mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness
 
 # count columns to include
 count_cols <- data_text %>% 
   slice(1) %>% 
   select(-photo)
 
+', .open = "{{", .close = "}}")
+  }
+  
+  if (has_text){
+    lines_for_including_text <- line_of_meta_data %>% glue_data('
 cols_include <- count_cols %>% 
   select(chapter, transliteration, starts_with("translation_")) %>% 
   length()
@@ -119,6 +132,7 @@ cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
                                              ')
   } else {
+    read_in_data_text <- ""
     lines_for_including_text <- "data_text <- NA"
     lines_for_including_dt_libraries <- ""
   }
@@ -195,6 +209,7 @@ library(glue)
 {{source_script}}
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
+{{read_in_data_text}}
 {{lines_for_including_text}}
 {{lines_for_including_photos}}
 {{lines_for_including_dt_libraries}}
