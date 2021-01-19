@@ -368,7 +368,7 @@ a.closebtn-dictionary {
 }
 
 .manuscript-page .zoomButtons {
-  margin-bottom: 0.1em;
+  margin-bottom: 0.2em;
   z-index: 2;
   position: relative;
 }
@@ -523,4 +523,31 @@ a.closebtn-dictionary {
 
 .no-scroll {
   overflow: visible !important;
+}
+
+
+/***** BUTTON STYLING *****/
+.dt-button,
+.zoomButtons .manuscript-photo-button {
+  border-radius: 2px !important;
+  border: 1px solid #999;
+  font-family: nyt-franklin, arial, sans-serif !important;
+  font-size: 0.9em !important;
+  letter-spacing: 1px !important;
+  padding: 6px 8px 4px 9px !important;
+  font-weight: 300 !important;
+  background-image: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+}
+
+.dictionary-dropdown .dropdown-item,
+.zoomButtonsFullScreen .manuscript-photo-button {
+  border-radius: 2px !important;
+  font-family: nyt-franklin, arial, sans-serif !important;
+  font-size: 0.9em;
+  letter-spacing: 1px !important;
+  padding: 6px 8px 4px 9px !important;
+}
+
+.zoomButtonsFullScreen .manuscript-photo-button {
+  font-size: 1em;
 }

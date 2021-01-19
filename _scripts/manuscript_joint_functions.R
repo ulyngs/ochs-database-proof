@@ -4,11 +4,11 @@ library(glue)
 
 ## ZOOM BUTTONS ##
 insert_zoom_buttons <- function(zoomid){
-  glue('<button id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>',
-       '<button id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>',
-       '<button id="zoomReset{zoomid}">Reset zoom</button>',
-       '<button onclick="openNav{zoomid}()">Full screen</button>',
-       '<button onclick="highRes{zoomid}()">Resolution</button>'
+  glue('<button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>',
+       '<button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>',
+       '<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset zoom</button>',
+       '<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>',
+       '<button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>'
   ) %>% cat()
 }
 
@@ -64,7 +64,7 @@ dictionaries <- readr::read_csv(here::here("data/dictionaries.csv")) %>%
   mutate(iframe_number = row_number())
 
 insert_dictionary_dropdown <- function(){
-  cat('<div class="dropdown dictionary-dropdown"><button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">')
+  cat('<div class="dropdown dictionary-dropdown"><button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">')
   
   # iterates over the dictionaries and insert a button for each
   glue_data(dictionaries, '<button class="dropdown-item" onclick="openDictionary{iframe_number}()">{name}</button>') %>% cat()
@@ -119,13 +119,13 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
     glue_data('<div id="myNav{zoomid}" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav{zoomid}()">&times;</a>
 <div class="zoomButtonsFullScreen">
-<button id="zoomInFullScreen{zoomid}">Zoom in</button>
-<button id="zoomOutFullScreen{zoomid}">Zoom out</button>
-<button id="zoomResetFullScreen{zoomid}">Reset</button>
-<button onclick="highResFull{zoomid}()">Resolution</button>')
+<button class="manuscript-photo-button" id="zoomInFullScreen{zoomid}">Zoom in</button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen{zoomid}">Zoom out</button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen{zoomid}">Reset</button>
+<button class="manuscript-photo-button" onclick="highResFull{zoomid}()">Resolution</button>')
   
   text_button <- photo_info_tibble %>% 
-    glue_data('<button class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>')
+    glue_data('<button class="manuscript-photo-button" class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>')
   
   second_part <- photo_info_tibble %>% 
     glue_data('</div>
