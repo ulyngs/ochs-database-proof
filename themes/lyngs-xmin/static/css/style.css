@@ -407,9 +407,11 @@ a.closebtn-dictionary {
   border-bottom: none !important;
 }
 
-.manuscript-page {
+.manuscript-page,
+.sakta-page-heading {
   padding: var(--main-page-padding);
 }
+
 
 .manuscript-page .back-to-list a {
   border: none;
