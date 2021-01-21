@@ -68,14 +68,20 @@ dictionaries <- readr::read_csv(here::here("data/dictionaries.csv")) %>%
   mutate(iframe_number = row_number())
 
 insert_dictionary_dropdown <- function(){
-  cat('<div class="dropdown dictionary-dropdown"><button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">')
+  knitr::raw_html('
+<div class="dropdown dictionary-dropdown">
+  <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+') %>% cat()
   
-  # iterates over the dictionaries and insert a button for each
+  # iterate over the dictionaries and insert a button for each
   glue_data(dictionaries, '<button class="dropdown-item" onclick="openDictionary{iframe_number}()">{name}</button>') %>% cat()
   
-  cat('<input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" />')
-  cat('<button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>')
-  cat('</div></div>')
+  knitr::raw_html('<input class="dropdown-item" type="text" id="dictionary-url" placeholder="https://url-to-dictionary" />
+  <button class="dropdown-item" onclick="toggleDictionaryURL()">Load URL</button>
+  </div>
+</div>
+') %>% cat()
 }
 
 insert_dictionary_iframes <- function(){
@@ -85,13 +91,21 @@ insert_dictionary_iframes <- function(){
   <iframe data-src="{url}"></iframe>
   <p>Via the <a href="https://www.sanskrit-lexicon.uni-koeln.de" target="_blank">Cologne Digital Sanskrit Dictionaries</a></p>
 </div>
-') %>% 
-    cat()
-  cat('<div class="sanskrit-dictionary" id="sanskrit-dictionary-url"><a href="javascript:void(0)" class="closebtn-dictionary" onclick="closeDictionaries()">&times;</a><iframe src="" id="frame-dictionary-url"></iframe></div>')
+') %>% knitr::raw_html() %>% cat()
+  knitr::raw_html('
+<div class="sanskrit-dictionary" id="sanskrit-dictionary-url">
+  <a href="javascript:void(0)" class="closebtn-dictionary" onclick="closeDictionaries()">&times;</a>
+  <iframe src="" id="frame-dictionary-url"></iframe>
+</div>
+') %>% cat()
 }
 
 insert_dictionary_toggle_functions <- function(){
-  cat('function closeDictionaries() { $(".sanskrit-dictionary").removeClass("make-visible"); $(".sanskrit-dictionary iframe").removeClass("make-visible");}')
+  glue('
+function closeDictionaries() { 
+  $(".sanskrit-dictionary").removeClass("make-visible"); 
+  $(".sanskrit-dictionary iframe").removeClass("make-visible");
+}', .open = "{{", .close = "}}") %>% cat()
   
   dictionaries %>% glue::glue_data('
 function openDictionary{{iframe_number}}() { 
@@ -105,8 +119,11 @@ function openDictionary{{iframe_number}}() {
 }
 ', .open = "{{", .close = "}}") %>% cat()
   
-  cat('function toggleDictionaryURL() { $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n')
-  cat("$('input#dictionary-url').on('propertychange paste keyup',function(){var url = this.value;$('#frame-dictionary-url').attr('src', url);});")
+glue('
+function toggleDictionaryURL() { 
+  $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n
+  $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });
+', .open = "{{", .close = "}}") %>% cat()
 }
 
 
