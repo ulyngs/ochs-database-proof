@@ -76,7 +76,7 @@ photo_info <- tibble(
    photo_size_high = photo_high_info$formatted_filesize) %>%
    mutate(zoomid = str_c("zoomable", row_number()))
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
+datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
 
 ```
 

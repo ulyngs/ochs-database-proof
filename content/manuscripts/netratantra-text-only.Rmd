@@ -56,7 +56,7 @@ cols_total <- length(count_cols)
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 
 # ensure the DT libraries are included - they are not automatically when looping through datatables
-datatable(data_text, plugins = "accent-neutralise", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE), filter = "top")
+datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
 
 ```
 
