@@ -8,9 +8,13 @@ insert_zoom_buttons <- function(zoomid){
 <button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>
 <button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>
 <button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset zoom</button>
-<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>
 <button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>
 ') %>% knitr::raw_html() %>% cat()
+}
+
+insert_download_button <- function(photo_path_high){
+  glue('<a href="{photo_path_high}" data-src="{photo_path_high}" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>') %>% cat()
 }
 
 ## INSERT MANUSCRIPT PHOTO ##
@@ -37,7 +41,8 @@ insert_manuscript_text <- function(df, cols_to_hide,
                                    scrollYPix = NULL, 
                                    hideInfo = FALSE,
                                    noPaging = FALSE,
-                                   fullWidth = FALSE){
+                                   fullWidth = FALSE,
+                                   download = FALSE){
   print( htmltools::tagList(datatable(df,
                                       plugins = 'accent-neutralise',
                                       elementId = if (!is.null(setId)) {paste0(setId, "DT")} else {NULL},
@@ -50,7 +55,7 @@ insert_manuscript_text <- function(df, cols_to_hide,
                                       options = list (
                                         searchHighlight = TRUE,
                                         dom = 'lBfrtip',
-                                        buttons = I('colvis'),
+                                        buttons = if (download) {c('colvis', 'csv', 'excel', 'print')} else {I('colvis')},
                                         colReorder = TRUE,
                                         lengthMenu = if (setLengthMenu) {list(c(15, -1), c("15", "All"))} else {NULL},
                                         scrollY = if (!is.null(scrollYPix)) {scrollYPix} else {NULL},

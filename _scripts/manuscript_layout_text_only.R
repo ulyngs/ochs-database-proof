@@ -19,7 +19,7 @@ create_content <- function(cols_hide, text_only_version) {
   text_to_print <- data_text %>% 
     select(chapter, verse, transliteration, starts_with("translation_"), everything())
   
-  insert_manuscript_text(text_to_print, cols_hide, fullWidth = TRUE, setLengthMenu = TRUE)
+  insert_manuscript_text(text_to_print, cols_hide, fullWidth = TRUE, setLengthMenu = TRUE, download = TRUE)
   
   cat("</div>") # close column
   
