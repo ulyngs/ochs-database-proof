@@ -4,25 +4,29 @@ library(glue)
 
 ## ZOOM BUTTONS ##
 insert_zoom_buttons <- function(zoomid){
-  glue('<button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>',
-       '<button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>',
-       '<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset zoom</button>',
-       '<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>',
-       '<button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>'
-  ) %>% cat()
+  glue('
+<button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset zoom</button>
+<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>
+<button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>
+') %>% knitr::raw_html() %>% cat()
 }
 
 ## INSERT MANUSCRIPT PHOTO ##
 insert_manuscript_photo <- function(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
-  glue('<div class="row manuscript-photo"><div class="col-sm-12">',
-       '<div class="panzoomContainer" id="{zoomid}">',
-       '<p class="medium-image-size">{photo_size_medium}</p>',
-       '<p class="high-image-size">{photo_size_high}</p>',
-       '<img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid lazy">',
-       '</div>',
-       '<div class="photo-title"><p>{photoid}</p></div>',
-       '</div></div>'
-  ) %>% cat()
+  glue('
+<div class="row manuscript-photo">
+  <div class="col-sm-12">
+    <div class="panzoomContainer" id="{zoomid}">
+      <p class="medium-image-size">{photo_size_medium}</p>
+      <p class="high-image-size">{photo_size_high}</p>
+      <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid lazy">
+    </div>
+  <div class="photo-title"><p>{photoid}</p></div>
+  </div>
+</div>
+') %>% knitr::raw_html() %>% cat()
 }
 
 
