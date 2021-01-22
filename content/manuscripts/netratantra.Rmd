@@ -39,7 +39,7 @@ library(glue)
 source(here("_scripts", "manuscript_layout.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-data_text <- read_csv(here("static", "manuscripts", "netratantra.csv")) %>% 
+data_text <- read_csv(here("data", "manuscripts", "netratantra.csv")) %>% 
    mutate(photo = str_c(photo, ".JPG")) %>% 
    mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness
 

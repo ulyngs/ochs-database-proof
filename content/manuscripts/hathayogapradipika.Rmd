@@ -39,7 +39,7 @@ library(glue)
 source(here("_scripts", "manuscript_layout_text_only.R"))
 source(here("_scripts/", "manuscript_joint_functions.R"))
 
-data_text <- read_csv(here("static", "manuscripts", "hathayogapradipika.csv")) %>% 
+data_text <- read_csv(here("data", "manuscripts", "hathayogapradipika.csv")) %>% 
    mutate_all(~str_c("<div>", ., "</div>")) #without editableness
 
 # count columns to include

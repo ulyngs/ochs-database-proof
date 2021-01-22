@@ -19,7 +19,7 @@ documents_to_sync <- read_sheet("https://docs.google.com/spreadsheets/d/10pwVATu
 
 # save it out
 documents_to_sync %>% 
-  write_csv(here("static", "manuscripts", "manuscript_meta.csv"))
+  write_csv(here("data", "manuscripts", "manuscript_meta.csv"))
 
 ```
 
@@ -31,7 +31,7 @@ grab_and_store <- function(catalogue_id, googlesheet_with_text) {
                      col_types = "c")
   
   text %>% 
-    write_excel_csv(here("static", "manuscripts", str_c(catalogue_id, ".csv")))
+    write_excel_csv(here("data", "manuscripts", str_c(catalogue_id, ".csv")))
 }
 
 ```
