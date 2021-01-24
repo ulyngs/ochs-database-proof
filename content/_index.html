@@ -7,18 +7,14 @@ title: Home
 
 
 <div class="row front-page-top">
-
-<div class="col-lg-2 col-md-3">
+<div class="col-lg-2 col-md-3 d-none d-md-block">
 <p><img alt="Sakta traditions" src="/images/FIG002.jpg" class="img-fluid featured-work-graphic"/></p>
 </div>
 <div class="col-lg-10 col-md-9">
 <div class="row">
 <div class="col-lg-9 col-md-9 col-sm-6">
 <p>
-This is a proof of concept for an <strong>exciting database website</strong> for the <a href="https://ochs.org.uk">Oxford Centre for Hindu Studies</a>.
-</p>
-<p>
-Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses.
+This is a work-in-progress prototype for a <strong>database website</strong> for the <a href="https://ochs.org.uk">Oxford Centre for Hindu Studies</a>.
 </p>
 </div>
 <div class="col-lg-3 col-md-3 col-sm-6">
@@ -30,58 +26,95 @@ Donate
 </div>
 <!-- end row -->
 </div>
-<div class="front-page-how-to-use">
-<div id="how-to-use" class="section level2">
-<h2>How to use</h2>
-<div id="viewing-in-a-web-browser" class="section level3">
-<h3>Viewing in a web browser</h3>
+<div class="row">
+<div id="features" class="section level2 col-sm-12">
+<h2>Features</h2>
+<div id="phase-1" class="section level3">
+<h3>Phase 1</h3>
+</div>
+</div>
+</div>
 <div class="row">
 <div class="col-lg-9 col-md-9 col-sm-6">
-<div class="p-3">
+<p>
+A <strong>browsable library</strong>, where users can
+</p>
 <ul>
 <li>
-One way to use this website is simply as a browsable library, where the user can see texts side-by-side with the images of the original manuscripts
+see transliterated and translated <strong>texts side-by-side with images</strong> of the original manuscripts
 </li>
 <li>
-They can also download the texts and images on the page they’re browsing
+<strong>overlay text on top of the manuscript image</strong>, to easily compare e.g. the transliteration with the original sanskrit
 </li>
 <li>
-And they will be able to comment on the texts or suggest corrections via a comment-only link to a google sheet with the transliteration and translations
+view images in <strong>full screen</strong>, and <strong>toggle between medium and high resolution</strong>
+</li>
+<li>
+<strong>download individual texts and images</strong> on the manuscript pages
+</li>
+<li>
+<strong>comment on text and images</strong>, and e.g. or suggest corrections. This is done with comment-only links to google sheets with a manuscript’s content
+</li>
+</ul>
+<h4 id="demo-content">
+Demo content
+</h4>
+<p>
+On the current prototype site, a few initial manuscripts demonstrate these features:
+</p>
+<ul>
+<li>
+<a href="/manuscripts/netratantra/">Netratantra</a> demonstrates the layout when we have both photos and text
+</li>
+<li>
+<a href="/manuscripts/hathayogapradipika/">Haṭha[yoga]pradīpikā</a> demonstrates the layout when we have only text
+</li>
+<li>
+<a href="/manuscripts/mss0001_durgasaptasati/">Durgāsaptaśatī</a>, <a href="manuscripts/mss0003_svasthani/">Svasthānī</a>, and the <a href="manuscripts/ochs0010_palm-leaf/">Palm leaf</a> manuscripts demonstrates the layout when we have only photos
 </li>
 </ul>
 </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6">
-<div class="embed-responsive embed-responsive-16by9">
-<iframe class="embed-responsive-item featured-work-graphic" src="https://www.youtube.com/embed/t0etTh6FRlw" allowfullscreen>
-</iframe>
-</div>
+<div class="col-lg-3 col-md-3 col-sm-6 demo-placeholder">
+<!-- <div class='embed-responsive embed-responsive-16by9'> -->
+<!-- <iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe> -->
+<!-- </div> -->
+<p><em>Here will be a video with a short demo</em>
+<img src="/images/video_icon.png" width="80%" /></p>
 </div>
 <!-- end row -->
 </div>
-</div>
-<div id="downloading-text-or-images" class="section level3">
-<h3>Downloading text or images</h3>
 <div class="row">
 <div class="col-lg-9 col-md-9 col-sm-6">
-<div class="p-3">
+<h3 id="phase-2">
+Phase 2
+</h3>
+<p>
+An <strong>analysis app</strong>, where users can
+</p>
 <ul>
 <li>
-An important feature that makes this project different to the alternatives out there, such as <a href="http://gretil.sub.uni-goettingen.de/gretil.html">GRETIL</a> or <a href="https://muktabodha.org">Muktabodha</a>, is that we will provide a public API to the database of the texts and images
+<strong>perform basic text analysis</strong> (e.g., count and compare the frequency of specific words or phrases across manuscripts)
 </li>
 <li>
-This means that rather than in addition to browsing and downloading individual manuscripts, data science-savvy researcher can programmatically download e.g. all texts or images for manuscripts that meet specific criteria
+<strong>render formatted HTML, PDF, or Word files</strong> of specific manuscripts
+</li>
+<li>
+<strong>bulk download texts</strong> or images for manuscripts that meet specific criteria
+</li>
+<li>
+<strong>download specific content that meet specific criteria</strong> (e.g., get just the transliterations of text from a certain period)
 </li>
 </ul>
+<p>
+These features will make this project distinct to the existing alternatives, such as <a href="http://gretil.sub.uni-goettingen.de/gretil.html">GRETIL</a> or <a href="https://muktabodha.org">Muktabodha</a>
+</p>
 </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6">
-<div class="embed-responsive embed-responsive-16by9">
-<iframe class="embed-responsive-item featured-work-graphic" src="https://www.youtube.com/embed/gKULywqF-1w" allowfullscreen>
-</iframe>
-</div>
-</div>
-</div>
+<div class="col-lg-3 col-md-3 col-sm-6 demo-placeholder">
+<!-- <div class='embed-responsive embed-responsive-16by9'> -->
+<!-- <iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe> -->
+<!-- </div> -->
+<p><em>Here will be a video with a short demo</em>:
+<img src="/images/video_icon.png" width="80%" /></p>
 </div>
 </div>
 <div id="how-it-works" class="section level2 front-page-how-it-works">

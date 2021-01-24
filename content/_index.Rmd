@@ -5,17 +5,15 @@ title: Home
 
 <div class="row front-page-top">
 
-<div class="col-lg-2 col-md-3">
+<div class="col-lg-2 col-md-3 d-none d-md-block">
 <img alt="Sakta traditions" src="/images/FIG002.jpg" class="img-fluid featured-work-graphic"/>
 </div>
 
 <div class="col-lg-10 col-md-9">
 <div class="row">
+
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
-This is a proof of concept for an **exciting database website** for the [Oxford Centre for Hindu Studies](https://ochs.org.uk).
-
-Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-oriented Śākta traditions. The Goddess pervades Hinduism at all levels, from aniconic village deities to high-caste pan-Hindu goddesses to esoteric, tantric goddesses. 
-
+This is a work-in-progress prototype for a **database website** for the [Oxford Centre for Hindu Studies](https://ochs.org.uk).
 ```
 
 ```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
@@ -27,45 +25,70 @@ Hinduism cannot be understood without the Goddess (Devi/Śakti) and the goddess-
 <!-- end row -->
 </div>
 
-<div class="front-page-how-to-use">
-## How to use
-### Viewing in a web browser
+:::: {.row}
+::: {.col-sm-12}
+## Features
+### Phase 1
+:::
+::::
 
 <div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
-<div class="p-3">
-- One way to use this website is simply as a browsable library, where the user can see texts side-by-side with the images of the original manuscripts
-- They can also download the texts and images on the page they're browsing
-- And they will be able to comment on the texts or suggest corrections via a comment-only link to a google sheet with the transliteration and translations
-</div>
+A **browsable library**, where users can
+
+ - see transliterated and translated **texts side-by-side with images** of the original manuscripts
+ - **overlay text on top of the manuscript image**, to easily compare e.g. the transliteration with the original sanskrit
+ - view images in **full screen**, and **toggle between medium and high resolution**
+ - **download individual texts and images** on the manuscript pages
+ - **comment on text and images**, and e.g. or suggest corrections. This is done with comment-only links to google sheets with a manuscript's content
+
+#### Demo content
+On the current prototype site, a few initial manuscripts demonstrate these features:
+
+- [Netratantra](/manuscripts/netratantra/) demonstrates the layout when we have both photos and text
+- [Haṭha[yoga]pradīpikā](/manuscripts/hathayogapradipika/) demonstrates the layout when we have only text
+- [Durgāsaptaśatī](/manuscripts/mss0001_durgasaptasati/), [Svasthānī](manuscripts/mss0003_svasthani/), and the [Palm leaf](manuscripts/ochs0010_palm-leaf/) manuscripts demonstrates the layout when we have only photos
+
 ```
 
-```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
-<div class='embed-responsive embed-responsive-16by9'>
-<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe>
-</div>
 
-
+::: {.col-lg-3 .col-md-3 .col-sm-6 .demo-placeholder} 
+<!-- <div class='embed-responsive embed-responsive-16by9'> -->
+<!-- <iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe> -->
+<!-- </div> -->
+*Here will be a video with a short demo*
+```{r, out.width='80%', echo=FALSE}
+knitr::include_graphics("/images/video_icon.png", error = FALSE)
 ```
+:::
+
+
 <!-- end row -->
 </div>
 
-
-### Downloading text or images
-
 <div class="row">
 ```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
-<div class="p-3">
-- An important feature that makes this project different to the alternatives out there, such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org), is that we will provide a public API to the database of the texts and images
-- This means that rather than in addition to browsing and downloading individual manuscripts, data science-savvy researcher can programmatically download e.g. all texts or images for manuscripts that meet specific criteria
-</div>
+### Phase 2
+An **analysis app**, where users can
+
+- **perform basic text analysis** (e.g., count and compare the frequency of specific words or phrases across manuscripts)
+- **render formatted HTML, PDF, or Word files** of specific manuscripts
+- **bulk download texts** or images for manuscripts that meet specific criteria
+- **download specific content that meet specific criteria** (e.g., get just the transliterations of text from a certain period)
+
+
+These features will make this project distinct to the existing alternatives, such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org)
 ```
 
-```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
-<div class='embed-responsive embed-responsive-16by9'>
-<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/gKULywqF-1w' allowfullscreen></iframe>
-</div>
+::: {.col-lg-3 .col-md-3 .col-sm-6 .demo-placeholder}
+<!-- <div class='embed-responsive embed-responsive-16by9'> -->
+<!-- <iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/t0etTh6FRlw' allowfullscreen></iframe> -->
+<!-- </div> -->
+*Here will be a video with a short demo*:
+```{r, out.width='80%', echo=FALSE}
+knitr::include_graphics("/images/video_icon.png", error = FALSE)
 ```
+:::
 
 </div>
 
@@ -89,3 +112,4 @@ knitr::include_graphics("/images/how_it_works.jpg", error = FALSE)
 
 </div>
 
+ 

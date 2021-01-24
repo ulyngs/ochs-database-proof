@@ -133,8 +133,11 @@ a.email:hover,
   margin-top: 4.5em;
 }
 
-h2 {
-  margin-top: 1.5em;
+.front-page-top h2 {
+  margin-top: 0em;
+}
+.front-page-top h3 {
+  margin-top: 0.8em;
 }
 
 .donate {
@@ -145,7 +148,7 @@ h2 {
 {
   width: 50%;
   margin-top: 15%;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .contact-info {
@@ -550,4 +553,9 @@ a.closebtn-dictionary {
 
 .zoomButtonsFullScreen .manuscript-photo-button {
   font-size: 1em;
+}
+
+
+.demo-placeholder img {
+  padding: 2em !important;
 }
