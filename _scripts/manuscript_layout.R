@@ -44,13 +44,18 @@ initiate_zoom_effect <- function(photo_info_tibble) {
   prepare_zoom_effect(photo_info_tibble)
   
   # enabling zooming of text
-  cat('<script src="https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js"></script>')
+  cat('<script src="/js/panzoom-element.js"></script>')
   
   cat('<script>')
   photo_info_tibble %>%
     glue_data('
 var element{{zoomid}} = document.querySelector("#{{zoomid}}DT");\n
-var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
+var instance{{zoomid}} = panzoom(element{{zoomid}}, { 
+zoomDoubleClickSpeed: 1, 
+filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
+});\n
 ', .open = "{{", .close = "}}") %>%
     cat()
   
