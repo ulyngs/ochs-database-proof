@@ -7,7 +7,7 @@ insert_zoom_buttons <- function(zoomid){
   glue('
 <button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>
 <button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset zoom</button>
+<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset image</button>
 <button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>
 <button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>
 ') %>% knitr::raw_html() %>% cat()
@@ -145,9 +145,9 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
     glue_data('<div id="myNav{zoomid}" class="overlay">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav{zoomid}()">&times;</a>
 <div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreen{zoomid}">Zoom in</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreen{zoomid}">Zoom out</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreen{zoomid}">Reset</button>
+<button class="manuscript-photo-button" id="zoomInFullScreen{zoomid}"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen{zoomid}"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen{zoomid}">Reset image</button>
 <button class="manuscript-photo-button" onclick="highResFull{zoomid}()">Resolution</button>')
   
   text_button <- photo_info_tibble %>% 
