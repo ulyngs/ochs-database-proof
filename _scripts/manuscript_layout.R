@@ -79,7 +79,9 @@ create_overlay_functions <- function(photo_info_tibble){
   
   photo_info_tibble %>% 
     glue_data('
-function hideHeader{{zoomid}}() {$("#{{zoomid}}DT .dataTables_scrollBody td div").addClass("add-background"); 
+function hideHeader{{zoomid}}() {
+$("#{{zoomid}}DT .dataTables_scrollBody td div").addClass("add-background"); 
+$("#{{zoomid}}DT").css("background-color", "transparent");
 $("#{{zoomid}}DT .dataTables_scrollBody td").addClass("white-font"); 
 $("#{{zoomid}}DT .dataTables_scrollBody").addClass("no-scroll"); 
 $("#{{zoomid}}DT .dataTables_scrollHead").addClass("hide-on-pan"); 
@@ -96,16 +98,23 @@ $("#{{zoomid}}DT .dataTables_filter").removeClass("hide-on-pan");}
 }
 
 function resetTransform{{zoomid}}(){
+$("#{{zoomid}}DT").css("background-color", "white");
+
 var instance{{zoomid}} = panzoom(element{{zoomid}}, { 
 zoomDoubleClickSpeed: 1, 
 elementZoomId: "{{zoomid}}",
 filterKey: function(/* e, dx, dy, dz */) { return true; }, 
 beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
 beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
+
 showHeader{{zoomid}}()
+
 }
 
-function showText{{zoomid}}() {$("#{{zoomid}}DT").toggleClass("bring-to-foreground");}
+function showText{{zoomid}}() {
+$("#{{zoomid}}DT").toggleClass("bring-to-foreground");
+$("#{{zoomid}}DT").css("background-color", "white");
+}
 ', .open = "{{", .close = "}}") %>%
     cat()
   
