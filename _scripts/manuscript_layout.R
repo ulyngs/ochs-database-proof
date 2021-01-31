@@ -10,10 +10,9 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   cat('<div class="zoomButtons">')
   insert_zoom_buttons(zoomid)
   insert_dictionary_dropdown()
-  cat(str_c('<button class="manuscript-photo-button" onclick="resetTransform', zoomid, '()">Reset text</button>'))
-  
   cat(str_c('<button id="textZoomIn', zoomid, '" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>'))
   cat(str_c('<button id="textZoomOut', zoomid, '" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>'))
+  cat(str_c('<button class="manuscript-photo-button" onclick="resetTransform', zoomid, '()">Reset text</button>'))
   insert_download_button(photo_path_high)
   cat('</div>')
   
