@@ -11,6 +11,9 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   insert_zoom_buttons(zoomid)
   insert_dictionary_dropdown()
   cat(str_c('<button class="manuscript-photo-button" onclick="resetTransform', zoomid, '()">Reset text</button>'))
+  
+  cat(str_c('<button id="textZoomIn', zoomid, '" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>'))
+  cat(str_c('<button id="textZoomOut', zoomid, '" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>'))
   insert_download_button(photo_path_high)
   cat('</div>')
   
@@ -44,7 +47,7 @@ initiate_zoom_effect <- function(photo_info_tibble) {
   prepare_zoom_effect(photo_info_tibble)
   
   # enabling zooming of text
-  cat('<script src="/js/panzoom-element.js"></script>')
+  cat('<script src="/js/panzoom-elements.js"></script>')
   
   cat('<script>')
   photo_info_tibble %>%
@@ -52,6 +55,7 @@ initiate_zoom_effect <- function(photo_info_tibble) {
 var element{{zoomid}} = document.querySelector("#{{zoomid}}DT");\n
 var instance{{zoomid}} = panzoom(element{{zoomid}}, { 
 zoomDoubleClickSpeed: 1, 
+elementZoomId: "{{zoomid}}",
 filterKey: function(/* e, dx, dy, dz */) { return true; }, 
 beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
 beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
@@ -93,7 +97,12 @@ $("#{{zoomid}}DT .dataTables_filter").removeClass("hide-on-pan");}
 }
 
 function resetTransform{{zoomid}}(){
-var instance{{zoomid}} = panzoom(element{{zoomid}}, { zoomDoubleClickSpeed: 1, filterKey: function(/* e, dx, dy, dz */) { return true; }, beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
+var instance{{zoomid}} = panzoom(element{{zoomid}}, { 
+zoomDoubleClickSpeed: 1, 
+elementZoomId: "{{zoomid}}",
+filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });\n
 showHeader{{zoomid}}()
 }
 

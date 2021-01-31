@@ -65,6 +65,8 @@ function createPanZoom(domElement, options) {
 
   var boundsPadding = typeof options.boundsPadding === 'number' ? options.boundsPadding : 0.05;
   var zoomDoubleClickSpeed = typeof options.zoomDoubleClickSpeed === 'number' ? options.zoomDoubleClickSpeed : defaultDoubleTapZoomSpeed;
+  // UL add zoom id as an option
+  var elementZoomId = options.elementZoomId;
   var beforeWheel = options.beforeWheel || noop;
   var beforeMouseDown = options.beforeMouseDown || noop;
   var speed = typeof options.zoomSpeed === 'number' ? options.zoomSpeed : defaultZoomSpeed;
@@ -481,7 +483,13 @@ function createPanZoom(domElement, options) {
     owner.addEventListener('dblclick', onDoubleClick, { passive: false });
     owner.addEventListener('touchstart', onTouch, { passive: false });
     owner.addEventListener('keydown', onKeyDown, { passive: false });
-
+    // UL add event listener for zooming ind
+    var buttonSelectorIn = '#textZoomIn' + elementZoomId;
+    document.querySelector(buttonSelectorIn).addEventListener('click', zoomInClick);
+    
+    var buttonSelectorOut = '#textZoomOut' + elementZoomId;
+    document.querySelector(buttonSelectorOut).addEventListener('click', zoomOutClick);
+    
     // Need to listen on the owner container, so that we are not limited
     // by the size of the scrollable domElement
     wheel.addWheelListener(owner, onMouseWheel, { passive: false });
@@ -522,6 +530,21 @@ function createPanZoom(domElement, options) {
 
     triggerEvent('transform');
     frameAnimation = 0;
+  }
+  
+  // UL this is to zoom in and out with buttons
+  function zoomInClick(){
+    var z = -1;
+    var scaleMultiplier = getScaleMultiplier(z * 100);
+    var offset = transformOrigin ? getTransformOriginOffset() : midPoint();
+    publicZoomTo(offset.x, offset.y, scaleMultiplier);
+  }
+  
+  function zoomOutClick(){
+    var z = 1;
+    var scaleMultiplier = getScaleMultiplier(z * 100);
+    var offset = transformOrigin ? getTransformOriginOffset() : midPoint();
+    publicZoomTo(offset.x, offset.y, scaleMultiplier);
   }
 
   function onKeyDown(e) {
