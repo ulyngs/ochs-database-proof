@@ -61,11 +61,13 @@
         <div class="post-content" id="manuscript-content-anchor">
           {{ .Content }}
         </div>
-        {{ $manuscriptPath := "/manuscripts/" }}
-        {{ $curManuscript := .Params.catalogueId }}
-        {{ $myPath := print $manuscriptPath $curManuscript }}
+        
+        {{ if not .Params.textOnlyVersion}}
         
         <div class="manuscript-nav">
+          {{ $manuscriptPath := "/manuscripts/" }}
+          {{ $curManuscript := .Params.catalogueId }}
+          {{ $myPath := print $manuscriptPath $curManuscript }}
           {{ $curImage := .Params.imageCurrent | int }}
           {{ $totalImages := .Params.imagesTotal}}
           
@@ -76,8 +78,8 @@
           {{ range $i, $sequence :=  (seq $totalImages) }}
             <a href="{{ $myPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq (add $i 1) ($lastUrlElement | int) }}current{{ end }}">{{ add $i 1 }}</a>
           {{ end }}
-          
         </div>
+        {{ end }}
         
       </div>
     </div>
