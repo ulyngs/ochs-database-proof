@@ -55,9 +55,11 @@ df <- manuscript_meta %>%
          -id) %>%
   arrange(desc(has_content), desc(Date_added)) %>% 
   mutate(Date_added = as.character(Date_added)) %>% 
-  mutate(Identifier_popular = ifelse(has_content == "yes",
-                                     str_c("<a href='/manuscripts/", Catalogue_id, "/'>", Identifier_popular, "</a>"),
-                                     Identifier_popular)) %>% 
+  mutate(Identifier_popular = case_when(
+    has_content == "yes" & has_photos == "yes" ~ str_c("<a href='/manuscripts/", Catalogue_id, "/1'>", Identifier_popular, "</a>"),
+    has_content == "yes" & has_photos == "no" ~ str_c("<a href='/manuscripts/", Catalogue_id, "/text'>", Identifier_popular, "</a>"),
+    TRUE ~ Identifier_popular
+    )) %>% 
   mutate(Identifier_popular = str_c("<span class='pop-identifier'>", Identifier_popular, "</span>")) %>% 
   select(-has_content, -Date_added, -Catalogue_id, -website_photo_extension, -private_notes)
 
@@ -97,3 +99,4 @@ df %>%
 :::
 
 </main>
+
