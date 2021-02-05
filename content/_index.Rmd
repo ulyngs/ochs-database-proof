@@ -45,10 +45,9 @@ A **browsable library**, where users can
 #### Demo content
 On the current prototype site, a few initial manuscripts demonstrate these features:
 
-- [Netratantra](/manuscripts/netratantra/) demonstrates the layout when we have both photos and text
-- [Haṭha[yoga]pradīpikā](/manuscripts/hathayogapradipika/) demonstrates the layout when we have only text
-- [Durgāsaptaśatī](/manuscripts/mss0001_durgasaptasati/), [Svasthānī](manuscripts/mss0003_svasthani/), and the [Palm leaf](manuscripts/ochs0010_palm-leaf/) manuscripts demonstrates the layout when we have only photos
-
+- [Netratantra](/manuscripts/netratantra/1/) demonstrates the layout when we have both photos and text
+- [Haṭha[yoga]pradīpikā](/manuscripts/hathayogapradipika/text/) demonstrates the layout when we have only text
+- [Durgāsaptaśatī](/manuscripts/mss0001_durgasaptasati/1/), [Svasthānī](manuscripts/mss0003_svasthani/1/), and the [Palm leaf](manuscripts/ochs0010_palm-leaf/1/) manuscripts demonstrates the layout when we have only photos
 ```
 
 
