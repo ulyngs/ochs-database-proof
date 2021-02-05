@@ -1,0 +1,96 @@
+---
+exclude_jquery: true
+catalogueId: netratantra
+title: "Netratantra (NT)"
+sanskritTitle: "अमृतेशतन्त्रम्"
+transliteratedTitle: "Amṛteśatantra, Mṛtyujidamṛtīśavidhāna (Netratantra)"
+englishTitle: "The Tantra of the Lord of Immortality"
+approximateDating: "1200 CE"
+manuscriptLanguage: "Sanskrit"
+script: "Nandīnāgarī/Jainanāgarī"
+material: "palm-leaf, 32.0cm x 5.5cm"
+condition: "Complete, in good condition with few damaged folios"
+folios: "89"
+subject: "Śākta-Śaiva tantra"
+physicalLocation: "National Archives, Kathmandu (NAK MS 1-285, NGMPP Reel No. B 25/4)"
+originPlace: "Nepal"
+author: ""
+provenance: "Colour photos bought by Dr Bjarne Wernicke-Olesen from the NAK on 19.4.2018"
+bibliographyNote: ""
+codices: "Σ = K1 N1 N2"
+transliterators: "Gavin Flood, Rajan Khatiwoda (ch. 6-8)"
+translationEnglish: "Gavin Flood, Bjarne Wernicke-Olesen, Rajan Khatiwoda"
+translationDanish: ""
+googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
+hasPhotos: yes
+hasText: yes
+imagesTotal: 89
+imageCurrent: 51
+categories:
+  - sanskrit
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+library(glue)
+source(here("_scripts", "manuscript_layout.R"))
+source(here("_scripts/", "manuscript_joint_functions.R"))
+
+data_text <- read_csv(here("data", "manuscripts", "netratantra.csv")) %>% 
+   mutate(photo = str_c(photo, ".JPG")) %>% 
+   mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
+   #mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness
+
+# count columns to include
+count_cols <- data_text %>% 
+  slice(1) %>% 
+  select(-photo)
+
+cols_include <- count_cols %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
+  length()
+
+cols_total <- length(count_cols)
+
+cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
+### photos to show ###
+s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
+
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "netratantra") %>% 
+  mutate(filepath = paste0(s3_address, filepath))
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
+
+photo_info <- tibble(
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
+   mutate(zoomid = str_c("zoomable", row_number())) %>% 
+   slice(51)
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
+
+```
+
+
+```{r add-text, results="asis"}
+insert_dictionary_iframes()
+create_overlay_divs(photo_info, hasText = TRUE)
+pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
+cat("\n")
+initiate_zoom_effect(photo_info)
+create_overlay_functions(photo_info)
+initialise_lazy_load()
+create_high_res_function(photo_info)
+```
