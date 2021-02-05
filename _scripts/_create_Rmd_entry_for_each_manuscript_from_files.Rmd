@@ -22,11 +22,11 @@ format_size <- function(imagesize){
 }
 
 # update list of content in AWS
-aws_contents <- get_bucket("shakta-manuscripts") 
+aws_content_bucket <- get_bucket("shakta-manuscripts") 
 
 tibble(
-  filepath = map_chr(aws_contents, "Key"),
-  filesize = map_dbl(aws_contents, "Size"),
+  filepath = map_chr(aws_content_bucket, "Key"),
+  filesize = map_dbl(aws_content_bucket, "Size"),
   formatted_filesize = format_size(filesize),
   manuscript = str_extract(filepath, "^[^/]+"),
   high_resolution = str_detect(filepath, "high_resolution"),
@@ -34,17 +34,30 @@ tibble(
 ) %>% 
   write_csv(here::here("data", "aws_content.csv"))
 
+image_counts <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(high_resolution == TRUE) %>% 
+  group_by(manuscript) %>% 
+  summarise(num_images = n()) %>% 
+  rename(Catalogue_id = manuscript)
+
 text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>% 
-  rename(Subject = `Subject(s)`)
+  rename(Subject = `Subject(s)`) %>% 
+  left_join(image_counts)
 
 ```
 
 # Generate Rmds
 ## Create the YAML header
 ```{r}
-write_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE){
+create_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE, image_current = FALSE){
   text_only_line <- ""
   if (is_text_only_version) text_only_line <- "\ntextOnlyVersion: yes"
+  
+  images_total_line <- ""
+  if (!is.na(line_of_meta_data$num_images)) images_total_line <- paste0("\nimagesTotal: ", as.character(line_of_meta_data$num_images))
+  
+  image_current_line <- ""
+  if (image_current) image_current_line <- paste0("\nimageCurrent: ", as.character(image_current))
   
   line_of_meta_data %>%  glue_data('
 ---
@@ -72,7 +85,7 @@ translationEnglish: "{Translation_english_by}"
 translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
 hasPhotos: {has_photos}
-hasText: {has_text}{text_only_line}
+hasText: {has_text}{text_only_line}{images_total_line}{image_current_line}
 categories:
   - sanskrit
 ---
@@ -85,7 +98,7 @@ categories:
 
 ## Create the body part
 ```{r}
-write_rmd_body <- function(line_of_meta_data, has_text, has_photos, text_only_version = FALSE){
+create_rmd_body <- function(line_of_meta_data, has_text, has_photos, text_only_version = FALSE, image_current = FALSE){
   source_script <- case_when(
     has_text & has_photos ~ 'source(here("_scripts", "manuscript_layout.R"))',
     has_photos ~ 'source(here("_scripts", "manuscript_layout_photos_only.R"))',
@@ -159,7 +172,8 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   mutate(zoomid = str_c("zoomable", row_number()))
+   mutate(zoomid = str_c("zoomable", row_number())) %>% 
+   slice({{image_current}})
 ', .open = "{{", .close = "}}")
   } else {
     lines_for_including_photos <- ""
@@ -233,41 +247,45 @@ initialise_lazy_load()
 }
 
 
-write_rmd <- function(line_of_meta_data){
+write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
+  folder_path <- str_c(here("content", "manuscripts", line_of_meta_data$Catalogue_id))
+  dir.create(folder_path)
   
   if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "yes") {
     
-    #write normal version
-    yaml_to_write <- write_yaml_header(line_of_meta_data)
-    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
-                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE)
+    # generate an Rmd for each image
+    for(cur_image in seq_along(1:line_of_meta_data$num_images)){
+      yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
+      body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE, image_current = cur_image)
+      rmd_to_write <- str_c(yaml_header, body_content)
+      
+      write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, ".Rmd"))
+    }
     
     # write text-only version
-    yaml_to_write_text_version <- write_yaml_header(line_of_meta_data, is_text_only_version = TRUE)
-    write_lines(yaml_to_write_text_version, str_c(here("content", "manuscripts",
-                                      str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))))
-    rmd_to_write_text_version <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE, text_only_version = TRUE)
-    write_lines(rmd_to_write_text_version, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, "-text-only.Rmd"))), append = TRUE)
+    yaml_header <- create_yaml_header(line_of_meta_data, is_text_only_version = TRUE)
+    body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE, text_only_version = TRUE)
+    rmd_to_write <- str_c(yaml_header, body_content)
+    
+    write_lines(rmd_to_write, str_c(folder_path, "/text-only", ".Rmd"))
     
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
-    
-    yaml_to_write <- write_yaml_header(line_of_meta_data)
-    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
-                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = FALSE, has_photos = TRUE)
+    # generate an Rmd for each image
+    for(cur_image in seq_along(1:line_of_meta_data$num_images)){
+      yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
+      body_content <- create_rmd_body(line_of_meta_data, has_text = FALSE, has_photos = TRUE, image_current = cur_image)
+      rmd_to_write <- str_c(yaml_header, body_content)
+      
+      write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, ".Rmd"))
+    }
     
   } else if (line_of_meta_data$has_photos == "no" & line_of_meta_data$has_text == "yes") {
     
-    yaml_to_write <- write_yaml_header(line_of_meta_data)
-    write_lines(yaml_to_write, str_c(here("content", "manuscripts",
-                                      str_c(line_of_meta_data$Catalogue_id, ".Rmd"))))  
-    rmd_to_write <- write_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE)
+    yaml_header <- create_yaml_header(line_of_meta_data)
+    body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE)
+    rmd_to_write <- str_c(yaml_header, body_content)
+    write_lines(rmd_to_write, str_c(folder_path, "/text", ".Rmd"))
   }
-  
-  # append body rmd to yaml
-  write_lines(rmd_to_write, str_c(here("content", "manuscripts", str_c(line_of_meta_data$Catalogue_id, ".Rmd"))), append = TRUE)
-  
 }
 
 ```
