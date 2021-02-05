@@ -39,7 +39,7 @@
           <br> <a href="/manuscripts/{{ .Params.catalogueId }}/" role="button" class="btn btn-light btn-md"><i class="fa fa-file-picture-o"></i> View manuscript photos</a>
         {{ end }}
         {{ if and .Params.hasText .Params.hasPhotos (not .Params.textOnlyVersion)}}
-          <br> <a href="/manuscripts/{{ .Params.catalogueId }}-text-only/" role="button" class="btn btn-light btn-md"><i class="fa fa-file-text-o"></i> View text only</a>
+          <br> <a href="/manuscripts/{{ .Params.catalogueId }}/text-only/" role="button" class="btn btn-light btn-md"><i class="fa fa-file-text-o"></i> View text only</a>
         {{ end }}
         </div>
         <!-- {{ if and .Params.hasPhotos (not .Params.textOnlyVersion)}}
@@ -58,9 +58,27 @@
     
     <div class="row manuscript-content">
       <div class="col-sm-12">
-        <div class="post-content">
+        <div class="post-content" id="manuscript-content-anchor">
           {{ .Content }}
         </div>
+        {{ $manuscriptPath := "/manuscripts/" }}
+        {{ $curManuscript := .Params.catalogueId }}
+        {{ $myPath := print $manuscriptPath $curManuscript }}
+        
+        <div class="manuscript-nav">
+          {{ $curImage := .Params.imageCurrent | int }}
+          {{ $totalImages := .Params.imagesTotal}}
+          
+          <a {{ if gt $curImage 1 }} href="{{ $myPath }}/{{ sub $curImage 1 }}/#manuscript-content-anchor" {{ end }} class="manucript-nav-button previous">Previous</a>
+          
+          {{ $lastUrlElement := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
+          
+          {{ range $i, $sequence :=  (seq $totalImages) }}
+            <a href="{{ $myPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq (add $i 1) ($lastUrlElement | int) }}current{{ end }}">{{ add $i 1 }}</a>
+          {{ end }}
+          
+        </div>
+        
       </div>
     </div>
     
