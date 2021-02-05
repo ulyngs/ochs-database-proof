@@ -569,11 +569,17 @@ a.closebtn-dictionary {
   box-sizing: border-box;
   display: inline-block;
   min-width: 1em;
-  padding: 0.5em 0em;
-  margin-left: 2px;
+  padding: 0.2em 0.5em;
+  margin: 0;
   text-align: center;
   text-decoration: none !important;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 2px;
 }
+.manucript-nav-button:hover {
+  color: white !important;
+  border: 1px solid #111;
+  background: linear-gradient(to bottom, #585858 0%, #111 100%);
+}
+
