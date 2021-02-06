@@ -25,7 +25,7 @@ insert_manuscript_photo <- function(photo_path_medium, photo_size_medium, photo_
     <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">{photo_size_medium}</p>
       <p class="high-image-size">{photo_size_high}</p>
-      <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
+      <img src="{photo_path_medium}" data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
     </div>
   <div class="photo-title"><p>{photoid}</p></div>
   </div>
