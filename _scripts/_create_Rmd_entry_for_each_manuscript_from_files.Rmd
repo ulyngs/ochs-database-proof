@@ -22,6 +22,8 @@ format_size <- function(imagesize){
 }
 
 # update list of content in AWS
+s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
+
 aws_content_bucket <- get_bucket("shakta-manuscripts") 
 
 tibble(
@@ -32,14 +34,17 @@ tibble(
   high_resolution = str_detect(filepath, "high_resolution"),
   filename = fs::path_file(filepath)
 ) %>% 
+  mutate(filepath = paste0(s3_address, filepath)) %>% 
   write_csv(here::here("data", "aws_content.csv"))
 
-image_counts <- read_csv(here::here("data", "aws_content.csv")) %>% 
+aws_content <- read_csv(here::here("data", "aws_content.csv"))
+
+image_counts <- aws_content %>% 
   filter(high_resolution == TRUE) %>% 
   group_by(manuscript) %>% 
   summarise(num_images = n()) %>% 
   rename(Catalogue_id = manuscript)
-
+  
 text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>% 
   rename(Subject = `Subject(s)`) %>% 
   left_join(image_counts)
@@ -306,6 +311,8 @@ for(i in 1:nrow(files_to_generate)) {
     slice(i) %>% 
     generate_rmd()
 }
+
+
 
 ```
 
