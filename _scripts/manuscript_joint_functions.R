@@ -106,6 +106,8 @@ insert_dictionary_iframes <- function(){
 }
 
 insert_dictionary_toggle_functions <- function(){
+  cat('<script>')
+  
   glue('
 function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
@@ -129,6 +131,8 @@ function toggleDictionaryURL() {
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}\n
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });
 ', .open = "{{", .close = "}}") %>% cat()
+
+  cat('</script>')
 }
 
 create_high_res_function <- function(photo_info_tibble){
