@@ -241,7 +241,6 @@ insert_dictionary_iframes()
 cat("\\n")
 {{initiate_zoom_effect}}
 {{create_overlay_functions}}
-initialise_lazy_load()
 {{create_high_res_function}}
 \`\`\`
 ', .open = "{{", .close = "}}")

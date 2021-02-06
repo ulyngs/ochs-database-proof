@@ -25,7 +25,7 @@ insert_manuscript_photo <- function(photo_path_medium, photo_size_medium, photo_
     <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">{photo_size_medium}</p>
       <p class="high-image-size">{photo_size_high}</p>
-      <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid lazy">
+      <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
     </div>
   <div class="photo-title"><p>{photoid}</p></div>
   </div>
@@ -130,14 +130,6 @@ function toggleDictionaryURL() {
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });
 ', .open = "{{", .close = "}}") %>% cat()
 }
-
-
-initialise_lazy_load <- function(){
-  cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
-  cat('<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>')
-}
-
-
 
 create_high_res_function <- function(photo_info_tibble){
   photo_info_tibble %>% 
