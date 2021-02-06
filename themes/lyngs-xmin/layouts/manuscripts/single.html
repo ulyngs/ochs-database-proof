@@ -159,6 +159,34 @@
 {{/* INSERT JS */}}
 {{ if and (not .Params.textOnlyVersion) (.Params.hasPhotos) }}
   <script>
+    function highRes() {
+      var image = document.querySelector("#panzoomManuscriptPhoto img");
+      
+      if (image.src === image.getAttribute("data-src-md-res")) {
+          image.src = image.getAttribute("data-src-high-res");
+          document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "none";
+          document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "block";
+        } else {
+          image.src = image.getAttribute("data-src-md-res");
+          document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "block";
+          document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "none";
+        }
+      }
+      
+    function highResFull() {
+      var image = document.querySelector("#myNav img");
+      
+      if (image.src === image.getAttribute("data-src-md-res")) {
+        image.src = image.getAttribute("data-src-high-res");
+        document.querySelector("#myNav .medium-image-size-overlay").style.display = "none";
+        document.querySelector("#myNav .high-image-size-overlay").style.display = "block";
+      } else {
+        image.src = image.getAttribute("data-src-md-res");
+        document.querySelector("#myNav .medium-image-size-overlay").style.display = "block";
+        document.querySelector("#myNav .high-image-size-overlay").style.display = "none";
+      }
+    }
+  
     function openNav() {
       document.getElementById("myNav").style.width = "100%";
       var image = document.querySelector("#myNav img");
