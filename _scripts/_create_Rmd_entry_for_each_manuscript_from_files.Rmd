@@ -259,7 +259,7 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
     
     # image info
     image_info <- aws_content %>% 
-      filter(manuscript == line_of_meta_data$Catalogue_id, filepath != paste0(line_of_meta_data$Catalogue_id, "/"))
+      filter(manuscript == line_of_meta_data$Catalogue_id, !str_detect(filepath, paste0(line_of_meta_data$Catalogue_id, "/$")))
     
     # generate an Rmd for each image
     for(cur_image in seq_along(1:line_of_meta_data$num_images)){
@@ -296,7 +296,7 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
     # get image info
     image_info <- aws_content %>% 
-      filter(manuscript == line_of_meta_data$Catalogue_id, filepath != paste0(line_of_meta_data$Catalogue_id, "/"))
+      filter(manuscript == line_of_meta_data$Catalogue_id, !str_detect(filepath, paste0(line_of_meta_data$Catalogue_id, "/$")))
     
     # generate an Rmd for each image
     for(cur_image in seq_along(1:line_of_meta_data$num_images)){
