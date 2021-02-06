@@ -26,9 +26,3 @@ create_content <- function(cols_hide, text_only_version) {
   cat("</div>") # close row
 }
 
-create_overlay_functions <- function(){
-  cat('<script>')
-  insert_dictionary_toggle_functions()
-  cat('</script>')
-}
-

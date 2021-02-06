@@ -39,9 +39,3 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   
   cat("</div>") # close row
 }
-
-create_overlay_functions <- function(photo_info_tibble){
-  cat('<script>')
-  insert_dictionary_toggle_functions()
-  cat('</script>')
-}
