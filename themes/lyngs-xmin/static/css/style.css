@@ -280,7 +280,7 @@ p.high-image-size-overlay {
   letter-spacing: 1px;
   color: white;
   font-size: 10px;
-  z-index: 1040;
+  z-index: 1035;
 }
 
 .manuscript-photo p.high-image-size,
@@ -511,6 +511,14 @@ a.closebtn-dictionary {
   font-size: 60px;
   z-index: 1040;
   color: red;
+}
+
+#fullScreenPhoto img {
+  z-index: 1035;
+}
+.zoomButtonsFullScreen button {
+  position: relative;
+  z-index: 1040;
 }
 
 
