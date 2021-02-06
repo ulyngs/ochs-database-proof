@@ -182,7 +182,6 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   mutate(zoomid = str_c("zoomable", row_number())) %>% 
    slice({{image_current}})
 ', .open = "{{", .close = "}}")
   } else {
