@@ -157,7 +157,7 @@
 </div>
 
 {{/* INSERT JS */}}
-{{ if not .Params.textOnlyVersion}}
+{{ if and (not .Params.textOnlyVersion) (.Params.hasPhotos) }}
   <script>
     function openNav() {
       document.getElementById("myNav").style.width = "100%";
