@@ -125,11 +125,8 @@
       </div>
     </div>
     
-  </main>
-</div>
-
-{{/* INSERT JS */}}
-{{ if not .Params.textOnlyVersion}}
+    {{/* INSERT OVERLAY DIVS */}}
+    {{ if not .Params.textOnlyVersion}}
   <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="zoomButtonsFullScreen">
@@ -140,6 +137,7 @@
 
     {{ if .Params.hasText }}
       <button class="manuscript-photo-button" class="showTextbtn" onclick="showText()">Show/hide text</button>
+      {{/* event listeners assigned in js/panzoom-elements.js */}}
       <button id="textZoomInFull" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
       <button id="textZoomOutFull" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
       <button class="manuscript-photo-button" onclick="resetTransform()">Reset text</button>
@@ -153,26 +151,31 @@
     </div>
   </div>
 
-  <script src='/js/panzoom.js'></script>
-  <script>
-    const elem = document.querySelector("#panzoomManuscriptPhoto");
-    const panzoom = Panzoom(elem);
-    const zoomInButton = document.querySelector("#zoomIn");
-    const zoomOutButton = document.querySelector("#zoomOut");
-    const resetButton = document.querySelector("#zoomReset");
-    zoomInButton.addEventListener("click", panzoom.zoomIn);
-    zoomOutButton.addEventListener("click", panzoom.zoomOut);
-    resetButton.addEventListener("click", panzoom.reset);
-    const elemFull = document.querySelector("#fullScreenPhoto");
-    const panzoomFull = Panzoom(elemFull);
-    const zoomInButtonFull = document.querySelector("#zoomInFullScreen");
-    const zoomOutButtonFull = document.querySelector("#zoomOutFullScreen");
-    const resetButtonFull = document.querySelector("#zoomResetFullScreen");
-    zoomInButtonFull.addEventListener("click", panzoomFull.zoomIn);
-    zoomOutButtonFull.addEventListener("click", panzoomFull.zoomOut);
-    resetButtonFull.addEventListener("click", panzoomFull.reset);
-  </script>
-
-
 {{ end }}
+    
+  </main>
+</div>
+
+{{/* INSERT JS */}}
+{{ if not .Params.textOnlyVersion}}
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+      var image = document.querySelector("#myNav img");
+      image.src = image.getAttribute("data-src-md-res");
+    }    
+    
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
+  </script>
+  
+  {{ if .Params.hasText }}
+    {{ partial "panzoom_text.html" . }} {{/* zoom text (must be before zoom images) */}}
+  {{ end }}
+
+  {{ partial "panzoom_images.html" . }} {{/* zoom images */}}
+  
+{{ end }}
+
 {{ partial "footer.html" . }}

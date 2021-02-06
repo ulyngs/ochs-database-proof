@@ -1,0 +1,19 @@
+<script src='/js/panzoom.js'></script>
+  <script>
+    const elem = document.querySelector("#panzoomManuscriptPhoto");
+    const panzoom = Panzoom(elem);
+    const zoomInButton = document.querySelector("#zoomIn");
+    const zoomOutButton = document.querySelector("#zoomOut");
+    const resetButton = document.querySelector("#zoomReset");
+    zoomInButton.addEventListener("click", panzoom.zoomIn);
+    zoomOutButton.addEventListener("click", panzoom.zoomOut);
+    resetButton.addEventListener("click", panzoom.reset);
+    const elemFull = document.querySelector("#fullScreenPhoto");
+    const panzoomFull = Panzoom(elemFull);
+    const zoomInButtonFull = document.querySelector("#zoomInFullScreen");
+    const zoomOutButtonFull = document.querySelector("#zoomOutFullScreen");
+    const resetButtonFull = document.querySelector("#zoomResetFullScreen");
+    zoomInButtonFull.addEventListener("click", panzoomFull.zoomIn);
+    zoomOutButtonFull.addEventListener("click", panzoomFull.zoomOut);
+    resetButtonFull.addEventListener("click", panzoomFull.reset);
+  </script>

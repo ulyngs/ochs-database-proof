@@ -3,7 +3,7 @@ library(dplyr)
 library(glue)
 
 ## ZOOM BUTTONS ##
-insert_zoom_buttons <- function(zoomid){
+insert_zoom_buttons <- function(){
   glue('
 <button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
 <button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
@@ -18,7 +18,7 @@ insert_download_button <- function(photo_path_high){
 }
 
 ## INSERT MANUSCRIPT PHOTO ##
-insert_manuscript_photo <- function(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
+insert_manuscript_photo <- function(photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
   glue('
 <div class="row manuscript-photo">
   <div class="col-sm-12">
@@ -45,7 +45,7 @@ insert_manuscript_text <- function(df, cols_to_hide,
                                    download = FALSE){
   print( htmltools::tagList(datatable(df,
                                       plugins = 'accent-neutralise',
-                                      elementId = if (!is.null(setId)) {paste0(setId, "DT")} else {NULL},
+                                      elementId = "manuscript-text-DT",
                                       rownames = FALSE,
                                       escape = FALSE,
                                       extensions = c('ColReorder', 'Buttons', 'Responsive'),
@@ -173,24 +173,5 @@ if (image.src === image.getAttribute("data-src-md-res")) {
 </script>
               ', .open = "{{", .close = "}}") %>% cat()
 }
-
-
-openAndCloseFullScreen <- function(photo_info_tibble){
-  photo_info_tibble %>% 
-    glue_data('
-function openNav() {
-document.getElementById("myNav").style.width = "100%";
-var image = document.querySelector("#myNav img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNav() {
-document.getElementById("myNav").style.width = "0%";
-}
-', .open = "{{", .close = "}}") %>%
-    cat()
-}
-
-
 
 

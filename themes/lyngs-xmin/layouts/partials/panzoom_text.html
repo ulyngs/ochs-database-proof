@@ -1,0 +1,45 @@
+<script src="/js/panzoom-elements.js"></script>
+  <script>
+    function hideHeader() {
+      $("#manuscript-text-DT .dataTables_scrollBody td div").addClass("add-background"); 
+      $("#manuscript-text-DT").css("background-color", "transparent");
+      $("#manuscript-text-DT .dataTables_scrollBody td").addClass("white-font"); 
+      $("#manuscript-text-DT .dataTables_scrollBody").addClass("no-scroll"); 
+      $("#manuscript-text-DT .dataTables_scrollHead").addClass("hide-on-pan"); 
+      $("#manuscript-text-DT .dt-buttons").addClass("hide-on-pan");
+      $("#manuscript-text-DT .dataTables_filter").addClass("hide-on-pan");
+    }
+
+    var element = document.querySelector("#manuscript-text-DT");
+    var panZoomInstance = panzoom(element, { 
+      zoomDoubleClickSpeed: 1, 
+      filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+      beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+      beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
+    });
+    panZoomInstance.on("panstart", function(e) { hideHeader() });
+    
+    function resetTransform() {
+      $("#manuscript-text-DT").css("background-color", "white");
+      
+      panZoomInstance.moveTo(0, 0);
+      panZoomInstance.zoomAbs(0, 0, 1);
+      
+      showHeader();
+    }
+      
+    function showHeader(){
+      $("#manuscript-text-DT .dataTables_scrollBody td div").removeClass("add-background"); 
+      $("#manuscript-text-DT .dataTables_scrollBody td").removeClass("white-font"); 
+      $("#manuscript-text-DT .dataTables_scrollBody").removeClass("no-scroll"); 
+      $("#manuscript-text-DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
+      $("#manuscript-text-DT .dt-buttons").removeClass("hide-on-pan");
+      $("#manuscript-text-DT .dataTables_filter").removeClass("hide-on-pan");
+    }
+      
+    function showText() {
+      $("#manuscript-text-DT").toggleClass("bring-to-foreground");
+      $("#manuscript-text-DT").css("background-color", "white");
+    }
+      
+  </script>
