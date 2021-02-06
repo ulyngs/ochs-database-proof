@@ -202,7 +202,6 @@ photo_info <- tibble(
   )
   
   initiate_zoom_effect <- case_when(
-    has_text & has_photos ~ 'initiate_zoom_effect(photo_info)',
     has_photos ~ "",
     has_text ~ 'create_overlay_functions()'
   )
