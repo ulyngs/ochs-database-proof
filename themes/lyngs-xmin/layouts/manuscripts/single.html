@@ -129,6 +129,50 @@
 </div>
 
 {{/* INSERT JS */}}
+{{ if not .Params.textOnlyVersion}}
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="zoomButtonsFullScreen">
+      <button class="manuscript-photo-button" id="zoomInFullScreen"><i class="fa fa-search-plus"></i></button>
+      <button class="manuscript-photo-button" id="zoomOutFullScreen"><i class="fa fa-search-minus"></i></button>
+      <button class="manuscript-photo-button" id="zoomResetFullScreen">Reset image</button>
+      <button class="manuscript-photo-button" onclick="highResFull()">Resolution</button>
+
+    {{ if .Params.hasText }}
+      <button class="manuscript-photo-button" class="showTextbtn" onclick="showText()">Show/hide text</button>
+      <button id="textZoomInFull" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+      <button id="textZoomOutFull" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+      <button class="manuscript-photo-button" onclick="resetTransform()">Reset text</button>
+    {{ end }}
+  
+    </div>
+    <div class="panzoomContainer overlay-content" id="fullScreenPhoto">
+      <p class="medium-image-size-overlay">{{ .Params.photoSizeMedium }}</p>
+      <p class="high-image-size-overlay">{{ .Params.photoSizeHigh }}</p>
+      <img data-src-md-res="{{ .Params.photoPathMedium }}" data-src-high-res="{{ .Params.photoPathHigh }}" class="img-fluid">
+    </div>
+  </div>
+
+  <script src='/js/panzoom.js'></script>
+  <script>
+    const elem = document.querySelector("#panzoomManuscriptPhoto");
+    const panzoom = Panzoom(elem);
+    const zoomInButton = document.querySelector("#zoomIn");
+    const zoomOutButton = document.querySelector("#zoomOut");
+    const resetButton = document.querySelector("#zoomReset");
+    zoomInButton.addEventListener("click", panzoom.zoomIn);
+    zoomOutButton.addEventListener("click", panzoom.zoomOut);
+    resetButton.addEventListener("click", panzoom.reset);
+    const elemFull = document.querySelector("#fullScreenPhoto");
+    const panzoomFull = Panzoom(elemFull);
+    const zoomInButtonFull = document.querySelector("#zoomInFullScreen");
+    const zoomOutButtonFull = document.querySelector("#zoomOutFullScreen");
+    const resetButtonFull = document.querySelector("#zoomResetFullScreen");
+    zoomInButtonFull.addEventListener("click", panzoomFull.zoomIn);
+    zoomOutButtonFull.addEventListener("click", panzoomFull.zoomOut);
+    resetButtonFull.addEventListener("click", panzoomFull.reset);
+  </script>
 
 
+{{ end }}
 {{ partial "footer.html" . }}

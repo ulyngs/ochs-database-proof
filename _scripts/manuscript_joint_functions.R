@@ -5,11 +5,11 @@ library(glue)
 ## ZOOM BUTTONS ##
 insert_zoom_buttons <- function(zoomid){
   glue('
-<button class="manuscript-photo-button" id="zoomIn{zoomid}"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut{zoomid}"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset{zoomid}">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes{zoomid}()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav{zoomid}()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 ') %>% knitr::raw_html() %>% cat()
 }
 
@@ -22,7 +22,7 @@ insert_manuscript_photo <- function(zoomid, photo_path_medium, photo_size_medium
   glue('
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="{zoomid}">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">{photo_size_medium}</p>
       <p class="high-image-size">{photo_size_high}</p>
       <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid lazy">
@@ -139,70 +139,35 @@ initialise_lazy_load <- function(){
 
 
 
-create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
-  # create the divs
-  first_part <- photo_info_tibble %>% 
-    glue_data('<div id="myNav{zoomid}" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav{zoomid}()">&times;</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreen{zoomid}"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutFullScreen{zoomid}"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetFullScreen{zoomid}">Reset image</button>
-<button class="manuscript-photo-button" onclick="highResFull{zoomid}()">Resolution</button>')
-  
-  text_button <- photo_info_tibble %>% 
-    glue_data('
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>
-<button id="textZoomInFull{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutFull{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransform{zoomid}()">Reset text</button>
-')
-  
-  second_part <- photo_info_tibble %>% 
-    glue_data('</div>
-<div class="panzoomContainer overlay-content" id="full{zoomid}">
-<p class="medium-image-size-overlay">{photo_size_medium}</p>
-<p class="high-image-size-overlay">{photo_size_high}</p>
-<img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
-</div>
-</div>\n')
-  
-  if (hasText){
-    paste(first_part, text_button, second_part) %>% cat() 
-  } else {
-    paste(first_part, second_part) %>% cat() 
-  }
-}
-
 create_high_res_function <- function(photo_info_tibble){
   photo_info_tibble %>% 
     glue_data('
 <script>
-function highRes{{zoomid}}() {
-var image = document.querySelector("#{{zoomid}} img");
+function highRes() {
+var image = document.querySelector("#panzoomManuscriptPhoto img");
 
 if (image.src === image.getAttribute("data-src-md-res")) {
     image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#{{zoomid}} .medium-image-size").style.display = "none";
-    document.querySelector("#{{zoomid}} .high-image-size").style.display = "block";
+    document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "none";
+    document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "block";
   } else {
     image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#{{zoomid}} .medium-image-size").style.display = "block";
-    document.querySelector("#{{zoomid}} .high-image-size").style.display = "none";
+    document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "block";
+    document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "none";
   }
 }
 
-function highResFull{{zoomid}}() {
-var image = document.querySelector("#myNav{{zoomid}} img");
+function highResFull() {
+var image = document.querySelector("#myNav img");
 
 if (image.src === image.getAttribute("data-src-md-res")) {
     image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNav{{zoomid}} .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNav{{zoomid}} .high-image-size-overlay").style.display = "block";
+    document.querySelector("#myNav .medium-image-size-overlay").style.display = "none";
+    document.querySelector("#myNav .high-image-size-overlay").style.display = "block";
   } else {
     image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNav{{zoomid}} .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNav{{zoomid}} .high-image-size-overlay").style.display = "none";
+    document.querySelector("#myNav .medium-image-size-overlay").style.display = "block";
+    document.querySelector("#myNav .high-image-size-overlay").style.display = "none";
   }
 }
 </script>
@@ -213,45 +178,19 @@ if (image.src === image.getAttribute("data-src-md-res")) {
 openAndCloseFullScreen <- function(photo_info_tibble){
   photo_info_tibble %>% 
     glue_data('
-function openNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "100%";
-var image = document.querySelector("#myNav{{zoomid}} img");
+function openNav() {
+document.getElementById("myNav").style.width = "100%";
+var image = document.querySelector("#myNav img");
 image.src = image.getAttribute("data-src-md-res");
 }
 
-function closeNav{{zoomid}}() {
-document.getElementById("myNav{{zoomid}}").style.width = "0%";
+function closeNav() {
+document.getElementById("myNav").style.width = "0%";
 }
 ', .open = "{{", .close = "}}") %>%
     cat()
 }
 
 
-prepare_zoom_effect <- function(photo_info_tibble){
-  cat("<script src='/js/panzoom.js'></script>")
-  
-  cat('<script>')
-  photo_info_tibble %>% 
-    glue_data('
-const elem{zoomid} = document.querySelector("#{zoomid}");
-const panzoom{zoomid} = Panzoom(elem{zoomid});
-const zoomInButton{zoomid} = document.querySelector("#zoomIn{zoomid}");
-const zoomOutButton{zoomid} = document.querySelector("#zoomOut{zoomid}");
-const resetButton{zoomid} = document.querySelector("#zoomReset{zoomid}");
-zoomInButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomIn);
-zoomOutButton{zoomid}.addEventListener("click", panzoom{zoomid}.zoomOut);
-resetButton{zoomid}.addEventListener("click", panzoom{zoomid}.reset);
-const elemFull{zoomid} = document.querySelector("#full{zoomid}");
-const panzoomFull{zoomid} = Panzoom(elemFull{zoomid});
-const zoomInButtonFull{zoomid} = document.querySelector("#zoomInFullScreen{zoomid}");
-const zoomOutButtonFull{zoomid} = document.querySelector("#zoomOutFullScreen{zoomid}");
-const resetButtonFull{zoomid} = document.querySelector("#zoomResetFullScreen{zoomid}");
-zoomInButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomIn);
-zoomOutButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.zoomOut);
-resetButtonFull{zoomid}.addEventListener("click", panzoomFull{zoomid}.reset);\n
-') %>% 
-    cat()
-  cat('</script>')
-}
 
 
