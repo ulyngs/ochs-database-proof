@@ -1,6 +1,6 @@
 source(here::here("_scripts/manuscript_joint_functions.R"))
 
-create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, zoomid, cols_hide) {
+create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, cols_hide) {
   # create row
   cat("<div class='row manuscript-photo-and-text'>")
   
@@ -8,12 +8,12 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   cat('<div class="col-sm-9">')
   
   cat('<div class="zoomButtons">')
-  insert_zoom_buttons(zoomid)
+  insert_zoom_buttons()
   insert_dictionary_dropdown()
   insert_download_button(photo_path_high)
   cat('</div>')
   
-  insert_manuscript_photo(zoomid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid)
+  insert_manuscript_photo(photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid)
   
   cat("</div>") # close column
   
@@ -31,6 +31,5 @@ initiate_zoom_effect <- function(photo_info_tibble) {
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
   insert_dictionary_toggle_functions()
-  openAndCloseFullScreen(photo_info_tibble)
   cat('</script>')
 }
