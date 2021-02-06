@@ -159,11 +159,8 @@ datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions =
   if (has_photos){
     lines_for_including_photos <- line_of_meta_data %>% glue_data('
 ### photos to show ###
-s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
-
 aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "{{Catalogue_id}}") %>% 
-  mutate(filepath = paste0(s3_address, filepath))
+  filter(manuscript == "{{Catalogue_id}}")
 
 photo_medium_info <- aws_content %>% 
   filter(str_detect(filepath, "medium_resolution"))
