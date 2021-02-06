@@ -47,7 +47,11 @@ image_counts <- aws_content %>%
   
 text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>% 
   rename(Subject = `Subject(s)`) %>% 
-  left_join(image_counts)
+  left_join(image_counts) %>% 
+  mutate(photo_path_medium = "",
+         photo_size_medium = "",
+         photo_path_high = "",
+         photo_size_high = "")
 
 ```
 
@@ -90,7 +94,11 @@ translationEnglish: "{Translation_english_by}"
 translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
 hasPhotos: {has_photos}
-hasText: {has_text}{text_only_line}{images_total_line}{image_current_line}
+hasText: {has_text}{text_only_line}
+photoPathMedium: {photo_path_medium}
+photoSizeMedium: {photo_size_medium}
+photoPathHigh: {photo_path_high}
+photoSizeHigh: {photo_size_high}{images_total_line}{image_current_line}
 categories:
   - sanskrit
 ---
@@ -188,12 +196,6 @@ photo_info <- tibble(
     TRUE ~ ''
   )
   
-  overlay_divs <- case_when(
-    has_text & has_photos ~ 'create_overlay_divs(photo_info, hasText = TRUE)',
-    has_photos ~ 'create_overlay_divs(photo_info)',
-    has_text ~ ''
-  )
-  
   create_content <- case_when(
     has_text & has_photos ~ 'pwalk(photo_info, create_content, cols_hide = cols_hide_nums)',
     has_photos ~ 'pwalk(photo_info, create_content)',
@@ -201,7 +203,7 @@ photo_info <- tibble(
   )
   
   initiate_zoom_effect <- case_when(
-    has_text & has_photos | has_photos ~ 'initiate_zoom_effect(photo_info)',
+    has_text & has_photos ~ 'initiate_zoom_effect(photo_info)',
     has_text ~ 'create_overlay_functions()'
   )
   
@@ -236,7 +238,6 @@ source(here("_scripts/", "manuscript_joint_functions.R"))
 
 \`\`\`{r add-text, results="asis"}
 insert_dictionary_iframes()
-{{overlay_divs}}
 {{create_content}}
 cat("\\n")
 {{initiate_zoom_effect}}
@@ -255,8 +256,28 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
   
   if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "yes") {
     
+    # image info
+    image_info <- aws_content %>% 
+      filter(manuscript == line_of_meta_data$Catalogue_id, filepath != paste0(line_of_meta_data$Catalogue_id, "/"))
+    
     # generate an Rmd for each image
     for(cur_image in seq_along(1:line_of_meta_data$num_images)){
+      # add image info to the line of meta data
+      high_res_image <- image_info %>% 
+        filter(high_resolution == TRUE) %>% 
+        slice(cur_image)
+      
+      med_res_image <- image_info %>% 
+        filter(high_resolution == FALSE) %>% 
+        slice(cur_image)
+      
+      line_of_meta_data <- line_of_meta_data %>% 
+        mutate(photo_path_medium = med_res_image$filepath,
+               photo_size_medium = med_res_image$formatted_filesize,
+               photo_path_high = high_res_image$filepath,
+               photo_size_high = high_res_image$formatted_filesize)
+      
+      # generate the Rmd
       yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
       body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE, image_current = cur_image)
       rmd_to_write <- str_c(yaml_header, body_content)
@@ -272,8 +293,28 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
     write_lines(rmd_to_write, str_c(folder_path, "/text-only", ".Rmd"))
     
   } else if (line_of_meta_data$has_photos == "yes" & line_of_meta_data$has_text == "no") {
+    # get image info
+    image_info <- aws_content %>% 
+      filter(manuscript == line_of_meta_data$Catalogue_id, filepath != paste0(line_of_meta_data$Catalogue_id, "/"))
+    
     # generate an Rmd for each image
     for(cur_image in seq_along(1:line_of_meta_data$num_images)){
+      # add image info to the line of meta data
+      high_res_image <- image_info %>% 
+        filter(high_resolution == TRUE) %>% 
+        slice(cur_image)
+      
+      med_res_image <- image_info %>% 
+        filter(high_resolution == FALSE) %>% 
+        slice(cur_image)
+      
+      line_of_meta_data <- line_of_meta_data %>% 
+        mutate(photo_path_medium = med_res_image$filepath,
+               photo_size_medium = med_res_image$formatted_filesize,
+               photo_path_high = high_res_image$filepath,
+               photo_size_high = high_res_image$formatted_filesize)
+      
+      # generate Rmd
       yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
       body_content <- create_rmd_body(line_of_meta_data, has_text = FALSE, has_photos = TRUE, image_current = cur_image)
       rmd_to_write <- str_c(yaml_header, body_content)
@@ -308,8 +349,6 @@ for(i in 1:nrow(files_to_generate)) {
     slice(i) %>% 
     generate_rmd()
 }
-
-
 
 ```
 
