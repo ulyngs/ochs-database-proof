@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__039.JPG
+photoSizeMedium: 524 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG
+photoSizeHigh: 10.3 MB
 imagesTotal: 89
 imageCurrent: 40
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable40" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable40()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable40">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable40">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable40">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable40()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable40()">Show/hide text</button>
-<button id="textZoomInzoomable40" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable40" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable40()">Reset text</button>
-</div>
-<div id="fullzoomable40" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-524 KB
-</p>
-<p class="high-image-size-overlay">
-10.3 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__039.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable40"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable40"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable40">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable40()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable40()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable40" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable40" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable40()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable40">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">524 KB</p>
       <p class="high-image-size">10.3 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__039.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__039.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__039.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__039.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__039.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable40DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable40DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>3<\/div>","<div contenteditable>3<\/div>","<div contenteditable>3<\/div>"],["<div contenteditable>75-76ab<\/div>","<div contenteditable>76cd-79ab<\/div>","<div contenteditable>79cd-80ab<\/div>"],["<div contenteditable>ādau caivājya saṃskāraṃ kuryād dhomam athā param/ ādhiśrayaṇam uddhāraṃ bhrāmaṇaṃ sthāpanaṃ tataḥ// 75 // nirīkṣaṇaṃ tato’streṇa nairājanamataḥ param<\/div>","<div contenteditable>paryagnikaraṇaṃ caiva tathaivotplavasaṃplavau// 76 // astreṇaiva arcanaṃ mūlenāmṛtīkaraṇaṃ tathā darbhāstaraviṣṭarāṇi paridhīn astramantrataḥ // 77 // sūryācandramasau bāhye kalpayet praṇavena tu bhāvayen navajjihvānu pūrṇāṃ mūlena pātayet // 78 // tataḥ paścāt tu taṃ mantraṃ sāṅgaṃ madhyagataṃ yajet<\/div>","<div contenteditable>evaṃ kṛtvānujuhuyān mantrī karmānusārataḥ/// 79 // payasā ghṛtayuktena puṣṭir bhavati śāśvatī<\/div>"],["<div contenteditable>3.75-76ab. Then having gained victory with the preliminary formation rites, he should per- form the supreme re ritual rite. [He should perform] taking refuge, extraction [of mantras], waving, installation, then looking with the weapon mantra, next waving lights.<\/div>","<div contenteditable>3.76cd-79ab. Then he should perform imaginative worship circumambulating the re, sprin- kling up and down, then performing the rite of nectar with the root mantra and the weapon mantra. [Then he should perform worship] strewing [the area] with sacred grass imbued with the weapon mantra, protecting the boundary of the re pit with the weapon mantra, [and worshipping] the sun and moon externally with the mantra OM. He should meditate on nine tongues [of re]; he causes this to occur with the root mantra. Then after that he should worship the complete mantra in the centre.<\/div>","<div contenteditable>3.79cd-80ab. Thus the Mantrin, having made sacri ces according to customary ritual with milk [and] ghee, becomes completely satis ed.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>3<\/div>","<div contenteditable>3<\/div>","<div contenteditable>3<\/div>"],["<div contenteditable>75-76ab<\/div>","<div contenteditable>76cd-79ab<\/div>","<div contenteditable>79cd-80ab<\/div>"],["<div contenteditable>ādau caivājya saṃskāraṃ kuryād dhomam athā param/ ādhiśrayaṇam uddhāraṃ bhrāmaṇaṃ sthāpanaṃ tataḥ// 75 // nirīkṣaṇaṃ tato’streṇa nairājanamataḥ param<\/div>","<div contenteditable>paryagnikaraṇaṃ caiva tathaivotplavasaṃplavau// 76 // astreṇaiva arcanaṃ mūlenāmṛtīkaraṇaṃ tathā darbhāstaraviṣṭarāṇi paridhīn astramantrataḥ // 77 // sūryācandramasau bāhye kalpayet praṇavena tu bhāvayen navajjihvānu pūrṇāṃ mūlena pātayet // 78 // tataḥ paścāt tu taṃ mantraṃ sāṅgaṃ madhyagataṃ yajet<\/div>","<div contenteditable>evaṃ kṛtvānujuhuyān mantrī karmānusārataḥ/// 79 // payasā ghṛtayuktena puṣṭir bhavati śāśvatī<\/div>"],["<div contenteditable>3.75-76ab. Then having gained victory with the preliminary formation rites, he should per- form the supreme re ritual rite. [He should perform] taking refuge, extraction [of mantras], waving, installation, then looking with the weapon mantra, next waving lights.<\/div>","<div contenteditable>3.76cd-79ab. Then he should perform imaginative worship circumambulating the re, sprin- kling up and down, then performing the rite of nectar with the root mantra and the weapon mantra. [Then he should perform worship] strewing [the area] with sacred grass imbued with the weapon mantra, protecting the boundary of the re pit with the weapon mantra, [and worshipping] the sun and moon externally with the mantra OM. He should meditate on nine tongues [of re]; he causes this to occur with the root mantra. Then after that he should worship the complete mantra in the centre.<\/div>","<div contenteditable>3.79cd-80ab. Thus the Mantrin, having made sacri ces according to customary ritual with milk [and] ghee, becomes completely satis ed.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable40 = document.querySelector("#zoomable40");
-const panzoomzoomable40 = Panzoom(elemzoomable40);
-const zoomInButtonzoomable40 = document.querySelector("#zoomInzoomable40");
-const zoomOutButtonzoomable40 = document.querySelector("#zoomOutzoomable40");
-const resetButtonzoomable40 = document.querySelector("#zoomResetzoomable40");
-zoomInButtonzoomable40.addEventListener("click", panzoomzoomable40.zoomIn);
-zoomOutButtonzoomable40.addEventListener("click", panzoomzoomable40.zoomOut);
-resetButtonzoomable40.addEventListener("click", panzoomzoomable40.reset);
-const elemFullzoomable40 = document.querySelector("#fullzoomable40");
-const panzoomFullzoomable40 = Panzoom(elemFullzoomable40);
-const zoomInButtonFullzoomable40 = document.querySelector("#zoomInFullScreenzoomable40");
-const zoomOutButtonFullzoomable40 = document.querySelector("#zoomOutFullScreenzoomable40");
-const resetButtonFullzoomable40 = document.querySelector("#zoomResetFullScreenzoomable40");
-zoomInButtonFullzoomable40.addEventListener("click", panzoomFullzoomable40.zoomIn);
-zoomOutButtonFullzoomable40.addEventListener("click", panzoomFullzoomable40.zoomOut);
-resetButtonFullzoomable40.addEventListener("click", panzoomFullzoomable40.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable40 = document.querySelector("#zoomable40DT");
-
-var instancezoomable40 = panzoom(elementzoomable40, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable40",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable40.on("panstart", function(e) { hideHeaderzoomable40() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable40.on("panstart", function(e) { hideHeaderzoomable40() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable40() {
-$("#zoomable40DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable40DT").css("background-color", "transparent");
-$("#zoomable40DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable40DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable40DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable40DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable40DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable40(){
-{$("#zoomable40DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable40DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable40DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable40DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable40DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable40DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable40(){
-$("#zoomable40DT").css("background-color", "white");
-
-var instancezoomable40 = panzoom(elementzoomable40, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable40",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable40()
-
-}
-
-function showTextzoomable40() {
-$("#zoomable40DT").toggleClass("bring-to-foreground");
-$("#zoomable40DT").css("background-color", "white");
-}function openNavzoomable40() {
-document.getElementById("myNavzoomable40").style.width = "100%";
-var image = document.querySelector("#myNavzoomable40 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable40() {
-document.getElementById("myNavzoomable40").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable40() {
-var image = document.querySelector("#zoomable40 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable40 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable40 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable40 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable40 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable40() {
-var image = document.querySelector("#myNavzoomable40 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable40 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable40 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable40 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable40 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

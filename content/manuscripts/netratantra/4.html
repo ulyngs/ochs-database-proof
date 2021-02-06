@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__003.JPG
+photoSizeMedium: 531.5 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG
+photoSizeHigh: 10.3 MB
 imagesTotal: 89
 imageCurrent: 4
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable4" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable4()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable4">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable4">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable4">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable4()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable4()">Show/hide text</button>
-<button id="textZoomInzoomable4" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable4" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable4()">Reset text</button>
-</div>
-<div id="fullzoomable4" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-531.5 KB
-</p>
-<p class="high-image-size-overlay">
-10.3 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__003.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable4"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable4"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable4">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable4()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable4()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable4" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable4" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable4()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable4">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">531.5 KB</p>
       <p class="high-image-size">10.3 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__003.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__003.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__003.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__003.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__003.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable4DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable4DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>19<\/div>","<div contenteditable>20<\/div>","<div contenteditable>21-22<\/div>","<div contenteditable>23<\/div>"],["<div contenteditable>mamānandayase deva prasannenaiva cakṣuṣā / amṛtākārasaṃśubhraṃ jagadāpyāyakārakam // 19 //<\/div>","<div contenteditable>tasmāt kālānalaprasthaṃ kuto vahniḥ prajāyate / etat sarvaṃ samāsena bhagavan vaktum arhasi // 20 //<\/div>","<div contenteditable>bhagavān uvāca: atikautūhalāviṣṭā pṛcchasy etac chṛṇu priye/ yan me netrāntare hy agni yad vāmṛtam anuttamaṃ // 21 // tat sarvaṃ saṃpravakṣyāmi yogayuktyā śṛṇu priye / yat svarūpaṃ nijaṃ śuddhaṃ vyāpakaṃ sarvatomukhaṃ // 22 //<\/div>","<div contenteditable>sarvabhūtāntarāvasthaṃ sarvaprāṇiṣu jīvanaṃ / yogagamyaṃ durārādhyaṃ duṣprāpam akṛtātmabhiḥ // 23 //<\/div>"],["<div contenteditable>1.19. You cause bliss to me, O God, with [your] delighted eye. Like the appearance of nectar, [the eye] is radiant and a cause of prosperity in the world.<\/div>","<div contenteditable>1.20. Therefore how is this re, which extends as the re of time, produced? Can you fully explain all this, O Lord? The Lord spoke:<\/div>","<div contenteditable>1.21-22. Possessed of great curiosity, you ask about this, [so] listen, O Dear One. I will tell you about all that which is the re in the eye and which is supreme nectar, O dear one, listen attentively3 about that which is the innate essence, pure, pervading, facing in all directions.<\/div>","<div contenteditable>1.23. [It is] located within all beings, the life in all breathing things, attained with practice, [but] diﬃcult to reach [and] hard to attain by unrestrained souls.<\/div>"],[null,null,null,null],["<div contenteditable>19c amṛtākārasaṃśubhraṃ ] N1 N2 : amṛtākāravac chubhraṃ K1<\/div>","<div contenteditable>20a kālānalaprasthaṃ ] N1 N2 : kālānalaprasthaḥ K1<\/div>","<div contenteditable>21c hy agni ] N1 : kṣāṇāt K1 19a mamānandayase ] N1 N2 : mām ānandayase K1 vahnir N2 K1 22a saṃpravakṣyāmi ] N1 N2 : kathayiṣyāmi K1<\/div>","<div contenteditable>23c durārādhya ] N1 N2 : durāsādaṃ K1<\/div>"],["<div contenteditable>19c Alternatively, amṛtākāra could be vocative singular, hence 'you delight me, you whose form is nectar.'<\/div>",null,"<div contenteditable>21a The Kāśmīrī śāradā MS K1 (ORL 845) begins at this verse. 22c Yat here probably goes with tat in 24.c but while this may be semantically coherent, I have tried to render the semantic unit in a more restricted or contained way in the translation.<\/div>","<div contenteditable>23d There are eighty eight attestations for akṛtātmabhiḥ in the Mahābhārata, three in the Rāmāyana 2.26.10; 3.4.24; 4.18.16, in the Svacchana-tantra 6.9, 10.445 and the Padmasaṃhitā 33.208c. In his commentary on the Svacchanda-tantra 10.445ab Kṣemarāja glosses akṛtātma as asaṃyamavat, one who is not restrained.<\/div>"],[null,null,"<div contenteditable>3 This could also have a more esoteric meaning, 'I'll tell you about this with the device of yoga (yogayuktyā).' Kṣemarāja's commentary glosses the term as having entered into supreme non-duality.<\/div>",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>19<\/div>","<div contenteditable>20<\/div>","<div contenteditable>21-22<\/div>","<div contenteditable>23<\/div>"],["<div contenteditable>mamānandayase deva prasannenaiva cakṣuṣā / amṛtākārasaṃśubhraṃ jagadāpyāyakārakam // 19 //<\/div>","<div contenteditable>tasmāt kālānalaprasthaṃ kuto vahniḥ prajāyate / etat sarvaṃ samāsena bhagavan vaktum arhasi // 20 //<\/div>","<div contenteditable>bhagavān uvāca: atikautūhalāviṣṭā pṛcchasy etac chṛṇu priye/ yan me netrāntare hy agni yad vāmṛtam anuttamaṃ // 21 // tat sarvaṃ saṃpravakṣyāmi yogayuktyā śṛṇu priye / yat svarūpaṃ nijaṃ śuddhaṃ vyāpakaṃ sarvatomukhaṃ // 22 //<\/div>","<div contenteditable>sarvabhūtāntarāvasthaṃ sarvaprāṇiṣu jīvanaṃ / yogagamyaṃ durārādhyaṃ duṣprāpam akṛtātmabhiḥ // 23 //<\/div>"],["<div contenteditable>1.19. You cause bliss to me, O God, with [your] delighted eye. Like the appearance of nectar, [the eye] is radiant and a cause of prosperity in the world.<\/div>","<div contenteditable>1.20. Therefore how is this re, which extends as the re of time, produced? Can you fully explain all this, O Lord? The Lord spoke:<\/div>","<div contenteditable>1.21-22. Possessed of great curiosity, you ask about this, [so] listen, O Dear One. I will tell you about all that which is the re in the eye and which is supreme nectar, O dear one, listen attentively3 about that which is the innate essence, pure, pervading, facing in all directions.<\/div>","<div contenteditable>1.23. [It is] located within all beings, the life in all breathing things, attained with practice, [but] diﬃcult to reach [and] hard to attain by unrestrained souls.<\/div>"],[null,null,null,null],["<div contenteditable>19c amṛtākārasaṃśubhraṃ ] N1 N2 : amṛtākāravac chubhraṃ K1<\/div>","<div contenteditable>20a kālānalaprasthaṃ ] N1 N2 : kālānalaprasthaḥ K1<\/div>","<div contenteditable>21c hy agni ] N1 : kṣāṇāt K1 19a mamānandayase ] N1 N2 : mām ānandayase K1 vahnir N2 K1 22a saṃpravakṣyāmi ] N1 N2 : kathayiṣyāmi K1<\/div>","<div contenteditable>23c durārādhya ] N1 N2 : durāsādaṃ K1<\/div>"],["<div contenteditable>19c Alternatively, amṛtākāra could be vocative singular, hence 'you delight me, you whose form is nectar.'<\/div>",null,"<div contenteditable>21a The Kāśmīrī śāradā MS K1 (ORL 845) begins at this verse. 22c Yat here probably goes with tat in 24.c but while this may be semantically coherent, I have tried to render the semantic unit in a more restricted or contained way in the translation.<\/div>","<div contenteditable>23d There are eighty eight attestations for akṛtātmabhiḥ in the Mahābhārata, three in the Rāmāyana 2.26.10; 3.4.24; 4.18.16, in the Svacchana-tantra 6.9, 10.445 and the Padmasaṃhitā 33.208c. In his commentary on the Svacchanda-tantra 10.445ab Kṣemarāja glosses akṛtātma as asaṃyamavat, one who is not restrained.<\/div>"],[null,null,"<div contenteditable>3 This could also have a more esoteric meaning, 'I'll tell you about this with the device of yoga (yogayuktyā).' Kṣemarāja's commentary glosses the term as having entered into supreme non-duality.<\/div>",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable4 = document.querySelector("#zoomable4");
-const panzoomzoomable4 = Panzoom(elemzoomable4);
-const zoomInButtonzoomable4 = document.querySelector("#zoomInzoomable4");
-const zoomOutButtonzoomable4 = document.querySelector("#zoomOutzoomable4");
-const resetButtonzoomable4 = document.querySelector("#zoomResetzoomable4");
-zoomInButtonzoomable4.addEventListener("click", panzoomzoomable4.zoomIn);
-zoomOutButtonzoomable4.addEventListener("click", panzoomzoomable4.zoomOut);
-resetButtonzoomable4.addEventListener("click", panzoomzoomable4.reset);
-const elemFullzoomable4 = document.querySelector("#fullzoomable4");
-const panzoomFullzoomable4 = Panzoom(elemFullzoomable4);
-const zoomInButtonFullzoomable4 = document.querySelector("#zoomInFullScreenzoomable4");
-const zoomOutButtonFullzoomable4 = document.querySelector("#zoomOutFullScreenzoomable4");
-const resetButtonFullzoomable4 = document.querySelector("#zoomResetFullScreenzoomable4");
-zoomInButtonFullzoomable4.addEventListener("click", panzoomFullzoomable4.zoomIn);
-zoomOutButtonFullzoomable4.addEventListener("click", panzoomFullzoomable4.zoomOut);
-resetButtonFullzoomable4.addEventListener("click", panzoomFullzoomable4.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable4 = document.querySelector("#zoomable4DT");
-
-var instancezoomable4 = panzoom(elementzoomable4, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable4",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable4.on("panstart", function(e) { hideHeaderzoomable4() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable4.on("panstart", function(e) { hideHeaderzoomable4() });</script
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable4() {
-$("#zoomable4DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable4DT").css("background-color", "transparent");
-$("#zoomable4DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable4DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable4DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable4DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable4DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable4(){
-{$("#zoomable4DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable4DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable4DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable4DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable4DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable4DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable4(){
-$("#zoomable4DT").css("background-color", "white");
-
-var instancezoomable4 = panzoom(elementzoomable4, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable4",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable4()
-
-}
-
-function showTextzoomable4() {
-$("#zoomable4DT").toggleClass("bring-to-foreground");
-$("#zoomable4DT").css("background-color", "white");
-}function openNavzoomable4() {
-document.getElementById("myNavzoomable4").style.width = "100%";
-var image = document.querySelector("#myNavzoomable4 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable4() {
-document.getElementById("myNavzoomable4").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable4() {
-var image = document.querySelector("#zoomable4 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable4 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable4 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable4 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable4 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable4() {
-var image = document.querySelector("#myNavzoomable4 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable4 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable4 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable4 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable4 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

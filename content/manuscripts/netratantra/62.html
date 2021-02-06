@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__061.JPG
+photoSizeMedium: 525.6 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG
+photoSizeHigh: 10.3 MB
 imagesTotal: 89
 imageCurrent: 62
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable62" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable62()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable62">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable62">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable62">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable62()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable62()">Show/hide text</button>
-<button id="textZoomInzoomable62" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable62" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable62()">Reset text</button>
-</div>
-<div id="fullzoomable62" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-525.6 KB
-</p>
-<p class="high-image-size-overlay">
-10.3 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__061.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable62"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable62"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable62">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable62()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable62()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable62" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable62" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable62()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable62">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">525.6 KB</p>
       <p class="high-image-size">10.3 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__061.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__061.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__061.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__061.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__061.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable62DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable62DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>7<\/div>","<div contenteditable>7<\/div>","<div contenteditable>7<\/div>"],["<div contenteditable>18<\/div>","<div contenteditable>19<\/div>","<div contenteditable>20<\/div>"],["<div contenteditable>tadvīryāt paramāṃ śaktiṃ kriyākhyamadhyamoditā vijñānenordhvato bhinnā granthibhedena cecchayā // 18 //<\/div>","<div contenteditable>mūlaspandaṃ samāśṛtya tyaktvā vāhadvayaṃ tataḥ prathamārgapravāhena suṣūmnākhyaṃ samāśrayet // 19 //<\/div>","<div contenteditable>tadevāśṛtya viramet tatsarvendriyagocare tadā pratyastamenaiva vijñānenordhvataḥ kramāt // 20 //<\/div>"],["<div contenteditable>7.18. Then, from that virile power, the Supreme Power,13 known as action, arises in the mid- dle. She is separated upwards by insight, the distinguishing of the knots, and by will.<\/div>","<div contenteditable>7.19. The yogi should resort to the vibration of the root centre and, having abandoned it, the yogi should resort to the twofold ow (of the inbreath and outbreath) by the name of Suṣumnā through the ow of the outspread path.<\/div>","<div contenteditable>7.20. Then, resorting to that, the yogi should pause in all his spheres of the senses and then gradually rise upwards by means of the eightfold insight.14<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>7<\/div>","<div contenteditable>7<\/div>","<div contenteditable>7<\/div>"],["<div contenteditable>18<\/div>","<div contenteditable>19<\/div>","<div contenteditable>20<\/div>"],["<div contenteditable>tadvīryāt paramāṃ śaktiṃ kriyākhyamadhyamoditā vijñānenordhvato bhinnā granthibhedena cecchayā // 18 //<\/div>","<div contenteditable>mūlaspandaṃ samāśṛtya tyaktvā vāhadvayaṃ tataḥ prathamārgapravāhena suṣūmnākhyaṃ samāśrayet // 19 //<\/div>","<div contenteditable>tadevāśṛtya viramet tatsarvendriyagocare tadā pratyastamenaiva vijñānenordhvataḥ kramāt // 20 //<\/div>"],["<div contenteditable>7.18. Then, from that virile power, the Supreme Power,13 known as action, arises in the mid- dle. She is separated upwards by insight, the distinguishing of the knots, and by will.<\/div>","<div contenteditable>7.19. The yogi should resort to the vibration of the root centre and, having abandoned it, the yogi should resort to the twofold ow (of the inbreath and outbreath) by the name of Suṣumnā through the ow of the outspread path.<\/div>","<div contenteditable>7.20. Then, resorting to that, the yogi should pause in all his spheres of the senses and then gradually rise upwards by means of the eightfold insight.14<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable62 = document.querySelector("#zoomable62");
-const panzoomzoomable62 = Panzoom(elemzoomable62);
-const zoomInButtonzoomable62 = document.querySelector("#zoomInzoomable62");
-const zoomOutButtonzoomable62 = document.querySelector("#zoomOutzoomable62");
-const resetButtonzoomable62 = document.querySelector("#zoomResetzoomable62");
-zoomInButtonzoomable62.addEventListener("click", panzoomzoomable62.zoomIn);
-zoomOutButtonzoomable62.addEventListener("click", panzoomzoomable62.zoomOut);
-resetButtonzoomable62.addEventListener("click", panzoomzoomable62.reset);
-const elemFullzoomable62 = document.querySelector("#fullzoomable62");
-const panzoomFullzoomable62 = Panzoom(elemFullzoomable62);
-const zoomInButtonFullzoomable62 = document.querySelector("#zoomInFullScreenzoomable62");
-const zoomOutButtonFullzoomable62 = document.querySelector("#zoomOutFullScreenzoomable62");
-const resetButtonFullzoomable62 = document.querySelector("#zoomResetFullScreenzoomable62");
-zoomInButtonFullzoomable62.addEventListener("click", panzoomFullzoomable62.zoomIn);
-zoomOutButtonFullzoomable62.addEventListener("click", panzoomFullzoomable62.zoomOut);
-resetButtonFullzoomable62.addEventListener("click", panzoomFullzoomable62.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable62 = document.querySelector("#zoomable62DT");
-
-var instancezoomable62 = panzoom(elementzoomable62, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable62",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable62.on("panstart", function(e) { hideHeaderzoomable62() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable62.on("panstart", function(e) { hideHeaderzoomable62() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable62() {
-$("#zoomable62DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable62DT").css("background-color", "transparent");
-$("#zoomable62DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable62DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable62DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable62DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable62DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable62(){
-{$("#zoomable62DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable62DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable62DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable62DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable62DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable62DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable62(){
-$("#zoomable62DT").css("background-color", "white");
-
-var instancezoomable62 = panzoom(elementzoomable62, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable62",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable62()
-
-}
-
-function showTextzoomable62() {
-$("#zoomable62DT").toggleClass("bring-to-foreground");
-$("#zoomable62DT").css("background-color", "white");
-}function openNavzoomable62() {
-document.getElementById("myNavzoomable62").style.width = "100%";
-var image = document.querySelector("#myNavzoomable62 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable62() {
-document.getElementById("myNavzoomable62").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable62() {
-var image = document.querySelector("#zoomable62 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable62 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable62 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable62 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable62 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable62() {
-var image = document.querySelector("#myNavzoomable62 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable62 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable62 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable62 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable62 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

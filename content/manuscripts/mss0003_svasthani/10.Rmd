@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: ""
 hasPhotos: yes
 hasText: no
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05460.jpeg
+photoSizeMedium: 1.2 MB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05460.jpeg
+photoSizeHigh: 10.5 MB
 imagesTotal: 32
 imageCurrent: 10
 categories:
@@ -43,11 +47,8 @@ source(here("_scripts/", "manuscript_joint_functions.R"))
 
 data_text <- NA
 ### photos to show ###
-s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
-
 aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "mss0003_svasthani") %>% 
-  mutate(filepath = paste0(s3_address, filepath))
+  filter(manuscript == "mss0003_svasthani")
 
 photo_medium_info <- aws_content %>% 
   filter(str_detect(filepath, "medium_resolution"))
@@ -61,7 +62,6 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   mutate(zoomid = str_c("zoomable", row_number())) %>% 
    slice(10)
 
 
@@ -70,11 +70,6 @@ photo_info <- tibble(
 
 ```{r add-text, results="asis"}
 insert_dictionary_iframes()
-create_overlay_divs(photo_info)
 pwalk(photo_info, create_content)
-cat("\n")
-initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)
-initialise_lazy_load()
-create_high_res_function(photo_info)
+insert_dictionary_toggle_functions()
 ```

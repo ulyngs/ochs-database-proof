@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__011.JPG
+photoSizeMedium: 510.7 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG
+photoSizeHigh: 10.1 MB
 imagesTotal: 89
 imageCurrent: 12
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable12" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable12()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable12">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable12">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable12">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable12()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable12()">Show/hide text</button>
-<button id="textZoomInzoomable12" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable12" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable12()">Reset text</button>
-</div>
-<div id="fullzoomable12" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-510.7 KB
-</p>
-<p class="high-image-size-overlay">
-10.1 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__011.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable12"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable12"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable12">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable12()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable12()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable12" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable12" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable12()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable12">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">510.7 KB</p>
       <p class="high-image-size">10.1 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__011.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__011.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__011.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__011.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__011.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable12DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable12DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>46<\/div>","<div contenteditable>47<\/div>","<div contenteditable>48<\/div>"],["<div contenteditable>yad yat tīvrataraṃ raudraṃ śrīmad ūrjitam eva vā / prasādaṃ varadaṃś śreyaḥ prakāśyan tat tad eva hi // 46 //<\/div>","<div contenteditable>tad jñeyam aprameyaṃ ca jñānaṃ mantraṃ mahābalam / trātāraṃ sarvabhūtānāṃ guptagopyaṃ sadā mayā // 47 //<\/div>","<div contenteditable>tavādya kathitaṃ devi kiṃ bhūyaḥ paripṛcchasi //48// iti sarvasrotasaṃgrahasāre mṛtyujidamṛtīśavidhane tantrādhitārādhikāro nāma prathamaḥ paṭalaḥ /<\/div>"],["<div contenteditable>1.46. Whatever is the sharpest, ferocious, glorious power, that alone is the very best, boon- giving favour, the illumination.<\/div>","<div contenteditable>1.47. That [eye] is the object of knowledge and immeasurable knowledge, the mantra, the great power, the salvation of all beings, the secret, always to be hidden by me.<\/div>","<div contenteditable>1.48. Today [I have] told this to you, O Goddess, what more will you ask? Here ends the rst chapter concerning the authority of the decent of the Tantra, accord- ing to the rule of the immortal Conqueror of Death, which is the essence of the collection of all the streams of revelation.<\/div>"],[null,null,null],["<div contenteditable>46c varadaṃś śreyaḥ ] N1 N2 : varadaṃ śreyaḥ K1<\/div>","<div contenteditable>47d gupta- ] N1 : guptaṃ N2 K1 ; mayā ] N1 N2 : tvayā K1<\/div>","<div contenteditable>48b kiṃ bhūyaḥ paripṛcchasi ] N2 K1 : bhūyaḥ paripṛcchasi N1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>46<\/div>","<div contenteditable>47<\/div>","<div contenteditable>48<\/div>"],["<div contenteditable>yad yat tīvrataraṃ raudraṃ śrīmad ūrjitam eva vā / prasādaṃ varadaṃś śreyaḥ prakāśyan tat tad eva hi // 46 //<\/div>","<div contenteditable>tad jñeyam aprameyaṃ ca jñānaṃ mantraṃ mahābalam / trātāraṃ sarvabhūtānāṃ guptagopyaṃ sadā mayā // 47 //<\/div>","<div contenteditable>tavādya kathitaṃ devi kiṃ bhūyaḥ paripṛcchasi //48// iti sarvasrotasaṃgrahasāre mṛtyujidamṛtīśavidhane tantrādhitārādhikāro nāma prathamaḥ paṭalaḥ /<\/div>"],["<div contenteditable>1.46. Whatever is the sharpest, ferocious, glorious power, that alone is the very best, boon- giving favour, the illumination.<\/div>","<div contenteditable>1.47. That [eye] is the object of knowledge and immeasurable knowledge, the mantra, the great power, the salvation of all beings, the secret, always to be hidden by me.<\/div>","<div contenteditable>1.48. Today [I have] told this to you, O Goddess, what more will you ask? Here ends the rst chapter concerning the authority of the decent of the Tantra, accord- ing to the rule of the immortal Conqueror of Death, which is the essence of the collection of all the streams of revelation.<\/div>"],[null,null,null],["<div contenteditable>46c varadaṃś śreyaḥ ] N1 N2 : varadaṃ śreyaḥ K1<\/div>","<div contenteditable>47d gupta- ] N1 : guptaṃ N2 K1 ; mayā ] N1 N2 : tvayā K1<\/div>","<div contenteditable>48b kiṃ bhūyaḥ paripṛcchasi ] N2 K1 : bhūyaḥ paripṛcchasi N1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable12 = document.querySelector("#zoomable12");
-const panzoomzoomable12 = Panzoom(elemzoomable12);
-const zoomInButtonzoomable12 = document.querySelector("#zoomInzoomable12");
-const zoomOutButtonzoomable12 = document.querySelector("#zoomOutzoomable12");
-const resetButtonzoomable12 = document.querySelector("#zoomResetzoomable12");
-zoomInButtonzoomable12.addEventListener("click", panzoomzoomable12.zoomIn);
-zoomOutButtonzoomable12.addEventListener("click", panzoomzoomable12.zoomOut);
-resetButtonzoomable12.addEventListener("click", panzoomzoomable12.reset);
-const elemFullzoomable12 = document.querySelector("#fullzoomable12");
-const panzoomFullzoomable12 = Panzoom(elemFullzoomable12);
-const zoomInButtonFullzoomable12 = document.querySelector("#zoomInFullScreenzoomable12");
-const zoomOutButtonFullzoomable12 = document.querySelector("#zoomOutFullScreenzoomable12");
-const resetButtonFullzoomable12 = document.querySelector("#zoomResetFullScreenzoomable12");
-zoomInButtonFullzoomable12.addEventListener("click", panzoomFullzoomable12.zoomIn);
-zoomOutButtonFullzoomable12.addEventListener("click", panzoomFullzoomable12.zoomOut);
-resetButtonFullzoomable12.addEventListener("click", panzoomFullzoomable12.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable12 = document.querySelector("#zoomable12DT");
-
-var instancezoomable12 = panzoom(elementzoomable12, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable12",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable12.on("panstart", function(e) { hideHeaderzoomable12() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable12.on("panstart", function(e) { hideHeaderzoomable12() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable12() {
-$("#zoomable12DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable12DT").css("background-color", "transparent");
-$("#zoomable12DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable12DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable12DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable12DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable12DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable12(){
-{$("#zoomable12DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable12DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable12DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable12DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable12DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable12DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable12(){
-$("#zoomable12DT").css("background-color", "white");
-
-var instancezoomable12 = panzoom(elementzoomable12, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable12",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable12()
-
-}
-
-function showTextzoomable12() {
-$("#zoomable12DT").toggleClass("bring-to-foreground");
-$("#zoomable12DT").css("background-color", "white");
-}function openNavzoomable12() {
-document.getElementById("myNavzoomable12").style.width = "100%";
-var image = document.querySelector("#myNavzoomable12 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable12() {
-document.getElementById("myNavzoomable12").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable12() {
-var image = document.querySelector("#zoomable12 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable12 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable12 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable12 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable12 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable12() {
-var image = document.querySelector("#myNavzoomable12 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable12 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable12 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable12 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable12 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__083.JPG
+photoSizeMedium: 535.8 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG
+photoSizeHigh: 10.5 MB
 imagesTotal: 89
 imageCurrent: 84
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable84" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable84()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable84">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable84">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable84">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable84()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable84()">Show/hide text</button>
-<button id="textZoomInzoomable84" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable84" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable84()">Reset text</button>
-</div>
-<div id="fullzoomable84" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-535.8 KB
-</p>
-<p class="high-image-size-overlay">
-10.5 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__083.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable84"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable84"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable84">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable84()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable84()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable84" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable84" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable84()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable84">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">535.8 KB</p>
       <p class="high-image-size">10.5 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__083.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__083.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__083.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__083.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__083.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable84DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable84DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>44<\/div>","<div contenteditable>45<\/div>","<div contenteditable>46<\/div>"],["<div contenteditable>nendriyāṇi [na] bhūtāni śabdasparśarasānā/ sarvaṃ tyaktvā samādhisthaḥ kevalan tanmayo bhavet // 44 //<\/div>","<div contenteditable>sāvasthā paramā proktā śivasya paramātmanaḥ/ nirābhāsapade taṃ tu taṃ prāpya vinivartate // 45 //<\/div>","<div contenteditable>evaṃ bhāvitām ātmānam ātmano bhāvanābalāt/ sa bhavet paramaṃ śāntaṃ śivam atyantanirmalam // 46 //<\/div>"],["<div contenteditable>8.44. [The Yogi should not meditate on] the senses, nor the elements, nor on [the objects of the senses] sound, touch, and taste. Abandoning everything, established in concentration, [the Yogi] becomes only made of that [reality].<\/div>","<div contenteditable>8.45. This is called the supreme state of the highest self of Śiva. Having attained that, the condition beyond manifestation, [the Yogi] turns away [from the cycle of reincarnation].<\/div>","<div contenteditable>8.46. In this way [the Yogi] should meditate on the self through the powerful meditation on the self. He [then] becomes the supreme tranquillity that is Śiva, the transcendent purity.<\/div>"],[null,null,null],["<div contenteditable>44b śabdasparśarasānā ] N1 N2 : śabdasparśarasādi yat K1 44d kevalan tanmayo bhavet ] N2 K1 : kevalan mayo bhavet N1<\/div>","<div contenteditable>45b śivasya ] N1N2 : parasya K1 45c nirābhāsapadetaṃ ] N1N2 : nirābhāsaṃ padaṃ tat K1 45d taṃ ] N1N2: tat K1<\/div>","<div contenteditable>46a evaṃ bhāvitām ātmānam ] N1N2: bhāvayed evam ātmānam K1 46c bhavet ] N1N2: gacchet K1<\/div>"],[null,null,null],["<div contenteditable>44a N1 has missed out na. N2 has a hiatus between bhūtāni and śabda... and omits na except for a short line. The verse is unmetrical in N1.<\/div>",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>44<\/div>","<div contenteditable>45<\/div>","<div contenteditable>46<\/div>"],["<div contenteditable>nendriyāṇi [na] bhūtāni śabdasparśarasānā/ sarvaṃ tyaktvā samādhisthaḥ kevalan tanmayo bhavet // 44 //<\/div>","<div contenteditable>sāvasthā paramā proktā śivasya paramātmanaḥ/ nirābhāsapade taṃ tu taṃ prāpya vinivartate // 45 //<\/div>","<div contenteditable>evaṃ bhāvitām ātmānam ātmano bhāvanābalāt/ sa bhavet paramaṃ śāntaṃ śivam atyantanirmalam // 46 //<\/div>"],["<div contenteditable>8.44. [The Yogi should not meditate on] the senses, nor the elements, nor on [the objects of the senses] sound, touch, and taste. Abandoning everything, established in concentration, [the Yogi] becomes only made of that [reality].<\/div>","<div contenteditable>8.45. This is called the supreme state of the highest self of Śiva. Having attained that, the condition beyond manifestation, [the Yogi] turns away [from the cycle of reincarnation].<\/div>","<div contenteditable>8.46. In this way [the Yogi] should meditate on the self through the powerful meditation on the self. He [then] becomes the supreme tranquillity that is Śiva, the transcendent purity.<\/div>"],[null,null,null],["<div contenteditable>44b śabdasparśarasānā ] N1 N2 : śabdasparśarasādi yat K1 44d kevalan tanmayo bhavet ] N2 K1 : kevalan mayo bhavet N1<\/div>","<div contenteditable>45b śivasya ] N1N2 : parasya K1 45c nirābhāsapadetaṃ ] N1N2 : nirābhāsaṃ padaṃ tat K1 45d taṃ ] N1N2: tat K1<\/div>","<div contenteditable>46a evaṃ bhāvitām ātmānam ] N1N2: bhāvayed evam ātmānam K1 46c bhavet ] N1N2: gacchet K1<\/div>"],[null,null,null],["<div contenteditable>44a N1 has missed out na. N2 has a hiatus between bhūtāni and śabda... and omits na except for a short line. The verse is unmetrical in N1.<\/div>",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable84 = document.querySelector("#zoomable84");
-const panzoomzoomable84 = Panzoom(elemzoomable84);
-const zoomInButtonzoomable84 = document.querySelector("#zoomInzoomable84");
-const zoomOutButtonzoomable84 = document.querySelector("#zoomOutzoomable84");
-const resetButtonzoomable84 = document.querySelector("#zoomResetzoomable84");
-zoomInButtonzoomable84.addEventListener("click", panzoomzoomable84.zoomIn);
-zoomOutButtonzoomable84.addEventListener("click", panzoomzoomable84.zoomOut);
-resetButtonzoomable84.addEventListener("click", panzoomzoomable84.reset);
-const elemFullzoomable84 = document.querySelector("#fullzoomable84");
-const panzoomFullzoomable84 = Panzoom(elemFullzoomable84);
-const zoomInButtonFullzoomable84 = document.querySelector("#zoomInFullScreenzoomable84");
-const zoomOutButtonFullzoomable84 = document.querySelector("#zoomOutFullScreenzoomable84");
-const resetButtonFullzoomable84 = document.querySelector("#zoomResetFullScreenzoomable84");
-zoomInButtonFullzoomable84.addEventListener("click", panzoomFullzoomable84.zoomIn);
-zoomOutButtonFullzoomable84.addEventListener("click", panzoomFullzoomable84.zoomOut);
-resetButtonFullzoomable84.addEventListener("click", panzoomFullzoomable84.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable84 = document.querySelector("#zoomable84DT");
-
-var instancezoomable84 = panzoom(elementzoomable84, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable84",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable84.on("panstart", function(e) { hideHeaderzoomable84() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable84.on("panstart", function(e) { hideHeaderzoomable84() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable84() {
-$("#zoomable84DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable84DT").css("background-color", "transparent");
-$("#zoomable84DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable84DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable84DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable84DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable84DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable84(){
-{$("#zoomable84DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable84DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable84DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable84DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable84DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable84DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable84(){
-$("#zoomable84DT").css("background-color", "white");
-
-var instancezoomable84 = panzoom(elementzoomable84, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable84",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable84()
-
-}
-
-function showTextzoomable84() {
-$("#zoomable84DT").toggleClass("bring-to-foreground");
-$("#zoomable84DT").css("background-color", "white");
-}function openNavzoomable84() {
-document.getElementById("myNavzoomable84").style.width = "100%";
-var image = document.querySelector("#myNavzoomable84 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable84() {
-document.getElementById("myNavzoomable84").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable84() {
-var image = document.querySelector("#zoomable84 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable84 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable84 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable84 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable84 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable84() {
-var image = document.querySelector("#myNavzoomable84 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable84 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable84 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable84 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable84 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

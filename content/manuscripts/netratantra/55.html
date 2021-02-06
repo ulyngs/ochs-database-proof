@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__054.JPG
+photoSizeMedium: 524.7 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG
+photoSizeHigh: 10.2 MB
 imagesTotal: 89
 imageCurrent: 55
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable55" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable55()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable55">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable55">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable55">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable55()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable55()">Show/hide text</button>
-<button id="textZoomInzoomable55" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable55" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable55()">Reset text</button>
-</div>
-<div id="fullzoomable55" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-524.7 KB
-</p>
-<p class="high-image-size-overlay">
-10.2 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__054.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable55"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable55"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable55">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable55()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable55()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable55" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable55" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable55()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable55">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">524.7 KB</p>
       <p class="high-image-size">10.2 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__054.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__054.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__054.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__054.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__054.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable55DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable55DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>6<\/div>","<div contenteditable>6<\/div>","<div contenteditable>6<\/div>"],["<div contenteditable>35<\/div>","<div contenteditable>36<\/div>","<div contenteditable>37-38<\/div>"],["<div contenteditable>anenaiva vidhānena saptāhān mṛtyujid bhavet / rājarakṣāvidhānaṃ tu bhūbhṛtām aprakāśayet // 35 //<\/div>","<div contenteditable>saṃgrāmakāle varadaṃ ṛpudarpāpahaṃ bhavet / śivādinavatattvābhi[ḥ] pratyekaṃ śaśimaṇḍale // 36 //<\/div>","<div contenteditable>madhye pūrvādim īśāntam amṛtīśena mantravit / yadā vyādhiśatākrāntā apamṛtyubhir eva ca // 37 // tadā śvetopacāreṇa pūjyaṃ kṣīraghṛtena ca/ tilaiḥ kṣīrasamidbhir vā homāc chāntiṃ samaśnute // 38 //<\/div>"],["<div contenteditable>6.35. By this method one becomes the conqueror of death in seven days. [Thus the practi- toner] should illuminate the method for the protection of the mighty king.<\/div>","<div contenteditable>6.36. At the time of war [Śiva] will give a boon which destroys the pride of the enemy. [The practitoner] should [visualise] the nine categories one by one, beginning with Śiva,3 in the circle of the moon.<\/div>","<div contenteditable>6.37-38. With the Lord of Immortality [mantra] the knower of mantra [should write] begin- ning with the rst [category, Śiva] in the middle [of the lotus] and ending with Īśvara. When overwhelmed by a hundred diseases and premature deaths, then [the practitioner] should worship with white ingredients, with milk and ghee, with sesamum or with milk wood [in this way] he will attain peace due to the re ritual.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>6<\/div>","<div contenteditable>6<\/div>","<div contenteditable>6<\/div>"],["<div contenteditable>35<\/div>","<div contenteditable>36<\/div>","<div contenteditable>37-38<\/div>"],["<div contenteditable>anenaiva vidhānena saptāhān mṛtyujid bhavet / rājarakṣāvidhānaṃ tu bhūbhṛtām aprakāśayet // 35 //<\/div>","<div contenteditable>saṃgrāmakāle varadaṃ ṛpudarpāpahaṃ bhavet / śivādinavatattvābhi[ḥ] pratyekaṃ śaśimaṇḍale // 36 //<\/div>","<div contenteditable>madhye pūrvādim īśāntam amṛtīśena mantravit / yadā vyādhiśatākrāntā apamṛtyubhir eva ca // 37 // tadā śvetopacāreṇa pūjyaṃ kṣīraghṛtena ca/ tilaiḥ kṣīrasamidbhir vā homāc chāntiṃ samaśnute // 38 //<\/div>"],["<div contenteditable>6.35. By this method one becomes the conqueror of death in seven days. [Thus the practi- toner] should illuminate the method for the protection of the mighty king.<\/div>","<div contenteditable>6.36. At the time of war [Śiva] will give a boon which destroys the pride of the enemy. [The practitoner] should [visualise] the nine categories one by one, beginning with Śiva,3 in the circle of the moon.<\/div>","<div contenteditable>6.37-38. With the Lord of Immortality [mantra] the knower of mantra [should write] begin- ning with the rst [category, Śiva] in the middle [of the lotus] and ending with Īśvara. When overwhelmed by a hundred diseases and premature deaths, then [the practitioner] should worship with white ingredients, with milk and ghee, with sesamum or with milk wood [in this way] he will attain peace due to the re ritual.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable55 = document.querySelector("#zoomable55");
-const panzoomzoomable55 = Panzoom(elemzoomable55);
-const zoomInButtonzoomable55 = document.querySelector("#zoomInzoomable55");
-const zoomOutButtonzoomable55 = document.querySelector("#zoomOutzoomable55");
-const resetButtonzoomable55 = document.querySelector("#zoomResetzoomable55");
-zoomInButtonzoomable55.addEventListener("click", panzoomzoomable55.zoomIn);
-zoomOutButtonzoomable55.addEventListener("click", panzoomzoomable55.zoomOut);
-resetButtonzoomable55.addEventListener("click", panzoomzoomable55.reset);
-const elemFullzoomable55 = document.querySelector("#fullzoomable55");
-const panzoomFullzoomable55 = Panzoom(elemFullzoomable55);
-const zoomInButtonFullzoomable55 = document.querySelector("#zoomInFullScreenzoomable55");
-const zoomOutButtonFullzoomable55 = document.querySelector("#zoomOutFullScreenzoomable55");
-const resetButtonFullzoomable55 = document.querySelector("#zoomResetFullScreenzoomable55");
-zoomInButtonFullzoomable55.addEventListener("click", panzoomFullzoomable55.zoomIn);
-zoomOutButtonFullzoomable55.addEventListener("click", panzoomFullzoomable55.zoomOut);
-resetButtonFullzoomable55.addEventListener("click", panzoomFullzoomable55.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable55 = document.querySelector("#zoomable55DT");
-
-var instancezoomable55 = panzoom(elementzoomable55, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable55",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable55.on("panstart", function(e) { hideHeaderzoomable55() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable55.on("panstart", function(e) { hideHeaderzoomable55() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable55() {
-$("#zoomable55DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable55DT").css("background-color", "transparent");
-$("#zoomable55DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable55DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable55DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable55DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable55DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable55(){
-{$("#zoomable55DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable55DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable55DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable55DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable55DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable55DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable55(){
-$("#zoomable55DT").css("background-color", "white");
-
-var instancezoomable55 = panzoom(elementzoomable55, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable55",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable55()
-
-}
-
-function showTextzoomable55() {
-$("#zoomable55DT").toggleClass("bring-to-foreground");
-$("#zoomable55DT").css("background-color", "white");
-}function openNavzoomable55() {
-document.getElementById("myNavzoomable55").style.width = "100%";
-var image = document.querySelector("#myNavzoomable55 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable55() {
-document.getElementById("myNavzoomable55").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable55() {
-var image = document.querySelector("#zoomable55 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable55 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable55 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable55 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable55 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable55() {
-var image = document.querySelector("#myNavzoomable55 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable55 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable55 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable55 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable55 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

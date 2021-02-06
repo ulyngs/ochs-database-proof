@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__000.JPG
+photoSizeMedium: 536.4 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG
+photoSizeHigh: 10.6 MB
 imagesTotal: 89
 imageCurrent: 1
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable1" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable1()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable1">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable1">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable1">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable1()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable1()">Show/hide text</button>
-<button id="textZoomInzoomable1" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable1" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable1()">Reset text</button>
-</div>
-<div id="fullzoomable1" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-536.4 KB
-</p>
-<p class="high-image-size-overlay">
-10.6 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__000.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable1"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable1"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable1">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable1()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable1()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable1" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable1" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable1()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable1">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">536.4 KB</p>
       <p class="high-image-size">10.6 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__000.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__000.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__000.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__000.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__000.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable1DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable1DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>1-2<\/div>","<div contenteditable>3-4ab<\/div>","<div contenteditable>4cd-9<\/div>","<div contenteditable>10<\/div>"],["<div contenteditable>oṃ namaḥ śivādibhyo gurubhyaḥ / yas tṛdhā triṣv avasthāsu rūpam āsthāya śaktimān / udbhavasthitisaṃhāraṃ kṛtsnaṃ viśvasya śaktitaḥ // 1 // vidadhāti namas tasmai śuddhāmṛtamayātmane / śivāya brahmaviśveśaparāya paramātmane // 2 //<\/div>","<div contenteditable>kailāsaśikharāsīnaṃ devadevaṃ maheśvaram / krīḍantaṃ ca gaṇaiḥ sārdhaṃ pārvatyā sahitaṃ haram // 3 // dṛṣṭvā pramuditaṃ daivaṃ prāṇināṃ hitakāmyayā /<\/div>","<div contenteditable>utsaṃgād avatīryāśu pādau jagrāha pārvatī // 4 // papraccha parayā bhaktyā santoṣya parameśvaram / śrī devy uvāca: bhagavan devadeveśa lokanātha jagatpate // 5 // yaṃ tvayā mahadāścaryaṃ kṛtaṃ vismayakārakam / sarvasya jagato deva kiṃtu me parameśvara // 6 // durvijñeyaṃ durārādhyaṃ rahasyaṃ na prakāśitam / kārttikeyasya na mayā na sureśu gaṇeśu ca // 7 // yogeśvarīṇāṃ mātrīṇām ṛṣīnāṃ yogināṃ na hi / tad adya me jagannātha suprasanno yadi prabho // 8 // prārthayāmi prapannāhaṃ niḥśeṣaṃ vaktum arhasi / evaṃ devyā vacaḥ śrutvā prasannavadano 'bravīt// 9 //<\/div>","<div contenteditable>bhagavān uvāca: kiṃ kiṃ vadasi suśroṇi rahasyan te hṛdi sthitam / sarvaṃ vakṣyāmy asaṃdehi toṣito 'haṃ tvayānaghe // 10 //<\/div>"],["<div contenteditable>Oṃ Homage to the teachers beginning with Śiva. 1.1-2. Homage to Śiva, the supreme Lord of the Universe [beginning with] Brahma, who is threefold, the possessor of power, having taken form in three states, he performs the entire arising, maintenance, and destruction of the universe from his power, whose nature is full of the pure nectar [of immortality], the supreme self.<\/div>","<div contenteditable>1.3-4ab. Parvatī, with desire for the welfare of living beings, having seen the delighted god seated on the peak of Mount Kailasa, God of Gods, the Great Lord, the Destroyer, together with Parvatī, and playing with the host [of supernatural beings], rose quickly from his lap and grasped his feet. Having satis ed the Supreme Lord with supreme devotion she asked: The Goddess spoke:<\/div>","<div contenteditable>1.4cd-9. O Lord, Lord of the God of Gods, Lord of the Worlds, Lord of the Universe, you create a great wonder that generates astonishment, O God of the entire universe, my own Supreme Lord. It is diﬃcult to know, diﬃcult to attain, secret, not illuminated for Kārt- tikeya, nor for me, nor among the gods or hosts, nor for the Lords of Yoga, the Mothers, the Sages, [and] Yogis. O Lord, if you are very pleased with me today, O Lord of the Universe, I, humbled, ask that you tell me [about it] fully. So having heard the speech of the Goddess, the one with a pleased countenance spoke: The Lord spoke:<\/div>","<div contenteditable>1.10. Whatever the secret in your heart, O one with excellent hips, [which] you speak of, I shall certainly explain all to you, [because I am] content with you, O sinless one. The Goddess spoke:<\/div>"],[null,"<div contenteditable>3b ≈ Kulārṇavatantra 1.1ab kailāsaśikharāsīnaṃ devadevaṃ jagadgurum; Niḥśvāsatattvasaṃhitā 1.2cd kailāsaśikharāsī-\nnaṃ devadevaṃ jagadgurum ; Amanaskayoga 1.1ab kailāsaśikharāsīnaṃ sarvajñaṃ sarvagaṃ śivam.<\/div>",null,null],["<div contenteditable>1a yas tṛdhā triṣv avasthāsu ] N1 : tridhā N2 ; aha tridhā tisṛṣvavasthāsu K1 1c saṃhāraṃ ] N2 : saṃhāra- N1 ; saṃhārān K1 1d kṛtsnaṃ ] N1 N2 : kṛtsna- K1 2a vidadhāti ] N1 N2 : vidhātā yo K1 2c brahmav- iśveśa ] N1N2 : brahmaviṣṇvīśaK1<\/div>","<div contenteditable>4a daivaṃ ] N2K1 : devaṃ N1<\/div>","<div contenteditable>6a yaṃ ] N1 : yat N2K1 7a durārādhyaṃ ] N1 N2 : durāsādhaṃ K1 7d ca ] N1 N2 : vā K1 8b ṛṣīnāṃ yogināṃ nahi ] N1 N2 : ṛṣīnāṃ me yogināṃ nahi K1 8d suprasanno yadi prabho ] N1 N2 : prasanno 'si yadi prabho K1 9b vaktum arhasi ] K1 : vaktum icchasi N1 N2 9d prasannvadano ] N1 N2 : prahāsavadano K1<\/div>","<div contenteditable>10a vadasi ] N1 N2 : vadasva K1<\/div>"],[null,"<div contenteditable>4a N1 daivaṃ is evidently not as good as devaṃ of N2 and K1 , but in accordance with the principle of presenting the text of N1 , I have not amended it.<\/div>",null,null],[null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>","<div contenteditable>1<\/div>"],["<div contenteditable>1-2<\/div>","<div contenteditable>3-4ab<\/div>","<div contenteditable>4cd-9<\/div>","<div contenteditable>10<\/div>"],["<div contenteditable>oṃ namaḥ śivādibhyo gurubhyaḥ / yas tṛdhā triṣv avasthāsu rūpam āsthāya śaktimān / udbhavasthitisaṃhāraṃ kṛtsnaṃ viśvasya śaktitaḥ // 1 // vidadhāti namas tasmai śuddhāmṛtamayātmane / śivāya brahmaviśveśaparāya paramātmane // 2 //<\/div>","<div contenteditable>kailāsaśikharāsīnaṃ devadevaṃ maheśvaram / krīḍantaṃ ca gaṇaiḥ sārdhaṃ pārvatyā sahitaṃ haram // 3 // dṛṣṭvā pramuditaṃ daivaṃ prāṇināṃ hitakāmyayā /<\/div>","<div contenteditable>utsaṃgād avatīryāśu pādau jagrāha pārvatī // 4 // papraccha parayā bhaktyā santoṣya parameśvaram / śrī devy uvāca: bhagavan devadeveśa lokanātha jagatpate // 5 // yaṃ tvayā mahadāścaryaṃ kṛtaṃ vismayakārakam / sarvasya jagato deva kiṃtu me parameśvara // 6 // durvijñeyaṃ durārādhyaṃ rahasyaṃ na prakāśitam / kārttikeyasya na mayā na sureśu gaṇeśu ca // 7 // yogeśvarīṇāṃ mātrīṇām ṛṣīnāṃ yogināṃ na hi / tad adya me jagannātha suprasanno yadi prabho // 8 // prārthayāmi prapannāhaṃ niḥśeṣaṃ vaktum arhasi / evaṃ devyā vacaḥ śrutvā prasannavadano 'bravīt// 9 //<\/div>","<div contenteditable>bhagavān uvāca: kiṃ kiṃ vadasi suśroṇi rahasyan te hṛdi sthitam / sarvaṃ vakṣyāmy asaṃdehi toṣito 'haṃ tvayānaghe // 10 //<\/div>"],["<div contenteditable>Oṃ Homage to the teachers beginning with Śiva. 1.1-2. Homage to Śiva, the supreme Lord of the Universe [beginning with] Brahma, who is threefold, the possessor of power, having taken form in three states, he performs the entire arising, maintenance, and destruction of the universe from his power, whose nature is full of the pure nectar [of immortality], the supreme self.<\/div>","<div contenteditable>1.3-4ab. Parvatī, with desire for the welfare of living beings, having seen the delighted god seated on the peak of Mount Kailasa, God of Gods, the Great Lord, the Destroyer, together with Parvatī, and playing with the host [of supernatural beings], rose quickly from his lap and grasped his feet. Having satis ed the Supreme Lord with supreme devotion she asked: The Goddess spoke:<\/div>","<div contenteditable>1.4cd-9. O Lord, Lord of the God of Gods, Lord of the Worlds, Lord of the Universe, you create a great wonder that generates astonishment, O God of the entire universe, my own Supreme Lord. It is diﬃcult to know, diﬃcult to attain, secret, not illuminated for Kārt- tikeya, nor for me, nor among the gods or hosts, nor for the Lords of Yoga, the Mothers, the Sages, [and] Yogis. O Lord, if you are very pleased with me today, O Lord of the Universe, I, humbled, ask that you tell me [about it] fully. So having heard the speech of the Goddess, the one with a pleased countenance spoke: The Lord spoke:<\/div>","<div contenteditable>1.10. Whatever the secret in your heart, O one with excellent hips, [which] you speak of, I shall certainly explain all to you, [because I am] content with you, O sinless one. The Goddess spoke:<\/div>"],[null,"<div contenteditable>3b ≈ Kulārṇavatantra 1.1ab kailāsaśikharāsīnaṃ devadevaṃ jagadgurum; Niḥśvāsatattvasaṃhitā 1.2cd kailāsaśikharāsī-\nnaṃ devadevaṃ jagadgurum ; Amanaskayoga 1.1ab kailāsaśikharāsīnaṃ sarvajñaṃ sarvagaṃ śivam.<\/div>",null,null],["<div contenteditable>1a yas tṛdhā triṣv avasthāsu ] N1 : tridhā N2 ; aha tridhā tisṛṣvavasthāsu K1 1c saṃhāraṃ ] N2 : saṃhāra- N1 ; saṃhārān K1 1d kṛtsnaṃ ] N1 N2 : kṛtsna- K1 2a vidadhāti ] N1 N2 : vidhātā yo K1 2c brahmav- iśveśa ] N1N2 : brahmaviṣṇvīśaK1<\/div>","<div contenteditable>4a daivaṃ ] N2K1 : devaṃ N1<\/div>","<div contenteditable>6a yaṃ ] N1 : yat N2K1 7a durārādhyaṃ ] N1 N2 : durāsādhaṃ K1 7d ca ] N1 N2 : vā K1 8b ṛṣīnāṃ yogināṃ nahi ] N1 N2 : ṛṣīnāṃ me yogināṃ nahi K1 8d suprasanno yadi prabho ] N1 N2 : prasanno 'si yadi prabho K1 9b vaktum arhasi ] K1 : vaktum icchasi N1 N2 9d prasannvadano ] N1 N2 : prahāsavadano K1<\/div>","<div contenteditable>10a vadasi ] N1 N2 : vadasva K1<\/div>"],[null,"<div contenteditable>4a N1 daivaṃ is evidently not as good as devaṃ of N2 and K1 , but in accordance with the principle of presenting the text of N1 , I have not amended it.<\/div>",null,null],[null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable1 = document.querySelector("#zoomable1");
-const panzoomzoomable1 = Panzoom(elemzoomable1);
-const zoomInButtonzoomable1 = document.querySelector("#zoomInzoomable1");
-const zoomOutButtonzoomable1 = document.querySelector("#zoomOutzoomable1");
-const resetButtonzoomable1 = document.querySelector("#zoomResetzoomable1");
-zoomInButtonzoomable1.addEventListener("click", panzoomzoomable1.zoomIn);
-zoomOutButtonzoomable1.addEventListener("click", panzoomzoomable1.zoomOut);
-resetButtonzoomable1.addEventListener("click", panzoomzoomable1.reset);
-const elemFullzoomable1 = document.querySelector("#fullzoomable1");
-const panzoomFullzoomable1 = Panzoom(elemFullzoomable1);
-const zoomInButtonFullzoomable1 = document.querySelector("#zoomInFullScreenzoomable1");
-const zoomOutButtonFullzoomable1 = document.querySelector("#zoomOutFullScreenzoomable1");
-const resetButtonFullzoomable1 = document.querySelector("#zoomResetFullScreenzoomable1");
-zoomInButtonFullzoomable1.addEventListener("click", panzoomFullzoomable1.zoomIn);
-zoomOutButtonFullzoomable1.addEventListener("click", panzoomFullzoomable1.zoomOut);
-resetButtonFullzoomable1.addEventListener("click", panzoomFullzoomable1.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable1 = document.querySelector("#zoomable1DT");
-
-var instancezoomable1 = panzoom(elementzoomable1, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable1",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable1.on("panstart", function(e) { hideHeaderzoomable1() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable1.on("panstart", function(e) { hideHeaderzoomable1() });</script
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable1() {
-$("#zoomable1DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable1DT").css("background-color", "transparent");
-$("#zoomable1DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable1DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable1DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable1DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable1DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable1(){
-{$("#zoomable1DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable1DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable1DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable1DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable1DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable1DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable1(){
-$("#zoomable1DT").css("background-color", "white");
-
-var instancezoomable1 = panzoom(elementzoomable1, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable1",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable1()
-
-}
-
-function showTextzoomable1() {
-$("#zoomable1DT").toggleClass("bring-to-foreground");
-$("#zoomable1DT").css("background-color", "white");
-}function openNavzoomable1() {
-document.getElementById("myNavzoomable1").style.width = "100%";
-var image = document.querySelector("#myNavzoomable1 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable1() {
-document.getElementById("myNavzoomable1").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable1() {
-var image = document.querySelector("#zoomable1 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable1 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable1 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable1 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable1 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable1() {
-var image = document.querySelector("#myNavzoomable1 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable1 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable1 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable1 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable1 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: ""
 hasPhotos: yes
 hasText: no
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05458.jpeg
+photoSizeMedium: 1.2 MB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05458.jpeg
+photoSizeHigh: 10.8 MB
 imagesTotal: 32
 imageCurrent: 8
 categories:
@@ -95,40 +99,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable8" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable8()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable8">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable8">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable8">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable8()">
-Resolution
-</button>
-</div>
-<div id="fullzoomable8" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-1.2 MB
-</p>
-<p class="high-image-size-overlay">
-10.8 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05458.jpeg" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05458.jpeg" class="img-fluid"></p>
-</div>
-</div>
 <div class='row manuscript-photo-and-text'>
 <div class="col-sm-9">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable8"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable8"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable8">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable8()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable8()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -147,10 +125,10 @@ Shabda-Sagara
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable8">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">1.2 MB</p>
       <p class="high-image-size">10.8 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05458.jpeg" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05458.jpeg" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05458.jpeg" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05458.jpeg" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05458.jpeg" class="img-fluid">
     </div>
   <div class="photo-title"><p>DSC05458.jpeg</p></div>
   </div>
@@ -162,24 +140,6 @@ No transliteration or translation available at the moment.
 </h2>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable8 = document.querySelector("#zoomable8");
-const panzoomzoomable8 = Panzoom(elemzoomable8);
-const zoomInButtonzoomable8 = document.querySelector("#zoomInzoomable8");
-const zoomOutButtonzoomable8 = document.querySelector("#zoomOutzoomable8");
-const resetButtonzoomable8 = document.querySelector("#zoomResetzoomable8");
-zoomInButtonzoomable8.addEventListener("click", panzoomzoomable8.zoomIn);
-zoomOutButtonzoomable8.addEventListener("click", panzoomzoomable8.zoomOut);
-resetButtonzoomable8.addEventListener("click", panzoomzoomable8.reset);
-const elemFullzoomable8 = document.querySelector("#fullzoomable8");
-const panzoomFullzoomable8 = Panzoom(elemFullzoomable8);
-const zoomInButtonFullzoomable8 = document.querySelector("#zoomInFullScreenzoomable8");
-const zoomOutButtonFullzoomable8 = document.querySelector("#zoomOutFullScreenzoomable8");
-const resetButtonFullzoomable8 = document.querySelector("#zoomResetFullScreenzoomable8");
-zoomInButtonFullzoomable8.addEventListener("click", panzoomFullzoomable8.zoomIn);
-zoomOutButtonFullzoomable8.addEventListener("click", panzoomFullzoomable8.zoomOut);
-resetButtonFullzoomable8.addEventListener("click", panzoomFullzoomable8.reset);
-</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -274,43 +234,4 @@ resetButtonFullzoomable8.addEventListener("click", panzoomFullzoomable8.reset);
 }function toggleDictionaryURL() { 
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
-  $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });function openNavzoomable8() {
-document.getElementById("myNavzoomable8").style.width = "100%";
-var image = document.querySelector("#myNavzoomable8 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable8() {
-document.getElementById("myNavzoomable8").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable8() {
-var image = document.querySelector("#zoomable8 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable8 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable8 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable8 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable8 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable8() {
-var image = document.querySelector("#myNavzoomable8 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable8 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable8 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable8 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable8 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>
+  $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>

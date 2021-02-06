@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__016.JPG
+photoSizeMedium: 523.3 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG
+photoSizeHigh: 10.2 MB
 imagesTotal: 89
 imageCurrent: 17
 categories:
@@ -120,44 +124,14 @@ categories:
   <iframe src="" id="frame-dictionary-url"></iframe>
 </div>
 
-<div id="myNavzoomable17" class="overlay">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNavzoomable17()">×</a>
-<div class="zoomButtonsFullScreen">
-<button class="manuscript-photo-button" id="zoomInFullScreenzoomable17">
-<i class="fa fa-search-plus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomOutFullScreenzoomable17">
-<i class="fa fa-search-minus"></i>
-</button>
-<button class="manuscript-photo-button" id="zoomResetFullScreenzoomable17">
-Reset image
-</button>
-<button class="manuscript-photo-button" onclick="highResFullzoomable17()">
-Resolution
-</button>
-<button class="manuscript-photo-button" class="showTextbtn" onclick="showTextzoomable17()">Show/hide text</button>
-<button id="textZoomInzoomable17" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOutzoomable17" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable17()">Reset text</button>
-</div>
-<div id="fullzoomable17" class="panzoomContainer overlay-content">
-<p class="medium-image-size-overlay">
-523.3 KB
-</p>
-<p class="high-image-size-overlay">
-10.2 MB
-</p>
-<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__016.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG" class="img-fluid"></p>
-</div>
-</div>
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomInzoomable17"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOutzoomable17"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomResetzoomable17">Reset image</button>
-<button class="manuscript-photo-button" onclick="highReszoomable17()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNavzoomable17()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -172,64 +146,35 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomInzoomable17" class="manuscript-photo-button">
+<button id="textZoomIn" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOutzoomable17" class="manuscript-photo-button">
+<button id="textZoomOut" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransformzoomable17()">
+<button class="manuscript-photo-button" onclick="resetTransform()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="zoomable17">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
       <p class="medium-image-size">523.3 KB</p>
       <p class="high-image-size">10.2 MB</p>
-      <img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__016.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG" class="img-fluid lazy">
+      <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__016.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__016.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__016.JPG" class="img-fluid">
     </div>
   <div class="photo-title"><p>DOC__016.JPG</p></div>
   </div>
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="zoomable17DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="zoomable17DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>2<\/div>","<div contenteditable>2<\/div>","<div contenteditable>2<\/div>"],["<div contenteditable>19<\/div>","<div contenteditable>20<\/div>","<div contenteditable>21-22<\/div>"],["<div contenteditable>padmam aṣṭadalaṃ kṛtvā mātṛkāṃ tatra cālikhet / tritanuṃ madhyato lekhaṃ vargāṣtau prāgviṣo likhet // 19 //<\/div>","<div contenteditable>pūjayet parayā bhaktyā puṣpadhūpārghavistaraiḥ / mantramātātato devi proddharen mantram uttamam // 20 //<\/div>","<div contenteditable>viśvādyaṃ viśvarūpāntaṃ viśvahāmṛtakandalam / jyotidhvaniparāśaktiḥ śivam ekatra yojayet // 21 // anena grathitaṃ sarvaṃ sūtre maṇigaṇā iva / asmān mantrā[ḥ] samutpannā[ḥ] saptakoṭyādhikāriṇaḥ // 22 //<\/div>"],["<div contenteditable>2.19. Having made a lotus of eight petals, he should write the alphabet there. Having xed the [sign for] OṂ in the middle, he should write the letters beginning from the east.6<\/div>","<div contenteditable>2.20. He should worship with highest devotion and with a multitude of oﬀerings [such as] owers, fragrant powders, and holy water. He should place [there], O Goddess, the mantra deity, the supreme mantra, the mother of mantras.<\/div>","<div contenteditable>2.21-22. One should join together the light that is the supreme power of sound with Śiva; beginning with the universal (i.e. the syllable A), ending with various letters [and] in every case completed with a cresent moon7 and nectar (i.e. the point or anusvāra). With that [syl- lable OṂ], all [letters] are strung together like a series of jewels on a thread; from it, Mantras for the quali ed [practitioner] of seventy million [kinds] have arisen.8<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>2<\/div>","<div contenteditable>2<\/div>","<div contenteditable>2<\/div>"],["<div contenteditable>19<\/div>","<div contenteditable>20<\/div>","<div contenteditable>21-22<\/div>"],["<div contenteditable>padmam aṣṭadalaṃ kṛtvā mātṛkāṃ tatra cālikhet / tritanuṃ madhyato lekhaṃ vargāṣtau prāgviṣo likhet // 19 //<\/div>","<div contenteditable>pūjayet parayā bhaktyā puṣpadhūpārghavistaraiḥ / mantramātātato devi proddharen mantram uttamam // 20 //<\/div>","<div contenteditable>viśvādyaṃ viśvarūpāntaṃ viśvahāmṛtakandalam / jyotidhvaniparāśaktiḥ śivam ekatra yojayet // 21 // anena grathitaṃ sarvaṃ sūtre maṇigaṇā iva / asmān mantrā[ḥ] samutpannā[ḥ] saptakoṭyādhikāriṇaḥ // 22 //<\/div>"],["<div contenteditable>2.19. Having made a lotus of eight petals, he should write the alphabet there. Having xed the [sign for] OṂ in the middle, he should write the letters beginning from the east.6<\/div>","<div contenteditable>2.20. He should worship with highest devotion and with a multitude of oﬀerings [such as] owers, fragrant powders, and holy water. He should place [there], O Goddess, the mantra deity, the supreme mantra, the mother of mantras.<\/div>","<div contenteditable>2.21-22. One should join together the light that is the supreme power of sound with Śiva; beginning with the universal (i.e. the syllable A), ending with various letters [and] in every case completed with a cresent moon7 and nectar (i.e. the point or anusvāra). With that [syl- lable OṂ], all [letters] are strung together like a series of jewels on a thread; from it, Mantras for the quali ed [practitioner] of seventy million [kinds] have arisen.8<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<script src='/js/panzoom.js'></script>
-<script>const elemzoomable17 = document.querySelector("#zoomable17");
-const panzoomzoomable17 = Panzoom(elemzoomable17);
-const zoomInButtonzoomable17 = document.querySelector("#zoomInzoomable17");
-const zoomOutButtonzoomable17 = document.querySelector("#zoomOutzoomable17");
-const resetButtonzoomable17 = document.querySelector("#zoomResetzoomable17");
-zoomInButtonzoomable17.addEventListener("click", panzoomzoomable17.zoomIn);
-zoomOutButtonzoomable17.addEventListener("click", panzoomzoomable17.zoomOut);
-resetButtonzoomable17.addEventListener("click", panzoomzoomable17.reset);
-const elemFullzoomable17 = document.querySelector("#fullzoomable17");
-const panzoomFullzoomable17 = Panzoom(elemFullzoomable17);
-const zoomInButtonFullzoomable17 = document.querySelector("#zoomInFullScreenzoomable17");
-const zoomOutButtonFullzoomable17 = document.querySelector("#zoomOutFullScreenzoomable17");
-const resetButtonFullzoomable17 = document.querySelector("#zoomResetFullScreenzoomable17");
-zoomInButtonFullzoomable17.addEventListener("click", panzoomFullzoomable17.zoomIn);
-zoomOutButtonFullzoomable17.addEventListener("click", panzoomFullzoomable17.zoomOut);
-resetButtonFullzoomable17.addEventListener("click", panzoomFullzoomable17.reset);
-</script>
-<script src="/js/panzoom-elements.js"></script>
-<script>var elementzoomable17 = document.querySelector("#zoomable17DT");
-
-var instancezoomable17 = panzoom(elementzoomable17, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable17",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-});
-instancezoomable17.on("panstart", function(e) { hideHeaderzoomable17() });</script>
 <script>function closeDictionaries() { 
   $(".sanskrit-dictionary").removeClass("make-visible"); 
   $(".sanskrit-dictionary iframe").removeClass("make-visible");
@@ -325,79 +270,3 @@ instancezoomable17.on("panstart", function(e) { hideHeaderzoomable17() });</scri
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
-<script>function hideHeaderzoomable17() {
-$("#zoomable17DT .dataTables_scrollBody td div").addClass("add-background"); 
-$("#zoomable17DT").css("background-color", "transparent");
-$("#zoomable17DT .dataTables_scrollBody td").addClass("white-font"); 
-$("#zoomable17DT .dataTables_scrollBody").addClass("no-scroll"); 
-$("#zoomable17DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-$("#zoomable17DT .dt-buttons").addClass("hide-on-pan");
-$("#zoomable17DT .dataTables_filter").addClass("hide-on-pan");}
-
-function showHeaderzoomable17(){
-{$("#zoomable17DT .dataTables_scrollBody td div").removeClass("add-background"); 
-$("#zoomable17DT .dataTables_scrollBody td").removeClass("white-font"); 
-$("#zoomable17DT .dataTables_scrollBody").removeClass("no-scroll"); 
-$("#zoomable17DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-$("#zoomable17DT .dt-buttons").removeClass("hide-on-pan");
-$("#zoomable17DT .dataTables_filter").removeClass("hide-on-pan");}
-}
-
-function resetTransformzoomable17(){
-$("#zoomable17DT").css("background-color", "white");
-
-var instancezoomable17 = panzoom(elementzoomable17, { 
-zoomDoubleClickSpeed: 1, 
-elementZoomId: "zoomable17",
-filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } });
-
-
-showHeaderzoomable17()
-
-}
-
-function showTextzoomable17() {
-$("#zoomable17DT").toggleClass("bring-to-foreground");
-$("#zoomable17DT").css("background-color", "white");
-}function openNavzoomable17() {
-document.getElementById("myNavzoomable17").style.width = "100%";
-var image = document.querySelector("#myNavzoomable17 img");
-image.src = image.getAttribute("data-src-md-res");
-}
-
-function closeNavzoomable17() {
-document.getElementById("myNavzoomable17").style.width = "0%";
-}</script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
-<script>
-function highReszoomable17() {
-var image = document.querySelector("#zoomable17 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#zoomable17 .medium-image-size").style.display = "none";
-    document.querySelector("#zoomable17 .high-image-size").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#zoomable17 .medium-image-size").style.display = "block";
-    document.querySelector("#zoomable17 .high-image-size").style.display = "none";
-  }
-}
-
-function highResFullzoomable17() {
-var image = document.querySelector("#myNavzoomable17 img");
-
-if (image.src === image.getAttribute("data-src-md-res")) {
-    image.src = image.getAttribute("data-src-high-res");
-    document.querySelector("#myNavzoomable17 .medium-image-size-overlay").style.display = "none";
-    document.querySelector("#myNavzoomable17 .high-image-size-overlay").style.display = "block";
-  } else {
-    image.src = image.getAttribute("data-src-md-res");
-    document.querySelector("#myNavzoomable17 .medium-image-size-overlay").style.display = "block";
-    document.querySelector("#myNavzoomable17 .high-image-size-overlay").style.display = "none";
-  }
-}
-</script>

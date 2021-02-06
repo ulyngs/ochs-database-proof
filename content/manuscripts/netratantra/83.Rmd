@@ -24,6 +24,10 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__082.JPG
+photoSizeMedium: 538 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__082.JPG
+photoSizeHigh: 10.6 MB
 imagesTotal: 89
 imageCurrent: 83
 categories:
@@ -58,11 +62,8 @@ cols_total <- length(count_cols)
 
 cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
 ### photos to show ###
-s3_address <- "https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/"
-
 aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
-  filter(manuscript == "netratantra") %>% 
-  mutate(filepath = paste0(s3_address, filepath))
+  filter(manuscript == "netratantra")
 
 photo_medium_info <- aws_content %>% 
   filter(str_detect(filepath, "medium_resolution"))
@@ -76,7 +77,6 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   mutate(zoomid = str_c("zoomable", row_number())) %>% 
    slice(83)
 # ensure the DT libraries are included - they are not automatically when looping through datatables
 datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
@@ -86,11 +86,6 @@ datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions =
 
 ```{r add-text, results="asis"}
 insert_dictionary_iframes()
-create_overlay_divs(photo_info, hasText = TRUE)
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
-cat("\n")
-initiate_zoom_effect(photo_info)
-create_overlay_functions(photo_info)
-initialise_lazy_load()
-create_high_res_function(photo_info)
+insert_dictionary_toggle_functions()
 ```
