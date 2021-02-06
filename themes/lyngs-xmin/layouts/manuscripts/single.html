@@ -7,7 +7,8 @@
       <div class="col-sm-1 back-to-list"> 
         <a href="/sakta/"><i class="fa fa-backward fa-3x"></i></a>
       </div>
-  
+      
+      {{/* INSERT METADATA */}}
       <div class="col-sm-8">
         <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
         {{ if .Params.sanskritTitle }} <p>Sanskrit title: {{ .Params.sanskritTitle }}</p> {{ end }}
@@ -31,9 +32,9 @@
         {{ if .Params.translationDanish }} <p>Danish translation by: {{ .Params.translationDanish }}</p> {{ end }}
       </div>
       
+      {{/* INSERT BUTTONS ON THE RIGHT (comment on gsheet, etc.) */}}
       <div class="col-sm-3">
         <div class="text-buttons">
-          <!-- <a href="/manuscripts/{{ .Params.catalogueId }}.csv" role="button" class="btn btn-light btn-md" download><i class="fa fa-download"></i> Download text</a> <br> --><!-- we'll add bulk text download in Shiny app -->
         {{ if .Params.hasText }} <a href={{ .Params.googlesheet }} class="btn btn-light btn-md" role="button"><i class="fa fa-pencil"></i> Comment on text</a>  {{ end }}
         {{ if and .Params.hasText .Params.hasPhotos .Params.textOnlyVersion}}
           <br> <a href="/manuscripts/{{ .Params.catalogueId }}/1/" role="button" class="btn btn-light btn-md"><i class="fa fa-file-picture-o"></i> View manuscript photos</a>
@@ -53,14 +54,16 @@
         
     </div>
     
+    
     <div class="row manuscript-content">
       <div class="col-sm-12">
+        {{/* INSERT CONTENT FROM RMD FILE */}}
         <div class="post-content" id="manuscript-content-anchor">
           {{ .Content }}
         </div>
         
+        {{/* INSERT MANUSCRIPT IMAGE NAV BUTTONS (if there's images) */}}
         {{ if not .Params.textOnlyVersion}}
-        
           <div class="manuscript-nav">
             {{ $manuscriptPath := print "/manuscripts/" .Params.catalogueId }}
             {{ $curImage := .Params.imageCurrent | int }}
@@ -124,5 +127,8 @@
     
   </main>
 </div>
+
+{{/* INSERT JS */}}
+
 
 {{ partial "footer.html" . }}
