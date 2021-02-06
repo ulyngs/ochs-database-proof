@@ -153,8 +153,8 @@ create_overlay_divs <- function(photo_info_tibble, hasText = FALSE){
   text_button <- photo_info_tibble %>% 
     glue_data('
 <button class="manuscript-photo-button" class="showTextbtn" onclick="showText{zoomid}()">Show/hide text</button>
-<button id="textZoomIn{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-<button id="textZoomOut{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+<button id="textZoomInFull{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+<button id="textZoomOutFull{zoomid}" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
 <button class="manuscript-photo-button" onclick="resetTransform{zoomid}()">Reset text</button>
 ')
   

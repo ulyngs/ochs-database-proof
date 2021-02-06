@@ -483,11 +483,15 @@ function createPanZoom(domElement, options) {
     owner.addEventListener('dblclick', onDoubleClick, { passive: false });
     owner.addEventListener('touchstart', onTouch, { passive: false });
     owner.addEventListener('keydown', onKeyDown, { passive: false });
-    // UL add event listener for zooming ind
+    // UL add event listener for zooming in
     var buttonSelectorIn = '#textZoomIn' + elementZoomId;
     document.querySelector(buttonSelectorIn).addEventListener('click', zoomInClick);
+    var buttonSelectorInFull = '#textZoomInFull' + elementZoomId;
+    document.querySelector(buttonSelectorInFull).addEventListener('click', zoomInClick);
     
     var buttonSelectorOut = '#textZoomOut' + elementZoomId;
+    document.querySelector(buttonSelectorOut).addEventListener('click', zoomOutClick);
+    var buttonSelectorOutFull = '#textZoomOutFull' + elementZoomId;
     document.querySelector(buttonSelectorOut).addEventListener('click', zoomOutClick);
     
     // Need to listen on the owner container, so that we are not limited
