@@ -24,10 +24,6 @@ create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_
   cat("</div>") # close row
 }
 
-initiate_zoom_effect <- function(photo_info_tibble) {
-  prepare_zoom_effect(photo_info_tibble)
-}
-
 create_overlay_functions <- function(photo_info_tibble){
   cat('<script>')
   insert_dictionary_toggle_functions()
