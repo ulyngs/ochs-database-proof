@@ -1,42 +1,80 @@
 ---
-#title: Bengali
+exclude_jquery: true
+title: Śākta
 menu: main
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
-library(knitr)
 library(here)
-library(lubridate)
 library(DT)
 
+texts_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>% 
+  mutate(issue = as.integer(issue))
 ```
 
-<div class="row manuscript-list-page-header">
-<div class="col-sm-12">
-# Bengali manuscripts
-</div>
-</div>
+<main class="sakta-page-heading">
+::: {.row .manuscript-list-page-header}
+:::::: {.col-sm-12}
+# Bengali texts
+::::::
+:::
 
-<div class="row">
-```{block type="col-lg-9 col-md-9 col-sm-6", echo=TRUE}
-- This will be the front page to the section of the site where manuscripts associated with the Bengali news archive project can be browsed
+::: {.row}
+:::::: {.col-lg-9 .col-md-9 .col-sm-6}
+- This will be the front page to the section of the site where Bengali texts can be browsed
+::::::
 
+::: {.col-lg-3 .col-md-3 .col-sm-6}
+```{r, out.width='50%', echo=FALSE}
+knitr::include_graphics("/images/video_icon.png", error = FALSE)
 ```
+<!-- end column -->
+:::
 
-```{block type="col-lg-3 col-md-3 col-sm-6", echo=TRUE}
-<div class='embed-responsive embed-responsive-16by9'>
-<iframe class='embed-responsive-item featured-work-graphic' src='https://www.youtube.com/embed/LjWivZIiS78' allowfullscreen></iframe>
-</div>
-```
+<!-- end row -->
+:::
 
-</div>
+</main>
+
+<main class="manuscript-list">
+::: {.row}
+::: {.col-sm-12}
+<br>
 
 # Select a text
-## Note this section is not functional - here is a random dataset as a placeholder for links to manuscripts
+
+*Click the __Catalogue identifier__ to go to the content. Hover over a cell to see all its information. Search within a column by typing in the 'All' box.*
+
+*You can also download this table:*
+
 ```{r}
-mtcars %>% 
-  datatable(rownames = FALSE, escape = FALSE, class = 'row-border', options = list(pageLength = 10))
+df <- texts_meta %>% 
+  mutate(catalogue_id = str_c("<a href='/bengali-texts/", catalogue_id, "/1/'>", catalogue_id, "</a>"),
+         catalogue_id = str_c("<span class='pop-identifier'>", catalogue_id, "</span>"))
+
+df %>% 
+  datatable(plugins = 'accent-neutralise',
+            rownames = FALSE,
+            escape = FALSE,
+            filter = 'top',
+            class = 'row-border',
+            elementId = "manuscriptListDT",
+            extensions = 'Buttons',
+            options = list(paging = FALSE, 
+                           scrollX = TRUE,
+                           keys = TRUE,
+                           searchHighlight = TRUE,
+                           dom = 'Bfrtip',
+                           buttons = c('csv', 'excel', 'print')
+                           ))
+
 ```
+<br>
+
+:::
+:::
+
+</main>
 
