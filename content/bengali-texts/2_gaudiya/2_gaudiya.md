@@ -1,0 +1,19 @@
+---
+exclude_jquery: true
+catalogueId: 2_gaudiya
+journalName: "দৈনিক নদীয়া প্রকাশ"
+pubTime: |
+  ৮ই ভাদ্র, ১৩৩৬
+  24th August, 1929
+volume: "4"
+issue: "152"
+place: "Śrī Ćaitanya Maṭha, Śrīdhāma Māyāpur"
+language: "Bangla"
+photoPath: https://bengali-texts.s3.eu-west-2.amazonaws.com/2_gaudiya/2_gaudiya.pdf
+imagesTotal: 29
+allImages: yes
+photoPathAllImages: "bengali-texts/2_gaudiya/2_gaudiya/"
+categories:
+  - sanskrit
+---
+
