@@ -591,3 +591,15 @@ a.closebtn-dictionary {
   background: linear-gradient(to bottom, #585858 0%, #111 100%);
 }
 
+.manuscript-content {
+  margin-top: 4em;
+}
+
+.bengali-page-marker {
+  margin-bottom: 0.5em;
+}
+.bengali-pdf embed {
+  width: 85%;
+  height: 900px;
+  margin-bottom: 1.5em;
+}

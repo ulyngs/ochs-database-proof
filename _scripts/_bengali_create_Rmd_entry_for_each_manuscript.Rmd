@@ -1,0 +1,163 @@
+---
+output: html_document
+---
+
+# Grab meta data
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+library(tidyverse)
+library(here)
+library(glue)
+library(fs)
+library(aws.s3)
+
+# function for human-readable filesizes
+format_size <- function(imagesize){
+  case_when(
+    imagesize < 1000 ~ paste(imagesize, "B"),
+    imagesize < 1000000 ~ paste(round(imagesize / 1000, 1), "KB"),
+    imagesize < 1000000000 ~ paste(round(imagesize / 1000000, 1), "MB"),
+    imagesize < 1000000000000 ~ paste(round(imagesize / 1000000000, 1), "GB"),
+  )
+}
+
+# update list of content in AWS
+s3_address <- "https://bengali-texts.s3.eu-west-2.amazonaws.com/"
+
+aws_content_bucket <- get_bucket("bengali-texts") 
+
+tibble(
+  filepath = map_chr(aws_content_bucket, "Key"),
+  filesize = map_dbl(aws_content_bucket, "Size"),
+  formatted_filesize = format_size(filesize),
+  catalogue_id = str_extract(filepath, "^[^/]+"),
+  filename = fs::path_file(filepath)
+) %>% 
+  mutate(filepath = paste0(s3_address, filepath)) %>% 
+  write_csv(here::here("data", "bengali", "aws_content.csv"))
+
+aws_content <- read_csv(here::here("data", "bengali", "aws_content.csv"))
+
+image_counts <- aws_content %>% 
+  filter(str_detect(filepath, "/split/")) %>% 
+  group_by(catalogue_id) %>% 
+  summarise(num_images = n())
+  
+text_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>% 
+  mutate(date = str_replace(date, "\n", "\n  ")) %>% 
+  left_join(image_counts)
+
+```
+
+# Generate Rmds
+## Create the YAML header
+```{r}
+create_yaml_header <- function(line_of_meta_data, image_current = FALSE, all_images = FALSE){
+  images_total_line <- ""
+  if (!is.na(line_of_meta_data$num_images)) images_total_line <- paste0("\nimagesTotal: ", as.character(line_of_meta_data$num_images))
+  
+  image_current_line <- ""
+  if (image_current) image_current_line <- paste0("\nimageCurrent: ", as.character(image_current))
+  
+  all_images_line <- ""
+  if (all_images) all_images_line <- "\nallImages: yes"
+  
+  line_of_meta_data %>%  glue_data('
+---
+exclude_jquery: true
+catalogueId: {catalogue_id}
+journalName: "{journal_name}"
+pubTime: |
+  {date}
+volume: "{volume}"
+issue: "{issue}"
+place: "{place}"
+language: "{language}"
+photoPath: {photo_path}{images_total_line}{image_current_line}{all_images_line}
+photoPathAllImages: "bengali-texts/{catalogue_id}/{catalogue_id}/"
+categories:
+  - sanskrit
+---
+
+', .na = "")
+
+}
+```
+
+## Create the body part
+```{r}
+create_rmd_body <- function(line_of_meta_data, image_current = FALSE){
+  
+}
+
+
+write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_pages = FALSE){
+  folder_path <- str_c(here("content", "bengali-texts", line_of_meta_data$catalogue_id))
+  dir.create(folder_path)
+  
+  if (write_split_pages){
+    # get image info
+    image_info <- aws_content %>% 
+      filter(catalogue_id == line_of_meta_data$catalogue_id, 
+             !str_detect(filepath, paste0(line_of_meta_data$catalogue_id, "/$")),
+             str_detect(filepath, "/split/"))
+    
+    # generate an Rmd for each image
+    for(cur_image in seq_along(1:line_of_meta_data$num_images)){
+      # add image info to the line of meta data
+      image_details <- image_info %>% 
+        slice(cur_image)
+      
+      line_of_meta_data <- line_of_meta_data %>% 
+        mutate(photo_path = image_details$filepath,
+               photo_size = image_details$formatted_filesize)
+      
+      # generate Rmd
+      yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
+      body_content <- create_rmd_body(line_of_meta_data, image_current = cur_image)
+      rmd_to_write <- str_c(yaml_header, body_content)
+      
+      write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, ".md"))
+    }
+  } else {
+    ### w/ only the full PDF
+    image_info <- aws_content %>% 
+      filter(catalogue_id == line_of_meta_data$catalogue_id, 
+             !str_detect(filepath, paste0(line_of_meta_data$catalogue_id, "/$")),
+             !str_detect(filepath, "/split/"))
+    
+    line_of_meta_data <- line_of_meta_data %>% 
+      mutate(photo_path = image_info$filepath,
+             photo_size = image_info$formatted_filesize)
+    
+    yaml_header <- create_yaml_header(line_of_meta_data, all_images = TRUE)
+    body_content <- create_rmd_body(line_of_meta_data)
+    rmd_to_write <- str_c(yaml_header, body_content)
+    
+    write_lines(rmd_to_write, str_c(folder_path, "/", line_of_meta_data$catalogue_id, ".md"))
+  }
+}
+
+```
+
+
+## Do it!
+
+```{r}
+files_to_generate <- text_meta
+
+for(i in 1:nrow(files_to_generate)) {
+  files_to_generate %>% 
+    slice(i) %>% 
+    write_rmd()
+}
+
+# to generate single pages for each image
+for(i in 1:nrow(files_to_generate)) {
+  files_to_generate %>%
+    slice(i) %>%
+    write_rmd(write_split_pages = TRUE)
+}
+
+```
+

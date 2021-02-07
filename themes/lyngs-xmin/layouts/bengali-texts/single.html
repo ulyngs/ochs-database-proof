@@ -1,0 +1,108 @@
+{{ partial "header.html" . }}
+
+
+<div class="main-container container-fluid">
+  <main class="manuscript-page bengali-text">
+    <div class="row manuscript-info">
+      <div class="col-sm-1 back-to-list"> 
+        <a href="/bengali/"><i class="fa fa-backward fa-3x"></i></a>
+      </div>
+      
+      {{/* INSERT METADATA */}}
+      <div class="col-sm-8">
+        <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
+        {{ if .Params.catalogueId }} <p>Catalogue identifier: {{ .Params.catalogueId }}</p> {{ end }}
+        {{ if .Params.journalName }} <p>Journal name: {{ .Params.journalName }}</p> {{ end }}
+        {{ if .Params.pubTime }} <p>Date: {{ .Params.pubTime }}</p> {{ end }}
+        {{ if .Params.volume }} <p>Volume: {{ .Params.volume }}</p> {{ end }}
+        {{ if .Params.issue }} <p>Issue: {{ .Params.issue }}</p> {{ end }}
+        {{ if .Params.place }} <p>Place: {{ .Params.place }}</p> {{ end }}
+        {{ if .Params.language }} <p>Language: {{ .Params.language }}</p> {{ end }}
+      </div>
+      <div class="col-sm-3 mt-auto">
+        {{ $manuscriptPath := print "/bengali-texts/" .Params.catalogueId }}
+        {{ if .Params.imageCurrent }}
+          <a href="{{ $manuscriptPath }}/{{ .Params.catalogueId }}/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View all images in single PDF</a>
+        {{ else }}
+          <a href="{{ $manuscriptPath }}/1/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View as separate images</a>
+        {{ end }}
+      </div>
+    </div>
+    
+    <div class="row manuscript-content">
+      <div class="col-sm-12">
+        {{/* INSERT CONTENT */}}
+        <div class="post-content" id="manuscript-content-anchor">
+          <div class="bengali-pdf" align="center">
+            <embed src="{{ .Params.photoPath }}" 
+ type="application/pdf">
+          </div>
+        </div>
+        
+        {{/* INSERT MANUSCRIPT IMAGE NAV BUTTONS (if it's split) */}}
+        {{ if .Params.imageCurrent }}
+          <div class="manuscript-nav" align="center">
+            {{ $curImage := .Params.imageCurrent | int }}
+            {{ $totalImages := .Params.imagesTotal | int }}
+            {{ $lastUrlElement := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
+            
+            <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}/#manuscript-content-anchor" {{ end }} class="manucript-nav-button previous">Previous</a>
+            
+            {{ if lt $totalImages 8 }}
+            
+              {{ range $i, $sequence :=  (seq $totalImages) }}
+                <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq (add $i 1) ($lastUrlElement | int) }}current{{ end }}">{{ add $i 1 }}</a>
+              {{ end }}
+            
+            {{ else }}
+            
+              {{ if lt $curImage 8 }}
+                
+                {{ range $sequence :=  (seq 12) }}
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                {{ end }}
+                
+                <span class="ellipsis">...</span>
+                
+                <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-content-anchor" class="manucript-nav-button">{{ $totalImages }}</a>
+                
+              {{ else if (and (ge $curImage 5) (lt $curImage (sub $totalImages 6)))  }}
+                <a href="{{ $manuscriptPath }}/1/#manuscript-content-anchor" class="manucript-nav-button">1</a>
+                
+                {{if gt $curImage 7}}<span class="ellipsis">...</span>{{end}}
+                
+                {{ range $sequence :=  (seq (sub $curImage 5) (add $curImage 5)) }}
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                {{ end }}
+                
+                <span class="ellipsis">...</span>
+                
+                <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-content-anchor" class="manucript-nav-button">{{ $totalImages }}</a>
+              
+              {{ else if (ge $curImage (sub $totalImages 6))  }}
+              
+                <a href="{{ $manuscriptPath }}/1/#manuscript-content-anchor" class="manucript-nav-button">1</a>
+                <span class="ellipsis">...</span>
+                
+                {{ range $sequence :=  (seq (sub $totalImages 12) $totalImages) }}
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                {{ end }}
+                
+              
+              {{ end }}
+            
+            {{ end }}
+            
+            <a {{ if lt $curImage $totalImages }} href="{{ $manuscriptPath }}/{{ add $curImage 1 }}/#manuscript-content-anchor" {{ end }} class="manucript-nav-button next">Next</a>
+            
+          </div>
+        {{ end }}
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+{{ partial "footer.html" . }}
+
+
