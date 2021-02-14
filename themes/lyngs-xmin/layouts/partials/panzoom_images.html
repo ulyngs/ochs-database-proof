@@ -1,19 +1,72 @@
 <script src='/js/panzoom.js'></script>
+
+{{ $imageNumberArray := 1 }}
+{{ if eq .Params.numImagesView "pair" }}
+  {{ $imageNumberArray = 2 }}
+{{ else if eq .Params.numImagesView "all" }}
+  {{ $imageNumberArray = .Params.imagesTotal }}
+{{ end }}
+
+
+{{ range $i, $sequence :=  (seq $imageNumberArray) }}
+  {{ $sequence = $sequence | safeJS }}
   <script>
-    const elem = document.querySelector("#panzoomManuscriptPhoto");
-    const panzoom = Panzoom(elem);
-    const zoomInButton = document.querySelector("#zoomIn");
-    const zoomOutButton = document.querySelector("#zoomOut");
-    const resetButton = document.querySelector("#zoomReset");
-    zoomInButton.addEventListener("click", panzoom.zoomIn);
-    zoomOutButton.addEventListener("click", panzoom.zoomOut);
-    resetButton.addEventListener("click", panzoom.reset);
-    const elemFull = document.querySelector("#fullScreenPhoto");
-    const panzoomFull = Panzoom(elemFull);
-    const zoomInButtonFull = document.querySelector("#zoomInFullScreen");
-    const zoomOutButtonFull = document.querySelector("#zoomOutFullScreen");
-    const resetButtonFull = document.querySelector("#zoomResetFullScreen");
-    zoomInButtonFull.addEventListener("click", panzoomFull.zoomIn);
-    zoomOutButtonFull.addEventListener("click", panzoomFull.zoomOut);
-    resetButtonFull.addEventListener("click", panzoomFull.reset);
+  function highRes{{ $sequence }}() {
+    var image = document.querySelector("#panzoomManuscriptPhoto{{ $sequence }} img");
+    
+    if (image.src === image.getAttribute("data-src-md-res")) {
+      image.src = image.getAttribute("data-src-high-res");
+      document.querySelector("#panzoomManuscriptPhoto{{ $sequence }} .medium-image-size").style.display = "none";
+      document.querySelector("#panzoomManuscriptPhoto{{ $sequence }} .high-image-size").style.display = "block";
+    } else {
+      image.src = image.getAttribute("data-src-md-res");
+      document.querySelector("#panzoomManuscriptPhoto{{ $sequence }} .medium-image-size").style.display = "block";
+      document.querySelector("#panzoomManuscriptPhoto{{ $sequence }} .high-image-size").style.display = "none";
+    }
+  }
+  
+  function highResFull{{ $sequence }}() {
+    var image = document.querySelector("#imageOverlay{{ $sequence }} img");
+      
+    if (image.src === image.getAttribute("data-src-md-res")) {
+      image.src = image.getAttribute("data-src-high-res");
+      document.querySelector("#imageOverlay{{ $sequence }} .medium-image-size-overlay").style.display = "none";
+      document.querySelector("#imageOverlay{{ $sequence }} .high-image-size-overlay").style.display = "block";
+    } else {
+      image.src = image.getAttribute("data-src-md-res");
+      document.querySelector("#imageOverlay{{ $sequence }} .medium-image-size-overlay").style.display = "block";
+      document.querySelector("#imageOverlay{{ $sequence }} .high-image-size-overlay").style.display = "none";
+    }
+  }
+    
+  function openNav{{ $sequence }}() {
+    document.getElementById("imageOverlay{{ $sequence }}").style.width = "100%";
+    var image = document.querySelector("#imageOverlay{{ $sequence }} img");
+    image.src = image.getAttribute("data-src-md-res");
+  }    
+    
+  function closeNav{{ $sequence }}() {
+    document.getElementById("imageOverlay{{ $sequence }}").style.width = "0%";
+  }
   </script>
+  
+  <script>
+  const elem{{ $sequence }} = document.querySelector("#panzoomManuscriptPhoto{{ $sequence }}");
+  const panzoom{{ $sequence }} = Panzoom(elem{{ $sequence }});
+  const zoomInButton{{ $sequence }} = document.querySelector("#zoomIn{{ $sequence }}");
+  const zoomOutButton{{ $sequence }} = document.querySelector("#zoomOut{{ $sequence }}");
+  const resetButton{{ $sequence }} = document.querySelector("#zoomReset{{ $sequence }}");
+  zoomInButton{{ $sequence }}.addEventListener("click", panzoom{{ $sequence }}.zoomIn);
+  zoomOutButton{{ $sequence }}.addEventListener("click", panzoom{{ $sequence }}.zoomOut);
+  resetButton{{ $sequence }}.addEventListener("click", panzoom{{ $sequence }}.reset);
+  const elemFull{{ $sequence }} = document.querySelector("#fullScreenPhoto{{ $sequence }}");
+  const panzoomFull{{ $sequence }} = Panzoom(elemFull{{ $sequence }});
+  const zoomInButtonFull{{ $sequence }} = document.querySelector("#zoomInFullScreen{{ $sequence }}");
+  const zoomOutButtonFull{{ $sequence }} = document.querySelector("#zoomOutFullScreen{{ $sequence }}");
+  const resetButtonFull{{ $sequence }} = document.querySelector("#zoomResetFullScreen{{ $sequence }}");
+  zoomInButtonFull{{ $sequence }}.addEventListener("click", panzoomFull{{ $sequence }}.zoomIn);
+  zoomOutButtonFull{{ $sequence }}.addEventListener("click", panzoomFull{{ $sequence }}.zoomOut);
+  resetButtonFull{{ $sequence }}.addEventListener("click", panzoomFull{{ $sequence }}.reset);
+  </script>
+{{ end }}
+  

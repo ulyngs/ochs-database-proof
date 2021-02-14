@@ -65,6 +65,8 @@ function createPanZoom(domElement, options) {
 
   var boundsPadding = typeof options.boundsPadding === 'number' ? options.boundsPadding : 0.05;
   var zoomDoubleClickSpeed = typeof options.zoomDoubleClickSpeed === 'number' ? options.zoomDoubleClickSpeed : defaultDoubleTapZoomSpeed;
+  // UL add image number as an option
+  var elementImageNum = options.elementImageNum;
   var beforeWheel = options.beforeWheel || noop;
   var beforeMouseDown = options.beforeMouseDown || noop;
   var speed = typeof options.zoomSpeed === 'number' ? options.zoomSpeed : defaultZoomSpeed;
@@ -481,12 +483,17 @@ function createPanZoom(domElement, options) {
     owner.addEventListener('dblclick', onDoubleClick, { passive: false });
     owner.addEventListener('touchstart', onTouch, { passive: false });
     owner.addEventListener('keydown', onKeyDown, { passive: false });
-    // UL add event listener for zooming in
-    document.querySelector('#textZoomIn').addEventListener('click', zoomInClick);
-    document.querySelector('#textZoomInFull').addEventListener('click', zoomInClick);
     
-    document.querySelector('#textZoomOut').addEventListener('click', zoomOutClick);
-    document.querySelector('#textZoomOutFull').addEventListener('click', zoomOutClick);
+    // UL add event listeners for zooming in and
+    var buttonSelectorIn = '#textZoomIn' + elementImageNum;
+    document.querySelector(buttonSelectorIn).addEventListener('click', zoomInClick);
+    var buttonSelectorInFull = '#textZoomInFull' + elementImageNum;
+    document.querySelector(buttonSelectorInFull).addEventListener('click', zoomInClick);
+    
+    var buttonSelectorOut = '#textZoomOut' + elementImageNum;
+    document.querySelector(buttonSelectorOut).addEventListener('click', zoomOutClick);
+    var buttonSelectorOutFull = '#textZoomOutFull' + elementImageNum;
+    document.querySelector(buttonSelectorOutFull).addEventListener('click', zoomOutClick);
     
     // Need to listen on the owner container, so that we are not limited
     // by the size of the scrollable domElement

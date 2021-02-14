@@ -1,45 +1,49 @@
 <script src="/js/panzoom-elements.js"></script>
-  <script>
-    function hideHeader() {
-      $("#manuscript-text-DT .dataTables_scrollBody td div").addClass("add-background"); 
-      $("#manuscript-text-DT").css("background-color", "transparent");
-      $("#manuscript-text-DT .dataTables_scrollBody td").addClass("white-font"); 
-      $("#manuscript-text-DT .dataTables_scrollBody").addClass("no-scroll"); 
-      $("#manuscript-text-DT .dataTables_scrollHead").addClass("hide-on-pan"); 
-      $("#manuscript-text-DT .dt-buttons").addClass("hide-on-pan");
-      $("#manuscript-text-DT .dataTables_filter").addClass("hide-on-pan");
-    }
 
-    var element = document.querySelector("#manuscript-text-DT");
-    var panZoomInstance = panzoom(element, { 
-      zoomDoubleClickSpeed: 1, 
-      filterKey: function(/* e, dx, dy, dz */) { return true; }, 
-      beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
-      beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
-    });
-    panZoomInstance.on("panstart", function(e) { hideHeader() });
+{{ $imageNumberArray := 1 }}
+{{ if eq .Params.numImagesView "pair" }}
+  {{ $imageNumberArray = 2 }}
+{{ else if eq .Params.numImagesView "all" }}
+  {{ $imageNumberArray = .Params.imagesTotal }}
+{{ end }}
+
+
+{{ range $i, $sequence :=  (seq $imageNumberArray) }}
+  {{ $sequence = $sequence | safeJS }}
+
+  <script>
+    function hideHeader{{ $sequence }}() {
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody td div").addClass("add-background"); 
+      $("#manuscript-text-DT{{ $sequence }}").css("background-color", "transparent");
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody td").addClass("white-font"); 
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody").addClass("no-scroll"); 
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollHead").addClass("hide-on-pan"); 
+      $("#manuscript-text-DT{{ $sequence }} .dt-buttons").addClass("hide-on-pan");
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_filter").addClass("hide-on-pan");
+    }
     
-    function resetTransform() {
-      $("#manuscript-text-DT").css("background-color", "white");
-      
-      panZoomInstance.moveTo(0, 0);
-      panZoomInstance.zoomAbs(0, 0, 1);
-      
-      showHeader();
+    function showHeader{{ $sequence }}(){
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody td div").removeClass("add-background"); 
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody td").removeClass("white-font"); 
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollBody").removeClass("no-scroll"); 
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_scrollHead").removeClass("hide-on-pan"); 
+      $("#manuscript-text-DT{{ $sequence }} .dt-buttons").removeClass("hide-on-pan");
+      $("#manuscript-text-DT{{ $sequence }} .dataTables_filter").removeClass("hide-on-pan");
     }
       
-    function showHeader(){
-      $("#manuscript-text-DT .dataTables_scrollBody td div").removeClass("add-background"); 
-      $("#manuscript-text-DT .dataTables_scrollBody td").removeClass("white-font"); 
-      $("#manuscript-text-DT .dataTables_scrollBody").removeClass("no-scroll"); 
-      $("#manuscript-text-DT .dataTables_scrollHead").removeClass("hide-on-pan"); 
-      $("#manuscript-text-DT .dt-buttons").removeClass("hide-on-pan");
-      $("#manuscript-text-DT .dataTables_filter").removeClass("hide-on-pan");
+    function showText{{ $sequence }}() {
+      $("#manuscript-text-DT{{ $sequence }}").toggleClass("bring-to-foreground");
+      $("#manuscript-text-DT{{ $sequence }}").css("background-color", "white");
     }
+    
+    function resetTransform{{ $sequence }}() {
+      $("#manuscript-text-DT{{ $sequence }}").css("background-color", "white");
       
-    function showText() {
-      $("#manuscript-text-DT").toggleClass("bring-to-foreground");
-      $("#manuscript-text-DT").css("background-color", "white");
+      instanceDT{{ $sequence }}.moveTo(0, 0);
+      instanceDT{{ $sequence }}.zoomAbs(0, 0, 1);
+      
+      showHeader{{ $sequence }}();
     }
       
   </script>
+{{ end }}

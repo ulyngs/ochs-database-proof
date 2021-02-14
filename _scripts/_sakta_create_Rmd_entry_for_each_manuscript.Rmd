@@ -58,7 +58,7 @@ text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>%
 # Generate Rmds
 ## Create the YAML header
 ```{r}
-create_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE, image_current = FALSE){
+create_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE, image_current = FALSE, images_to_view = "single"){
   text_only_line <- ""
   if (is_text_only_version) text_only_line <- "\ntextOnlyVersion: yes"
   
@@ -99,6 +99,7 @@ photoPathMedium: {photo_path_medium}
 photoSizeMedium: {photo_size_medium}
 photoPathHigh: {photo_path_high}
 photoSizeHigh: {photo_size_high}{images_total_line}{image_current_line}
+numImagesView: {images_to_view}
 categories:
   - sanskrit
 ---
@@ -182,7 +183,8 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   slice({{image_current}})
+   slice({{image_current}}) %>% 
+   mutate(image_num = row_number())
 ', .open = "{{", .close = "}}")
   } else {
     lines_for_including_photos <- ""
@@ -192,6 +194,17 @@ photo_info <- tibble(
   ### lines for JS functions ###
   explicit_jquery <- case_when(
     has_photos & !(has_text) ~ '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>',
+    TRUE ~ ''
+  )
+  
+  add_overlay_divs <- case_when(
+    has_photos & has_text ~ 'create_overlay_divs(photo_info, has_text = TRUE)',
+    has_photos ~ 'create_overlay_divs(photo_info, has_text = FALSE)',
+    TRUE ~ ''
+  )
+  
+  add_text_zoom <- case_when(
+    has_photos & has_text~ 'initiate_text_zoom(photo_info)',
     TRUE ~ ''
   )
   
@@ -225,6 +238,8 @@ source(here("_scripts/", "manuscript_joint_functions.R"))
 insert_dictionary_iframes()
 {{create_content}}
 insert_dictionary_toggle_functions()
+{{add_overlay_divs}}
+{{add_text_zoom}}
 \`\`\`
 ', .open = "{{", .close = "}}")
   

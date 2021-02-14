@@ -68,14 +68,13 @@
             {{ $manuscriptPath := print "/manuscripts/" .Params.catalogueId }}
             {{ $curImage := .Params.imageCurrent | int }}
             {{ $totalImages := .Params.imagesTotal | int }}
-            {{ $lastUrlElement := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
             
             <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}/#manuscript-content-anchor" {{ end }} class="manucript-nav-button previous">Previous</a>
             
             {{ if lt $totalImages 8 }}
             
               {{ range $i, $sequence :=  (seq $totalImages) }}
-                <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq (add $i 1) ($lastUrlElement | int) }}current{{ end }}">{{ add $i 1 }}</a>
+                <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq (add $i 1) $curImage }}current{{ end }}">{{ add $i 1 }}</a>
               {{ end }}
             
             {{ else }}
@@ -83,7 +82,7 @@
               {{ if lt $curImage 8 }}
                 
                 {{ range $sequence :=  (seq 12) }}
-                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 {{ end }}
                 
                 <span class="ellipsis">...</span>
@@ -96,7 +95,7 @@
                 {{if gt $curImage 8}}<span class="ellipsis">...</span>{{end}}
                 
                 {{ range $sequence :=  (seq (sub $curImage 5) (add $curImage 5)) }}
-                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 {{ end }}
                 
                 <span class="ellipsis">...</span>
@@ -109,7 +108,7 @@
                 <span class="ellipsis">...</span>
                 
                 {{ range $sequence :=  (seq (sub $totalImages 12) $totalImages) }}
-                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 {{ end }}
                 
               
@@ -125,79 +124,12 @@
       </div>
     </div>
     
-    {{/* INSERT OVERLAY DIVS */}}
-    {{ if not .Params.textOnlyVersion}}
-  <div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="zoomButtonsFullScreen">
-      <button class="manuscript-photo-button" id="zoomInFullScreen"><i class="fa fa-search-plus"></i></button>
-      <button class="manuscript-photo-button" id="zoomOutFullScreen"><i class="fa fa-search-minus"></i></button>
-      <button class="manuscript-photo-button" id="zoomResetFullScreen">Reset image</button>
-      <button class="manuscript-photo-button" onclick="highResFull()">Resolution</button>
-
-    {{ if .Params.hasText }}
-      <button class="manuscript-photo-button" class="showTextbtn" onclick="showText()">Show/hide text</button>
-      {{/* event listeners assigned in js/panzoom-elements.js */}}
-      <button id="textZoomInFull" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
-      <button id="textZoomOutFull" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
-      <button class="manuscript-photo-button" onclick="resetTransform()">Reset text</button>
-    {{ end }}
-  
-    </div>
-    <div class="panzoomContainer overlay-content" id="fullScreenPhoto">
-      <p class="medium-image-size-overlay">{{ .Params.photoSizeMedium }}</p>
-      <p class="high-image-size-overlay">{{ .Params.photoSizeHigh }}</p>
-      <img data-src-md-res="{{ .Params.photoPathMedium }}" data-src-high-res="{{ .Params.photoPathHigh }}" class="img-fluid">
-    </div>
-  </div>
-
-{{ end }}
-    
   </main>
 </div>
 
 {{/* INSERT JS */}}
 {{ if and (not .Params.textOnlyVersion) (.Params.hasPhotos) }}
-  <script>
-    function highRes() {
-      var image = document.querySelector("#panzoomManuscriptPhoto img");
-      
-      if (image.src === image.getAttribute("data-src-md-res")) {
-          image.src = image.getAttribute("data-src-high-res");
-          document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "none";
-          document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "block";
-        } else {
-          image.src = image.getAttribute("data-src-md-res");
-          document.querySelector("#panzoomManuscriptPhoto .medium-image-size").style.display = "block";
-          document.querySelector("#panzoomManuscriptPhoto .high-image-size").style.display = "none";
-        }
-      }
-      
-    function highResFull() {
-      var image = document.querySelector("#myNav img");
-      
-      if (image.src === image.getAttribute("data-src-md-res")) {
-        image.src = image.getAttribute("data-src-high-res");
-        document.querySelector("#myNav .medium-image-size-overlay").style.display = "none";
-        document.querySelector("#myNav .high-image-size-overlay").style.display = "block";
-      } else {
-        image.src = image.getAttribute("data-src-md-res");
-        document.querySelector("#myNav .medium-image-size-overlay").style.display = "block";
-        document.querySelector("#myNav .high-image-size-overlay").style.display = "none";
-      }
-    }
-  
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
-      var image = document.querySelector("#myNav img");
-      image.src = image.getAttribute("data-src-md-res");
-    }    
-    
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
-  </script>
-  
+
   {{ if .Params.hasText }}
     {{ partial "panzoom_text.html" . }} {{/* zoom text (must be before zoom images) */}}
   {{ end }}

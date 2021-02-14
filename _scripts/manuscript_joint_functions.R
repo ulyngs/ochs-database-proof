@@ -3,13 +3,13 @@ library(dplyr)
 library(glue)
 
 ## ZOOM BUTTONS ##
-insert_zoom_buttons <- function(){
+insert_zoom_buttons <- function(image_num){
   glue('
-<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn{image_num}"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut{image_num}"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset{image_num}">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes{image_num}()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav{image_num}()">Full screen</button>
 ') %>% knitr::raw_html() %>% cat()
 }
 
@@ -18,11 +18,11 @@ insert_download_button <- function(photo_path_high){
 }
 
 ## INSERT MANUSCRIPT PHOTO ##
-insert_manuscript_photo <- function(photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
+insert_manuscript_photo <- function(image_num, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, photoid){
   glue('
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto{image_num}">
       <p class="medium-image-size">{photo_size_medium}</p>
       <p class="high-image-size">{photo_size_high}</p>
       <img src="{photo_path_medium}" data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
@@ -42,10 +42,11 @@ insert_manuscript_text <- function(df, cols_to_hide,
                                    hideInfo = FALSE,
                                    noPaging = FALSE,
                                    fullWidth = FALSE,
-                                   download = FALSE){
+                                   download = FALSE,
+                                   image_num = FALSE){
   print( htmltools::tagList(datatable(df,
                                       plugins = 'accent-neutralise',
-                                      elementId = "manuscript-text-DT",
+                                      elementId = if (image_num) {paste0("manuscript-text-DT", image_num)} else {"manuscript-text-DT"},
                                       rownames = FALSE,
                                       escape = FALSE,
                                       extensions = c('ColReorder', 'Buttons', 'Responsive'),
@@ -133,4 +134,48 @@ function toggleDictionaryURL() {
 ', .open = "{{", .close = "}}") %>% cat()
 
   cat('</script>')
+}
+
+initialise_lazy_load <- function(){
+  cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
+  cat('<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>')
+}
+
+create_overlay_divs <- function(photo_info_tibble, has_text = FALSE){
+  first_part <- photo_info_tibble %>% 
+  glue_data('
+<div id="imageOverlay{image_num}" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav{image_num}()">&times;</a>     
+<div class="zoomButtonsFullScreen">       
+<button class="manuscript-photo-button" id="zoomInFullScreen{image_num}"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen{image_num}"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen{image_num}">Reset image</button>
+<button class="manuscript-photo-button" onclick="highResFull{image_num}()">Resolution</button>
+       ')
+  
+  # event listeners are assigned in js/panzoom-elements.js
+  text_buttons <- photo_info_tibble %>% 
+    glue_data('
+<button class="manuscript-photo-button" class="showTextbtn" onclick="showText{image_num}()">Show/hide text</button>
+<button id="textZoomInFull{image_num}" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+<button id="textZoomOutFull{image_num}" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" onclick="resetTransform{image_num}()">Reset text</button>
+         ')
+  
+  second_part <- photo_info_tibble %>% 
+    glue_data('
+</div>
+<div class="panzoomContainer overlay-content" id="fullScreenPhoto{image_num}">
+<p class="medium-image-size-overlay">{photo_size_medium}</p>
+<p class="high-image-size-overlay">{photo_size_high}</p>
+<img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
+</div>
+</div>
+         ')
+  
+  if (has_text){
+    paste(first_part, text_buttons, second_part) %>% cat() 
+  } else {
+    paste(first_part, second_part) %>% cat() 
+  }
 }
