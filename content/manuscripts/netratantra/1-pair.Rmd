@@ -30,7 +30,7 @@ photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra
 photoSizeHigh: 10.6 MB
 imagesTotal: 89
 imageCurrent: 1
-numImagesView: single
+numImagesView: pair
 categories:
   - sanskrit
 ---
@@ -49,6 +49,8 @@ data_text <- read_csv(here("data", "manuscripts", "netratantra.csv")) %>%
    mutate(photo = str_c(photo, ".JPG")) %>% 
    mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
    #mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness
+
+end_slice <- ifelse(params$currentImage < params$totalImages, params$currentImage + 1, params$currentImage)
 
 # count columns to include
 count_cols <- data_text %>% 
@@ -78,8 +80,8 @@ photo_info <- tibble(
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   slice(1) %>% 
-   mutate(image_num = row_number())
+   mutate(image_num = row_number()) %>% 
+   slice(params$currentImage:end_slice)
 # ensure the DT libraries are included - they are not automatically when looping through datatables
 datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
 
@@ -93,5 +95,4 @@ insert_dictionary_toggle_functions()
 create_overlay_divs(photo_info, has_text = TRUE)
 initiate_zoom_effect(photo_info)
 ```
-
 
