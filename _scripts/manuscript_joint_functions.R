@@ -25,7 +25,7 @@ insert_manuscript_photo <- function(image_num, photo_path_medium, photo_size_med
     <div class="panzoomContainer" id="panzoomManuscriptPhoto{image_num}">
       <p class="medium-image-size">{photo_size_medium}</p>
       <p class="high-image-size">{photo_size_high}</p>
-      <img src="{photo_path_medium}" data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid">
+      <img data-src-md-res="{photo_path_medium}" data-src-high-res="{photo_path_high}" class="img-fluid lazy">
     </div>
   <div class="photo-title"><p>{photoid}</p></div>
   </div>
@@ -134,11 +134,6 @@ function toggleDictionaryURL() {
 ', .open = "{{", .close = "}}") %>% cat()
 
   cat('</script>')
-}
-
-initialise_lazy_load <- function(){
-  cat('<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>')
-  cat('<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>')
 }
 
 create_overlay_divs <- function(photo_info_tibble, has_text = FALSE){

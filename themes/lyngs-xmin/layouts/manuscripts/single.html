@@ -143,6 +143,8 @@
 
 {{/* INSERT JS */}}
 {{ if and (not .Params.textOnlyVersion) (.Params.hasPhotos) }}
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
+<script>var lazyLoadInstance = new LazyLoad({data_src: "src-md-res"});</script>
 
   {{ if .Params.hasText }}
     {{ partial "panzoom_text.html" . }} {{/* zoom text (must be before zoom images) */}}
