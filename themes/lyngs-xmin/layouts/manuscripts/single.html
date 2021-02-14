@@ -57,7 +57,7 @@
     
     <div class="row manuscript-content">
       <div class="col-sm-12">
-      {{ if not .Params.textOnlyVersion }}
+      {{ if and .Params.hasPhotos (not .Params.textOnlyVersion) }}
         
         {{ $manuscriptPath := print "/manuscripts/" .Params.catalogueId }}
         {{ $curImage := .Params.params.imageCurrent | int }}
