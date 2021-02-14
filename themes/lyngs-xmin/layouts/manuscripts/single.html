@@ -120,9 +120,14 @@
             
             <a {{ if lt $curImage $totalImages }} href="{{ $manuscriptPath }}/{{ add $curImage 1 }}{{ $pairInsertion }}/#manuscript-nav-anchor" {{ end }} class="manucript-nav-button next">Next</a>
             
-            {{ if eq $numImagesViews "pair" }}
+            {{ if eq $numImagesViews "single" }}
+              <a href="{{ $manuscriptPath }}/{{ $curImage }}-pair/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View 2 images </a>
+              <a href="{{ $manuscriptPath }}/all/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View all images </a>
+            {{ else if eq $numImagesViews "pair" }}
               <a href="{{ $manuscriptPath }}/{{ $curImage }}/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View 1 image </a>
-            {{ else if eq $numImagesViews "single" }}
+              <a href="{{ $manuscriptPath }}/all/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View all images </a>
+            {{ else if eq $numImagesViews "all" }}
+              <a href="{{ $manuscriptPath }}/{{ $curImage }}/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View 1 image </a>
               <a href="{{ $manuscriptPath }}/{{ $curImage }}-pair/#manuscript-nav-anchor" role="button" class="btn btn-light btn-md"> View 2 images </a>
             {{ end }}
             
