@@ -1,0 +1,83 @@
+---
+exclude_jquery: true
+catalogueId: mss0003_svasthani
+title: "MSS0003 Svasthānī"
+sanskritTitle: "स्वस्थानि"
+transliteratedTitle: "Svasthānī"
+englishTitle: ""
+approximateDating: "19th-20th cent."
+manuscriptLanguage: "Sanskrit"
+script: "Devanāgarī"
+material: ""
+condition: ""
+folios: ""
+subject: ""
+physicalLocation: ""
+originPlace: ""
+author: ""
+provenance: ""
+bibliographyNote: ""
+codices: ""
+transliterators: ""
+translationEnglish: ""
+translationDanish: ""
+googlesheet: ""
+hasPhotos: yes
+hasText: no
+textOnlyVersion: no
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05482.jpeg
+photoSizeMedium: 1.2 MB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05482.jpeg
+photoSizeHigh: 10.7 MB
+numImagesView: all
+params:
+  imageCurrent: 1
+  imagesTotal: 32
+categories:
+  - sanskrit
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+library(glue)
+source(here("_scripts", "manuscript_layout_photos_only.R"))
+source(here("_scripts/", "manuscript_joint_functions.R"))
+
+
+data_text <- NA
+### photos to show ###
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "mss0003_svasthani")
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
+
+end_slice <- params$imagesTotal
+
+photo_info <- tibble(
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
+   slice(1:end_slice) %>% 
+   mutate(image_num = row_number())
+
+
+```
+
+
+```{r add-text, results="asis"}
+insert_dictionary_iframes()
+pwalk(photo_info, create_content)
+insert_dictionary_toggle_functions()
+create_overlay_divs(photo_info, has_text = FALSE)
+
+```
