@@ -281,6 +281,13 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
       rmd_to_write <- str_c(yaml_header, body_content)
       
       write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, ".Rmd"))
+      
+      # generate Rmds for image pairs
+      yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image, images_to_view = "pair")
+      body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE, image_current = cur_image, images_to_view = "pair")
+      rmd_to_write <- str_c(yaml_header, body_content)
+      
+      write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, "-pair.Rmd"))
     }
     
     # write text-only version
