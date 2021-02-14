@@ -58,13 +58,7 @@ text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>%
 # Generate Rmds
 ## Create the YAML header
 ```{r}
-create_yaml_header <- function(line_of_meta_data, is_text_only_version = "no", image_current = FALSE, images_to_view = "single"){
-  images_total_line <- ""
-  if (!is.na(line_of_meta_data$num_images)) images_total_line <- paste0("\nimagesTotal: ", as.character(line_of_meta_data$num_images))
-  
-  image_current_line <- ""
-  if (image_current) image_current_line <- paste0("\nimageCurrent: ", as.character(image_current))
-  
+create_yaml_header <- function(line_of_meta_data, is_text_only_version = "no", image_current = "", images_to_view = "single"){
   line_of_meta_data %>%  glue_data('
 ---
 exclude_jquery: true
@@ -96,7 +90,9 @@ textOnlyVersion: {is_text_only_version}
 photoPathMedium: {photo_path_medium}
 photoSizeMedium: {photo_size_medium}
 photoPathHigh: {photo_path_high}
-photoSizeHigh: {photo_size_high}{images_total_line}{image_current_line}
+photoSizeHigh: {photo_size_high}
+imageCurrent: {image_current}
+imagesTotal: {line_of_meta_data$num_images}
 numImagesView: {images_to_view}
 categories:
   - sanskrit
