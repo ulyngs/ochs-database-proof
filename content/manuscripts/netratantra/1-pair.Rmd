@@ -97,3 +97,4 @@ insert_dictionary_toggle_functions()
 create_overlay_divs(photo_info, has_text = TRUE)
 initiate_text_zoom(photo_info)
 ```
+
