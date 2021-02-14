@@ -91,9 +91,10 @@ photoPathMedium: {photo_path_medium}
 photoSizeMedium: {photo_size_medium}
 photoPathHigh: {photo_path_high}
 photoSizeHigh: {photo_size_high}
-imageCurrent: {image_current}
-imagesTotal: {line_of_meta_data$num_images}
 numImagesView: {images_to_view}
+params:
+  imageCurrent: {image_current}
+  imagesTotal: {line_of_meta_data$num_images}
 categories:
   - sanskrit
 ---
