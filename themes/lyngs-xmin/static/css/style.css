@@ -605,6 +605,14 @@ a.closebtn-dictionary {
 }
 
 #manuscript-nav-anchor {
-  padding-top: 80px;
+  padding-top: 60px;
   visibility: hidden;
+}
+
+.manuscript-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1025;
 }

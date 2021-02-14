@@ -69,8 +69,8 @@
           {{ $pairInsertion = "-pair" }}
         {{ end }}
         
-        <div class="manuscript-nav">
         <div id="manuscript-nav-anchor"></div>
+        <div class="manuscript-nav">
           <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}{{ $pairInsertion }}/#manuscript-nav-anchor" {{ end }} class="manucript-nav-button previous">Previous</a>
             
             {{ if lt $totalImages 8 }}
