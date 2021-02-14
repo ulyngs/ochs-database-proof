@@ -58,10 +58,7 @@ text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>%
 # Generate Rmds
 ## Create the YAML header
 ```{r}
-create_yaml_header <- function(line_of_meta_data, is_text_only_version = FALSE, image_current = FALSE, images_to_view = "single"){
-  text_only_line <- ""
-  if (is_text_only_version) text_only_line <- "\ntextOnlyVersion: yes"
-  
+create_yaml_header <- function(line_of_meta_data, is_text_only_version = "no", image_current = FALSE, images_to_view = "single"){
   images_total_line <- ""
   if (!is.na(line_of_meta_data$num_images)) images_total_line <- paste0("\nimagesTotal: ", as.character(line_of_meta_data$num_images))
   
@@ -94,7 +91,8 @@ translationEnglish: "{Translation_english_by}"
 translationDanish: "{Translation_danish_by}"
 googlesheet: "{googlesheet_with_text}"
 hasPhotos: {has_photos}
-hasText: {has_text}{text_only_line}
+hasText: {has_text}
+textOnlyVersion: {is_text_only_version}
 photoPathMedium: {photo_path_medium}
 photoSizeMedium: {photo_size_medium}
 photoPathHigh: {photo_path_high}
@@ -282,7 +280,7 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
     }
     
     # write text-only version
-    yaml_header <- create_yaml_header(line_of_meta_data, is_text_only_version = TRUE)
+    yaml_header <- create_yaml_header(line_of_meta_data, is_text_only_version = "yes")
     body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE, text_only_version = TRUE)
     rmd_to_write <- str_c(yaml_header, body_content)
     
