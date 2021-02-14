@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__081.JPG
 photoSizeMedium: 528.5 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__081.JPG
 photoSizeHigh: 10.4 MB
-imagesTotal: 89
-imageCurrent: 82
+numImagesView: single
+params:
+  imageCurrent: 82
+  imagesTotal: 89
 categories:
   - sanskrit
 ---
@@ -127,11 +130,11 @@ categories:
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn1"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut1"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset1">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes1()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav1()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -146,20 +149,20 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomIn" class="manuscript-photo-button">
+<button id="textZoomIn1" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOut" class="manuscript-photo-button">
+<button id="textZoomOut1" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransform()">
+<button class="manuscript-photo-button" onclick="resetTransform1()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__081.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__081.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto1">
       <p class="medium-image-size">528.5 KB</p>
       <p class="high-image-size">10.4 MB</p>
       <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__081.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__081.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__081.JPG" class="img-fluid">
@@ -169,10 +172,10 @@ Reset text
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT1" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>38<\/div>","<div contenteditable>39<\/div>","<div contenteditable>40<\/div>"],["<div contenteditable>pṛthagbhedavibhedena nānātvaṃ vicared iha/ sarvābhāsa iti prokto nirābhāsas tu kathyate // 38 //<\/div>","<div contenteditable>nāham asmi na caivanyo nirābhāso yathā bhavet/ sāvasthā paramā proktā śivasya paramātmanaḥ // 39 //<\/div>","<div contenteditable>nāham asmi na cānyo'sti dhyeyaṃ cātra na vidyate / ānandapadasaṃlīnaṃ jñānaṃ samarasīgatam // 40 //<\/div>"],["<div contenteditable>8.38. [The Yogi] re ects here on multiplicity by diﬀerentiating diﬀerent parts, which is called the manifestation of all. But I will [now] tell about the one free from manifestation.<\/div>","<div contenteditable>8.39. Beyond manifestation [means] that 'I am not and there is no other.' This state of the supreme self of Śiva is called the highest.<\/div>","<div contenteditable>8.40. With 'I am not and there is no other' there is no object of meditation here; [the Yogi's] cognition has gone to the sameness of avour [with Śiva], dissolved in the condition of joy.<\/div>"],[null,"<div contenteditable>39a ≈ Tantrālokaviveka 29.64: nāham asmi nacānyo'sti kevalāḥ śaktayas tv aham.<\/div>",null],["<div contenteditable>38b vicared ] N1 N2 : vimṛśed K1 38c sarvābhāsa ] N1 N2 : sa sābhāsa K1<\/div>","<div contenteditable>39a na caivanyo ] N1 N2 : na cānyo'sti K1 39b nirābhāso yathā ] N1 N2 : nirābhāsas tadā K1<\/div>","<div contenteditable>40d jñānaṃ ] N1 N2 : manaḥ K1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT1">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>38<\/div>","<div contenteditable>39<\/div>","<div contenteditable>40<\/div>"],["<div contenteditable>pṛthagbhedavibhedena nānātvaṃ vicared iha/ sarvābhāsa iti prokto nirābhāsas tu kathyate // 38 //<\/div>","<div contenteditable>nāham asmi na caivanyo nirābhāso yathā bhavet/ sāvasthā paramā proktā śivasya paramātmanaḥ // 39 //<\/div>","<div contenteditable>nāham asmi na cānyo'sti dhyeyaṃ cātra na vidyate / ānandapadasaṃlīnaṃ jñānaṃ samarasīgatam // 40 //<\/div>"],["<div contenteditable>8.38. [The Yogi] re ects here on multiplicity by diﬀerentiating diﬀerent parts, which is called the manifestation of all. But I will [now] tell about the one free from manifestation.<\/div>","<div contenteditable>8.39. Beyond manifestation [means] that 'I am not and there is no other.' This state of the supreme self of Śiva is called the highest.<\/div>","<div contenteditable>8.40. With 'I am not and there is no other' there is no object of meditation here; [the Yogi's] cognition has gone to the sameness of avour [with Śiva], dissolved in the condition of joy.<\/div>"],[null,"<div contenteditable>39a ≈ Tantrālokaviveka 29.64: nāham asmi nacānyo'sti kevalāḥ śaktayas tv aham.<\/div>",null],["<div contenteditable>38b vicared ] N1 N2 : vimṛśed K1 38c sarvābhāsa ] N1 N2 : sa sābhāsa K1<\/div>","<div contenteditable>39a na caivanyo ] N1 N2 : na cānyo'sti K1 39b nirābhāso yathā ] N1 N2 : nirābhāsas tadā K1<\/div>","<div contenteditable>40d jñānaṃ ] N1 N2 : manaḥ K1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <script>function closeDictionaries() { 
@@ -270,3 +273,45 @@ Reset text
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
+<div id="imageOverlay1" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">×</a><br />
+
+<div class="zoomButtonsFullScreen">
+<button class="manuscript-photo-button" id="zoomInFullScreen1">
+<i class="fa fa-search-plus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen1">
+<i class="fa fa-search-minus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen1">
+Reset image
+</button>
+<button class="manuscript-photo-button" onclick="highResFull1()">
+Resolution
+</button>
+<button class="manuscript-photo-button" class="showTextbtn" onclick="showText1()">Show/hide text</button>
+<button id="textZoomInFull1" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+<button id="textZoomOutFull1" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" onclick="resetTransform1()">Reset text</button>
+</div>
+<div id="fullScreenPhoto1" class="panzoomContainer overlay-content">
+<p class="medium-image-size-overlay">
+528.5 KB
+</p>
+<p class="high-image-size-overlay">
+10.4 MB
+</p>
+<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__081.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__081.JPG" class="img-fluid"></p>
+</div>
+</div>
+<script src="/js/panzoom-elements.js"></script>
+<script>var elementDT1 = document.querySelector("#manuscript-text-DT1");
+
+var instanceDT1 = panzoom(elementDT1, { 
+zoomDoubleClickSpeed: 1, 
+elementImageNum: "1",
+filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
+});
+instanceDT1.on("panstart", function(e) { hideHeader1() });</script>

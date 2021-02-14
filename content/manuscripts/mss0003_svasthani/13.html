@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: ""
 hasPhotos: yes
 hasText: no
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05463.jpeg
 photoSizeMedium: 1.2 MB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05463.jpeg
 photoSizeHigh: 10.7 MB
-imagesTotal: 32
-imageCurrent: 13
+numImagesView: single
+params:
+  imageCurrent: 13
+  imagesTotal: 32
 categories:
   - sanskrit
 ---
@@ -102,11 +105,11 @@ categories:
 <div class='row manuscript-photo-and-text'>
 <div class="col-sm-9">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn1"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut1"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset1">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes1()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav1()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -125,7 +128,7 @@ Shabda-Sagara
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto1">
       <p class="medium-image-size">1.2 MB</p>
       <p class="high-image-size">10.7 MB</p>
       <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05463.jpeg" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05463.jpeg" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05463.jpeg" class="img-fluid">
@@ -235,3 +238,30 @@ No transliteration or translation available at the moment.
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
+<div id="imageOverlay1" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">×</a><br />
+
+<div class="zoomButtonsFullScreen">
+<button class="manuscript-photo-button" id="zoomInFullScreen1">
+<i class="fa fa-search-plus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen1">
+<i class="fa fa-search-minus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen1">
+Reset image
+</button>
+<button class="manuscript-photo-button" onclick="highResFull1()">
+Resolution
+</button>
+</div>
+<div id="fullScreenPhoto1" class="panzoomContainer overlay-content">
+<p class="medium-image-size-overlay">
+1.2 MB
+</p>
+<p class="high-image-size-overlay">
+10.7 MB
+</p>
+<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/medium_resolution/DSC05463.jpeg" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/mss0003_svasthani/high_resolution/DSC05463.jpeg" class="img-fluid"></p>
+</div>
+</div>

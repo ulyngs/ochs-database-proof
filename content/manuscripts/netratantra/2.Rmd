@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__001.JPG
 photoSizeMedium: 524.1 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__001.JPG
 photoSizeHigh: 10.3 MB
-imagesTotal: 89
-imageCurrent: 2
+numImagesView: single
+params:
+  imageCurrent: 2
+  imagesTotal: 89
 categories:
   - sanskrit
 ---
@@ -71,13 +74,16 @@ photo_medium_info <- aws_content %>%
 photo_high_info <- aws_content %>% 
   filter(str_detect(filepath, "high_resolution"))
 
+end_slice <- params$imageCurrent
+
 photo_info <- tibble(
    photoid = photo_medium_info$filename,
    photo_path_medium = photo_medium_info$filepath,
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   slice(2)
+   slice(2:end_slice) %>% 
+   mutate(image_num = row_number())
 # ensure the DT libraries are included - they are not automatically when looping through datatables
 datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
 
@@ -88,4 +94,6 @@ datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions =
 insert_dictionary_iframes()
 pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
 insert_dictionary_toggle_functions()
+create_overlay_divs(photo_info, has_text = TRUE)
+initiate_text_zoom(photo_info)
 ```

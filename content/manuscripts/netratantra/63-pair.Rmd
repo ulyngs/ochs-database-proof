@@ -1,0 +1,99 @@
+---
+exclude_jquery: true
+catalogueId: netratantra
+title: "Netratantra (NT)"
+sanskritTitle: "अमृतेशतन्त्रम्"
+transliteratedTitle: "Amṛteśatantra, Mṛtyujidamṛtīśavidhāna (Netratantra)"
+englishTitle: "The Tantra of the Lord of Immortality"
+approximateDating: "1200 CE"
+manuscriptLanguage: "Sanskrit"
+script: "Nandīnāgarī/Jainanāgarī"
+material: "palm-leaf, 32.0cm x 5.5cm"
+condition: "Complete, in good condition with few damaged folios"
+folios: "89"
+subject: "Śākta-Śaiva tantra"
+physicalLocation: "National Archives, Kathmandu (NAK MS 1-285, NGMPP Reel No. B 25/4)"
+originPlace: "Nepal"
+author: ""
+provenance: "Colour photos bought by Dr Bjarne Wernicke-Olesen from the NAK on 19.4.2018"
+bibliographyNote: ""
+codices: "Σ = K1 N1 N2"
+transliterators: "Gavin Flood, Rajan Khatiwoda (ch. 6-8)"
+translationEnglish: "Gavin Flood, Bjarne Wernicke-Olesen, Rajan Khatiwoda"
+translationDanish: ""
+googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
+hasPhotos: yes
+hasText: yes
+textOnlyVersion: no
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__062.JPG
+photoSizeMedium: 529.2 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__062.JPG
+photoSizeHigh: 10.3 MB
+numImagesView: pair
+params:
+  imageCurrent: 63
+  imagesTotal: 89
+categories:
+  - sanskrit
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+library(glue)
+source(here("_scripts", "manuscript_layout.R"))
+source(here("_scripts/", "manuscript_joint_functions.R"))
+
+data_text <- read_csv(here("data", "manuscripts", "netratantra.csv")) %>% 
+   mutate(photo = str_c(photo, ".JPG")) %>% 
+   mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
+   #mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness
+
+# count columns to include
+count_cols <- data_text %>% 
+  slice(1) %>% 
+  select(-photo)
+
+cols_include <- count_cols %>% 
+  select(chapter, transliteration, starts_with("translation_")) %>% 
+  length()
+
+cols_total <- length(count_cols)
+
+cols_hide_nums <- c(1, seq(cols_include + 1, cols_total - 1))
+### photos to show ###
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "netratantra")
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
+
+end_slice <- ifelse(params$imageCurrent < params$imagesTotal, params$imageCurrent + 1, params$imageCurrent)
+
+photo_info <- tibble(
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
+   slice(63:end_slice) %>% 
+   mutate(image_num = row_number())
+# ensure the DT libraries are included - they are not automatically when looping through datatables
+datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions = c("ColReorder", "Buttons"), options = list(searchHighlight = TRUE, buttons = c("colvis", "csv", "excel", "print")))
+
+```
+
+
+```{r add-text, results="asis"}
+insert_dictionary_iframes()
+pwalk(photo_info, create_content, cols_hide = cols_hide_nums)
+insert_dictionary_toggle_functions()
+create_overlay_divs(photo_info, has_text = TRUE)
+initiate_text_zoom(photo_info)
+```

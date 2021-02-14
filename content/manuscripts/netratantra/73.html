@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__072.JPG
 photoSizeMedium: 537.6 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__072.JPG
 photoSizeHigh: 10.5 MB
-imagesTotal: 89
-imageCurrent: 73
+numImagesView: single
+params:
+  imageCurrent: 73
+  imagesTotal: 89
 categories:
   - sanskrit
 ---
@@ -127,11 +130,11 @@ categories:
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn1"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut1"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset1">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes1()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav1()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -146,20 +149,20 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomIn" class="manuscript-photo-button">
+<button id="textZoomIn1" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOut" class="manuscript-photo-button">
+<button id="textZoomOut1" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransform()">
+<button class="manuscript-photo-button" onclick="resetTransform1()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__072.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__072.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto1">
       <p class="medium-image-size">537.6 KB</p>
       <p class="high-image-size">10.5 MB</p>
       <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__072.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__072.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__072.JPG" class="img-fluid">
@@ -169,10 +172,10 @@ Reset text
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT1" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>2<\/div>","<div contenteditable>3-6<\/div>","<div contenteditable>7-9<\/div>"],["<div contenteditable>yogī sarvagato bhāti sarvadṛk sarvakṛc chivaḥ / tam ahaṃ kathayiṣyāmi yasmād anyan na vidyate // 2 //<\/div>","<div contenteditable>yaṃ prāpya tanmayatvena bhavate hy ajarāmaraḥ yan na vāg vadate nityaṃ yan na dṛśyeta cakṣuṣā // 3 // yan na saṃśruyate karṇair nāsā yaś ca na jighrati na cāsvādayate jihvā na sparśeta tvagindriyam // 4 // na cetasā cintanīyaṃ sarvavarṇarasojjhitam sarvavarṇarasair yuktam aprameyam atīndriyam // 5 // yaṃ prāpya yogino devi bhavanti hy ajarāmarāḥ tad abhyāsena mahatā vairāgyena pareṇa ca // 6 //<\/div>","<div contenteditable>rāgadveṣaparityāgāl lobhamohakṣayāt priye madamātsaryasaṃtyāgān mānagarvatamokṣitāt // 7 // labhate śāśvato nityaṃ śivam avyayam uttamam nimiṣonmeṣamātraṃ tu yadi caivopalabhyate // 8 // tataḥ prabhṛti mukto'sau na punarjanmam āpnuyāt aṣṭāṃgena tu yogena prāpnuyān nānyathā kvacit // 9 //<\/div>"],["<div contenteditable>8.2. The Yogi shines forth as Śiva who is the omnipresent, all seeing, [and] all doing. I will speak about that [condition], beyond which there is nothing else.<\/div>","<div contenteditable>8.3-6. Having attained that [state, the Yogi] becomes ageless and deathless through identi- cation with it. It is that eternal which speech cannot express, that cannot be seen by the eye, that cannot be heard with the ears, that the nose cannot smell, that the tongue cannot taste, that the sense of touch cannot feel, that cannot be thought by the mind, freed from all colour and taste [yet it is] endowed with all colour and taste, immeasurable, [and] beyond the senses. When that is attained, O Goddess, the Yogis become free from old age and death through their exalted practice and supreme detachment.<\/div>","<div contenteditable>8.7-9. Due to the abandoning of passion and hate, due to the destruction of greed and delu- sion, O Beloved, due to the abandoning of intoxication and jealousy, [and] due to the de- struction of self-conceit and arrogance, [the Yogi] certainly attains the eternal, imperishable, supreme Śiva. If he attains [that] merely in the blink of an eye, then henceforth he is liber- ated and is not born again. He may attain [this realisation] by means of the eight limbed yoga and not otherwise.<\/div>"],[null,null,null],["<div contenteditable>2c taṃ ] N1 N2 : tad K1<\/div>","<div contenteditable>3a yaṃ ] N1 N2 : yat ] K1 ; prāpya tanmayatvena ] N2 K1 : prāpya te tanmayatvena N1 3b bhavate ] N1 : bhavati K1 N2 4a yan na saṃśruyate N2 : yacca na śrūyate K1 4b yaś ca ] N1 : yañ caN2 ; yac ca K1 4c na cāsvādayate ] N1 :nacasvādayateN2;yannāsvādayateK1 4d nasparśeta ] N1N2 :naspṛśedyatK1 6a yaṃ ] N1N2 :yat K1<\/div>","<div contenteditable>7a parityāgal ] N2 K1 : tyāgā N1 7d mānagarvatamokṣitāt ] N1 N2 : mānagarvatamaḥ kṣayāt K1 8a labhate śāśvato ] N1 N2 : labhyate śāśvataṃ K1 8c nimiṣonmeṣamātraṃ tu ] N1 N2 : nimeṣonmeṣamātreṇa K1 8d caivopalabhyate ] N1 N2 : cailopalabhyate K1 9b na punarjanmam āpnuyāt ] N1 : na punarjanma prāpnuyāt N2 ; na punarjanma cāpnūyāt K1 9d prāpnuyān ] N2 K1 : prāpnuyā N1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT1">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>8<\/div>","<div contenteditable>8<\/div>","<div contenteditable>8<\/div>"],["<div contenteditable>2<\/div>","<div contenteditable>3-6<\/div>","<div contenteditable>7-9<\/div>"],["<div contenteditable>yogī sarvagato bhāti sarvadṛk sarvakṛc chivaḥ / tam ahaṃ kathayiṣyāmi yasmād anyan na vidyate // 2 //<\/div>","<div contenteditable>yaṃ prāpya tanmayatvena bhavate hy ajarāmaraḥ yan na vāg vadate nityaṃ yan na dṛśyeta cakṣuṣā // 3 // yan na saṃśruyate karṇair nāsā yaś ca na jighrati na cāsvādayate jihvā na sparśeta tvagindriyam // 4 // na cetasā cintanīyaṃ sarvavarṇarasojjhitam sarvavarṇarasair yuktam aprameyam atīndriyam // 5 // yaṃ prāpya yogino devi bhavanti hy ajarāmarāḥ tad abhyāsena mahatā vairāgyena pareṇa ca // 6 //<\/div>","<div contenteditable>rāgadveṣaparityāgāl lobhamohakṣayāt priye madamātsaryasaṃtyāgān mānagarvatamokṣitāt // 7 // labhate śāśvato nityaṃ śivam avyayam uttamam nimiṣonmeṣamātraṃ tu yadi caivopalabhyate // 8 // tataḥ prabhṛti mukto'sau na punarjanmam āpnuyāt aṣṭāṃgena tu yogena prāpnuyān nānyathā kvacit // 9 //<\/div>"],["<div contenteditable>8.2. The Yogi shines forth as Śiva who is the omnipresent, all seeing, [and] all doing. I will speak about that [condition], beyond which there is nothing else.<\/div>","<div contenteditable>8.3-6. Having attained that [state, the Yogi] becomes ageless and deathless through identi- cation with it. It is that eternal which speech cannot express, that cannot be seen by the eye, that cannot be heard with the ears, that the nose cannot smell, that the tongue cannot taste, that the sense of touch cannot feel, that cannot be thought by the mind, freed from all colour and taste [yet it is] endowed with all colour and taste, immeasurable, [and] beyond the senses. When that is attained, O Goddess, the Yogis become free from old age and death through their exalted practice and supreme detachment.<\/div>","<div contenteditable>8.7-9. Due to the abandoning of passion and hate, due to the destruction of greed and delu- sion, O Beloved, due to the abandoning of intoxication and jealousy, [and] due to the de- struction of self-conceit and arrogance, [the Yogi] certainly attains the eternal, imperishable, supreme Śiva. If he attains [that] merely in the blink of an eye, then henceforth he is liber- ated and is not born again. He may attain [this realisation] by means of the eight limbed yoga and not otherwise.<\/div>"],[null,null,null],["<div contenteditable>2c taṃ ] N1 N2 : tad K1<\/div>","<div contenteditable>3a yaṃ ] N1 N2 : yat ] K1 ; prāpya tanmayatvena ] N2 K1 : prāpya te tanmayatvena N1 3b bhavate ] N1 : bhavati K1 N2 4a yan na saṃśruyate N2 : yacca na śrūyate K1 4b yaś ca ] N1 : yañ caN2 ; yac ca K1 4c na cāsvādayate ] N1 :nacasvādayateN2;yannāsvādayateK1 4d nasparśeta ] N1N2 :naspṛśedyatK1 6a yaṃ ] N1N2 :yat K1<\/div>","<div contenteditable>7a parityāgal ] N2 K1 : tyāgā N1 7d mānagarvatamokṣitāt ] N1 N2 : mānagarvatamaḥ kṣayāt K1 8a labhate śāśvato ] N1 N2 : labhyate śāśvataṃ K1 8c nimiṣonmeṣamātraṃ tu ] N1 N2 : nimeṣonmeṣamātreṇa K1 8d caivopalabhyate ] N1 N2 : cailopalabhyate K1 9b na punarjanmam āpnuyāt ] N1 : na punarjanma prāpnuyāt N2 ; na punarjanma cāpnūyāt K1 9d prāpnuyān ] N2 K1 : prāpnuyā N1<\/div>"],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <script>function closeDictionaries() { 
@@ -270,3 +273,45 @@ Reset text
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
+<div id="imageOverlay1" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">×</a><br />
+
+<div class="zoomButtonsFullScreen">
+<button class="manuscript-photo-button" id="zoomInFullScreen1">
+<i class="fa fa-search-plus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen1">
+<i class="fa fa-search-minus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen1">
+Reset image
+</button>
+<button class="manuscript-photo-button" onclick="highResFull1()">
+Resolution
+</button>
+<button class="manuscript-photo-button" class="showTextbtn" onclick="showText1()">Show/hide text</button>
+<button id="textZoomInFull1" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+<button id="textZoomOutFull1" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" onclick="resetTransform1()">Reset text</button>
+</div>
+<div id="fullScreenPhoto1" class="panzoomContainer overlay-content">
+<p class="medium-image-size-overlay">
+537.6 KB
+</p>
+<p class="high-image-size-overlay">
+10.5 MB
+</p>
+<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__072.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__072.JPG" class="img-fluid"></p>
+</div>
+</div>
+<script src="/js/panzoom-elements.js"></script>
+<script>var elementDT1 = document.querySelector("#manuscript-text-DT1");
+
+var instanceDT1 = panzoom(elementDT1, { 
+zoomDoubleClickSpeed: 1, 
+elementImageNum: "1",
+filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
+});
+instanceDT1.on("panstart", function(e) { hideHeader1() });</script>

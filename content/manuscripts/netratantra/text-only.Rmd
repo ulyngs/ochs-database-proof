@@ -29,7 +29,10 @@ photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratant
 photoSizeMedium: 444.3 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__088.JPG
 photoSizeHigh: 9.9 MB
-imagesTotal: 89
+numImagesView: single
+params:
+  imageCurrent: 
+  imagesTotal: 89
 categories:
   - sanskrit
 ---
@@ -69,4 +72,6 @@ datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions =
 insert_dictionary_iframes()
 create_content(cols_hide = cols_hide_nums, text_only_version = TRUE)
 insert_dictionary_toggle_functions()
+
+
 ```

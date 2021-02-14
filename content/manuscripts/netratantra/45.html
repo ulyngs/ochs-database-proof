@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: "https://docs.google.com/spreadsheets/d/1vlDsR56bMSboS_HMtQSv2tJKdAZBZYsc7NBWizpoeH4/edit?usp=sharing"
 hasPhotos: yes
 hasText: yes
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__044.JPG
 photoSizeMedium: 517.5 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__044.JPG
 photoSizeHigh: 10.2 MB
-imagesTotal: 89
-imageCurrent: 45
+numImagesView: single
+params:
+  imageCurrent: 45
+  imagesTotal: 89
 categories:
   - sanskrit
 ---
@@ -127,11 +130,11 @@ categories:
 <div class="row manuscript-photo-and-text">
 <div class="col-sm-6">
 <div class="zoomButtons">
-<button class="manuscript-photo-button" id="zoomIn"><i class="fa fa-search-plus"></i></button>
-<button class="manuscript-photo-button" id="zoomOut"><i class="fa fa-search-minus"></i></button>
-<button class="manuscript-photo-button" id="zoomReset">Reset image</button>
-<button class="manuscript-photo-button" onclick="highRes()">Resolution</button>
-<button class="manuscript-photo-button" onclick="openNav()">Full screen</button>
+<button class="manuscript-photo-button" id="zoomIn1"><i class="fa fa-search-plus"></i></button>
+<button class="manuscript-photo-button" id="zoomOut1"><i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" id="zoomReset1">Reset image</button>
+<button class="manuscript-photo-button" onclick="highRes1()">Resolution</button>
+<button class="manuscript-photo-button" onclick="openNav1()">Full screen</button>
 
 <div class="dropdown dictionary-dropdown">
   <button class="dropdown-toggle manuscript-photo-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dictionaries</button>
@@ -146,20 +149,20 @@ Shabda-Sagara
   </div>
 </div>
 
-<button id="textZoomIn" class="manuscript-photo-button">
+<button id="textZoomIn1" class="manuscript-photo-button">
 Text <i class="fa fa-search-plus"></i>
 </button>
-<button id="textZoomOut" class="manuscript-photo-button">
+<button id="textZoomOut1" class="manuscript-photo-button">
 Text <i class="fa fa-search-minus"></i>
 </button>
-<button class="manuscript-photo-button" onclick="resetTransform()">
+<button class="manuscript-photo-button" onclick="resetTransform1()">
 Reset text
 </button>
 <a href="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__044.JPG" data-src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__044.JPG" role="button" class="manuscript-photo-button" download><i class="fa fa-download"></i></a>
 </div>
 <div class="row manuscript-photo">
   <div class="col-sm-12">
-    <div class="panzoomContainer" id="panzoomManuscriptPhoto">
+    <div class="panzoomContainer" id="panzoomManuscriptPhoto1">
       <p class="medium-image-size">517.5 KB</p>
       <p class="high-image-size">10.2 MB</p>
       <img src="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__044.JPG" data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__044.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__044.JPG" class="img-fluid">
@@ -169,10 +172,10 @@ Reset text
 </div>
 </div>
 <div class="col-sm-6 manuscript-text">
-<div id="manuscript-text-DT" class="datatables html-widget" style="width:100%;height:100%;">
+<div id="manuscript-text-DT1" class="datatables html-widget" style="width:100%;height:100%;">
 
 </div>
-<script type="application/json" data-for="manuscript-text-DT">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>4<\/div>","<div contenteditable>5<\/div>","<div contenteditable>5<\/div>"],["<div contenteditable>13<\/div>","<div contenteditable>1-3<\/div>","<div contenteditable>5-8<\/div>"],["<div contenteditable>evam uddeśato dīkṣā kathitā vistareṇyataḥ // 13 // iti sarvaśrotasaṅgrahasāre mṛtyujid amṛtīśvidhāne dīkṣādhikāraś caturthaḥ paṭalaḥ<\/div>","<div contenteditable>pañcamo 'dhikāraḥ iīśvara uvāca abhiṣekaṃ pravakṣyāmi yathā yasyaiva dīyate aṣṭabhiḥ kalaśair deyam ācāryasya vidhānataḥ // 1 // te tu vidyeśvarāḥ proktā[ḥ] samudrāś ca sagarbhagāḥ pañcabhir bhūtasaṃkhyair vā tribhir vā tattvarūpakaiḥ // 2 // ātmavidyāśivākhyais tu ekenāpi śivātmanā adhikārārtham ācārye sādhake siddhikāmataḥ // 3 //<\/div>","<div contenteditable>pavitrāhāranirato laghvāśī saṃyateṃdritaḥ ekānte puṇyakṣetre tu tīrthāyatanagocare // 5 // sarvasaṅgaṅkṣitamanāḥ sādhako japam ārabhet lakṣam ekaṃ japen mantrī pūrvam eva samāhitaḥ // 6 // tena sāmānyakarmāṇi siddhyante sādhakasya tu bhaumīṃ siddhim avāpnoti daśalakṣajapena tu // 7 // antarīkṣāṃ labhet siddhi[ṃ] lakṣapañcāśatau dhruvam divyāṃ siddhim tu labhate sādhako nātra saṃśayaḥ // 8 //<\/div>"],["<div contenteditable>4.13. In this way initiation has been revealed, told in its completeness. Here ends the fourth chapter concerning the quali cation of initiation according to the rule of the immortal Conqueror of Death, which is the essence of the collection of all the streams of revelation.<\/div>","<div contenteditable>The Lord spoke: 5.1-3. I will speak about the consecration as it shows itself, to be given with eight pots ac- cording to the rule of the teacher; these are known to be impregnated and sealed as the Lords of Wisdom, or with ve [pots] enumerated as earth [and the other elements], or with three whose nature is the categories called self, knowledge, and Śiva, [or] also with one whose nature is Śiva. For the teacher, his purpose is authority, for the Sādhaka, his desire is power. [Such a] consecrated one is authorised and may perform the practice of mantra. That is his observance, that is his practice to which he is devoted and addicted.<\/div>","<div contenteditable>5.5-8. The practitioner whose mind is free from all attachment, whose senses are controlled, whose desire is slight, who delights in wearing the sacred thread, should begin repetition in a solitary place, in a holy place, in a place of pilgrimage. The focussed practitioner of mantra should repeat [it] a hundred thousand times, by that he accomplishes the collective rites and the Sādhaka achieves worldly powers. But with a million repetitions he achieves atmospheric powers [and] certainly with ve million the Sādhaka attains divine powers, in this there is no doubt.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="manuscript-text-DT1">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["ColReorder","Buttons","Responsive"],"data":[["<div contenteditable>4<\/div>","<div contenteditable>5<\/div>","<div contenteditable>5<\/div>"],["<div contenteditable>13<\/div>","<div contenteditable>1-3<\/div>","<div contenteditable>5-8<\/div>"],["<div contenteditable>evam uddeśato dīkṣā kathitā vistareṇyataḥ // 13 // iti sarvaśrotasaṅgrahasāre mṛtyujid amṛtīśvidhāne dīkṣādhikāraś caturthaḥ paṭalaḥ<\/div>","<div contenteditable>pañcamo 'dhikāraḥ iīśvara uvāca abhiṣekaṃ pravakṣyāmi yathā yasyaiva dīyate aṣṭabhiḥ kalaśair deyam ācāryasya vidhānataḥ // 1 // te tu vidyeśvarāḥ proktā[ḥ] samudrāś ca sagarbhagāḥ pañcabhir bhūtasaṃkhyair vā tribhir vā tattvarūpakaiḥ // 2 // ātmavidyāśivākhyais tu ekenāpi śivātmanā adhikārārtham ācārye sādhake siddhikāmataḥ // 3 //<\/div>","<div contenteditable>pavitrāhāranirato laghvāśī saṃyateṃdritaḥ ekānte puṇyakṣetre tu tīrthāyatanagocare // 5 // sarvasaṅgaṅkṣitamanāḥ sādhako japam ārabhet lakṣam ekaṃ japen mantrī pūrvam eva samāhitaḥ // 6 // tena sāmānyakarmāṇi siddhyante sādhakasya tu bhaumīṃ siddhim avāpnoti daśalakṣajapena tu // 7 // antarīkṣāṃ labhet siddhi[ṃ] lakṣapañcāśatau dhruvam divyāṃ siddhim tu labhate sādhako nātra saṃśayaḥ // 8 //<\/div>"],["<div contenteditable>4.13. In this way initiation has been revealed, told in its completeness. Here ends the fourth chapter concerning the quali cation of initiation according to the rule of the immortal Conqueror of Death, which is the essence of the collection of all the streams of revelation.<\/div>","<div contenteditable>The Lord spoke: 5.1-3. I will speak about the consecration as it shows itself, to be given with eight pots ac- cording to the rule of the teacher; these are known to be impregnated and sealed as the Lords of Wisdom, or with ve [pots] enumerated as earth [and the other elements], or with three whose nature is the categories called self, knowledge, and Śiva, [or] also with one whose nature is Śiva. For the teacher, his purpose is authority, for the Sādhaka, his desire is power. [Such a] consecrated one is authorised and may perform the practice of mantra. That is his observance, that is his practice to which he is devoted and addicted.<\/div>","<div contenteditable>5.5-8. The practitioner whose mind is free from all attachment, whose senses are controlled, whose desire is slight, who delights in wearing the sacred thread, should begin repetition in a solitary place, in a holy place, in a place of pilgrimage. The focussed practitioner of mantra should repeat [it] a hundred thousand times, by that he accomplishes the collective rites and the Sādhaka achieves worldly powers. But with a million repetitions he achieves atmospheric powers [and] certainly with ve million the Sādhaka attains divine powers, in this there is no doubt.<\/div>"],[null,null,null],[null,null,null],[null,null,null],[null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>chapter<\/th>\n      <th>verse<\/th>\n      <th>transliteration<\/th>\n      <th>translation_english<\/th>\n      <th>notes_parallels<\/th>\n      <th>notes_collation<\/th>\n      <th>notes_sanskrit<\/th>\n      <th>notes_translation<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searchHighlight":true,"dom":"lBfrtip","buttons":["colvis"],"colReorder":true,"scrollY":"550px","scrollX":true,"info":false,"paging":false,"columnDefs":[{"visible":false,"targets":[1,4,5,6,7]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <script>function closeDictionaries() { 
@@ -270,3 +273,45 @@ Reset text
   $("#sanskrit-dictionary-url").toggleClass("make-visible"); $("#sanskrit-dictionary-url iframe").toggleClass("make-visible");}
 
   $("input#dictionary-url").on("propertychange paste keyup", function() { var url = this.value; $("#frame-dictionary-url").attr("src", url); });</script>
+<div id="imageOverlay1" class="overlay">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">×</a><br />
+
+<div class="zoomButtonsFullScreen">
+<button class="manuscript-photo-button" id="zoomInFullScreen1">
+<i class="fa fa-search-plus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomOutFullScreen1">
+<i class="fa fa-search-minus"></i>
+</button>
+<button class="manuscript-photo-button" id="zoomResetFullScreen1">
+Reset image
+</button>
+<button class="manuscript-photo-button" onclick="highResFull1()">
+Resolution
+</button>
+<button class="manuscript-photo-button" class="showTextbtn" onclick="showText1()">Show/hide text</button>
+<button id="textZoomInFull1" class="manuscript-photo-button">Text <i class="fa fa-search-plus"></i></button>
+<button id="textZoomOutFull1" class="manuscript-photo-button">Text <i class="fa fa-search-minus"></i></button>
+<button class="manuscript-photo-button" onclick="resetTransform1()">Reset text</button>
+</div>
+<div id="fullScreenPhoto1" class="panzoomContainer overlay-content">
+<p class="medium-image-size-overlay">
+517.5 KB
+</p>
+<p class="high-image-size-overlay">
+10.2 MB
+</p>
+<p><img data-src-md-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/medium_resolution/DOC__044.JPG" data-src-high-res="https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/netratantra/high_resolution/DOC__044.JPG" class="img-fluid"></p>
+</div>
+</div>
+<script src="/js/panzoom-elements.js"></script>
+<script>var elementDT1 = document.querySelector("#manuscript-text-DT1");
+
+var instanceDT1 = panzoom(elementDT1, { 
+zoomDoubleClickSpeed: 1, 
+elementImageNum: "1",
+filterKey: function(/* e, dx, dy, dz */) { return true; }, 
+beforeWheel: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; }, 
+beforeMouseDown: function(e) { var shouldIgnore = !e.altKey; return shouldIgnore; } 
+});
+instanceDT1.on("panstart", function(e) { hideHeader1() });</script>

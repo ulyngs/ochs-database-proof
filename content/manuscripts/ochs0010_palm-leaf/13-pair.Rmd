@@ -1,0 +1,83 @@
+---
+exclude_jquery: true
+catalogueId: ochs0010_palm-leaf
+title: "OCHS0010 Palm Leaf"
+sanskritTitle: ""
+transliteratedTitle: ""
+englishTitle: ""
+approximateDating: ""
+manuscriptLanguage: ""
+script: ""
+material: ""
+condition: ""
+folios: ""
+subject: ""
+physicalLocation: ""
+originPlace: ""
+author: ""
+provenance: ""
+bibliographyNote: ""
+codices: ""
+transliterators: ""
+translationEnglish: ""
+translationDanish: ""
+googlesheet: ""
+hasPhotos: yes
+hasText: no
+textOnlyVersion: no
+photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/ochs0010_palm-leaf/medium_resolution/DSC05018.jpg
+photoSizeMedium: 246.9 KB
+photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/ochs0010_palm-leaf/high_resolution/DSC05018.jpeg
+photoSizeHigh: 11 MB
+numImagesView: pair
+params:
+  imageCurrent: 13
+  imagesTotal: 45
+categories:
+  - sanskrit
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(here)
+library(glue)
+source(here("_scripts", "manuscript_layout_photos_only.R"))
+source(here("_scripts/", "manuscript_joint_functions.R"))
+
+
+data_text <- NA
+### photos to show ###
+aws_content <- read_csv(here::here("data", "aws_content.csv")) %>% 
+  filter(manuscript == "ochs0010_palm-leaf")
+
+photo_medium_info <- aws_content %>% 
+  filter(str_detect(filepath, "medium_resolution"))
+
+photo_high_info <- aws_content %>% 
+  filter(str_detect(filepath, "high_resolution"))
+
+end_slice <- ifelse(params$imageCurrent < params$imagesTotal, params$imageCurrent + 1, params$imageCurrent)
+
+photo_info <- tibble(
+   photoid = photo_medium_info$filename,
+   photo_path_medium = photo_medium_info$filepath,
+   photo_size_medium = photo_medium_info$formatted_filesize,
+   photo_path_high = photo_high_info$filepath,
+   photo_size_high = photo_high_info$formatted_filesize) %>%
+   slice(13:end_slice) %>% 
+   mutate(image_num = row_number())
+
+
+```
+
+
+```{r add-text, results="asis"}
+insert_dictionary_iframes()
+pwalk(photo_info, create_content)
+insert_dictionary_toggle_functions()
+create_overlay_divs(photo_info, has_text = FALSE)
+
+```

@@ -24,12 +24,15 @@ translationDanish: ""
 googlesheet: ""
 hasPhotos: yes
 hasText: no
+textOnlyVersion: no
 photoPathMedium: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/ochs0010_palm-leaf/medium_resolution/DSC05012.jpg
 photoSizeMedium: 253.8 KB
 photoPathHigh: https://shakta-manuscripts.s3.eu-west-2.amazonaws.com/ochs0010_palm-leaf/high_resolution/DSC05012.jpeg
 photoSizeHigh: 11.1 MB
-imagesTotal: 45
-imageCurrent: 7
+numImagesView: single
+params:
+  imageCurrent: 7
+  imagesTotal: 45
 categories:
   - sanskrit
 ---
@@ -56,13 +59,16 @@ photo_medium_info <- aws_content %>%
 photo_high_info <- aws_content %>% 
   filter(str_detect(filepath, "high_resolution"))
 
+end_slice <- params$imageCurrent
+
 photo_info <- tibble(
    photoid = photo_medium_info$filename,
    photo_path_medium = photo_medium_info$filepath,
    photo_size_medium = photo_medium_info$formatted_filesize,
    photo_path_high = photo_high_info$filepath,
    photo_size_high = photo_high_info$formatted_filesize) %>%
-   slice(7)
+   slice(7:end_slice) %>% 
+   mutate(image_num = row_number())
 
 
 ```
@@ -72,4 +78,6 @@ photo_info <- tibble(
 insert_dictionary_iframes()
 pwalk(photo_info, create_content)
 insert_dictionary_toggle_functions()
+create_overlay_divs(photo_info, has_text = FALSE)
+
 ```
