@@ -162,8 +162,9 @@ datatable(data_text, plugins = "accent-neutralise", filter = "top", extensions =
   
   if (has_photos){
     where_to_end <- case_when(
-    images_to_view == "single" ~ 'params$imageCurrent',
-    images_to_view == "pair" ~ 'ifelse(params$imageCurrent < params$imagesTotal, params$imageCurrent + 1, params$imageCurrent)'
+      images_to_view == "single" ~ 'params$imageCurrent',
+      images_to_view == "pair" ~ 'ifelse(params$imageCurrent < params$imagesTotal, params$imageCurrent + 1, params$imageCurrent)',
+      images_to_view == "all" ~ 'params$imagesTotal'
   )
     
     lines_for_including_photos <- line_of_meta_data %>% glue_data('
@@ -290,6 +291,13 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
       write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, "-pair.Rmd"))
     }
     
+    # generate Rmd for all images
+    yaml_header <- create_yaml_header(line_of_meta_data, image_current = 1, images_to_view = "all")
+    body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = TRUE, image_current = 1, images_to_view = "all")
+    rmd_to_write <- str_c(yaml_header, body_content)
+      
+    write_lines(rmd_to_write, str_c(folder_path, "/all.Rmd"))
+    
     # write text-only version
     yaml_header <- create_yaml_header(line_of_meta_data, is_text_only_version = "yes")
     body_content <- create_rmd_body(line_of_meta_data, has_text = TRUE, has_photos = FALSE, text_only_version = TRUE)
@@ -333,6 +341,13 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE){
       
       write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, "-pair.Rmd"))
     }
+    
+    # generate Rmd for all images
+    yaml_header <- create_yaml_header(line_of_meta_data, image_current = 1, images_to_view = "all")
+    body_content <- create_rmd_body(line_of_meta_data, has_text = FALSE, has_photos = TRUE, image_current = 1, images_to_view = "all")
+    rmd_to_write <- str_c(yaml_header, body_content)
+      
+    write_lines(rmd_to_write, str_c(folder_path, "/all.Rmd"))
     
   } else if (line_of_meta_data$has_photos == "no" & line_of_meta_data$has_text == "yes") {
     
