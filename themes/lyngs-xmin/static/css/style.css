@@ -429,7 +429,7 @@ a.closebtn-dictionary {
 }
 
 .manuscript-photo-and-text {
-  margin-top: 6em;
+  margin-top: 2em;
 }
 
 .manuscript-page .manuscript-text td {
@@ -602,4 +602,9 @@ a.closebtn-dictionary {
   width: 85%;
   height: 900px;
   margin-bottom: 1.5em;
+}
+
+#manuscript-nav-anchor {
+  padding-top: 80px;
+  visibility: hidden;
 }
