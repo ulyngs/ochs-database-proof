@@ -2,7 +2,7 @@ source(here::here("_scripts/manuscript_joint_functions.R"))
 
 create_content <- function(photoid, photo_path_medium, photo_size_medium, photo_path_high, photo_size_high, cols_hide, image_num) {
   # create row
-  cat("<div class='row manuscript-photo-and-text'>")
+  glue::glue('<div class="row manuscript-photo-and-text" id="manuscript-photo-anchor{image_num}">') %>% cat()
   
   # create left column
   cat('<div class="col-sm-6">')
