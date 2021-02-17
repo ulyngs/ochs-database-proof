@@ -1,5 +1,8 @@
 {{ partial "header.html" . }}
 
+{{ $curImage := .Params.imageCurrent | int }}
+{{ $totalImages := .Params.imagesTotal | int }}
+{{ $manuscriptPath := print "/bengali-texts/" .Params.catalogueId }}
 
 <div class="main-container container-fluid">
   <main class="manuscript-page bengali-text">
@@ -22,108 +25,127 @@
         {{ if .Params.language }} <p>Language: {{ .Params.language }}</p> {{ end }}
       </div>
       <div class="col-sm-3 mt-auto">
-        {{ $manuscriptPath := print "/bengali-texts/" .Params.catalogueId }}
         {{ if .Params.imageCurrent }}
-          <a href="{{ $manuscriptPath }}/all/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View all images in single PDF</a>
+          <a href="{{ $manuscriptPath }}/all/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View all pages in single PDF</a>
         {{ else }}
           <a href="{{ $manuscriptPath }}/1/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View as separate pages</a>
         {{ end }}
       </div>
     </div>
+    
     <div id="manuscript-nav-anchor-bengali"></div>
     <div class="row manuscript-content-bengali">
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         {{/* INSERT MANUSCRIPT IMAGE NAV BUTTONS (if it's split) */}}
         {{ if .Params.imageCurrent }}
-          <div class="manuscript-nav">
-            {{ $curImage := .Params.imageCurrent | int }}
-            {{ $totalImages := .Params.imagesTotal | int }}
-            
-            <ul class="nav flex-column">
-            <li class="nav-item">
-              <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}/#manuscript-nav-anchor-bengali" {{ end }} class="manucript-nav-button previous nav-link">Previous</a>
-            </li>
-            {{ if le $totalImages 12 }}
-            
-              {{ range $i, $sequence :=  (seq $totalImages) }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
-                </li>
-              {{ end }}
-            
-            {{ else }}
-            
-              {{ if lt $curImage 8 }}
-                
-                {{ range $sequence :=  (seq 12) }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
-                </li>
-                {{ end }}
-                
-                <li class="nav-item">
-                  <span class="manucript-nav-ellipsis nav-link">...</span>
-                </li>
-                
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ $totalImages }}</a>
-                </li>
-                
-              {{ else if (and (ge $curImage 5) (lt $curImage (sub $totalImages 6)))  }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/1/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">1</a>
-                </li>
-                
-                {{if gt $curImage 7}}
-                <li class="nav-item">
-                  <span class="manucript-nav-ellipsis nav-link">...</span>
-                </li>
-                {{end}}
-                
-                {{ range $sequence :=  (seq (sub $curImage 5) (add $curImage 5)) }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
-                </li>
-                {{ end }}
-                
-                <li class="nav-item">
-                  <span class="manucript-nav-ellipsis nav-link">...</span>
-                </li>
-                
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ $totalImages }}</a>
-                </li>
+            <div class="article-nav manuscript-nav">
               
-              {{ else if (ge $curImage (sub $totalImages 6))  }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/1/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">1</a>
-                </li>
-                <li class="nav-item">
-                  <span class="manucript-nav-ellipsis nav-link">...</span>
-                </li>
-                
-                {{ range $sequence :=  (seq (sub $totalImages 12) $totalImages) }}
-                <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
-                </li>
-                {{ end }}
-                
+              {{ $url := print "data/bengali/photo_information/" .Params.catalogueId "_articles.csv" }}
+              {{ $sep := "," }}
               
+              <h5 class="article-nav-heading">Articles</h3>
+              
+              <ul class="nav flex-column">
+                {{ range $i, $r := getCSV $sep $url }}
+                  {{ if ne $i 0 }}
+                    <li class="nav-item">
+                      <a href="{{ $manuscriptPath }}/{{ index $r 0 }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ index $r 1 }}<br>(page {{ index $r 0 }})</a>
+                    </li>
+                  {{ end }}
               {{ end }}
-            
-            {{ end }}
-            
-            <li class="nav-item">
-              <a {{ if lt $curImage $totalImages }} href="{{ $manuscriptPath }}/{{ add $curImage 1 }}/#manuscript-nav-anchor-bengali" {{ end }} class="manucript-nav-button nav-link next">Next</a>
-            </li>
-            
-          </div>
+              </ul>
+            </div>
+          
+          
         {{ end }}
+
         
       </div>
       
-      <div class="col-sm-11">
-    
+      <div class="col-sm-10">
+        <div class="page-nav manuscript-nav">
+          <div class="page-nav-wrapper">
+              <ul class="nav">
+              <li class="nav-item">
+                <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}/#manuscript-nav-anchor-bengali" {{ end }} class="manucript-nav-button previous nav-link">Previous</a>
+              </li>
+              {{ if le $totalImages 12 }}
+              
+                {{ range $i, $sequence :=  (seq $totalImages) }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
+                  </li>
+                {{ end }}
+              
+              {{ else }}
+              
+                {{ if lt $curImage 8 }}
+                  
+                  {{ range $sequence :=  (seq 12) }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
+                  </li>
+                  {{ end }}
+                  
+                  <li class="nav-item">
+                    <span class="manucript-nav-ellipsis nav-link">...</span>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ $totalImages }}</a>
+                  </li>
+                  
+                {{ else if (and (ge $curImage 5) (lt $curImage (sub $totalImages 6)))  }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/1/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">1</a>
+                  </li>
+                  
+                  {{if gt $curImage 7}}
+                  <li class="nav-item">
+                    <span class="manucript-nav-ellipsis nav-link">...</span>
+                  </li>
+                  {{end}}
+                  
+                  {{ range $sequence :=  (seq (sub $curImage 5) (add $curImage 5)) }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
+                  </li>
+                  {{ end }}
+                  
+                  <li class="nav-item">
+                    <span class="manucript-nav-ellipsis nav-link">...</span>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ $totalImages }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ $totalImages }}</a>
+                  </li>
+                
+                {{ else if (ge $curImage (sub $totalImages 6))  }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/1/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">1</a>
+                  </li>
+                  <li class="nav-item">
+                    <span class="manucript-nav-ellipsis nav-link">...</span>
+                  </li>
+                  
+                  {{ range $sequence :=  (seq (sub $totalImages 12) $totalImages) }}
+                  <li class="nav-item">
+                    <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
+                  </li>
+                  {{ end }}
+                  
+                
+                {{ end }}
+              
+              {{ end }}
+              
+              <li class="nav-item">
+                <a {{ if lt $curImage $totalImages }} href="{{ $manuscriptPath }}/{{ add $curImage 1 }}/#manuscript-nav-anchor-bengali" {{ end }} class="manucript-nav-button nav-link next">Next</a>
+              </li>
+            </div>
+        </div>
+        
+        
         {{/* INSERT CONTENT */}}
         <div class="post-content" id="manuscript-content-anchor">
           <div class="bengali-pdf" align="center">
