@@ -4,9 +4,8 @@
 {{ if eq .Params.numImagesView "pair" }}
   {{ $imageNumberArray = 2 }}
 {{ else if eq .Params.numImagesView "all" }}
-  {{ $imageNumberArray = .Params.imagesTotal }}
+  {{ $imageNumberArray = .Params.params.imagesTotal }}
 {{ end }}
-
 
 {{ range $i, $sequence :=  (seq $imageNumberArray) }}
   {{ $sequence = $sequence | safeJS }}
