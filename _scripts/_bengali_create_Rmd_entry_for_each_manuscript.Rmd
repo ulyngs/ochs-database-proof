@@ -44,7 +44,6 @@ image_counts <- aws_content %>%
   summarise(num_images = n())
   
 text_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>% 
-  mutate(date = str_replace(date, "\n", "\n  ")) %>% 
   left_join(image_counts)
 
 ```
@@ -66,9 +65,10 @@ create_yaml_header <- function(line_of_meta_data, image_current = FALSE, all_ima
 ---
 exclude_jquery: true
 catalogueId: {catalogue_id}
-journalName: "{journal_name}"
-pubTime: |
-  {date}
+journalNameBengali: "{journal_name_bengali}"
+journalNameEnglish: "{journal_name_english}"
+dateBengali: "{date_bengali}" 
+dateUniversal: "{date_universal}" 
 volume: "{volume}"
 issue: "{issue}"
 place: "{place}"
@@ -82,15 +82,11 @@ categories:
 ', .na = "")
 
 }
+
 ```
 
 ## Create the body part
 ```{r}
-create_rmd_body <- function(line_of_meta_data, image_current = FALSE){
-  
-}
-
-
 write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_pages = FALSE){
   folder_path <- str_c(here("content", "bengali-texts", line_of_meta_data$catalogue_id))
   dir.create(folder_path)
@@ -114,10 +110,8 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_
       
       # generate Rmd
       yaml_header <- create_yaml_header(line_of_meta_data, image_current = cur_image)
-      body_content <- create_rmd_body(line_of_meta_data, image_current = cur_image)
-      rmd_to_write <- str_c(yaml_header, body_content)
       
-      write_lines(rmd_to_write, str_c(folder_path, "/", cur_image, ".md"))
+      write_lines(yaml_header, str_c(folder_path, "/", cur_image, ".md"))
     }
   } else {
     ### w/ only the full PDF
@@ -131,10 +125,8 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_
              photo_size = image_info$formatted_filesize)
     
     yaml_header <- create_yaml_header(line_of_meta_data, all_images = TRUE)
-    body_content <- create_rmd_body(line_of_meta_data)
-    rmd_to_write <- str_c(yaml_header, body_content)
     
-    write_lines(rmd_to_write, str_c(folder_path, "/", line_of_meta_data$catalogue_id, ".md"))
+    write_lines(yaml_header, str_c(folder_path, "/", "all.md"))
   }
 }
 
@@ -144,10 +136,9 @@ write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_
 ## Do it!
 
 ```{r}
-files_to_generate <- text_meta
 
-for(i in 1:nrow(files_to_generate)) {
-  files_to_generate %>% 
+for(i in 1:nrow(text_meta)) {
+  text_meta %>% 
     slice(i) %>% 
     write_rmd()
 }
