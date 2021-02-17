@@ -144,8 +144,8 @@ for(i in 1:nrow(text_meta)) {
 }
 
 # to generate single pages for each image
-for(i in 1:nrow(files_to_generate)) {
-  files_to_generate %>%
+for(i in 1:nrow(text_meta)) {
+  text_meta %>%
     slice(i) %>%
     write_rmd(write_split_pages = TRUE)
 }
