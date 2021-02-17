@@ -12,8 +12,10 @@
       <div class="col-sm-8">
         <h2 data-toc-skip><span class="title">{{ .Title | markdownify }}</span></h2>
         {{ if .Params.catalogueId }} <p>Catalogue identifier: {{ .Params.catalogueId }}</p> {{ end }}
-        {{ if .Params.journalName }} <p>Journal name: {{ .Params.journalName }}</p> {{ end }}
-        {{ if .Params.pubTime }} <p>Date: {{ .Params.pubTime }}</p> {{ end }}
+        {{ if .Params.journalNameBengali }} <p>Journal name (Bengali): {{ .Params.journalNameBengali }}</p> {{ end }}
+        {{ if .Params.journalNameEnglish }} <p>Journal name (English): {{ .Params.journalNameEnglish }}</p> {{ end }}
+        {{ if .Params.dateBengali }} <p>Date (Bengali): {{ .Params.dateBengali }}</p> {{ end }}
+        {{ if .Params.dateUniversal }} <p>Date (UTC): {{ .Params.dateUniversal }}</p> {{ end }}
         {{ if .Params.volume }} <p>Volume: {{ .Params.volume }}</p> {{ end }}
         {{ if .Params.issue }} <p>Issue: {{ .Params.issue }}</p> {{ end }}
         {{ if .Params.place }} <p>Place: {{ .Params.place }}</p> {{ end }}
@@ -22,9 +24,9 @@
       <div class="col-sm-3 mt-auto">
         {{ $manuscriptPath := print "/bengali-texts/" .Params.catalogueId }}
         {{ if .Params.imageCurrent }}
-          <a href="{{ $manuscriptPath }}/{{ .Params.catalogueId }}/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View all images in single PDF</a>
+          <a href="{{ $manuscriptPath }}/all/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View all images in single PDF</a>
         {{ else }}
-          <a href="{{ $manuscriptPath }}/1/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View as separate images</a>
+          <a href="{{ $manuscriptPath }}/1/" class="btn btn-light btn-md" role="button"><i class="fa fa-file-pdf-o"></i> View as separate pages</a>
         {{ end }}
       </div>
     </div>
@@ -36,17 +38,16 @@
           <div class="manuscript-nav">
             {{ $curImage := .Params.imageCurrent | int }}
             {{ $totalImages := .Params.imagesTotal | int }}
-            {{ $lastUrlElement := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
             
             <ul class="nav flex-column">
             <li class="nav-item">
               <a {{ if gt $curImage 1 }} href="{{ $manuscriptPath }}/{{ sub $curImage 1 }}/#manuscript-content-anchor" {{ end }} class="manucript-nav-button previous nav-link">Previous</a>
             </li>
-            {{ if lt $totalImages 8 }}
+            {{ if le $totalImages 12 }}
             
               {{ range $i, $sequence :=  (seq $totalImages) }}
                 <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq (add $i 1) ($lastUrlElement | int) }}current{{ end }}">{{ add $i 1 }}</a>
+                  <a href="{{ $manuscriptPath }}/{{ add $i 1 }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 </li>
               {{ end }}
             
@@ -56,7 +57,7 @@
                 
                 {{ range $sequence :=  (seq 12) }}
                 <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 </li>
                 {{ end }}
                 
@@ -81,7 +82,7 @@
                 
                 {{ range $sequence :=  (seq (sub $curImage 5) (add $curImage 5)) }}
                 <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 </li>
                 {{ end }}
                 
@@ -103,7 +104,7 @@
                 
                 {{ range $sequence :=  (seq (sub $totalImages 12) $totalImages) }}
                 <li class="nav-item">
-                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence ($lastUrlElement | int) }}current{{ end }}">{{ $sequence }}</a>
+                  <a href="{{ $manuscriptPath }}/{{ $sequence }}/#manuscript-content-anchor" class="manucript-nav-button nav-link {{ if eq $sequence $curImage }}current{{ end }}">{{ $sequence }}</a>
                 </li>
                 {{ end }}
                 
