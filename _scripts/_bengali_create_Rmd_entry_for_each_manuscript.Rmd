@@ -65,7 +65,7 @@ create_yaml_header <- function(line_of_meta_data, image_current = FALSE, all_ima
   
   line_of_meta_data %>%  glue_data('
 ---
-exclude_jquery: true
+exclude_jquery: false
 catalogueId: {catalogue_id}
 journalNameBengali: "{journal_name_bengali}"
 journalNameEnglish: "{journal_name_english}"
