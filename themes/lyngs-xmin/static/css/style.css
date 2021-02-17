@@ -596,6 +596,7 @@ a.closebtn-dictionary {
   margin-top: 4em;
 }
 
+
 .bengali-page-marker {
   margin-bottom: 0.5em;
 }
@@ -607,6 +608,10 @@ a.closebtn-dictionary {
 
 #manuscript-nav-anchor {
   padding-top: 60px;
+  visibility: hidden;
+}
+#manuscript-nav-anchor-bengali {
+  padding-top: 130px;
   visibility: hidden;
 }
 
