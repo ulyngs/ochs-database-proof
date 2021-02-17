@@ -88,7 +88,7 @@ categories:
 ## Create the body part
 ```{r}
 write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_pages = FALSE){
-  folder_path <- str_c(here("content", "bengali-texts", line_of_meta_data$catalogue_id))
+  folder_path <- str_c(here("content", "bengali-texts", line_of_meta_data$catalogue_id)) %>% str_to_lower()
   dir.create(folder_path)
   
   if (write_split_pages){
