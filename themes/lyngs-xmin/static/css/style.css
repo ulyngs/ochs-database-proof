@@ -611,7 +611,7 @@ a.closebtn-dictionary {
   visibility: hidden;
 }
 #manuscript-nav-anchor-bengali {
-  padding-top: 130px;
+  padding-top: 60px;
   visibility: hidden;
 }
 
@@ -632,4 +632,29 @@ a.closebtn-dictionary {
 }
 .current-num-images {
   font-weight: bold;
+}
+
+.page-nav {
+  margin: auto;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.2em 0;
+  text-align: center;
+}
+.page-nav ul,
+.page-nav li {
+  display: inline-block;
+}
+
+.article-nav {
+  margin-top: 3em;
+  padding-right: 1em;
+}
+.article-nav ul a {
+  text-align: left;
+}
+
+.article-nav-heading {
+  font-weight: bold;
+  font-size: 1.1em;
 }
