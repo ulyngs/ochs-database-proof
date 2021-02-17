@@ -50,6 +50,26 @@ text_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>%
 
 ```
 
+# Save out page article contents
+```{r}
+store_page_contents <- function(a_catalogue_id){
+  page_contents <- read_csv(here("data", "bengali", "photo_information", paste0(a_catalogue_id, ".csv")))  
+  wrangle_page_articles <- page_contents %>% 
+    select(photo, starts_with("article")) %>% 
+    pivot_longer(cols = -photo) %>% 
+    filter(!is.na(value)) %>% 
+    distinct(value, photo) %>% 
+    rename(article = value)
+  
+  wrangle_page_articles %>% write_csv(here("data", "bengali", "photo_information", paste0(a_catalogue_id, "_articles.csv")))
+}
+
+walk(text_meta$catalogue_id, store_page_contents)
+
+```
+
+
+
 # Generate Rmds
 ## Create the YAML header
 ```{r}
@@ -87,7 +107,7 @@ categories:
 
 ```
 
-## Create the body part
+## Create function to write the Rmds
 ```{r}
 write_rmd <- function(line_of_meta_data, current_image_num = FALSE, write_split_pages = FALSE){
   folder_path <- str_c(here("content", "bengali-texts", line_of_meta_data$catalogue_id)) %>% str_to_lower()
@@ -144,8 +164,6 @@ for(i in 1:nrow(text_meta)) {
     slice(i) %>% 
     write_rmd()
 }
-
-
 
 
 # to generate single pages for each image
