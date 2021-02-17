@@ -45,7 +45,7 @@ image_counts <- aws_content %>%
   summarise(num_images = n()) %>% 
   rename(Catalogue_id = manuscript)
   
-text_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv")) %>% 
+text_meta <- read_csv(here("data", "sakta", "manuscript_meta.csv")) %>% 
   rename(Subject = `Subject(s)`) %>% 
   left_join(image_counts) %>% 
   mutate(photo_path_medium = "",
@@ -116,7 +116,7 @@ create_rmd_body <- function(line_of_meta_data, has_text, has_photos, text_only_v
   
   if(has_text & !has_photos){
     read_in_data_text <- line_of_meta_data %>% glue_data('
-data_text <- read_csv(here("data", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
+data_text <- read_csv(here("data", "sakta", "{{Catalogue_id}}.csv")) %>% 
    mutate_all(~str_c("<div>", ., "</div>")) #without editableness
 
 # count columns to include
@@ -126,7 +126,7 @@ count_cols <- data_text %>%
 ', .open = "{{", .close = "}}")
   } else if (has_text) {
     read_in_data_text <- line_of_meta_data %>% glue_data('
-data_text <- read_csv(here("data", "manuscripts", "{{Catalogue_id}}.csv")) %>% 
+data_text <- read_csv(here("data", "sakta", "{{Catalogue_id}}.csv")) %>% 
    mutate(photo = str_c(photo, "{{website_photo_extension}}")) %>% 
    mutate(across(-photo, ~ str_c("<div contenteditable>", ., "</div>"))) #with editableness
    #mutate(across(-photo, ~str_c("<div>", ., "</div>"))) #without editableness

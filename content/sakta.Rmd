@@ -10,7 +10,7 @@ library(tidyverse)
 library(here)
 library(DT)
 
-manuscript_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv"))
+manuscript_meta <- read_csv(here("data", "sakta", "manuscript_meta.csv"))
 ```
 
 <main class="sakta-page-heading">
@@ -52,7 +52,8 @@ manuscript_meta <- read_csv(here("data", "manuscripts", "manuscript_meta.csv"))
 df <- manuscript_meta %>% 
   select(-googlesheet_with_text, 
          -googlesheet_id, 
-         -id) %>%
+         -id, 
+         -Database_catalogue_id) %>%
   arrange(desc(has_content), desc(Date_added)) %>% 
   mutate(Date_added = as.character(Date_added)) %>% 
   mutate(Identifier_popular = case_when(
