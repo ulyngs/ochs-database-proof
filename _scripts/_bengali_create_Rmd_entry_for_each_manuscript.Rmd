@@ -44,7 +44,9 @@ image_counts <- aws_content %>%
   summarise(num_images = n())
   
 text_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>% 
-  left_join(image_counts)
+  mutate(catalogue_id = str_to_lower(catalogue_id)) %>% 
+  left_join(image_counts) %>% 
+  mutate(catalogue_id = str_to_lower(catalogue_id))
 
 ```
 
@@ -142,6 +144,9 @@ for(i in 1:nrow(text_meta)) {
     slice(i) %>% 
     write_rmd()
 }
+
+
+
 
 # to generate single pages for each image
 for(i in 1:nrow(text_meta)) {
