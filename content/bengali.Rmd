@@ -2,6 +2,8 @@
 exclude_jquery: true
 title: Śākta
 menu: main
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -10,8 +12,7 @@ library(tidyverse)
 library(here)
 library(DT)
 
-texts_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>% 
-  mutate(issue = as.integer(issue))
+texts_meta <- read_csv(here("data", "bengali", "texts_meta.csv"))
 ```
 
 <main class="sakta-page-heading">
@@ -51,8 +52,14 @@ knitr::include_graphics("/images/video_icon.png", error = FALSE)
 
 ```{r}
 df <- texts_meta %>% 
-  mutate(catalogue_id = str_c("<a href='/bengali-texts/", catalogue_id, "/1/'>", catalogue_id, "</a>"),
-         catalogue_id = str_c("<span class='pop-identifier'>", catalogue_id, "</span>"))
+  mutate(catalogue_id = str_to_lower(catalogue_id),
+         catalogue_id = str_c("<a href='/bengali-texts/", catalogue_id, "/1/'>", catalogue_id, "</a>"),
+         catalogue_id = str_c("<span class='pop-identifier'>", catalogue_id, "</span>")) %>% 
+  select(-photos_gsheet) %>% 
+  mutate(date_universal = lubridate::dmy(date_universal),
+         volume = as.integer(volume),
+         issue = as.integer(issue), 
+         pages = as.integer(pages))
 
 df %>% 
   datatable(plugins = 'accent-neutralise',
@@ -77,4 +84,3 @@ df %>%
 :::
 
 </main>
-
