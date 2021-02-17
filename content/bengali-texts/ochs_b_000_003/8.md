@@ -1,5 +1,5 @@
 ---
-exclude_jquery: true
+exclude_jquery: false
 catalogueId: ochs_b_000_003
 journalNameBengali: "দৈনিক নদীয়া প্রকাশ"
 journalNameEnglish: "dainik nadiya prakash"

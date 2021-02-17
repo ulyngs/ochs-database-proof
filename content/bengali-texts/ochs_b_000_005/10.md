@@ -1,5 +1,5 @@
 ---
-exclude_jquery: true
+exclude_jquery: false
 catalogueId: ochs_b_000_005
 journalNameBengali: "সজ্জন তোষণী"
 journalNameEnglish: "sajjana toshani"

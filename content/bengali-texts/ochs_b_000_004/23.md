@@ -1,5 +1,5 @@
 ---
-exclude_jquery: true
+exclude_jquery: false
 catalogueId: ochs_b_000_004
 journalNameBengali: "গৌড়ীয়"
 journalNameEnglish: "gaudiya"
