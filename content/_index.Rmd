@@ -37,10 +37,10 @@ This is a work-in-progress prototype for a **database website** for the [Oxford 
 A **browsable library**, where users can
 
  - see transliterated and translated **texts side-by-side with images** of the original manuscripts
- - **overlay text on top of the manuscript image**, to easily compare e.g. the transliteration with the original sanskrit
+ - **overlay text on top of the manuscript image**, to easily compare e.g. transliteration with the original sanskrit
  - view images in **full screen**, and **toggle between medium and high resolution**
  - **download individual texts and images** on the manuscript pages
- - **comment on text and images**, and e.g. or suggest corrections. This is done with comment-only links to google sheets with a manuscript's content
+ - **comment on text and images** or suggest corrections via comment-only google sheet links
 
 #### Demo content
 On the current prototype site, a few initial manuscripts demonstrate these features:
@@ -73,10 +73,10 @@ An **analysis app**, where users can
 - **perform basic text analysis** (e.g., count and compare the frequency of specific words or phrases across manuscripts)
 - **render formatted HTML, PDF, or Word files** of specific manuscripts
 - **bulk download texts** or images for manuscripts that meet specific criteria
-- **download specific content that meet specific criteria** (e.g., get just the transliterations of text from a certain period)
+- **download specific content that meet specific criteria** (e.g., get just transliterations of manuscripts from a certain period)
 
 
-These features will make this project distinct to the existing alternatives, such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org)
+These features makes the project distinct to existing alternatives such as [GRETIL](http://gretil.sub.uni-goettingen.de/gretil.html) or [Muktabodha](https://muktabodha.org)
 ```
 
 ::: {.col-lg-3 .col-md-3 .col-sm-6 .demo-placeholder}
@@ -111,4 +111,3 @@ knitr::include_graphics("/images/how_it_works.jpg", error = FALSE)
 
 </div>
 
- 
