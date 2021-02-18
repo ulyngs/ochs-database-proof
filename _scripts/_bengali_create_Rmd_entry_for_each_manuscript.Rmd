@@ -55,10 +55,10 @@ text_meta <- read_csv(here("data", "bengali", "texts_meta.csv")) %>%
 store_page_contents <- function(a_catalogue_id){
   page_contents <- read_csv(here("data", "bengali", "photo_information", paste0(a_catalogue_id, ".csv")))  
   wrangle_page_articles <- page_contents %>% 
-    select(photo, starts_with("article")) %>% 
-    pivot_longer(cols = -photo) %>% 
+    select(pdf_page_number_english, starts_with("article")) %>% 
+    pivot_longer(cols = -pdf_page_number_english) %>% 
     filter(!is.na(value)) %>% 
-    distinct(value, photo) %>% 
+    distinct(value, pdf_page_number_english) %>% 
     rename(article = value)
   
   wrangle_page_articles %>% write_csv(here("data", "bengali", "photo_information", paste0(a_catalogue_id, "_articles.csv")))
