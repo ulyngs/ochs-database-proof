@@ -63,6 +63,7 @@
       </div>
       
       <div class="col-sm-10">
+      {{ if .Params.imageCurrent }}
         <div class="page-nav manuscript-nav">
           <div class="page-nav-wrapper">
               <ul class="nav">
@@ -144,7 +145,7 @@
               </li>
             </div>
         </div>
-        
+        {{ end }}
         
         {{/* INSERT CONTENT */}}
         <div class="post-content" id="manuscript-content-anchor">
