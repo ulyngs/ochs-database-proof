@@ -62,7 +62,17 @@ df <- texts_meta %>%
          pages = as.integer(pages))
 
 df %>% 
-  datatable(plugins = 'accent-neutralise',
+  datatable(colnames = c('Catalogue identifier' = 'catalogue_id',
+                         'Journal name (Bengali)' = 'journal_name_bengali',
+                         'Journal name (English)' = 'journal_name_english',
+                         'Volume' = 'volume',
+                         'Issue' = 'issue',
+                         'Number of pages' = 'pages',
+                         'Date (UTC)' = 'date_universal',
+                         'Date (Bengali)' = 'date_bengali',
+                         'Place' = 'place',
+                         'Language' = 'language'),
+            plugins = 'accent-neutralise',
             rownames = FALSE,
             escape = FALSE,
             filter = 'top',
