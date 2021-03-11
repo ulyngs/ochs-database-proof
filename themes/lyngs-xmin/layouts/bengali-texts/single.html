@@ -40,7 +40,7 @@
         {{ if .Params.imageCurrent }}
             <div class="article-nav manuscript-nav">
               
-              {{ $url := print "data/bengali/photo_information/" .Params.catalogueId "_articles.csv" }}
+              {{ $url := print "data/bengali/issue_information/" .Params.catalogueId "_articles.csv" }}
               {{ $sep := "," }}
               
               <h5 class="article-nav-heading">Articles</h3>
@@ -49,7 +49,7 @@
                 {{ range $i, $r := getCSV $sep $url }}
                   {{ if ne $i 0 }}
                     <li class="nav-item">
-                      <a href="{{ $manuscriptPath }}/{{ index $r 0 }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ index $r 1 }}<br>(page {{ index $r 0 }})</a>
+                      <a href="{{ $manuscriptPath }}/{{ index $r 0 }}/#manuscript-nav-anchor-bengali" class="manucript-nav-button nav-link">{{ index $r 3 }}<br>(p. {{ index $r 2 }} of issue / p. {{ index $r 1 }} of PDF)</a>
                     </li>
                   {{ end }}
               {{ end }}
