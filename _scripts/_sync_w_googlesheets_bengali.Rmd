@@ -1,0 +1,56 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(here)
+library(googlesheets4)
+gs4_deauth()
+
+```
+
+# Store in files
+## Grab and store the issue meta data and article content from google sheets
+```{r}
+grab_and_store <- function(sheet_name){
+  content <- read_sheet("https://docs.google.com/spreadsheets/d/1BHg3NtvcWK2iyLHKHXnJA0IfwFEVkGYayYsHGDdkOqI/edit?usp=sharing",
+           sheet = sheet_name,
+           col_types = "c")
+  
+  content %>% 
+    janitor::clean_names() %>% 
+    filter(!is.na(journal_name_bengali)) %>% 
+    write_csv(here("data", "bengali", str_c(sheet_name, ".csv")))
+}
+
+
+sheets_to_store <- c("issue_meta", "issue_content")
+
+walk(sheets_to_store, grab_and_store)
+```
+
+
+## Create function to iterate over the google sheets with content, and download and store them
+```{r eval=FALSE}
+# library(readxl)
+# grab_and_store <- function(catalogue_id, googlesheet) {
+#   text <- read_sheet(googlesheet,
+#                      col_types = "c")
+#   
+#   text %>% 
+#     write_excel_csv(here("data", "bengali", "issue_information", str_c(catalogue_id, "_wide.csv")))
+# }
+
+```
+
+## Do it
+```{r}
+# texts_to_sync <- documents_to_sync %>% 
+#   filter(!is.na(issue_info_gsheet))
+# 
+# walk2(texts_to_sync$catalogue_id, texts_to_sync$issue_info_gsheet, grab_and_store)
+
+```
+
+
