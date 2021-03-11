@@ -30,6 +30,28 @@ sheets_to_store <- c("issue_meta", "issue_content")
 walk(sheets_to_store, grab_and_store)
 ```
 
+## Wrangle the issue content and store for individual articles in long format
+```{r}
+long_content <- read_csv(here("data", "bengali", "issue_content.csv")) %>% 
+  select(catalogue_id, pdf_page_number_english, ends_with("article_on_page_bengali")) %>% 
+  pivot_longer(cols = ends_with("article_on_page_bengali")) %>% 
+  filter(!is.na(value)) %>% 
+  distinct(catalogue_id, pdf_page_number_english, value) %>% 
+  rename(article = value)
+
+issues_with_info <- long_content$catalogue_id %>% unique()
+
+store_individual <- function(a_catalogue_id){
+  long_content %>% 
+    filter(catalogue_id == a_catalogue_id) %>% 
+    write_csv(here("data", "bengali", "issue_information", str_c(a_catalogue_id, "_articles.csv")))
+}
+
+walk(issues_with_info, store_individual)
+
+```
+
+
 
 ## Create function to iterate over the google sheets with content, and download and store them
 ```{r eval=FALSE}
